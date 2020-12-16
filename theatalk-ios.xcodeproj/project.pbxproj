@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6F54737B258A3AE4000AD3FD /* theatalk_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F54737A258A3AE4000AD3FD /* theatalk_iosApp.swift */; };
+		6F54737D258A3AE4000AD3FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F54737C258A3AE4000AD3FD /* ContentView.swift */; };
+		6F54737F258A3AE6000AD3FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F54737E258A3AE6000AD3FD /* Assets.xcassets */; };
+		6F547382258A3AE6000AD3FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F547381258A3AE6000AD3FD /* Preview Assets.xcassets */; };
+		6F54738D258A3AE6000AD3FD /* theatalk_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F54738C258A3AE6000AD3FD /* theatalk_iosTests.swift */; };
+		6F547398258A3AE6000AD3FD /* theatalk_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F547397258A3AE6000AD3FD /* theatalk_iosUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6F547389258A3AE6000AD3FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F54736F258A3AE4000AD3FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6F547376258A3AE4000AD3FD;
+			remoteInfo = "theatalk-ios";
+		};
+		6F547394258A3AE6000AD3FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F54736F258A3AE4000AD3FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6F547376258A3AE4000AD3FD;
+			remoteInfo = "theatalk-ios";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6F547377258A3AE4000AD3FD /* theatalk-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "theatalk-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F54737A258A3AE4000AD3FD /* theatalk_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theatalk_iosApp.swift; sourceTree = "<group>"; };
+		6F54737C258A3AE4000AD3FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6F54737E258A3AE6000AD3FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6F547381258A3AE6000AD3FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6F547383258A3AE6000AD3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F547388258A3AE6000AD3FD /* theatalk-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "theatalk-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F54738C258A3AE6000AD3FD /* theatalk_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theatalk_iosTests.swift; sourceTree = "<group>"; };
+		6F54738E258A3AE6000AD3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F547393258A3AE6000AD3FD /* theatalk-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "theatalk-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F547397258A3AE6000AD3FD /* theatalk_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theatalk_iosUITests.swift; sourceTree = "<group>"; };
+		6F547399258A3AE6000AD3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6F547374258A3AE4000AD3FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F547385258A3AE6000AD3FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F547390258A3AE6000AD3FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6F54736E258A3AE4000AD3FD = {
+			isa = PBXGroup;
+			children = (
+				6F547379258A3AE4000AD3FD /* theatalk-ios */,
+				6F54738B258A3AE6000AD3FD /* theatalk-iosTests */,
+				6F547396258A3AE6000AD3FD /* theatalk-iosUITests */,
+				6F547378258A3AE4000AD3FD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6F547378258A3AE4000AD3FD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6F547377258A3AE4000AD3FD /* theatalk-ios.app */,
+				6F547388258A3AE6000AD3FD /* theatalk-iosTests.xctest */,
+				6F547393258A3AE6000AD3FD /* theatalk-iosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6F547379258A3AE4000AD3FD /* theatalk-ios */ = {
+			isa = PBXGroup;
+			children = (
+				6F54737A258A3AE4000AD3FD /* theatalk_iosApp.swift */,
+				6F54737C258A3AE4000AD3FD /* ContentView.swift */,
+				6F54737E258A3AE6000AD3FD /* Assets.xcassets */,
+				6F547383258A3AE6000AD3FD /* Info.plist */,
+				6F547380258A3AE6000AD3FD /* Preview Content */,
+			);
+			path = "theatalk-ios";
+			sourceTree = "<group>";
+		};
+		6F547380258A3AE6000AD3FD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6F547381258A3AE6000AD3FD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6F54738B258A3AE6000AD3FD /* theatalk-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				6F54738C258A3AE6000AD3FD /* theatalk_iosTests.swift */,
+				6F54738E258A3AE6000AD3FD /* Info.plist */,
+			);
+			path = "theatalk-iosTests";
+			sourceTree = "<group>";
+		};
+		6F547396258A3AE6000AD3FD /* theatalk-iosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6F547397258A3AE6000AD3FD /* theatalk_iosUITests.swift */,
+				6F547399258A3AE6000AD3FD /* Info.plist */,
+			);
+			path = "theatalk-iosUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6F547376258A3AE4000AD3FD /* theatalk-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F54739C258A3AE6000AD3FD /* Build configuration list for PBXNativeTarget "theatalk-ios" */;
+			buildPhases = (
+				6F547373258A3AE4000AD3FD /* Sources */,
+				6F547374258A3AE4000AD3FD /* Frameworks */,
+				6F547375258A3AE4000AD3FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "theatalk-ios";
+			productName = "theatalk-ios";
+			productReference = 6F547377258A3AE4000AD3FD /* theatalk-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6F547387258A3AE6000AD3FD /* theatalk-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F54739F258A3AE6000AD3FD /* Build configuration list for PBXNativeTarget "theatalk-iosTests" */;
+			buildPhases = (
+				6F547384258A3AE6000AD3FD /* Sources */,
+				6F547385258A3AE6000AD3FD /* Frameworks */,
+				6F547386258A3AE6000AD3FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6F54738A258A3AE6000AD3FD /* PBXTargetDependency */,
+			);
+			name = "theatalk-iosTests";
+			productName = "theatalk-iosTests";
+			productReference = 6F547388258A3AE6000AD3FD /* theatalk-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6F547392258A3AE6000AD3FD /* theatalk-iosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F5473A2258A3AE6000AD3FD /* Build configuration list for PBXNativeTarget "theatalk-iosUITests" */;
+			buildPhases = (
+				6F54738F258A3AE6000AD3FD /* Sources */,
+				6F547390258A3AE6000AD3FD /* Frameworks */,
+				6F547391258A3AE6000AD3FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6F547395258A3AE6000AD3FD /* PBXTargetDependency */,
+			);
+			name = "theatalk-iosUITests";
+			productName = "theatalk-iosUITests";
+			productReference = 6F547393258A3AE6000AD3FD /* theatalk-iosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6F54736F258A3AE4000AD3FD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					6F547376258A3AE4000AD3FD = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					6F547387258A3AE6000AD3FD = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 6F547376258A3AE4000AD3FD;
+					};
+					6F547392258A3AE6000AD3FD = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 6F547376258A3AE4000AD3FD;
+					};
+				};
+			};
+			buildConfigurationList = 6F547372258A3AE4000AD3FD /* Build configuration list for PBXProject "theatalk-ios" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6F54736E258A3AE4000AD3FD;
+			productRefGroup = 6F547378258A3AE4000AD3FD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6F547376258A3AE4000AD3FD /* theatalk-ios */,
+				6F547387258A3AE6000AD3FD /* theatalk-iosTests */,
+				6F547392258A3AE6000AD3FD /* theatalk-iosUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6F547375258A3AE4000AD3FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F547382258A3AE6000AD3FD /* Preview Assets.xcassets in Resources */,
+				6F54737F258A3AE6000AD3FD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F547386258A3AE6000AD3FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F547391258A3AE6000AD3FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6F547373258A3AE4000AD3FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F54737D258A3AE4000AD3FD /* ContentView.swift in Sources */,
+				6F54737B258A3AE4000AD3FD /* theatalk_iosApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F547384258A3AE6000AD3FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F54738D258A3AE6000AD3FD /* theatalk_iosTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F54738F258A3AE6000AD3FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F547398258A3AE6000AD3FD /* theatalk_iosUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6F54738A258A3AE6000AD3FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6F547376258A3AE4000AD3FD /* theatalk-ios */;
+			targetProxy = 6F547389258A3AE6000AD3FD /* PBXContainerItemProxy */;
+		};
+		6F547395258A3AE6000AD3FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6F547376258A3AE4000AD3FD /* theatalk-ios */;
+			targetProxy = 6F547394258A3AE6000AD3FD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6F54739A258A3AE6000AD3FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6F54739B258A3AE6000AD3FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6F54739D258A3AE6000AD3FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"theatalk-ios/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "theatalk-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "white-t-shirts.theatalk-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6F54739E258A3AE6000AD3FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"theatalk-ios/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "theatalk-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "white-t-shirts.theatalk-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6F5473A0258A3AE6000AD3FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "theatalk-iosTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "white-t-shirts.theatalk-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/theatalk-ios.app/theatalk-ios";
+			};
+			name = Debug;
+		};
+		6F5473A1258A3AE6000AD3FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "theatalk-iosTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "white-t-shirts.theatalk-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/theatalk-ios.app/theatalk-ios";
+			};
+			name = Release;
+		};
+		6F5473A3258A3AE6000AD3FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "theatalk-iosUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "white-t-shirts.theatalk-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "theatalk-ios";
+			};
+			name = Debug;
+		};
+		6F5473A4258A3AE6000AD3FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "theatalk-iosUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "white-t-shirts.theatalk-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "theatalk-ios";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6F547372258A3AE4000AD3FD /* Build configuration list for PBXProject "theatalk-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F54739A258A3AE6000AD3FD /* Debug */,
+				6F54739B258A3AE6000AD3FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6F54739C258A3AE6000AD3FD /* Build configuration list for PBXNativeTarget "theatalk-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F54739D258A3AE6000AD3FD /* Debug */,
+				6F54739E258A3AE6000AD3FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6F54739F258A3AE6000AD3FD /* Build configuration list for PBXNativeTarget "theatalk-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F5473A0258A3AE6000AD3FD /* Debug */,
+				6F5473A1258A3AE6000AD3FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6F5473A2258A3AE6000AD3FD /* Build configuration list for PBXNativeTarget "theatalk-iosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F5473A3258A3AE6000AD3FD /* Debug */,
+				6F5473A4258A3AE6000AD3FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6F54736F258A3AE4000AD3FD /* Project object */;
+}
