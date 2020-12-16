@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F08370E258A446C006D9520 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F08370D258A446C006D9520 /* Home.swift */; };
+		6F083715258A453B006D9520 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F083714258A453B006D9520 /* Room.swift */; };
+		6F08371D258A454C006D9520 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F08371C258A454C006D9520 /* User.swift */; };
 		6F54737B258A3AE4000AD3FD /* theatalk_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F54737A258A3AE4000AD3FD /* theatalk_iosApp.swift */; };
 		6F54737D258A3AE4000AD3FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F54737C258A3AE4000AD3FD /* ContentView.swift */; };
 		6F54737F258A3AE6000AD3FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F54737E258A3AE6000AD3FD /* Assets.xcassets */; };
@@ -33,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F08370D258A446C006D9520 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		6F083714258A453B006D9520 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		6F08371C258A454C006D9520 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6F547377258A3AE4000AD3FD /* theatalk-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "theatalk-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F54737A258A3AE4000AD3FD /* theatalk_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theatalk_iosApp.swift; sourceTree = "<group>"; };
 		6F54737C258A3AE4000AD3FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +78,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F083712258A44E7006D9520 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				6F083714258A453B006D9520 /* Room.swift */,
+				6F08371C258A454C006D9520 /* User.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		6F083713258A44F8006D9520 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6F08370D258A446C006D9520 /* Home.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		6F54736E258A3AE4000AD3FD = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +118,8 @@
 		6F547379258A3AE4000AD3FD /* theatalk-ios */ = {
 			isa = PBXGroup;
 			children = (
+				6F083713258A44F8006D9520 /* view */,
+				6F083712258A44E7006D9520 /* model */,
 				6F54737A258A3AE4000AD3FD /* theatalk_iosApp.swift */,
 				6F54737C258A3AE4000AD3FD /* ContentView.swift */,
 				6F54737E258A3AE6000AD3FD /* Assets.xcassets */,
@@ -260,6 +285,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F54737D258A3AE4000AD3FD /* ContentView.swift in Sources */,
+				6F08370E258A446C006D9520 /* Home.swift in Sources */,
+				6F083715258A453B006D9520 /* Room.swift in Sources */,
+				6F08371D258A454C006D9520 /* User.swift in Sources */,
 				6F54737B258A3AE4000AD3FD /* theatalk_iosApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
