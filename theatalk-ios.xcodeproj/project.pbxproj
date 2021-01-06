@@ -17,6 +17,7 @@
 		6F54738D258A3AE6000AD3FD /* theatalk_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F54738C258A3AE6000AD3FD /* theatalk_iosTests.swift */; };
 		6F547398258A3AE6000AD3FD /* theatalk_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F547397258A3AE6000AD3FD /* theatalk_iosUITests.swift */; };
 		6F86C31225A5E0F900DFBB01 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86C31125A5E0F900DFBB01 /* Chat.swift */; };
+		6F86C31725A5EB1000DFBB01 /* CreateRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86C31625A5EB1000DFBB01 /* CreateRoom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		6F547397258A3AE6000AD3FD /* theatalk_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theatalk_iosUITests.swift; sourceTree = "<group>"; };
 		6F547399258A3AE6000AD3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F86C31125A5E0F900DFBB01 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		6F86C31625A5EB1000DFBB01 /* CreateRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				6F08370D258A446C006D9520 /* Home.swift */,
+				6F86C31625A5EB1000DFBB01 /* CreateRoom.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				6F083715258A453B006D9520 /* Room.swift in Sources */,
 				6F08371D258A454C006D9520 /* User.swift in Sources */,
 				6F54737B258A3AE4000AD3FD /* theatalk_iosApp.swift in Sources */,
+				6F86C31725A5EB1000DFBB01 /* CreateRoom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

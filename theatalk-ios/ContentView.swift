@@ -12,13 +12,6 @@ struct ContentView: View {
         VStack(alignment: .leading) {
             Text("Hello, world!aa")
                 .font(.title)
-            HStack {
-                Text("haaadfsfsfsdfdfsdf")
-                    .font(.subheadline)
-                
-                Text("caalifolnis")
-                    .font(.subheadline)
-            }
         }
     }
 
