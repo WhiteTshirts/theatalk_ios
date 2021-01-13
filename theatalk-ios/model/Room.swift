@@ -7,15 +7,12 @@
 
 import Foundation
 import SwiftUI
-struct Room:Hashable,Codable{
+struct Room{
     var name: String
     var num: Int
     var youtube_url: String
     var author: String
     var tags: [Int]
-    
-    private var image_name: String
-    var image: Image{
-        Image(image_name)
-    }
+    var image_url: String
+
 }
