@@ -8,24 +8,26 @@
 import SwiftUI
 
 struct RoomList: View {
-    var room: Room
-
+    @EnvironmentObject var roomData: ModelData
+    
     var body: some View {
-        HStack {
-            room.image
-                .resizable()
-                .frame(width: 50, height: 50)
-            Text(room.name)
-
-            Spacer()
+        NavigationView{
+            List{
+                ForEach(roomData.rooms){
+                    room in
+                    NavigationLink(
+                        destination: ChatRoom()){
+                        RoomCell()
+                        Text("1")
+                    }
+                }
+            }
         }
     }
 }
 
 struct RoomList_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-        }
-        .previewLayout(.fixed(width: 300, height: 70))
+        RoomList()
     }
 }

@@ -8,13 +8,13 @@
 import SwiftUI
 
 extension UIScreen{
+
    static let screenWidth = UIScreen.main.bounds.size.width
    static let screenHeight = UIScreen.main.bounds.size.height
    static let screenSize = UIScreen.main.bounds.size
 }
 struct Home: View {
     
-
     @State var textEntered = ""
     @State var ProfileSize = CGSize(width: UIScreen.screenWidth/10, height: UIScreen.screenWidth/10)
     @State var RoomSize=CGSize(width: UIScreen.screenWidth/2.2, height: UIScreen.screenHeight/5)

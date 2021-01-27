@@ -7,12 +7,16 @@
 
 import Foundation
 import SwiftUI
-struct Room{
+struct Room: Hashable, Identifiable {
+    
     var name: String
-    var num: Int
+    var id: Int
     var youtube_url: String
     var author: String
     var tags: [Int]
     var image_url: String
+    
 
 }
+
+

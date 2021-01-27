@@ -9,20 +9,20 @@ import Foundation
 import Combine
 
 final class ModelData: ObservableObject{
-    var rooms:[Room] = [];
+    @Published var rooms:[Room] = mockRoomsData
 }
 
-var a=[1];
+var a=[1]
 
 
-let mockRoomsData: [Room]
-    = [Room(name:"test1",num:0,youtube_url:"https://www.youtube.com/watch?v=FIkhzBJAcTM&ab_channel=HikakinGames",author:"user1",tags:a,image_url:"img_name"),
-       Room(name:"test2",num:1,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2"),
-       Room(name:"test2",num:1,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2"),
-       Room(name:"test3",num:1,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2"),
-       Room(name:"test4",num:1,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2"),
+var mockRoomsData:[Room]
+    = [Room(name:"test1",id:0,youtube_url:"https://www.youtube.com/watch?v=FIkhzBJAcTM&ab_channel=HikakinGames",author:"user1",tags:a,image_url:"img_name"),
+       Room(name:"test2",id:1,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2"),
+       Room(name:"test2",id:2,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2"),
+       Room(name:"test3",id:3,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2"),
+       Room(name:"test4",id:4,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2"),
     
-       Room(name:"test5",num:1,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2"),
+       Room(name:"test5",id:5,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2"),
     
-       Room(name:"test6",num:1,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2"),
-       Room(name:"test7",num:1,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2")]
+       Room(name:"test6",id:6,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2"),
+       Room(name:"test7",id:7,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2")]
