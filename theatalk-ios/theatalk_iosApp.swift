@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct theatalk_iosApp: App {
+    @StateObject private var roomData = ModelData()
     var body: some Scene {
         WindowGroup {
             Home()
+                .environmentObject(roomData)
         }
     }
 }

@@ -9,17 +9,15 @@ import SwiftUI
 
 struct RoomList: View {
     @EnvironmentObject var roomData: ModelData
-    
+
     var body: some View {
-        NavigationView{
-            List{
-                ForEach(roomData.rooms){
-                    room in
-                    NavigationLink(
-                        destination: ChatRoom()){
-                        RoomCell()
-                        Text("1")
-                    }
+
+        List{
+            ForEach(roomData.rooms){room in
+                NavigationLink(
+                    destination: ChatRoom(room:room)){
+                    Text(room.name)
+                    //RoomCell(room: room)
                 }
             }
         }
@@ -29,5 +27,7 @@ struct RoomList: View {
 struct RoomList_Previews: PreviewProvider {
     static var previews: some View {
         RoomList()
+            .environmentObject(ModelData())
+            .previewLayout(.fixed(width: 300, height: 300))
     }
 }

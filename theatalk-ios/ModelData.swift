@@ -7,11 +7,6 @@
 
 import Foundation
 import Combine
-
-final class ModelData: ObservableObject{
-    @Published var rooms:[Room] = mockRoomsData
-}
-
 var a=[1]
 
 
@@ -26,3 +21,8 @@ var mockRoomsData:[Room]
     
        Room(name:"test6",id:6,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2"),
        Room(name:"test7",id:7,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2")]
+
+final class ModelData: ObservableObject{
+    @Published var rooms: [Room] = mockRoomsData
+}
+

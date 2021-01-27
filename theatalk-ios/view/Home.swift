@@ -14,7 +14,8 @@ extension UIScreen{
    static let screenSize = UIScreen.main.bounds.size
 }
 struct Home: View {
-    
+    @EnvironmentObject var roomData: ModelData
+
     @State var textEntered = ""
     @State var ProfileSize = CGSize(width: UIScreen.screenWidth/10, height: UIScreen.screenWidth/10)
     @State var RoomSize=CGSize(width: UIScreen.screenWidth/2.2, height: UIScreen.screenHeight/5)
@@ -29,23 +30,16 @@ struct Home: View {
                     TextField("検索",text:$textEntered)
                     NavigationLink("+",destination:CreateRoom())
                             
+                
+                    
                 }
-                ScrollView(.vertical){
-                    VStack(alignment: .leading){
-                        ForEach(0..<10){_ in
-                            HStack(){
-                                Rectangle().fill(Color.red)
-                                    .frame(width:RoomSize.width,height: RoomSize.height)
-                                Rectangle().fill(Color.red)
-                                    .frame(width:RoomSize.width,height: RoomSize.height)
-                            }
-                        }
-                    }
-                }
+                RoomList()
+
             }
+
     
         }
-        .padding()
+
         
     }
 
@@ -55,6 +49,7 @@ struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             Home()
+                .environmentObject(ModelData())
         }
     }
 }
