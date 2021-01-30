@@ -8,19 +8,9 @@
 import Foundation
 import Combine
 var a=[1]
+var room1 = Room(name_:"a",id_:0,youtube_url_:"https://www.youtube.com/watch?v=FIkhzBJAcTM&ab_channel=HikakinGames",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 0)
 
-
-var mockRoomsData:[Room]
-    = [Room(name:"test1",id:0,youtube_url:"https://www.youtube.com/watch?v=FIkhzBJAcTM&ab_channel=HikakinGames",author:"user1",tags:a,image_url:"img_name",room_num: 0),
-       Room(name:"test2",id:1,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2",room_num: 2),
-       Room(name:"test2",id:2,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2",room_num: 3),
-       Room(name:"test3",id:3,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2",room_num: 5),
-       Room(name:"test4",id:4,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2",room_num: 2),
-    
-       Room(name:"test5",id:5,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2",room_num: 0),
-    
-       Room(name:"test6",id:6,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2",room_num: 2),
-       Room(name:"test7",id:7,youtube_url:"https://www.youtube.com/watch?v=5dVcn8NjbwY&ab_channel=TED",author:"user2",tags:a,image_url:"img_name2",room_num: 0)]
+var mockRoomsData:[Room] = [Room(name_:"test1",id_:0,youtube_url_:"https://www.youtube.com/watch?v=FIkhzBJAcTM&ab_channel=HikakinGames",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 3),Room(name_:"test2",id_:0,youtube_url_:"https://www.youtube.com/watch?v=FIkhzBJAcTM&ab_channel=HikakinGames",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 0),Room(name_:"test3",id_:0,youtube_url_:"https://www.youtube.com/watch?v=FIkhzBJAcTM&ab_channel=HikakinGames",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 2),Room(name_:"test4",id_:0,youtube_url_:"https://www.youtube.com/watch?v=FIkhzBJAcTM&ab_channel=HikakinGames",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 10),Room(name_:"test5",id_:0,youtube_url_:"https://www.youtube.com/watch?v=FIkhzBJAcTM&ab_channel=HikakinGames",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 0),Room(name_:"test6",id_:0,youtube_url_:"https://www.youtube.com/watch?v=FIkhzBJAcTM&ab_channel=HikakinGames",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 0),Room(name_:"test7",id_:0,youtube_url_:"https://www.youtube.com/watch?v=FIkhzBJAcTM&ab_channel=HikakinGames",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 1)]
 
 final class ModelData: ObservableObject{
     @Published var rooms: [Room] = mockRoomsData
