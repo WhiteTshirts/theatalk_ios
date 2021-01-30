@@ -18,8 +18,8 @@ struct Home: View {
 
     @State var textEntered = ""
     @State var ProfileSize = CGSize(width: UIScreen.screenWidth/10, height: UIScreen.screenWidth/10)
-    @State var RoomSize=CGSize(width: UIScreen.screenWidth/2.2, height: UIScreen.screenHeight/5)
-
+    @State var RoomSize_Column2=CGSize(width: UIScreen.screenWidth/2.2, height: UIScreen.screenHeight/5)
+    @State var RoomSize_Column1=CGSize(width: UIScreen.screenWidth/1.3, height: UIScreen.screenHeight/3)
     var body: some View {
         NavigationView {
             VStack(alignment: .center){
@@ -29,18 +29,32 @@ struct Home: View {
                     Rectangle().fill().frame(width: ProfileSize.width,height: ProfileSize.height)//写真
                     TextField("検索",text:$textEntered)
                     NavigationLink("+",destination:CreateRoom())
-                            
-                
-                    
                 }
-                RoomList()
+                ScrollView{
+                    ForEach(roomData.rooms){room in
+                        HStack{
+                            NavigationLink(
+                                destination: ChatRoom(room:room)){
+                                ZStack{
+                                    Rectangle().fill().frame(width: RoomSize_Column1.width, height: RoomSize_Column1.height)
+                                    HStack{
+                                        Text(room.name)
+                                            .foregroundColor(Color.black)
+                                        Text("参加人数3人")
+                                            .foregroundColor(Color.black)
+                                    }
+
+                                        
+                                    
+                                        
+                                }
+                            }
+                        }
+                    }
+                }
 
             }
-
-    
         }
-
-        
     }
 
 }
