@@ -15,6 +15,7 @@ struct Room: Hashable, Identifiable {
     var author: String
     var tags: [Int]
     var image_url: String
+    var room_num: Int
     
 
 }

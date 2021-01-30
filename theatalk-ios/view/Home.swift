@@ -40,7 +40,7 @@ struct Home: View {
                                     HStack{
                                         Text(room.name)
                                             .foregroundColor(Color.black)
-                                        Text("参加人数3人")
+                                        Text("参加人数\(room.room_num)人")
                                             .foregroundColor(Color.black)
                                     }
 
