@@ -22,6 +22,7 @@
 		6F547398258A3AE6000AD3FD /* theatalk_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F547397258A3AE6000AD3FD /* theatalk_iosUITests.swift */; };
 		6F86C31225A5E0F900DFBB01 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86C31125A5E0F900DFBB01 /* Chat.swift */; };
 		6F86C31725A5EB1000DFBB01 /* CreateRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86C31625A5EB1000DFBB01 /* CreateRoom.swift */; };
+		6F95C26A25C8047100740ED4 /* youtube_player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F95C26925C8047100740ED4 /* youtube_player.swift */; };
 		6FDE2E3F25C1A1C4009DAC58 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDE2E3E25C1A1C4009DAC58 /* ImageLoader.swift */; };
 		6FDE2E4425C1A492009DAC58 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDE2E4325C1A492009DAC58 /* URLImage.swift */; };
 		6FDE2E5125C1A88F009DAC58 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDE2E5025C1A88F009DAC58 /* ChatRoom.swift */; };
@@ -74,6 +75,7 @@
 		6F547399258A3AE6000AD3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F86C31125A5E0F900DFBB01 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		6F86C31625A5EB1000DFBB01 /* CreateRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoom.swift; sourceTree = "<group>"; };
+		6F95C26925C8047100740ED4 /* youtube_player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = youtube_player.swift; sourceTree = "<group>"; };
 		6FDE2E3E25C1A1C4009DAC58 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		6FDE2E4325C1A492009DAC58 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		6FDE2E5025C1A88F009DAC58 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				6FF7975525AF207E0006C577 /* RoomFetcher.swift */,
 				6FDE2E3E25C1A1C4009DAC58 /* ImageLoader.swift */,
+				6F95C26925C8047100740ED4 /* youtube_player.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				6FDE2E3F25C1A1C4009DAC58 /* ImageLoader.swift in Sources */,
 				6F08370E258A446C006D9520 /* Home.swift in Sources */,
 				6FDE2E4425C1A492009DAC58 /* URLImage.swift in Sources */,
+				6F95C26A25C8047100740ED4 /* youtube_player.swift in Sources */,
 				6F0B13C125C5D2F500DF666A /* WKYTPlayerView.m in Sources */,
 				6F083715258A453B006D9520 /* Room.swift in Sources */,
 				6F08371D258A454C006D9520 /* User.swift in Sources */,

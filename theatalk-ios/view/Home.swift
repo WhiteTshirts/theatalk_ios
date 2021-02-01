@@ -28,13 +28,15 @@ struct Home: View {
                     HStack{
                         NavigationLink(
                             destination: ChatRoom(room:room)){
-                            ZStack(alignment:.topLeading){
+                            VStack{
                                 let url="http://img.youtube.com/vi/"+room.youtube_url+"/mqdefault.jpg"
-                                KFImage(URL(string:url)).frame(width:RoomSize_Column1.width,height:RoomSize_Column1.height)
+                                KFImage(URL(string:url)).frame(width:RoomSize_Column1.width)
                                 HStack(alignment: .top){
                                     Text(room.name)
+                                        .font(.caption)
                                         .foregroundColor(Color.black)
                                     Text("参加人数\(room.room_num)人")
+                                        .font(.caption)
                                         .foregroundColor(Color.black)
                                 }
                             }

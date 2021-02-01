@@ -6,11 +6,18 @@
 //
 
 import SwiftUI
+import UIKit
+import YoutubePlayer_in_WKWebView
 
 struct ChatRoom: View {
     var room: Room
+    var player = WKYTPlayerView()
     var body: some View {
-        Text(room.name)
+        ZStack{
+            YoutubePlayer(videoID: room.youtube_url).frame(height:210)
+        }
+
+
     }
 }
 
