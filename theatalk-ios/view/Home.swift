@@ -23,42 +23,34 @@ struct Home: View {
     @State var RoomSize_Column1=CGSize(width: UIScreen.screenWidth/1.3, height: UIScreen.screenHeight/3)
     var body: some View {
         NavigationView {
-            VStack(alignment: .center){
-                Text("theatalk")
-                    .foregroundColor(Color.red)
-                HStack{
-                    Rectangle().fill().frame(width: ProfileSize.width,height: ProfileSize.height)//写真
-                    TextField("検索",text:$textEntered)
-                    NavigationLink("+",destination:CreateRoom())
-                }
-                ScrollView{
-                    
-                
-                    ForEach(roomData.rooms){room in
-                        HStack{
-                            NavigationLink(
-                                destination: ChatRoom(room:room)){
-                                ZStack{
-                                    let url="http://img.youtube.com/vi/"+room.youtube_url+"/mqdefault.jpg"
-                                    KFImage(URL(string:url))
-//                                    Rectangle().fill().frame(width: RoomSize_Column1.width, height: RoomSize_Column1.height)
-                                    HStack{
-                                        Text(room.name)
-                                            .foregroundColor(Color.black)
-                                        Text("参加人数\(room.room_num)人")
-                                            .foregroundColor(Color.black)
-                                    }
-
-                                        
-                                    
-                                        
+            ScrollView{
+                ForEach(roomData.rooms){room in
+                    HStack{
+                        NavigationLink(
+                            destination: ChatRoom(room:room)){
+                            ZStack(alignment:.topLeading){
+                                let url="http://img.youtube.com/vi/"+room.youtube_url+"/mqdefault.jpg"
+                                KFImage(URL(string:url)).frame(width:RoomSize_Column1.width,height:RoomSize_Column1.height)
+                                HStack(alignment: .top){
+                                    Text(room.name)
+                                        .foregroundColor(Color.black)
+                                    Text("参加人数\(room.room_num)人")
+                                        .foregroundColor(Color.black)
                                 }
                             }
                         }
                     }
                 }
-
             }
+            .navigationBarItems(leading:VStack{
+                HStack(alignment: .top){
+                    Rectangle().fill().frame(width: ProfileSize.width,height: ProfileSize.height)//写真
+                    TextField("検索",text:$textEntered)
+                    NavigationLink("+",destination:CreateRoom())
+                }
+            }
+            .padding()
+            )
         }
     }
 
