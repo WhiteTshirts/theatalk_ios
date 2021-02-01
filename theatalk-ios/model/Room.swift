@@ -47,7 +47,6 @@ class Room: Identifiable,Hashable{
     var tags: [Int]!
     var image_url: String!
     var room_num: Int!
-    var stored_img_name: String!
     init(){
         name = nil
         id = nil
@@ -56,7 +55,6 @@ class Room: Identifiable,Hashable{
         tags = nil
         image_url = nil
         room_num = nil
-        stored_img_name = nil
     }
     init(name_:String,id_:Int,youtube_url_ :String, author_: String,tags_: [Int],image_url_: String,room_num_ :Int){
         name = name_
@@ -66,17 +64,6 @@ class Room: Identifiable,Hashable{
         tags = tags_
         image_url = image_url_
         room_num = room_num_
-        stored_img_name = nil
     }
 }
-
-struct RoomView: View{
-    
-    var room: Room
-    @ObservedObject var thumbnail: Thumbnail
-    var body: some View {
-        Image(uiImage: thumbnail.image)
-    }
-}
-
 

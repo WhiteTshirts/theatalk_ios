@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 extension UIScreen{
 
@@ -31,12 +32,16 @@ struct Home: View {
                     NavigationLink("+",destination:CreateRoom())
                 }
                 ScrollView{
+                    
+                
                     ForEach(roomData.rooms){room in
                         HStack{
                             NavigationLink(
                                 destination: ChatRoom(room:room)){
                                 ZStack{
-                                    Rectangle().fill().frame(width: RoomSize_Column1.width, height: RoomSize_Column1.height)
+                                    let url="http://img.youtube.com/vi/"+room.youtube_url+"/mqdefault.jpg"
+                                    KFImage(URL(string:url))
+//                                    Rectangle().fill().frame(width: RoomSize_Column1.width, height: RoomSize_Column1.height)
                                     HStack{
                                         Text(room.name)
                                             .foregroundColor(Color.black)

@@ -9,7 +9,12 @@ import Foundation
 
 class ImageDownloader : ObservableObject {
     @Published var downloadData: Data? = nil
-
+    func existImage(url: String)-> Bool{
+        return true
+    }
+    func getImage(url: String){
+        
+    }
     func downloadImage(url: String) {
 
         guard let imageURL = URL(string: url) else { return }
