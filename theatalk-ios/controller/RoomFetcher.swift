@@ -9,23 +9,23 @@ import Foundation
 
 
 class RoomFetcher{
-    private let urllink=""
+    private var urllink=""
     @Published var roomData: [Room]=[]
-    init(){
-        fetchRoomData()
+    init(url:String){
+        urllink = url
     }
     func fetchRoomData(){
-        URLSession.shared.dataTask(with: URL(string:urllink)!){ (data,response,error)in
-            guard let data=data else{return}
-            let decoder:JSONDecoder=JSONDecoder()
+        let url:URL = URL(string: urllink)!
+        let task: URLSessionTask = URLSession.shared.dataTask(with: url,completionHandler: {(data,response,error)in
             do{
-                //let searchResultData=try decoder.decode(RoomList.self, from: data)
-                //DispatchQueue.main.async {
-                  //  self.roomData=searchResultData.rooms.reversed()
-               // }
-            } catch{
+                let roomData = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+                print(roomData)
+            }catch{
                 
             }
-        }.resume()
+
+        })
+        
+        task.resume()
     }
 }

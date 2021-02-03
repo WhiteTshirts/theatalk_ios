@@ -21,6 +21,8 @@ struct Home: View {
     @State var ProfileSize = CGSize(width: UIScreen.screenWidth/10, height: UIScreen.screenWidth/10)
     @State var RoomSize_Column2=CGSize(width: UIScreen.screenWidth/2.2, height: UIScreen.screenHeight/5)
     @State var RoomSize_Column1=CGSize(width: UIScreen.screenWidth/1.3, height: UIScreen.screenHeight/3)
+    var roomfetcher = RoomFetcher(url:"http://localhost:5000/api/v1/hello")
+
     var body: some View {
         NavigationView {
             ScrollView{
@@ -43,7 +45,7 @@ struct Home: View {
                         }
                     }
                 }
-            }
+            }.onAppear{self.roomfetcher.fetchRoomData()}
             .navigationBarItems(leading:VStack{
                 HStack(alignment: .top){
                     Rectangle().fill().frame(width: ProfileSize.width,height: ProfileSize.height)//写真
