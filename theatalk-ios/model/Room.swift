@@ -44,12 +44,12 @@ class Room: Identifiable,Hashable{
     var id: Int!
     var is_private: Bool!
     var name: String!
-    var password: String?
-    var start_time: Date?
+    var password: String!
+    var start_time: Date!
     var updated_at: Date!
     var viewer: Int!
     var youtube_id: String!
-    var tags: [Int]?
+    var tags: [Int]!
     init(admin_id_:Int,name_:String,id_:Int,is_private_:Bool,start_time_:Date?,viewer_:Int,youtube_id_:String){
         admin_id = admin_id_
         id = id_
