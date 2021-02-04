@@ -6,25 +6,33 @@
 //
 
 import SwiftUI
+import UIKit
 
-//struct RoomList: View {
-//    @EnvironmentObject var roomData: ModelData
+struct RoomList: View {
+
+    var rooms: [Room]
+    var body: some View{
+        ForEach(rooms){room in
+            HStack{
+                NavigationLink(
+                    destination: ChatRoom(room:room)){
+                    RoomCell(room: room)
+                }
+            }
+        }
+    }
+
+}
+
 //
-//    var body: some View {
-//        ForEach(roomData.rooms){room in
-//            HStack{
-//                NavigationLink(
-//                    destination: ChatRoom(room:room)){
-//                    Text(room.name)
-//                }
-//            }
+//struct RoomList_Previews: PreviewProvider {
+//    static var previews: some View {
+//                ForEach(["iPhone SE", "iPhone X"], id: \.self) { deviceName in
+//            RoomList(rooms: mockRoomsData)
+//                .previewDevice(PreviewDevice(rawValue: deviceName))
+//                .previewDisplayName(deviceName)
 //        }
 //    }
 //}
 //
-//struct RoomList_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RoomList()
-//            .environmentObject(ModelData())
-//    }
-//}
+

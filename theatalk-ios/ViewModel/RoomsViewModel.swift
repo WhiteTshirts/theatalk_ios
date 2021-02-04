@@ -17,11 +17,12 @@ final class RoomsViewModel: ObservableObject{
     private var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
 
     func load(){
-        roomfetcher.fetchRoomData{
-            returnData in
-            print(returnData)
-            self.rooms = returnData
-        }
+        self.rooms = mockRoomsData
+//        roomfetcher.fetchRoomData{
+//            returnData in
+//            print(returnData)
+//            self.rooms = returnData
+//        }
     }
     
     

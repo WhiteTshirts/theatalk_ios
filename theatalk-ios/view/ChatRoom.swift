@@ -16,7 +16,12 @@ struct ChatRoom: View {
     var body: some View {
         VStack{
             YoutubePlayer(videoID: room.youtube_id).frame(height:200)
-            Text("comment:aaaaa")
+            List {
+                ForEach(0..<30) {(row: Int) in
+                    Text("comment \(row)")
+                        
+                }
+            }
         }
 
         

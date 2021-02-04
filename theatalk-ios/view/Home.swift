@@ -6,76 +6,96 @@
 //
 
 import SwiftUI
-import UIKit
 
-struct ActivityIndicator: UIViewRepresentable {
-    typealias UIViewType = UIActivityIndicatorView
 
-    @Binding var isAnimating: Bool
-    let style: UIActivityIndicatorView.Style
-
-    func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> ActivityIndicator.UIViewType {
-        UIActivityIndicatorView(style: style)
-    }
-
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
-        isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
-    }
-}
-extension UIScreen{
-
-   static let screenWidth = UIScreen.main.bounds.size.width
-   static let screenHeight = UIScreen.main.bounds.size.height
-   static let screenSize = UIScreen.main.bounds.size
-}
 struct Sidemenu: View{
+    @Binding var info: Bool
     var body: some View{
-        Text("aaaaaa")
+        VStack(alignment: .center){
+            Button(action: {
+                info = !info
+            }){
+                Image(systemName: "list.dash").resizable()
+                .frame(width: ProfileSize.width,height: ProfileSize.height)
+            }
+            HStack {
+                Image(systemName: "person")
+                Text("Profile")
+            }
+            HStack {
+                Image(systemName: "text.bubble")
+                Text("Tags")
+            }
+            Spacer()
+        }
+        
     }
 }
+struct NavItem: View{
+    @Binding var info: Bool
+    @Binding var textEntered: String
+    var body: some View{
+        HStack(alignment: .top){
+            Button(action: {
+                info = !info
+            }){
+                Image(systemName: "list.dash").resizable()
+                .frame(width: ProfileSize.width,height: ProfileSize.height)
+            }
+            TextField("検索",text:$textEntered)
+            NavigationLink("+",destination:CreateRoom())
+        }
+        
+    }
+}
+
 struct Home: View {
     @State var loading = true
-    @State var info = false
     @ObservedObject var RoomsVM: RoomsViewModel
     @State var textEntered = ""
-    @State var ProfileSize = CGSize(width: UIScreen.screenWidth/10, height: UIScreen.screenWidth/10)
-    @State var RoomSize_Column2=CGSize(width: UIScreen.screenWidth/2.2, height: UIScreen.screenHeight/5)
+    @State var info = false
     var body: some View {
-        ZStack{
-            NavigationView {
-                ScrollView{
-                    ForEach(RoomsVM.rooms){room in
+        GeometryReader{ geometry in
+            
+            ZStack(alignment:.leading){
+                NavigationView {
+                    VStack{
                         HStack{
-                            NavigationLink(
-                                destination: ChatRoom(room:room)){
-                                RoomCell(room: room)
+                            ScrollView{
+                                RoomList(rooms: RoomsVM.rooms)
+                            }.onAppear{
+                                RoomsVM.load()
                             }
+                            
                         }
                     }
-                }.onAppear{
-                    RoomsVM.load()
+                    .navigationBarItems(leading:VStack{
+                        NavItem(info: self.$info, textEntered: self.$textEntered)
+                    })
+
                 }
-                .navigationBarItems(leading:VStack{
-                    HStack(alignment: .top){
-                        Button(action: {
-                            info = true
-                        }){
-                            Rectangle().fill().frame(width: ProfileSize.width,height: ProfileSize.height)
+                if info {
+                    Sidemenu(info: self.$info)
+                        .frame(width:UIScreen.screenWidth/2,height: UIScreen.screenHeight,alignment: .leading)
+                        .background(Color.white)
+                        .animation(.default)
+                        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+
+                        
+
+                }
+
+
+            }.gesture(DragGesture(minimumDistance: 5)
+                        .onChanged{_ in
+                            
                         }
-                    
-                        TextField("検索",text:$textEntered)
-                        NavigationLink("+",destination:CreateRoom())
-                    }
-                }
-                .padding()
-                )
-            }
-            if(info){
-                Sidemenu()
-
-            }
-
+                        .onEnded{ _ in
+                            
+                            
+                        })
         }
+
     }
 
 }
@@ -83,7 +103,7 @@ struct Home: View {
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
                 ForEach(["iPhone SE", "iPhone X"], id: \.self) { deviceName in
-            Home(RoomsVM: .init())
+                    Home(RoomsVM: RoomsViewModel())
                 .previewDevice(PreviewDevice(rawValue: deviceName))
                 .previewDisplayName(deviceName)
         }

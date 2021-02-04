@@ -8,8 +8,9 @@
 import SwiftUI
 import Kingfisher
 struct RoomCell: View {
+
+
     var room: Room
-    @State var RoomSize_Column1=CGSize(width: UIScreen.screenWidth/1.3, height: UIScreen.screenHeight/3)
 
     var body: some View {
         
