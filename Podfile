@@ -6,7 +6,8 @@ target 'theatalk-ios' do
   use_frameworks!
   pod "YoutubePlayer-in-WKWebView", "~> 0.3.5"
   pod 'Kingfisher', '~> 6.0'
-  # Pods for theatalk-ios
+  pod 'SwiftWebSocket'
+# Pods for theatalk-ios
 
   target 'theatalk-iosTests' do
     inherit! :search_paths

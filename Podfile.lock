@@ -1,20 +1,24 @@
 PODS:
   - Kingfisher (6.0.1)
+  - SwiftWebSocket (2.7.0)
   - YoutubePlayer-in-WKWebView (0.3.5)
 
 DEPENDENCIES:
   - Kingfisher (~> 6.0)
+  - SwiftWebSocket
   - YoutubePlayer-in-WKWebView (~> 0.3.5)
 
 SPEC REPOS:
   trunk:
     - Kingfisher
+    - SwiftWebSocket
     - YoutubePlayer-in-WKWebView
 
 SPEC CHECKSUMS:
   Kingfisher: adde87a4f74f6a3845395769354efff593581740
+  SwiftWebSocket: 612c9729fd503cb6b0b8b45390c788686dac306f
   YoutubePlayer-in-WKWebView: cfbf46da51d7370662a695a8f351e5fa1d3e1008
 
-PODFILE CHECKSUM: a878e647984829e479bbf22f388e7cab5cf66958
+PODFILE CHECKSUM: 128b5a80581fa02a0ba25aa83916107c1709e195
 
 COCOAPODS: 1.10.1
