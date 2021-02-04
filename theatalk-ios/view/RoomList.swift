@@ -7,24 +7,24 @@
 
 import SwiftUI
 
-struct RoomList: View {
-    @EnvironmentObject var roomData: ModelData
-
-    var body: some View {
-        ForEach(roomData.rooms){room in
-            HStack{
-                NavigationLink(
-                    destination: ChatRoom(room:room)){
-                    Text(room.name)
-                }
-            }
-        }
-    }
-}
-
-struct RoomList_Previews: PreviewProvider {
-    static var previews: some View {
-        RoomList()
-            .environmentObject(ModelData())
-    }
-}
+//struct RoomList: View {
+//    @EnvironmentObject var roomData: ModelData
+//
+//    var body: some View {
+//        ForEach(roomData.rooms){room in
+//            HStack{
+//                NavigationLink(
+//                    destination: ChatRoom(room:room)){
+//                    Text(room.name)
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//struct RoomList_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RoomList()
+//            .environmentObject(ModelData())
+//    }
+//}

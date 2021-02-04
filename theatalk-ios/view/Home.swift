@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 extension UIScreen{
 
@@ -15,37 +14,22 @@ extension UIScreen{
    static let screenSize = UIScreen.main.bounds.size
 }
 struct Home: View {
-    @EnvironmentObject var roomData: ModelData
-
+    @ObservedObject var RoomsVM: RoomsViewModel
     @State var textEntered = ""
     @State var ProfileSize = CGSize(width: UIScreen.screenWidth/10, height: UIScreen.screenWidth/10)
     @State var RoomSize_Column2=CGSize(width: UIScreen.screenWidth/2.2, height: UIScreen.screenHeight/5)
-    @State var RoomSize_Column1=CGSize(width: UIScreen.screenWidth/1.3, height: UIScreen.screenHeight/3)
-    var roomfetcher = RoomFetcher(url:"http://localhost:5000/api/v1/hello")
-
     var body: some View {
         NavigationView {
             ScrollView{
-                ForEach(roomData.rooms){room in
+                ForEach(RoomsVM.rooms){room in
                     HStack{
                         NavigationLink(
                             destination: ChatRoom(room:room)){
-                            VStack{
-                                let url="http://img.youtube.com/vi/"+room.youtube_url+"/mqdefault.jpg"
-                                KFImage(URL(string:url)).frame(width:RoomSize_Column1.width)
-                                HStack(alignment: .top){
-                                    Text(room.name)
-                                        .font(.caption)
-                                        .foregroundColor(Color.black)
-                                    Text("参加人数\(room.room_num)人")
-                                        .font(.caption)
-                                        .foregroundColor(Color.black)
-                                }
-                            }
+                            RoomCell(room: room)
                         }
                     }
                 }
-            }.onAppear{self.roomfetcher.fetchRoomData()}
+            }.onAppear{RoomsVM.load()}
             .navigationBarItems(leading:VStack{
                 HStack(alignment: .top){
                     Rectangle().fill().frame(width: ProfileSize.width,height: ProfileSize.height)//写真
@@ -63,8 +47,7 @@ struct Home: View {
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            Home()
-                .environmentObject(ModelData())
+            Home(RoomsVM: .init())
         }
     }
 }

@@ -20,6 +20,8 @@
 		6F547382258A3AE6000AD3FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F547381258A3AE6000AD3FD /* Preview Assets.xcassets */; };
 		6F54738D258A3AE6000AD3FD /* theatalk_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F54738C258A3AE6000AD3FD /* theatalk_iosTests.swift */; };
 		6F547398258A3AE6000AD3FD /* theatalk_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F547397258A3AE6000AD3FD /* theatalk_iosUITests.swift */; };
+		6F75D63B25CBA5A60022BFE9 /* RoomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F75D63A25CBA5A60022BFE9 /* RoomsViewModel.swift */; };
+		6F75D64025CBA6D30022BFE9 /* Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F75D63F25CBA6D30022BFE9 /* Parse.swift */; };
 		6F86C31225A5E0F900DFBB01 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86C31125A5E0F900DFBB01 /* Chat.swift */; };
 		6F86C31725A5EB1000DFBB01 /* CreateRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86C31625A5EB1000DFBB01 /* CreateRoom.swift */; };
 		6F95C26A25C8047100740ED4 /* youtube_player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F95C26925C8047100740ED4 /* youtube_player.swift */; };
@@ -74,6 +76,8 @@
 		6F547393258A3AE6000AD3FD /* theatalk-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "theatalk-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F547397258A3AE6000AD3FD /* theatalk_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theatalk_iosUITests.swift; sourceTree = "<group>"; };
 		6F547399258A3AE6000AD3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F75D63A25CBA5A60022BFE9 /* RoomsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewModel.swift; sourceTree = "<group>"; };
+		6F75D63F25CBA6D30022BFE9 /* Parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parse.swift; sourceTree = "<group>"; };
 		6F86C31125A5E0F900DFBB01 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		6F86C31625A5EB1000DFBB01 /* CreateRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoom.swift; sourceTree = "<group>"; };
 		6F95C26925C8047100740ED4 /* youtube_player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = youtube_player.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 		6F547379258A3AE4000AD3FD /* theatalk-ios */ = {
 			isa = PBXGroup;
 			children = (
+				6F75D63625CBA4E20022BFE9 /* ViewModel */,
 				6F95C26E25CACDA500740ED4 /* Resource */,
 				6FF7975425AF20580006C577 /* controller */,
 				6FF7974E25AF1E9C0006C577 /* ModelData.swift */,
@@ -224,6 +229,14 @@
 			path = "theatalk-iosUITests";
 			sourceTree = "<group>";
 		};
+		6F75D63625CBA4E20022BFE9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6F75D63A25CBA5A60022BFE9 /* RoomsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		6F95C26E25CACDA500740ED4 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +251,7 @@
 				6FF7975525AF207E0006C577 /* RoomFetcher.swift */,
 				6FDE2E3E25C1A1C4009DAC58 /* ImageLoader.swift */,
 				6F95C26925C8047100740ED4 /* youtube_player.swift */,
+				6F75D63F25CBA6D30022BFE9 /* Parse.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -495,8 +509,10 @@
 				6F54737D258A3AE4000AD3FD /* ContentView.swift in Sources */,
 				6F86C31225A5E0F900DFBB01 /* Chat.swift in Sources */,
 				6FF7974F25AF1E9C0006C577 /* ModelData.swift in Sources */,
+				6F75D63B25CBA5A60022BFE9 /* RoomsViewModel.swift in Sources */,
 				6FF7974A25AF1DF00006C577 /* RoomList.swift in Sources */,
 				6FDE2E3F25C1A1C4009DAC58 /* ImageLoader.swift in Sources */,
+				6F75D64025CBA6D30022BFE9 /* Parse.swift in Sources */,
 				6F08370E258A446C006D9520 /* Home.swift in Sources */,
 				6FDE2E4425C1A492009DAC58 /* URLImage.swift in Sources */,
 				6F95C26A25C8047100740ED4 /* youtube_player.swift in Sources */,

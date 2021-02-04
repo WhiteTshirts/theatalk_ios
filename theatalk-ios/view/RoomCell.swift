@@ -6,12 +6,26 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct RoomCell: View {
-    @Environment  var room_:Room
-
+    var room: Room
+    @State var RoomSize_Column1=CGSize(width: UIScreen.screenWidth/1.3, height: UIScreen.screenHeight/3)
     var body: some View {
-        Text(room_.name)
+        
+        VStack{
+            let url="http://img.youtube.com/vi/"+room.youtube_url+"/mqdefault.jpg"
+            KFImage(URL(string:url)).frame(width:RoomSize_Column1.width)
+            HStack(alignment: .top){
+                Text(room.name)
+                    .font(.caption)
+                    .foregroundColor(Color.black)
+                Text("参加人数\(room.room_num)人")
+                    .font(.caption)
+                    .foregroundColor(Color.black)
+            }
+        }
+        
     }
 }
 
