@@ -30,6 +30,7 @@
 		6FA35D2125CC670A00389D6B /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA35D2025CC670A00389D6B /* Auth.swift */; };
 		6FA35D2625CC6A9000389D6B /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA35D2525CC6A9000389D6B /* ChatViewModel.swift */; };
 		6FA35D2B25CC6B6100389D6B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA35D2A25CC6B6100389D6B /* AuthViewModel.swift */; };
+		6FA35D3925CC77BF00389D6B /* FetchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA35D3825CC77BF00389D6B /* FetchAPI.swift */; };
 		6FDE2E3F25C1A1C4009DAC58 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDE2E3E25C1A1C4009DAC58 /* ImageLoader.swift */; };
 		6FDE2E4425C1A492009DAC58 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDE2E4325C1A492009DAC58 /* URLImage.swift */; };
 		6FDE2E5125C1A88F009DAC58 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDE2E5025C1A88F009DAC58 /* ChatRoom.swift */; };
@@ -94,6 +95,7 @@
 		6FA35D2025CC670A00389D6B /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		6FA35D2525CC6A9000389D6B /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		6FA35D2A25CC6B6100389D6B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		6FA35D3825CC77BF00389D6B /* FetchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAPI.swift; sourceTree = "<group>"; };
 		6FDE2E3E25C1A1C4009DAC58 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		6FDE2E4325C1A492009DAC58 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		6FDE2E5025C1A88F009DAC58 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				6F75D63F25CBA6D30022BFE9 /* Parse.swift */,
 				6FEA22E425CC291C00E428E0 /* TagFetcher.swift */,
 				6FA35D2025CC670A00389D6B /* Auth.swift */,
+				6FA35D3825CC77BF00389D6B /* FetchAPI.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				6F54737B258A3AE4000AD3FD /* theatalk_iosApp.swift in Sources */,
 				6FA35D1C25CC66CB00389D6B /* ChatFecher.swift in Sources */,
 				6F86C31725A5EB1000DFBB01 /* CreateRoom.swift in Sources */,
+				6FA35D3925CC77BF00389D6B /* FetchAPI.swift in Sources */,
 				6FA35D2B25CC6B6100389D6B /* AuthViewModel.swift in Sources */,
 				6FA35D2125CC670A00389D6B /* Auth.swift in Sources */,
 			);

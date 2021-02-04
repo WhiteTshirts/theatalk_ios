@@ -36,6 +36,8 @@ struct ActivityIndicator: UIViewRepresentable {
 //global value
 @main
 struct theatalk_iosApp: App {
+    
+
     var body: some Scene {
         WindowGroup {
             Home(RoomsVM: RoomsViewModel())

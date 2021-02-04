@@ -54,6 +54,7 @@ struct Home: View {
     @ObservedObject var RoomsVM: RoomsViewModel
     @State var textEntered = ""
     @State var info = false
+    @State var authfetcher = AuthFetcher()
     var body: some View {
         GeometryReader{ geometry in
             
@@ -94,6 +95,8 @@ struct Home: View {
                             
                             
                         })
+        }.onAppear{
+            authfetcher.login(name: "hoge", password: "hoge")
         }
 
     }

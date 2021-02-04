@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-var mockUserData:User = User(name_: "hogehoge", password_: "hogehoge")
+var mockUserData:User = User(name_: "hoge", password_: "hoge")
 var mockUsersData:[User] = [User(name_: "user1", id_: 3, tags_: a),
                             User(name_: "user2", id_: 4, tags_: a),
                             User(name_: "user3", id_: 5, tags_: a),
