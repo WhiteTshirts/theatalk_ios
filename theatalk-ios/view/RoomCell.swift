@@ -14,13 +14,13 @@ struct RoomCell: View {
     var body: some View {
         
         VStack{
-            let url="http://img.youtube.com/vi/"+room.youtube_url+"/mqdefault.jpg"
+            let url="http://img.youtube.com/vi/"+room.youtube_id+"/mqdefault.jpg"
             KFImage(URL(string:url)).frame(width:RoomSize_Column1.width)
             HStack(alignment: .top){
                 Text(room.name)
                     .font(.caption)
                     .foregroundColor(Color.black)
-                Text("参加人数\(room.room_num)人")
+                Text("参加人数\(room.viewer)人")
                     .font(.caption)
                     .foregroundColor(Color.black)
             }

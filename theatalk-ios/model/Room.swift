@@ -39,31 +39,26 @@ class Room: Identifiable,Hashable{
         hasher.combine(name)
     }
     
-
-    var name: String!
+    var admin_id: Int!
+    var created_at: Date!
     var id: Int!
-    var youtube_url: String!
-    var author: String!
-    var tags: [Int]!
-    var image_url: String!
-    var room_num: Int!
-    init(){
-        name = nil
-        id = nil
-        youtube_url = nil
-        author = nil
-        tags = nil
-        image_url = nil
-        room_num = nil
-    }
-    init(name_:String,id_:Int,youtube_url_ :String, author_: String,tags_: [Int],image_url_: String,room_num_ :Int){
-        name = name_
+    var is_private: Bool!
+    var name: String!
+    var password: String?
+    var start_time: Date?
+    var updated_at: Date!
+    var viewer: Int!
+    var youtube_id: String!
+    var tags: [Int]?
+    init(admin_id_:Int,name_:String,id_:Int,is_private_:Bool,start_time_:Date?,viewer_:Int,youtube_id_:String){
+        admin_id = admin_id_
         id = id_
-        youtube_url = youtube_url_
-        author = author_
-        tags = tags_
-        image_url = image_url_
-        room_num = room_num_
+        is_private = is_private_
+        name = name_
+        start_time = start_time_
+        viewer = viewer_
+        youtube_id = youtube_id_
+       
     }
 }
 

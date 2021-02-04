@@ -9,16 +9,19 @@ import Foundation
 import Combine
 
 var a=[1]
-var room1 = Room(name_:"a",id_:0,youtube_url_:"https://www.youtube.com/watch?v=FIkhzBJAcTM&ab_channel=HikakinGames",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 0)
 
-var mockRoomsData:[Room] = [Room(name_:"test1",id_:0,youtube_url_:"kgeG9kXFb0A",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 3),Room(name_:"test2",id_:0,youtube_url_:"oSmWDekjCRo",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 0),Room(name_:"test3",id_:0,youtube_url_:"KRVuRddwpaU",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 2),Room(name_:"test4",id_:0,youtube_url_:"noJM85qyA6I",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 10),Room(name_:"test5",id_:0,youtube_url_:"_RjvVJcNJkI",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 0),Room(name_:"test6",id_:0,youtube_url_:"ofk4W8vDVMg",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 0),Room(name_:"test7",id_:0,youtube_url_:"1OxY10NWIqY",author_:"user1",tags_:a,image_url_:"img_name",room_num_: 1)]
+var mockRoomsData:[Room] = [Room(admin_id_:0,name_:"test1",id_:0,is_private_: false,start_time_: Date(), viewer_: 3,youtube_id_:"kgeG9kXFb0A"),Room(admin_id_:0,name_:"test2",id_:1,is_private_: false,start_time_: Date(), viewer_: 3,youtube_id_:"ofk4W8vDVMg"),Room(admin_id_:0,name_:"test3",id_:3,is_private_: false,start_time_: Date(), viewer_: 3,youtube_id_:"MrgRPzaD5nQ"),Room(admin_id_:0,name_:"test4",id_:4,is_private_: false,start_time_: Date(), viewer_: 3,youtube_id_:"kgeG9kXFb0A")]
 
 final class RoomsViewModel: ObservableObject{
     @Published var rooms: [Room] = []
-    private var roomfetcher = RoomFetcher(url: "localhost:5000/api/v1/rooms")
+    private var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
 
     func load(){
-        self.rooms = mockRoomsData
+        roomfetcher.fetchRoomData{
+            returnData in
+            print(returnData)
+            self.rooms = returnData
+        }
     }
     
     

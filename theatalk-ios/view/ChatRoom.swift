@@ -15,7 +15,7 @@ struct ChatRoom: View {
 
     var body: some View {
         VStack{
-            YoutubePlayer(videoID: room.youtube_url).frame(height:200)
+            YoutubePlayer(videoID: room.youtube_id).frame(height:200)
             Text("comment:aaaaa")
         }
 
