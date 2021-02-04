@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 class RoomFetcher{
     private var urllink=""
     @Published var roomData: [Room]=[]
