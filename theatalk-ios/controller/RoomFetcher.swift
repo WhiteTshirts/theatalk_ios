@@ -8,9 +8,31 @@
 import Foundation
 class RoomFetcher{
     private var urllink=""
+    private var host = "http://localhost:5000"
+    let encoder = JSONEncoder()
+    var fetcher  = Fetcher()
     @Published var roomData: [Room]=[]
     init(url:String){
         urllink = url
+    }
+    func enterRoom(roomID:Int,token:String){
+        let path = "/api/v1/room_users"
+        var room_info = Dictionary<String,Any>()
+        room_info["room_id"] = roomID
+        var jobj = Dictionary<String,Any>()
+        jobj["user"] = room_info
+        do {
+            let data = try JSONSerialization.data(withJSONObject: jobj, options: [])
+            fetcher.fetchData(method: "POST", path: path, body: data) { returnData in
+                print(returnData)
+            }
+                
+        } catch let encodeError as NSError {
+            print("Encoder error: \(encodeError.localizedDescription)\n")
+        }
+    }
+    func exitRoom(){
+        
     }
     func fetchRoomData(completion: @escaping ([Room])->Void){
         let url:URL = URL(string: urllink)!
