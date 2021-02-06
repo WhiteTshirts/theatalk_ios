@@ -31,22 +31,23 @@ class ChatFetcher{
         }
 
     }
-    func fetchChatData(completion: @escaping ([Chat])->Void){
-        let url:URL = URL(string: urllink)!
+    func fetchChatData(room_Id:Int,completion: @escaping ([Chat])->Void){
+        
+        let path = "/api/v1/rooms/\(room_Id)/chats"
+
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
         dateFormater.locale = Locale(identifier: "en_US_POSIX")
         dateFormater.timeZone = TimeZone(identifier: "Asia/Tokyo")
         var chats:[Chat] = []
-        let task: URLSessionTask = URLSession.shared.dataTask(with: url,completionHandler: {(data,response,error)in
-            do{
-                let chatJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! AnyObject
-                var chatarray = chatJson["chats"] as! [Any]
+        do {
+            fetcher.fetchData(method: "GET", path: path, body: nil) { returnData in
+                var chatarray = returnData!["chats"] as! [Any]
                 let chats_ = chatarray.map{ (chats_ ) -> [String: Any] in
                     return chats_ as! [String: Any]
                 }
-
                 for chat in chats_{
+                    print(chat)
                     var created_at: Date?
                     if chat["created_at"] is NSNull{
                         created_at = nil
@@ -54,15 +55,18 @@ class ChatFetcher{
                         let t = chat["created_at"] as! String
                         created_at = dateFormater.date(from: t)
                     }
-                    chats.append(Chat(user_id_: chat["user_id"] as! Int, comment_: chat["comment"] as! String, created_at_: created_at!))
+                    chats.append(Chat(user_id_: chat["user_id"] as! Int, comment_: chat["text"] as! String, created_at_: created_at!))
                 }
-            }catch{
-            }
-            completion(chats)
+                completion(chats)
 
-        })
+            }
+                
+        } catch let encodeError as NSError {
+            print("Encoder error: \(encodeError.localizedDescription)\n")
+        }
         
-        task.resume()
+    
+
 
     }
 }

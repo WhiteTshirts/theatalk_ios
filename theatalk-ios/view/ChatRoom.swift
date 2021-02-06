@@ -17,7 +17,9 @@ struct ChatRoom: View {
     var body: some View {
         VStack{
             YoutubePlayer(videoID: room.youtube_id).frame(height:200)
-            Text("\(room.viewer)人が視聴中")
+            Text("\(room.viewer)人が視聴中").onAppear{
+                ChatsVm.load(room_Id: room.id)
+            }
             List {
                 ForEach(ChatsVm.chats){
                     chat in
@@ -54,6 +56,6 @@ struct ChatRoom: View {
 
 struct ChatRoom_Previews: PreviewProvider {
     static var previews: some View {
-        ChatRoom(room:mockRoomsData[0],ChatsVm: ChatsViewModel())
+        ChatRoom(room:mockRoomsData[0],ChatsVm: ChatsViewModel(room_Id: 0))
     }
 }

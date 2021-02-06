@@ -15,16 +15,17 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     var chatwb = ChatWBSocket()
     @Published var chats: [Chat] = []
     private var chatfetcher = ChatFetcher(url: "http://localhost:5000/api/v1/rooms/0")
-    init(){
-        load()
+    init(room_Id:Int){
+        //print("initialize chat")
+        //load(room_Id: room_Id)
     }
-    func load(){
-        self.chats = mockChatsData
-//        roomfetcher.fetchRoomData{
-//            returnData in
-//            print(returnData)
-//            self.rooms = returnData
-//        }
+    func load(room_Id:Int){
+        //self.chats = mockChatsData
+        chatfetcher.fetchChatData(room_Id:room_Id){
+            returnData in
+            print(returnData)
+            self.chats = returnData
+        }
     }
     func enter(){
         
@@ -33,7 +34,6 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     func chatreceive(chat: Chat){
         print(chat)
         chats.append(chat)
-        //print(chats.count)
     }
     func SendMsg(msg:String,roomId:Int){
         chatfetcher.sendChatData(msg: msg, room_Id: roomId)
