@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 protocol ChatRecv {
-    func chatreceive(chat: String)
+    func chatreceive(chat: Chat)
 }
 
 final class ChatsViewModel: ObservableObject,ChatRecv{
@@ -30,11 +30,10 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
         
         chatwb.SubscribeChannel(path: "/", token: mockUserHashVal,delegate: self)
     }
-    func chatreceive(chat: String){
+    func chatreceive(chat: Chat){
         print(chat)
-        var chat_ = Chat(user_name_: "aaa", user_id_: 23, comment_: chat, created_at_: Date())
-        chats.append(chat_)
-        print(chats.count)
+        chats.append(chat)
+        //print(chats.count)
     }
     func SendMsg(msg:String,roomId:Int){
         chatfetcher.sendChatData(msg: msg, room_Id: roomId)
