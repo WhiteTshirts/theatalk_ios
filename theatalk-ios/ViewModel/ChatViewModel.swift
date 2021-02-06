@@ -20,10 +20,8 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
         //load(room_Id: room_Id)
     }
     func load(room_Id:Int){
-        //self.chats = mockChatsData
         chatfetcher.fetchChatData(room_Id:room_Id){
             returnData in
-            print(returnData)
             self.chats = returnData
         }
     }
@@ -32,8 +30,7 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
         chatwb.SubscribeChannel(path: "/", token: mockUserHashVal,delegate: self)
     }
     func chatreceive(chat: Chat){
-        print(chat)
-        chats.append(chat)
+        chats.insert(chat, at: 0)
     }
     func SendMsg(msg:String,roomId:Int){
         chatfetcher.sendChatData(msg: msg, room_Id: roomId)

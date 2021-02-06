@@ -20,30 +20,40 @@ struct ChatRoom: View {
             Text("\(room.viewer)人が視聴中").onAppear{
                 ChatsVm.load(room_Id: room.id)
             }
-            List {
-                ForEach(ChatsVm.chats){
-                    chat in
-                    if let user_name = chat.user_name{
-                        Text("\(user_name)さん:\(chat.comment)")
-                            .font(.caption)
-                    }else{
-                        Text("名前読み込み中:\(chat.comment)")
-                            .font(.caption)
+            ScrollViewReader { value in
+                
+                List {
+                    ForEach(ChatsVm.chats.indices, id: \.self){ index in
+                        HStack{
+                            if let user_name = ChatsVm.chats[index].user_name{
+                                Text("\(user_name)さん:\(ChatsVm.chats[index].comment)")
+                                    .font(.caption)
+                            }else{
+                                Text("名前読み込み中:\(ChatsVm.chats[index].comment)")
+                                    .font(.caption)
+                            }
+                        }.id(index)
+       
+                            
                     }
+                    
                 }
-            }
+            
             TextField("コメントを入力してください", text: $comment,
                       onCommit: {
                         //print("\(comment)")
                         ChatsVm.SendMsg(msg: self.comment,roomId: room.id)
                         self.comment = ""
+                        value.scrollTo(0, anchor: .top)
                         
                         
                         
             })
+                
+            
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-            
+            }
 
         }.onAppear(perform: {
             ChatsVm.enter()

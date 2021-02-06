@@ -47,7 +47,6 @@ class ChatFetcher{
                     return chats_ as! [String: Any]
                 }
                 for chat in chats_{
-                    print(chat)
                     var created_at: Date?
                     if chat["created_at"] is NSNull{
                         created_at = nil
