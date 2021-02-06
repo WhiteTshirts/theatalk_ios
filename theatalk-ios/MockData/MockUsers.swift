@@ -16,5 +16,5 @@ var mockUsersData:[User] = [User(name_: "user1", id_: 3, tags_: a),
                             User(name_: "user7", id_: 9, tags_: a),
                             User(name_: "user8", id_: 10, tags_: a)
 ]
-var mockUserHashVal = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNCwiZXhwIjoxNjEzMTMxNDU5fQ.apNhxbFIkXJg5C_pruAhx9SsKny377rVIk6dS_N6z-w"
+var mockUserHashVal = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNCwiZXhwIjoxNjEzMjIwMjQyfQ.gzZlvPGXJUVjPRq3nPEO3NjeRZOPmmKpg43bgeGUWEM"
 

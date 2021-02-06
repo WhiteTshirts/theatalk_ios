@@ -8,9 +8,29 @@
 import Foundation
 class ChatFetcher{
     private var urllink=""
-    @Published var roomData: [Room]=[]
+    @Published var chatData: [Chat]=[]
+    var fetcher  = Fetcher()
+
     init(url:String){
         urllink = url
+    }
+    func sendChatData(msg:String,room_Id:Int){
+        
+        var chat_info = Dictionary<String,Any>()
+        chat_info["text"] = msg
+        var jobj = Dictionary<String,Any>()
+        jobj["chat"] = chat_info
+        
+        do {
+            let data = try JSONSerialization.data(withJSONObject: jobj, options: [])
+            let jsonStr = String(bytes: data, encoding: .utf8)!
+            fetcher.fetchData(method:"POST",path: "/api/v1/rooms/\(room_Id)/chats",body: data){ returnData in
+                print(returnData)
+            }
+        } catch let encodeError as NSError {
+            print("Encoder error: \(encodeError.localizedDescription)\n")
+        }
+
     }
     func fetchChatData(completion: @escaping ([Chat])->Void){
         let url:URL = URL(string: urllink)!

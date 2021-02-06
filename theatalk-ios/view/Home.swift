@@ -48,8 +48,13 @@ struct NavItem: View{
         
     }
 }
-
-struct Home: View {
+protocol EnterRoomDele {
+    func enterroom(room_num:Int)
+}
+struct Home: View,EnterRoomDele {
+    func enterroom(room_num:Int) {
+        RoomsVM.EnterRoom(roomID_:room_num)
+    }
     @State var loading = true
     @ObservedObject var RoomsVM: RoomsViewModel
     @State var textEntered = ""
@@ -63,7 +68,7 @@ struct Home: View {
                     VStack{
                         HStack{
                             ScrollView{
-                                RoomList(rooms: RoomsVM.rooms)
+                                RoomList(rooms: RoomsVM.rooms,delegate: self)
                             }.onAppear{
                                 RoomsVM.load()
                             }

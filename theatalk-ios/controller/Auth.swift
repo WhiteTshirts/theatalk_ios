@@ -25,7 +25,11 @@ class  AuthFetcher{
             let data = try JSONSerialization.data(withJSONObject: jobj, options: [])
             let jsonStr = String(bytes: data, encoding: .utf8)!
             fetcher.fetchData(method:"POST",path: "/api/v1/login",body: data){ returnData in
-                self.Hashval = returnData["token"] as! String
+                if(returnData != nil){
+                    
+                    
+                    self.Hashval = returnData!["token"] as! String
+                }
                 
                             
             }

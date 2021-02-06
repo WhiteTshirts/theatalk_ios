@@ -11,11 +11,15 @@ import UIKit
 struct RoomList: View {
 
     var rooms: [Room]
+    var delegate: EnterRoomDele
     var body: some View{
         ForEach(rooms){room in
             HStack{
                 NavigationLink(
-                    destination: ChatRoom(room:room,ChatsVm: ChatsViewModel())){
+                    destination: ChatRoom(room:room,ChatsVm: ChatsViewModel()).onAppear{
+                        print(room.id)
+                        delegate.enterroom(room_num: room.id)
+                    }){
                     RoomCell(room: room)
                 }
             }

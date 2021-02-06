@@ -17,14 +17,15 @@ class Fetcher{
         dateFormater.locale = Locale(identifier: "en_US_POSIX")
         dateFormater.timeZone = TimeZone(identifier: "Asia/Tokyo")
     }
-    func fetchData(method:String,path:String,body:Data!,completion: @escaping (AnyObject)->Void){
+    func fetchData(method:String,path:String,body:Data!,completion: @escaping (AnyObject?)->Void){
         
         urllink = host + path
-
+        
         var  request = URLRequest(url: URL(string: urllink)!)
         var JsonObject: AnyObject?
         request.addValue("application/json", forHTTPHeaderField: "content-type")
         request.httpMethod = method
+        request.setValue("Bearer \(mockUserHashVal)", forHTTPHeaderField: "Authorization")
         if (body != nil) {
             request.httpBody = body
         }
@@ -32,10 +33,12 @@ class Fetcher{
         let task: URLSessionTask = URLSession.shared.dataTask(with: request,completionHandler: {(data,response,error)in
             do{
                 JsonObject = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! AnyObject
+                completion(JsonObject!)
+
             }catch{
-                
+                //completion(AnyObject)
+                completion(JsonObject)
             }
-            completion(JsonObject!)
         })
         
         task.resume()

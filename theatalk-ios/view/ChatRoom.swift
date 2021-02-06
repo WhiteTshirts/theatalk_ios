@@ -32,7 +32,9 @@ struct ChatRoom: View {
             }
             TextField("コメントを入力してください", text: $comment,
                       onCommit: {
-                        ChatsVm.SendMsg(msg: self.comment)
+                        print("\(comment)")
+                        ChatsVm.SendMsg(msg: self.comment,roomId: room.id)
+                        self.comment = ""
                         
                         
                         
@@ -41,7 +43,9 @@ struct ChatRoom: View {
                 .padding()
             
 
-        }
+        }.onAppear(perform: {
+            ChatsVm.enter()
+        })
 
         
 

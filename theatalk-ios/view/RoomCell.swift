@@ -37,9 +37,6 @@ struct RoomCell: View {
                             Text("参加人数\(room.viewer)人")
                                 .font(.headline)
                                 .foregroundColor(Color.red)
-                          
-                            
-                        
                         
                         }.background(Color.white).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                     }
@@ -55,9 +52,9 @@ struct RoomCell: View {
 
 }
 
-struct RoomCell_Previews: PreviewProvider {
-    static var previews: some View {
-        RoomCell(room: Room(admin_id_:0,name_:"test1",id_:0,is_private_: false,start_time_: Date(), viewer_: 3,youtube_id_:"kgeG9kXFb0A"))
-
-    }
-}
+//struct RoomCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RoomCell(room: Room(admin_id_:0,name_:"test1",id_:0,is_private_: false,start_time_: Date(), viewer_: 3,youtube_id_:"kgeG9kXFb0A"))
+//
+//    }
+//}
