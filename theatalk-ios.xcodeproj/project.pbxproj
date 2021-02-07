@@ -22,6 +22,7 @@
 		6F547398258A3AE6000AD3FD /* theatalk_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F547397258A3AE6000AD3FD /* theatalk_iosUITests.swift */; };
 		6F6AF26E25CD40C100A06F64 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6AF26D25CD40C100A06F64 /* Login.swift */; };
 		6F6AF27B25CD411300A06F64 /* WBSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6AF27A25CD411300A06F64 /* WBSocket.swift */; };
+		6F73340825CF663600FB1CBA /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F73340725CF663600FB1CBA /* SignUp.swift */; };
 		6F75D63B25CBA5A60022BFE9 /* RoomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F75D63A25CBA5A60022BFE9 /* RoomsViewModel.swift */; };
 		6F75D64025CBA6D30022BFE9 /* Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F75D63F25CBA6D30022BFE9 /* Parse.swift */; };
 		6F86C31225A5E0F900DFBB01 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86C31125A5E0F900DFBB01 /* Chat.swift */; };
@@ -92,6 +93,7 @@
 		6F547399258A3AE6000AD3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F6AF26D25CD40C100A06F64 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		6F6AF27A25CD411300A06F64 /* WBSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBSocket.swift; sourceTree = "<group>"; };
+		6F73340725CF663600FB1CBA /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		6F75D63A25CBA5A60022BFE9 /* RoomsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewModel.swift; sourceTree = "<group>"; };
 		6F75D63F25CBA6D30022BFE9 /* Parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parse.swift; sourceTree = "<group>"; };
 		6F86C31125A5E0F900DFBB01 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				6FDE2E5525C1A912009DAC58 /* RoomCell.swift */,
 				6FEA22DF25CBFFC200E428E0 /* Menu.swift */,
 				6F6AF26D25CD40C100A06F64 /* Login.swift */,
+				6F73340725CF663600FB1CBA /* SignUp.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				6F083715258A453B006D9520 /* Room.swift in Sources */,
 				6F08371D258A454C006D9520 /* User.swift in Sources */,
 				6FDE2E5625C1A912009DAC58 /* RoomCell.swift in Sources */,
+				6F73340825CF663600FB1CBA /* SignUp.swift in Sources */,
 				6FDE2E5125C1A88F009DAC58 /* ChatRoom.swift in Sources */,
 				6F54737B258A3AE4000AD3FD /* theatalk_iosApp.swift in Sources */,
 				6FA35D1C25CC66CB00389D6B /* ChatFecher.swift in Sources */,
