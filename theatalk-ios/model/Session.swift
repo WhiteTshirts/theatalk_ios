@@ -41,7 +41,9 @@ final class AuthCheck:AuthCheckProtocol{
                 }else{
                     //エラーを見て返す
                     promise(.failure(AuthError.InvalidName))
-                }            }
+                }
+                
+            }
 
             
         }
@@ -54,7 +56,9 @@ final class AuthCheck:AuthCheckProtocol{
                     promise(.success(()))
                 }else{
                     promise(.failure(AuthError.NetworkErr))
-                }            }
+                }
+                
+            }
 
         }
     }

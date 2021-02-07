@@ -13,7 +13,7 @@ struct ChatRoom: View {
     var room: Room
     var player = WKYTPlayerView()
     @ObservedObject var ChatsVm: ChatsViewModel
-    @State var comment = ""
+    @State var text = ""
     var body: some View {
         VStack{
             YoutubePlayer(videoID: room.youtube_id).frame(height:200)
@@ -26,10 +26,10 @@ struct ChatRoom: View {
                     ForEach(ChatsVm.chats.indices, id: \.self){ index in
                         HStack{
                             if let user_name = ChatsVm.chats[index].user_name{
-                                Text("\(user_name)さん:\(ChatsVm.chats[index].comment)")
+                                Text("\(user_name)さん:\(ChatsVm.chats[index].text)")
                                     .font(.caption)
                             }else{
-                                Text("名前読み込み中:\(ChatsVm.chats[index].comment)")
+                                Text("名前読み込み中:\(ChatsVm.chats[index].text)")
                                     .font(.caption)
                             }
                         }.id(index)
@@ -39,11 +39,11 @@ struct ChatRoom: View {
                     
                 }
             
-            TextField("コメントを入力してください", text: $comment,
+            TextField("コメントを入力してください", text: $text,
                       onCommit: {
-                        //print("\(comment)")
-                        ChatsVm.SendMsg(msg: self.comment,roomId: room.id)
-                        self.comment = ""
+                        //print("\(text)")
+                        ChatsVm.SendMsg(msg: self.text,roomId: room.id)
+                        self.text = ""
                         value.scrollTo(0, anchor: .top)
                         
                         

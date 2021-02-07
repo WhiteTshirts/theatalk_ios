@@ -45,7 +45,7 @@ class ChatWBSocket{
                             let o = try JSONSerialization.jsonObject(with: msg) as AnyObject
                             if o["type"]! == nil,let chatobj = o["message"]! as AnyObject?{
                                 if type(of: chatobj) != String.Type.self, (chatobj["user_id"]) != nil{
-                                    let chat_ = Chat(user_name_:chatobj["name"]! as! String,user_id_: chatobj["user_id"]! as! Int, comment_: chatobj["text"]! as! String, created_at_: Date())
+                                    let chat_ = Chat(user_name_:chatobj["name"]! as! String,user_id_: chatobj["user_id"]! as! Int, text_: chatobj["text"]! as! String, created_at_: Date())
                                     self.delegate!.chatreceive(chat: chat_)
                                 }
                             }

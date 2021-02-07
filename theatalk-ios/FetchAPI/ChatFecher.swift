@@ -54,7 +54,7 @@ class ChatFetcher{
                         let t = chat["created_at"] as! String
                         created_at = dateFormater.date(from: t)
                     }
-                    chats.append(Chat(user_id_: chat["user_id"] as! Int, comment_: chat["text"] as! String, created_at_: created_at!))
+                    chats.append(Chat(user_id_: chat["user_id"] as! Int, text_: chat["text"] as! String, created_at_: created_at!))
                 }
                 completion(chats)
 
