@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class Session:ObservableObject{
+final class Session: ObservableObject{
     @Published var isLogin:Bool
     @Published var user:User?
     init(login:Bool = false,user:User? = nil){

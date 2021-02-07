@@ -49,17 +49,13 @@ struct NavItem: View{
         
     }
 }
-protocol EnterRoomDele {
-    func enterroom(room_num:Int)
-}
-struct Home: View,EnterRoomDele {
+//protocol EnterRoomDele {
+//    func enterroom(room_num:Int)
+//}
+struct Home: View {
     @EnvironmentObject var session: Session
 
-    func enterroom(room_num:Int) {
-        RoomsVM.EnterRoom(roomID_:room_num)
-    }
     @State var loading = true
-    @ObservedObject var RoomsVM: RoomsViewModel
     @State var textEntered = ""
     @State var info = false
     @State var authfetcher = AuthFetcher()
@@ -70,10 +66,9 @@ struct Home: View,EnterRoomDele {
                 NavigationView {
                     VStack{
                         HStack{
+                            
                             ScrollView{
-                                RoomList(rooms: RoomsVM.rooms,delegate: self)
-                            }.onAppear{
-                                RoomsVM.load()
+                                RoomList(RoomsVM: RoomsViewModel())
                             }
                             
                         }
@@ -114,7 +109,7 @@ struct Home: View,EnterRoomDele {
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
                 ForEach(["iPhone SE", "iPhone X"], id: \.self) { deviceName in
-                    Home(RoomsVM: RoomsViewModel()).environmentObject(Session(login: true, user: mockUserData))
+                    Home().environmentObject(Session(login: true, user: mockUserData))
                 .previewDevice(PreviewDevice(rawValue: deviceName))
                 .previewDisplayName(deviceName)
         }

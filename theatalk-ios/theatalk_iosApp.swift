@@ -36,16 +36,11 @@ struct ActivityIndicator: UIViewRepresentable {
 //global value
 @main
 struct theatalk_iosApp: App {
-    @EnvironmentObject var session: Session
 
 
     var body: some Scene {
         WindowGroup {
-            if(self.session.isLogin){
-                Home(RoomsVM: RoomsViewModel()).environmentObject(self.session)
-            }else{
-                Home(RoomsVM: RoomsViewModel()).environmentObject(self.session)
-            }
+            Home().environmentObject(Session(login: true, user: mockUserData))
 
         }
     }

@@ -9,21 +9,29 @@ import SwiftUI
 import UIKit
 
 struct RoomList: View {
+    @ObservedObject var RoomsVM: RoomsViewModel
 
-    var rooms: [Room]
-    var delegate: EnterRoomDele
     var body: some View{
-        ForEach(rooms){room in
-            HStack{
-                NavigationLink(
-                    destination: ChatRoom(room:room,ChatsVm: ChatsViewModel(room_Id: room.id)).onAppear{
-                        
-                        delegate.enterroom(room_num: room.id)
-                    }){
-                    RoomCell(room: room)
+        if(RoomsVM.rooms.isEmpty){
+            Image(systemName: "hourglass").resizable()
+        }else{
+            ForEach(RoomsVM.rooms){room in
+                HStack{
+                    NavigationLink(
+                        destination: ChatRoom(room:room,ChatsVm: ChatsViewModel(room_Id: room.id)).onAppear{
+                            
+                            enterroom(room_num: room.id)
+                        }){
+                        RoomCell(room: room)
+                    }
                 }
+            }.onAppear(){
             }
         }
+
+    }
+    func enterroom(room_num:Int){
+        RoomsVM.EnterRoom(roomID_:room_num)
     }
 
 }
