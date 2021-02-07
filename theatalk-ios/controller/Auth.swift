@@ -6,6 +6,18 @@
 //
 
 import Foundation
+import Combine
+protocol AuthFechable {
+    func login(
+    ) -> AnyPublisher<[User],APIError>
+    func logout(
+        forUser user: User
+    ) -> AnyPublisher<User,APIError>
+    func signup(
+        forUser user: User
+    ) ->AnyPublisher<User,APIError>
+    
+}
 class  AuthFetcher{
     @Published var UserData: User?
     @Published var Hashval:String?

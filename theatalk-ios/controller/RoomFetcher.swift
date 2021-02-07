@@ -6,14 +6,37 @@
 //
 
 import Foundation
+import Combine
+protocol RoomFechable {
+//    func GETRooms(
+//    ) -> AnyPublisher<[Room],APIError>
+//    func GETRoomsWithTag(
+//        forTag tag: String
+//    ) -> AnyPublisher<[Room],APIError>
+//    func GetRoom(
+//        forRoomId roomId: Int
+//    ) -> AnyPublisher<Room,APIError>
+//    func PostRoom(
+//        forRoom room: Room
+//    ) -> AnyPublisher<Room,APIError>
+//    func EditRoom(
+//        forRoom room: Room
+//    ) ->AnyPublisher<Room,APIError>
+//    func DeleteRoom(
+//        forRoom room:Room
+//    ) -> AnyPublisher<Void,APIError>
+    
+}
 class RoomFetcher{
     private var urllink=""
     private var host = "http://localhost:5000"
     let encoder = JSONEncoder()
     var fetcher  = Fetcher()
+    private let session: URLSession
     @Published var roomData: [Room]=[]
-    init(url:String){
+    init(url:String,session: URLSession = .shared){
         urllink = url
+        self.session = session
     }
     func enterRoom(roomID:Int,token:String){
         let path = "/api/v1/room_users"
@@ -34,6 +57,8 @@ class RoomFetcher{
     func exitRoom(){
         
     }
+
+        
     func fetchRoomData(completion: @escaping ([Room])->Void){
         let path = "/api/v1/rooms"
 
@@ -74,4 +99,32 @@ class RoomFetcher{
         }
         
     }
+}
+
+extension RoomFetcher: RoomFechable{
+//    func GETRooms() -> AnyPublisher<[Room], APIError> {
+//        }
+    
+//    func GETRoomsWithTag(forTag tag: String) -> AnyPublisher<[Room], APIError> {
+//
+//    }
+//
+//    func GetRoom(forRoomId roomId: Int) -> AnyPublisher<Room, APIError> {
+//
+//    }
+//
+//    func PostRoom(forRoom room: Room) -> AnyPublisher<Room, APIError> {
+//
+//    }
+//
+//    func EditRoom(forRoom room: Room) -> AnyPublisher<Room, APIError> {
+//
+//    }
+//
+//    func DeleteRoom(forRoom room: Room) -> AnyPublisher<Void, APIError> {
+//
+//    }
+//
+    
+    
 }

@@ -5,16 +5,22 @@
 //  Created by riku iwasaki on 2021/02/04.
 //
 
-import SwiftUI
 
-struct TagFetcher: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+import Foundation
+import Combine
+protocol TagFechable {
+    func GETTags(
+    ) -> AnyPublisher<[Tag],APIError>
+    func PostTag(
+        forTag tag: Tag
+    ) -> AnyPublisher<Tag,APIError>
+    func EditTag(
+        forTag tag: Tag
+    ) ->AnyPublisher<Tag,APIError>
+    func DeleteTag(
+        forTag tag:Tag
+    ) -> AnyPublisher<Void,APIError>
+    
 }
-
-struct TagFetcher_Previews: PreviewProvider {
-    static var previews: some View {
-        TagFetcher()
-    }
+class TagsFetcher{
 }

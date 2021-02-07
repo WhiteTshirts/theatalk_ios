@@ -1,32 +1,13 @@
 //
-//  Room.swift
+//  test.swift
 //  theatalk-ios
 //
-//  Created by riku iwasaki on 2020/12/16.
+//  Created by riku iwasaki on 2021/02/08.
 //
 
 import Foundation
-import SwiftUI
-final class Thumbnail:ObservableObject{
-    @Published var image = UIImage(systemName: "photo")!
-
-    init(from resource:URL){
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: resource, completionHandler: { [weak self] data, _, _ in
-            guard let imageData = data,
-                  let ThumbImage = UIImage(data: imageData) else{
-                return
-            }
-            DispatchQueue.main.async {
-                self?.image = ThumbImage
-            }
-            session.invalidateAndCancel()
-        })
-        task.resume()
-    }
-}
-class Room: Identifiable,Hashable{
-    static func == (lhs: Room, rhs: Room) -> Bool {
+class Room_: Identifiable,Hashable{
+    static func == (lhs: Room_, rhs: Room_) -> Bool {
         if((lhs.id  != nil)&&(rhs.id != nil)){
             if(lhs.id==rhs.id){
                 return true
@@ -60,4 +41,3 @@ class Room: Identifiable,Hashable{
        
     }
 }
-

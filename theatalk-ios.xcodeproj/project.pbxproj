@@ -28,6 +28,12 @@
 		6F86C31225A5E0F900DFBB01 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86C31125A5E0F900DFBB01 /* Chat.swift */; };
 		6F86C31725A5EB1000DFBB01 /* CreateRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86C31625A5EB1000DFBB01 /* CreateRoom.swift */; };
 		6F8804BA25D00C6D0085826F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8804B925D00C6D0085826F /* Session.swift */; };
+		6F8804BF25D0346A0085826F /* UserFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8804BE25D0346A0085826F /* UserFetcher.swift */; };
+		6F8804C425D052CC0085826F /* rooms.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F8804C325D052CC0085826F /* rooms.json */; };
+		6F8804EE25D05F910085826F /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8804ED25D05F910085826F /* test.swift */; };
+		6F8804EF25D05F910085826F /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8804ED25D05F910085826F /* test.swift */; };
+		6F88050525D0629F0085826F /* RoomTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88050425D0629F0085826F /* RoomTest.swift */; };
+		6F88050625D0629F0085826F /* RoomTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88050425D0629F0085826F /* RoomTest.swift */; };
 		6F8E400E25CDE8AE0055012E /* MockUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E400D25CDE8AE0055012E /* MockUsers.swift */; };
 		6F8E401625CDE8E10055012E /* MockChats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E401525CDE8E10055012E /* MockChats.swift */; };
 		6F8E401B25CDE8FC0055012E /* MockRooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E401A25CDE8FC0055012E /* MockRooms.swift */; };
@@ -100,6 +106,10 @@
 		6F86C31125A5E0F900DFBB01 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		6F86C31625A5EB1000DFBB01 /* CreateRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoom.swift; sourceTree = "<group>"; };
 		6F8804B925D00C6D0085826F /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		6F8804BE25D0346A0085826F /* UserFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFetcher.swift; sourceTree = "<group>"; };
+		6F8804C325D052CC0085826F /* rooms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rooms.json; sourceTree = "<group>"; };
+		6F8804ED25D05F910085826F /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		6F88050425D0629F0085826F /* RoomTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTest.swift; sourceTree = "<group>"; };
 		6F8E400D25CDE8AE0055012E /* MockUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUsers.swift; sourceTree = "<group>"; };
 		6F8E401525CDE8E10055012E /* MockChats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChats.swift; sourceTree = "<group>"; };
 		6F8E401A25CDE8FC0055012E /* MockRooms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRooms.swift; sourceTree = "<group>"; };
@@ -177,6 +187,7 @@
 				6F86C31125A5E0F900DFBB01 /* Chat.swift */,
 				6FEA22EE25CC29D400E428E0 /* Tag.swift */,
 				6F8804B925D00C6D0085826F /* Session.swift */,
+				6F8804ED25D05F910085826F /* test.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -252,6 +263,7 @@
 		6F54738B258A3AE6000AD3FD /* theatalk-iosTests */ = {
 			isa = PBXGroup;
 			children = (
+				6F8804C825D054BD0085826F /* model */,
 				6F54738C258A3AE6000AD3FD /* theatalk_iosTests.swift */,
 				6F54738E258A3AE6000AD3FD /* Info.plist */,
 			);
@@ -278,10 +290,19 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		6F8804C825D054BD0085826F /* model */ = {
+			isa = PBXGroup;
+			children = (
+				6F88050425D0629F0085826F /* RoomTest.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		6F8E400C25CDE8970055012E /* MockData */ = {
 			isa = PBXGroup;
 			children = (
 				6F8E400D25CDE8AE0055012E /* MockUsers.swift */,
+				6F8804C325D052CC0085826F /* rooms.json */,
 				6F8E401525CDE8E10055012E /* MockChats.swift */,
 				6F8E401A25CDE8FC0055012E /* MockRooms.swift */,
 			);
@@ -308,6 +329,7 @@
 				6FA35D2025CC670A00389D6B /* Auth.swift */,
 				6FA35D3825CC77BF00389D6B /* FetchAPI.swift */,
 				6F6AF27A25CD411300A06F64 /* WBSocket.swift */,
+				6F8804BE25D0346A0085826F /* UserFetcher.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -430,6 +452,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F8804C425D052CC0085826F /* rooms.json in Resources */,
 				6F0B13C025C5D2F500DF666A /* WKYTPlayerView.bundle in Resources */,
 				6F95C27025CACE0C00740ED4 /* index.html in Resources */,
 				6F547382258A3AE6000AD3FD /* Preview Assets.xcassets in Resources */,
@@ -574,6 +597,7 @@
 				6F6AF26E25CD40C100A06F64 /* Login.swift in Sources */,
 				6FDE2E3F25C1A1C4009DAC58 /* ImageLoader.swift in Sources */,
 				6F75D64025CBA6D30022BFE9 /* Parse.swift in Sources */,
+				6F8804EE25D05F910085826F /* test.swift in Sources */,
 				6F08370E258A446C006D9520 /* Home.swift in Sources */,
 				6F8E401625CDE8E10055012E /* MockChats.swift in Sources */,
 				6FDE2E4425C1A492009DAC58 /* URLImage.swift in Sources */,
@@ -581,9 +605,11 @@
 				6F95C26A25C8047100740ED4 /* youtube_player.swift in Sources */,
 				6F8804BA25D00C6D0085826F /* Session.swift in Sources */,
 				6FA35D2625CC6A9000389D6B /* ChatViewModel.swift in Sources */,
+				6F88050525D0629F0085826F /* RoomTest.swift in Sources */,
 				6FEA22E025CBFFC200E428E0 /* Menu.swift in Sources */,
 				6FEA22E525CC291C00E428E0 /* TagFetcher.swift in Sources */,
 				6F0B13C125C5D2F500DF666A /* WKYTPlayerView.m in Sources */,
+				6F8804BF25D0346A0085826F /* UserFetcher.swift in Sources */,
 				6F083715258A453B006D9520 /* Room.swift in Sources */,
 				6F08371D258A454C006D9520 /* User.swift in Sources */,
 				6FDE2E5625C1A912009DAC58 /* RoomCell.swift in Sources */,
@@ -603,6 +629,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F54738D258A3AE6000AD3FD /* theatalk_iosTests.swift in Sources */,
+				6F88050625D0629F0085826F /* RoomTest.swift in Sources */,
+				6F8804EF25D05F910085826F /* test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,6 +6,12 @@
 //
 
 import Foundation
+enum APIError: Error{
+    case network(description: String)
+    case parsing(description: String)
+}
+
+
 class Fetcher{
     
     private var urllink="/api/v1/"
