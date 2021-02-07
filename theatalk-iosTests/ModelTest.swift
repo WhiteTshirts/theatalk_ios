@@ -11,7 +11,23 @@ class ModelTest: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        var i = Room(admin_id_: 0, name_: "0", id_: 0, is_private_: false, start_time_: Date(), viewer_: 0, youtube_id_: "")
+        guard let url = Bundle.main.url(forResource: "rooms", withExtension: "json") else {
+            fatalError("ファイルが見つからない")
+        }
+         
+        /// ②employees.jsonの内容をData型プロパティに読み込み
+        guard let data = try? Data(contentsOf: url) else {
+            fatalError("ファイル読み込みエラー")
+        }
+         
+        /// ③JSONデコード処理
+        let decoder = JSONDecoder()
+        guard let rooms = try? decoder.decode(Rooms.self, from: data) else {
+            fatalError("JOSN読み込みエラー")
+        }
+        print(rooms.rooms[0].created_at)
+        print(rooms.rooms[0])
+         
     }
 
     override func tearDownWithError() throws {
