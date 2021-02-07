@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct Sidemenu: View{
+    
     @Binding var info: Bool
     var body: some View{
         VStack(alignment: .center){
@@ -52,6 +53,8 @@ protocol EnterRoomDele {
     func enterroom(room_num:Int)
 }
 struct Home: View,EnterRoomDele {
+    @EnvironmentObject var session: Session
+
     func enterroom(room_num:Int) {
         RoomsVM.EnterRoom(roomID_:room_num)
     }
@@ -111,7 +114,7 @@ struct Home: View,EnterRoomDele {
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
                 ForEach(["iPhone SE", "iPhone X"], id: \.self) { deviceName in
-                    Home(RoomsVM: RoomsViewModel())
+                    Home(RoomsVM: RoomsViewModel()).environmentObject(Session(login: true, user: mockUserData))
                 .previewDevice(PreviewDevice(rawValue: deviceName))
                 .previewDisplayName(deviceName)
         }
