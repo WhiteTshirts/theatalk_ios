@@ -6,9 +6,9 @@
 //
 
 import XCTest
-
-class ModelTest: XCTestCase {
-
+import Combine
+class ModelTest: XCTestCase,ObservableObject {
+    var disposables = Set<AnyCancellable>()
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         guard let url = Bundle.main.url(forResource: "rooms", withExtension: "json") else {
@@ -25,9 +25,31 @@ class ModelTest: XCTestCase {
         guard let rooms = try? decoder.decode(Rooms.self, from: data) else {
             fatalError("JOSN読み込みエラー")
         }
-        print(rooms.rooms[0].created_at)
-        print(rooms.rooms[0])
-         
+        let fe = RoomFetcher(url: "localhost:5000").GETRooms()
+            .sink(
+              receiveCompletion: { [weak self] value in
+                guard let self = self else { return }
+                switch value {
+                case .failure:
+                  break
+                case .finished:
+                  break
+                }
+              },
+              receiveValue: { [weak self] forecast in
+                guard let self = self else { return }
+
+                // 7
+            })
+
+            // 8
+            .store(in: &disposables)
+
+
+        // 4
+
+
+                
     }
 
     override func tearDownWithError() throws {
