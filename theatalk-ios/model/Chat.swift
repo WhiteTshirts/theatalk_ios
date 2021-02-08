@@ -8,11 +8,11 @@
 
 import Foundation
 import SwiftUI
-class Chat: Identifiable{
+class Chat: Identifiable,Codable{
     var user_id: Int
     var room_id: Int!
     var text: String
-    var created_at: Date
+    var created_at: Date!
     var user_name: String!
     init(user_id_:Int,text_:String,created_at_:Date){
         user_id = user_id_
@@ -31,6 +31,15 @@ class Chat: Identifiable{
         user_id = user_id_
         text  = text_
         created_at = created_at_
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        user_id = try container.decode(Int.self, forKey: .user_id)
+        room_id = try container.decodeIfPresent(Int.self, forKey: .room_id)
+        text = try container.decode(String.self, forKey: .text)
+        created_at = try container.decodeIfPresent(with: DateTransformer(), forKey: .created_at)
+
     }
     
 }
