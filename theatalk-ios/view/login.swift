@@ -10,7 +10,8 @@ import SwiftUI
 struct LoginView: View {
     @State var userName = ""
     @State var password = ""
-    
+    @EnvironmentObject var session: Session
+    @ObservedObject var LoginVM:AuthViewModel
     var body: some View {
         VStack(alignment: .center){
             HStack{
@@ -34,19 +35,29 @@ struct LoginView: View {
             if(password == ""){
                 Text("passwordが入力されていません")
             }
-        
-
-
         }.frame(width: 250, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
 
     }
-    func checkInput(){
-
+    func checkInput()->Bool{
+        if(userName == ""||password == ""){
+            return false
+        }else{
+            return true
+        }
+    }
+    
+    func login(){
+        if(checkInput()){
+            
+            
+        }else{
+            
+        }
     }
 }
 
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(LoginVM:AuthViewModel()).environmentObject(Session(login: false, user: mockUserData))
     }
 }

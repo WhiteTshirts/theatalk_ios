@@ -24,8 +24,6 @@ struct RoomCell: View {
                     .frame(width: RoomSize_Column1.width,height: RoomSize_Column1.height)
                     
             }.onFailure { e in
-                    // e: KingfisherError
-                    print("failure: \(e)")
                 }.frame(width:RoomSize_Column1.width)
                 .overlay(
                     ZStack{

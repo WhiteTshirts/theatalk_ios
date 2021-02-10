@@ -50,8 +50,12 @@ final class TagsViewModel: ObservableObject{
             guard let self = self else { return }
             self.tags = tags.tags
         })
-        .store(in: &disposables)    }
-    
+        .store(in: &disposables)
+        
+    }
+//    func login() -> AnyPublisher<User, Error> {
+//
+//    }
     
 }
 

@@ -22,8 +22,6 @@ struct TagList: View {
         }.onAppear{
             TagsVM.load()
         }
- 
-        
         
     }
 }

@@ -13,7 +13,7 @@ final public class AuthViewModel: ObservableObject{
     @Published var user: User?
     @Published var hashval: String?
     //private var fetcher = AuthFetcher(url: "http://localhost:5000/api/v1/rooms/0")
-    private init(){
+    init(){
         self.user = mockUserData
         //if cannot get user data ask name and password
         hashval = mockUserHashVal
@@ -26,6 +26,9 @@ final public class AuthViewModel: ObservableObject{
 //            self.rooms = returnData
 //        }
     }
+//    func login()->AnyPublisher<User,Error>{
+//        
+//    }
     
     
 }
