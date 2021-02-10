@@ -58,10 +58,8 @@ extension TagFetcher{
         url_components.port = 5000
       url_components.path = "/api/v1/tags"
         let components = URLRequest(url:url_components.url!)
-        
       return components
     }
-    
     func makePostTagsComponents( body:Data!
     ) -> URLRequest {
         var url_components = URLComponents()
@@ -76,7 +74,6 @@ extension TagFetcher{
         if(body != nil){
             components.httpBody = body
         }
-        
       return components
     }
 }
@@ -98,8 +95,6 @@ extension TagFetcher:TagFechable{
         return fetchTag(with: makePostTagsComponents( body:data
         ))
     }
-    
-
     func GETTags(
     ) -> AnyPublisher<Tags,APIError>{
         return fetchTag(with: makeGetTagsComponents())

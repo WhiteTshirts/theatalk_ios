@@ -49,10 +49,6 @@ class RoomFetcher{
     private func fetchRoom<T>(
         with reqcomponents: URLRequest
     ) -> AnyPublisher<T, APIError> where T: Decodable {
-//      guard let url = components.url else {
-//        let error = APIError.network(description: "Couldn't create URL")
-//        return Fail(error: error).eraseToAnyPublisher()
-//      }
       return session.dataTaskPublisher(for: reqcomponents)
         .mapError { error in
           .network(description: error.localizedDescription)
@@ -62,13 +58,10 @@ class RoomFetcher{
         }
         .eraseToAnyPublisher()
     }
-    
-
   }
 extension RoomFetcher{
     func makeRoomsComponents(Path:String,Type:String,body: Data!
     ) -> URLRequest {
-
         var url_components = URLComponents()
       url_components.scheme = "http"
       url_components.host = "localhost"

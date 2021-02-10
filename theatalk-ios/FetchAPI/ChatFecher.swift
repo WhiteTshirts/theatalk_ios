@@ -15,12 +15,10 @@ class ChatFetcher{
         urllink = url
     }
     func sendChatData(msg:String,room_Id:Int){
-        
         var chat_info = Dictionary<String,Any>()
         chat_info["text"] = msg
         var jobj = Dictionary<String,Any>()
         jobj["chat"] = chat_info
-        
         do {
             let data = try JSONSerialization.data(withJSONObject: jobj, options: [])
             let jsonStr = String(bytes: data, encoding: .utf8)!
@@ -63,9 +61,5 @@ class ChatFetcher{
         } catch let encodeError as NSError {
             print("Encoder error: \(encodeError.localizedDescription)\n")
         }
-        
-    
-
-
     }
 }

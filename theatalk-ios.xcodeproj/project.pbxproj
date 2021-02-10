@@ -116,6 +116,9 @@
 		6F88074325D06E380085826F /* theatalk_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8805E225D0671A0085826F /* theatalk_iosApp.swift */; };
 		6F88074725D06E380085826F /* theatalk_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8805E225D0671A0085826F /* theatalk_iosApp.swift */; };
 		6F88075F25D0713E0085826F /* ModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88075E25D0713E0085826F /* ModelTest.swift */; };
+		6F8D71CD25D41BB000649F2C /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8D71CC25D41BB000649F2C /* TagList.swift */; };
+		6F8D71CE25D41BB000649F2C /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8D71CC25D41BB000649F2C /* TagList.swift */; };
+		6F8D71CF25D41BB000649F2C /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8D71CC25D41BB000649F2C /* TagList.swift */; };
 		9D766580CE3FE6A74E677527 /* Pods_theatalk_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A47664E783AF0B85BB2A57 /* Pods_theatalk_ios.framework */; };
 		FBF41B30C89D26D5B241D4B2 /* Pods_theatalk_ios_theatalk_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D50FAED80B8A7C0C635D641 /* Pods_theatalk_ios_theatalk_iosUITests.framework */; };
 /* End PBXBuildFile section */
@@ -191,6 +194,7 @@
 		6F8806EF25D069DC0085826F /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		6F8806F025D069DC0085826F /* RoomsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewModel.swift; sourceTree = "<group>"; };
 		6F88075E25D0713E0085826F /* ModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTest.swift; sourceTree = "<group>"; };
+		6F8D71CC25D41BB000649F2C /* TagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
 		BE6AF75577DE75F7A460C6FF /* Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig"; path = "Target Support Files/Pods-theatalk-ios-theatalk-iosUITests/Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F5B5CF214F41664075C6574B /* Pods_theatalk_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theatalk_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -365,6 +369,7 @@
 				6F8806D325D069C40085826F /* RoomList.swift */,
 				6F8806CE25D069C40085826F /* SignUp.swift */,
 				6F8806CB25D069C30085826F /* URLImage.swift */,
+				6F8D71CC25D41BB000649F2C /* TagList.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -653,6 +658,7 @@
 				6F8806C025D0699E0085826F /* MockChats.swift in Sources */,
 				6F8806BC25D0699E0085826F /* MockUsers.swift in Sources */,
 				6F8805E525D0671A0085826F /* ContentView.swift in Sources */,
+				6F8D71CD25D41BB000649F2C /* TagList.swift in Sources */,
 				6F8806A125D069790085826F /* ImageLoader.swift in Sources */,
 				6F8806A525D069790085826F /* WBSocket.swift in Sources */,
 				6F88069B25D069790085826F /* File.swift in Sources */,
@@ -703,6 +709,7 @@
 				6F88067F25D0692E0085826F /* Tag.swift in Sources */,
 				6F88072A25D06E280085826F /* login.swift in Sources */,
 				6F8806A025D069790085826F /* UserFetcher.swift in Sources */,
+				6F8D71CE25D41BB000649F2C /* TagList.swift in Sources */,
 				6F8805F525D0671C0085826F /* theatalk_iosTests.swift in Sources */,
 				6F88072625D06E280085826F /* CreateRoom.swift in Sources */,
 				6F88074325D06E380085826F /* theatalk_iosApp.swift in Sources */,
@@ -736,6 +743,7 @@
 				6F88073E25D06E340085826F /* Session.swift in Sources */,
 				6F8806DF25D069C40085826F /* Menu.swift in Sources */,
 				6F88073C25D06E340085826F /* Tag.swift in Sources */,
+				6F8D71CF25D41BB000649F2C /* TagList.swift in Sources */,
 				6F88060025D0671C0085826F /* theatalk_iosUITests.swift in Sources */,
 				6F88071725D06E200085826F /* UserFetcher.swift in Sources */,
 				6F88071625D06E200085826F /* FetchAPI.swift in Sources */,

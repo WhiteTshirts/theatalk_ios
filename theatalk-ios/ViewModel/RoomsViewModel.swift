@@ -28,7 +28,7 @@ final class RoomsViewModel: ObservableObject{
           receiveValue: { [weak self] rooms in
             guard let self = self else { return }
             self.rooms = rooms.rooms
-        })
+          })
         .store(in: &disposables)
     }
     func load(){
