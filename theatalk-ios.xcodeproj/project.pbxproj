@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53EF780E25C1B13E0009D1F6 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EF780D25C1B13E0009D1F6 /* UserView.swift */; };
 		6F54737B258A3AE4000AD3FD /* theatalk_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F54737A258A3AE4000AD3FD /* theatalk_iosApp.swift */; };
 		6F54737D258A3AE4000AD3FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F54737C258A3AE4000AD3FD /* ContentView.swift */; };
 		6F54737F258A3AE6000AD3FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F54737E258A3AE6000AD3FD /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		53EF780D25C1B13E0009D1F6 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		6F547377258A3AE4000AD3FD /* theatalk-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "theatalk-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F54737A258A3AE4000AD3FD /* theatalk_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theatalk_iosApp.swift; sourceTree = "<group>"; };
 		6F54737C258A3AE4000AD3FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		6F547379258A3AE4000AD3FD /* theatalk-ios */ = {
 			isa = PBXGroup;
 			children = (
+				53EF780D25C1B13E0009D1F6 /* UserView.swift */,
 				6F54737A258A3AE4000AD3FD /* theatalk_iosApp.swift */,
 				6F54737C258A3AE4000AD3FD /* ContentView.swift */,
 				6F54737E258A3AE6000AD3FD /* Assets.xcassets */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F54737D258A3AE4000AD3FD /* ContentView.swift in Sources */,
+				53EF780E25C1B13E0009D1F6 /* UserView.swift in Sources */,
 				6F54737B258A3AE4000AD3FD /* theatalk_iosApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
