@@ -66,30 +66,20 @@ class RoomFetcher{
 
   }
 extension RoomFetcher{
-    func makeGetRoomsComponents(
+    func makeRoomsComponents(Path:String,Type:String,body: Data!
     ) -> URLRequest {
 
         var url_components = URLComponents()
       url_components.scheme = "http"
       url_components.host = "localhost"
         url_components.port = 5000
-      url_components.path = "/api/v1/rooms"
-        let components = URLRequest(url:url_components.url!)
-        
-      return components
-    }
-    func makeEnterRoomComponents(
-        roomId:Int, body:Data!
-    ) -> URLRequest {
-        var url_components = URLComponents()
-      url_components.scheme = "http"
-      url_components.host = "localhost"
-        url_components.port = 5000
-      url_components.path = "/api/v1/room_users"
+      url_components.path = "/api/v1/"+Path
         var components = URLRequest(url:url_components.url!)
+        components.httpMethod = Type
         components.addValue("application/json", forHTTPHeaderField: "content-type")
-        components.httpMethod = "POST"
-        components.setValue("Bearer \(mockUserHashVal)", forHTTPHeaderField: "Authorization")
+        if(mockUserHashVal != nil){
+            components.setValue("Bearer \(mockUserHashVal)", forHTTPHeaderField: "Authorization")
+        }
         if(body != nil){
             components.httpBody = body
         }
@@ -100,7 +90,7 @@ extension RoomFetcher{
 
 extension RoomFetcher: RoomFechable{
     func GETRooms() -> AnyPublisher<Rooms, APIError> {
-        return fetchRoom(with: makeGetRoomsComponents())
+        return fetchRoom(with: makeRoomsComponents(Path: "rooms", Type: "GET", body: nil))
     }
     func EnterRoom(
         roomId:Int
@@ -115,7 +105,7 @@ extension RoomFetcher: RoomFechable{
         } catch let encodeError as NSError {
             print("Encoder error: \(encodeError.localizedDescription)\n")
         }
-        return fetchRoom(with: makeEnterRoomComponents(roomId: roomId, body: body))
+        return fetchRoom(with: makeRoomsComponents(Path: "/room_users", Type:"POST", body: body))
     }
 //    func GETRoomsWithTag(forTag tag: Int) -> AnyPublisher<Rooms, APIError> {
 //        var body:Data!

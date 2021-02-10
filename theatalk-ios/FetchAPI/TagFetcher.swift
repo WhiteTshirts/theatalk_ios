@@ -62,8 +62,7 @@ extension TagFetcher{
       return components
     }
     
-    func makePostTagsComponents(
-        name:String, body:Data!
+    func makePostTagsComponents( body:Data!
     ) -> URLRequest {
         var url_components = URLComponents()
       url_components.scheme = "http"
@@ -77,13 +76,27 @@ extension TagFetcher{
         if(body != nil){
             components.httpBody = body
         }
+        
       return components
     }
 }
 
 extension TagFetcher:TagFechable{
     func PostTag(tag_name: String) -> AnyPublisher<Tag, APIError> {
-        return fetchTag(with: makeGetTagsComponents())
+        var tag_info = Dictionary<String,Any>()
+        tag_info["name"] = tag_name
+        var jobj = Dictionary<String,Any>()
+        jobj["tag"] = tag_info
+        var data:Data!
+        do {
+            data = try JSONSerialization.data(withJSONObject: jobj, options: [])
+            let jsonStr = String(bytes: data, encoding: .utf8)!
+            
+        } catch let encodeError as NSError {
+            print("Encoder error: \(encodeError.localizedDescription)\n")
+        }
+        return fetchTag(with: makePostTagsComponents( body:data
+        ))
     }
     
 
