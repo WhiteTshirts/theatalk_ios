@@ -1,0 +1,172 @@
+{
+    "rooms": [
+        {
+            "id": 23,
+            "name": "haafasf",
+            "admin_id": 24,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2021-02-06T21:48:37.000+09:00",
+            "updated_at": "2021-02-06T21:48:37.000+09:00",
+            "youtube_id": "GLtlfdzhz9M",
+            "viewer": 32
+        },
+        {
+            "id": 22,
+            "name": "puipuiモルカー4",
+            "admin_id": 24,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2021-02-04T15:52:52.000+09:00",
+            "updated_at": "2021-02-04T15:52:52.000+09:00",
+            "youtube_id": "MrgRPzaD5nQ",
+            "viewer": 29
+        },
+        {
+            "id": 21,
+            "name": "しろも",
+            "admin_id": 24,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2021-02-04T15:52:24.000+09:00",
+            "updated_at": "2021-02-04T15:52:24.000+09:00",
+            "youtube_id": "ofk4W8vDVMg",
+            "viewer": 3
+        },
+        {
+            "id": 20,
+            "name": "プイプイモルカーPV",
+            "admin_id": 24,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2021-02-04T15:52:08.000+09:00",
+            "updated_at": "2021-02-04T15:52:08.000+09:00",
+            "youtube_id": "7Dr14FJvYmw",
+            "viewer": 2
+        },
+        {
+            "id": 19,
+            "name": "プイプイモルカー",
+            "admin_id": 24,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2021-02-04T15:51:46.000+09:00",
+            "updated_at": "2021-02-04T15:51:46.000+09:00",
+            "youtube_id": "zgk5RW2x",
+            "viewer": 1
+        },
+        {
+            "id": 18,
+            "name": "haafasf",
+            "admin_id": 24,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2021-02-04T15:49:38.000+09:00",
+            "updated_at": "2021-02-04T15:49:38.000+09:00",
+            "youtube_id": "GLtlfdzhz9M",
+            "viewer": 1
+        },
+        {
+            "id": 17,
+            "name": "haafasf",
+            "admin_id": 21,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2021-01-05T20:21:10.000+09:00",
+            "updated_at": "2021-01-05T20:21:10.000+09:00",
+            "youtube_id": "jjasjfjksdflksd",
+            "viewer": 1
+        },
+        {
+            "id": 16,
+            "name": "haafasf",
+            "admin_id": 21,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2021-01-05T20:20:52.000+09:00",
+            "updated_at": "2021-01-05T20:20:52.000+09:00",
+            "youtube_id": "jjasjfjksdflksd",
+            "viewer": 1
+        },
+        {
+            "id": 15,
+            "name": "haafasf",
+            "admin_id": 21,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2021-01-05T20:20:22.000+09:00",
+            "updated_at": "2021-01-05T20:20:22.000+09:00",
+            "youtube_id": "jjasjfjksdflksd",
+            "viewer": 1
+        },
+        {
+            "id": 14,
+            "name": "haafasf",
+            "admin_id": 21,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2021-01-05T20:12:47.000+09:00",
+            "updated_at": "2021-01-05T20:12:47.000+09:00",
+            "youtube_id": "jjasjfjksdflksd",
+            "viewer": 1
+        },
+        {
+            "id": 13,
+            "name": "haafasf",
+            "admin_id": 21,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2021-01-05T20:12:41.000+09:00",
+            "updated_at": "2021-01-05T20:12:41.000+09:00",
+            "youtube_id": "jjasjfjksdflksd",
+            "viewer": 1
+        },
+        {
+            "id": 12,
+            "name": "haafasf",
+            "admin_id": 21,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2021-01-05T20:12:20.000+09:00",
+            "updated_at": "2021-01-05T20:12:20.000+09:00",
+            "youtube_id": "jjasjfjksdflksd",
+            "viewer": 1
+        },
+        {
+            "id": 11,
+            "name": "haafasf",
+            "admin_id": 21,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2021-01-05T20:12:08.000+09:00",
+            "updated_at": "2021-01-05T20:12:08.000+09:00",
+            "youtube_id": "jjasjfjksdflksd",
+            "viewer": 1
+        },
+        {
+            "id": 1,
+            "name": "room0",
+            "admin_id": 1,
+            "is_private": null,
+            "password": null,
+            "start_time": null,
+            "created_at": "2020-11-11T21:36:04.000+09:00",
+            "updated_at": "2020-11-11T21:36:04.000+09:00",
+            "youtube_id": "TvRVcN-fJLE",
+            "viewer": 1
+        }
+    ]
+}

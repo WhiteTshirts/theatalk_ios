@@ -3,146 +3,395 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		53EF780E25C1B13E0009D1F6 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EF780D25C1B13E0009D1F6 /* UserView.swift */; };
-		6F54737B258A3AE4000AD3FD /* theatalk_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F54737A258A3AE4000AD3FD /* theatalk_iosApp.swift */; };
-		6F54737D258A3AE4000AD3FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F54737C258A3AE4000AD3FD /* ContentView.swift */; };
-		6F54737F258A3AE6000AD3FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F54737E258A3AE6000AD3FD /* Assets.xcassets */; };
-		6F547382258A3AE6000AD3FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F547381258A3AE6000AD3FD /* Preview Assets.xcassets */; };
-		6F54738D258A3AE6000AD3FD /* theatalk_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F54738C258A3AE6000AD3FD /* theatalk_iosTests.swift */; };
-		6F547398258A3AE6000AD3FD /* theatalk_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F547397258A3AE6000AD3FD /* theatalk_iosUITests.swift */; };
+		4F8228988157DCA0FD744ADE /* Pods_theatalk_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B5CF214F41664075C6574B /* Pods_theatalk_iosTests.framework */; };
+		6F8805E325D0671A0085826F /* theatalk_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8805E225D0671A0085826F /* theatalk_iosApp.swift */; };
+		6F8805E525D0671A0085826F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8805E425D0671A0085826F /* ContentView.swift */; };
+		6F8805E725D0671C0085826F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F8805E625D0671C0085826F /* Assets.xcassets */; };
+		6F8805EA25D0671C0085826F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F8805E925D0671C0085826F /* Preview Assets.xcassets */; };
+		6F8805F525D0671C0085826F /* theatalk_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8805F425D0671C0085826F /* theatalk_iosTests.swift */; };
+		6F88060025D0671C0085826F /* theatalk_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8805FF25D0671C0085826F /* theatalk_iosUITests.swift */; };
+		6F88066C25D068D30085826F /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88066B25D068D30085826F /* Room.swift */; };
+		6F88066D25D068D30085826F /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88066B25D068D30085826F /* Room.swift */; };
+		6F88067225D069020085826F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88067125D069020085826F /* User.swift */; };
+		6F88067325D069020085826F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88067125D069020085826F /* User.swift */; };
+		6F88067C25D0692E0085826F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88067A25D0692E0085826F /* Session.swift */; };
+		6F88067D25D0692E0085826F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88067A25D0692E0085826F /* Session.swift */; };
+		6F88067E25D0692E0085826F /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88067B25D0692E0085826F /* Tag.swift */; };
+		6F88067F25D0692E0085826F /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88067B25D0692E0085826F /* Tag.swift */; };
+		6F88068725D0693D0085826F /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88068625D0693D0085826F /* Chat.swift */; };
+		6F88068825D0693D0085826F /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88068625D0693D0085826F /* Chat.swift */; };
+		6F88069B25D069790085826F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069025D069790085826F /* File.swift */; };
+		6F88069C25D069790085826F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069025D069790085826F /* File.swift */; };
+		6F88069D25D069790085826F /* TagFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069125D069790085826F /* TagFetcher.swift */; };
+		6F88069E25D069790085826F /* TagFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069125D069790085826F /* TagFetcher.swift */; };
+		6F88069F25D069790085826F /* UserFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069225D069790085826F /* UserFetcher.swift */; };
+		6F8806A025D069790085826F /* UserFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069225D069790085826F /* UserFetcher.swift */; };
+		6F8806A125D069790085826F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069325D069790085826F /* ImageLoader.swift */; };
+		6F8806A225D069790085826F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069325D069790085826F /* ImageLoader.swift */; };
+		6F8806A325D069790085826F /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069425D069790085826F /* Auth.swift */; };
+		6F8806A425D069790085826F /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069425D069790085826F /* Auth.swift */; };
+		6F8806A525D069790085826F /* WBSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069525D069790085826F /* WBSocket.swift */; };
+		6F8806A625D0697A0085826F /* WBSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069525D069790085826F /* WBSocket.swift */; };
+		6F8806A725D0697A0085826F /* youtube_player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069625D069790085826F /* youtube_player.swift */; };
+		6F8806A825D0697A0085826F /* youtube_player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069625D069790085826F /* youtube_player.swift */; };
+		6F8806A925D0697A0085826F /* FetchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069725D069790085826F /* FetchAPI.swift */; };
+		6F8806AA25D0697A0085826F /* FetchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069725D069790085826F /* FetchAPI.swift */; };
+		6F8806AB25D0697A0085826F /* Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069825D069790085826F /* Parse.swift */; };
+		6F8806AC25D0697A0085826F /* Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069825D069790085826F /* Parse.swift */; };
+		6F8806AD25D0697A0085826F /* RoomFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069925D069790085826F /* RoomFetcher.swift */; };
+		6F8806AE25D0697A0085826F /* RoomFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069925D069790085826F /* RoomFetcher.swift */; };
+		6F8806AF25D0697A0085826F /* ChatFecher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069A25D069790085826F /* ChatFecher.swift */; };
+		6F8806B025D0697A0085826F /* ChatFecher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069A25D069790085826F /* ChatFecher.swift */; };
+		6F8806BC25D0699E0085826F /* MockUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806B825D0699D0085826F /* MockUsers.swift */; };
+		6F8806BD25D0699E0085826F /* MockUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806B825D0699D0085826F /* MockUsers.swift */; };
+		6F8806BE25D0699E0085826F /* rooms.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F8806B925D0699D0085826F /* rooms.json */; };
+		6F8806BF25D0699E0085826F /* rooms.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F8806B925D0699D0085826F /* rooms.json */; };
+		6F8806C025D0699E0085826F /* MockChats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806BA25D0699D0085826F /* MockChats.swift */; };
+		6F8806C125D0699E0085826F /* MockChats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806BA25D0699D0085826F /* MockChats.swift */; };
+		6F8806C225D0699E0085826F /* MockRooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806BB25D0699E0085826F /* MockRooms.swift */; };
+		6F8806C325D0699E0085826F /* MockRooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806BB25D0699E0085826F /* MockRooms.swift */; };
+		6F8806D425D069C40085826F /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CB25D069C30085826F /* URLImage.swift */; };
+		6F8806D525D069C40085826F /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CB25D069C30085826F /* URLImage.swift */; };
+		6F8806D625D069C40085826F /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CC25D069C30085826F /* ChatRoom.swift */; };
+		6F8806D725D069C40085826F /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CC25D069C30085826F /* ChatRoom.swift */; };
+		6F8806D825D069C40085826F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CD25D069C40085826F /* Home.swift */; };
+		6F8806D925D069C40085826F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CD25D069C40085826F /* Home.swift */; };
+		6F8806DA25D069C40085826F /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CE25D069C40085826F /* SignUp.swift */; };
+		6F8806DB25D069C40085826F /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CE25D069C40085826F /* SignUp.swift */; };
+		6F8806DC25D069C40085826F /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CF25D069C40085826F /* login.swift */; };
+		6F8806DD25D069C40085826F /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CF25D069C40085826F /* login.swift */; };
+		6F8806DE25D069C40085826F /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806D025D069C40085826F /* Menu.swift */; };
+		6F8806DF25D069C40085826F /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806D025D069C40085826F /* Menu.swift */; };
+		6F8806E025D069C40085826F /* CreateRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806D125D069C40085826F /* CreateRoom.swift */; };
+		6F8806E125D069C40085826F /* CreateRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806D125D069C40085826F /* CreateRoom.swift */; };
+		6F8806E225D069C40085826F /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806D225D069C40085826F /* RoomCell.swift */; };
+		6F8806E325D069C40085826F /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806D225D069C40085826F /* RoomCell.swift */; };
+		6F8806E425D069C40085826F /* RoomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806D325D069C40085826F /* RoomList.swift */; };
+		6F8806E525D069C40085826F /* RoomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806D325D069C40085826F /* RoomList.swift */; };
+		6F8806F125D069DC0085826F /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806ED25D069DC0085826F /* ChatViewModel.swift */; };
+		6F8806F225D069DC0085826F /* TagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806EE25D069DC0085826F /* TagsViewModel.swift */; };
+		6F8806F325D069DC0085826F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806EF25D069DC0085826F /* AuthViewModel.swift */; };
+		6F8806F425D069DC0085826F /* RoomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806F025D069DC0085826F /* RoomsViewModel.swift */; };
+		6F8806F825D06D140085826F /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806ED25D069DC0085826F /* ChatViewModel.swift */; };
+		6F8806FC25D06D3E0085826F /* RoomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806F025D069DC0085826F /* RoomsViewModel.swift */; };
+		6F88070025D06D490085826F /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806ED25D069DC0085826F /* ChatViewModel.swift */; };
+		6F88070F25D06E200085826F /* RoomFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069925D069790085826F /* RoomFetcher.swift */; };
+		6F88071025D06E200085826F /* youtube_player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069625D069790085826F /* youtube_player.swift */; };
+		6F88071125D06E200085826F /* Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069825D069790085826F /* Parse.swift */; };
+		6F88071225D06E200085826F /* TagFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069125D069790085826F /* TagFetcher.swift */; };
+		6F88071325D06E200085826F /* WBSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069525D069790085826F /* WBSocket.swift */; };
+		6F88071425D06E200085826F /* ChatFecher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069A25D069790085826F /* ChatFecher.swift */; };
+		6F88071525D06E200085826F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069325D069790085826F /* ImageLoader.swift */; };
+		6F88071625D06E200085826F /* FetchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069725D069790085826F /* FetchAPI.swift */; };
+		6F88071725D06E200085826F /* UserFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069225D069790085826F /* UserFetcher.swift */; };
+		6F88071825D06E200085826F /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069425D069790085826F /* Auth.swift */; };
+		6F88071925D06E200085826F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88069025D069790085826F /* File.swift */; };
+		6F88071D25D06E230085826F /* MockChats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806BA25D0699D0085826F /* MockChats.swift */; };
+		6F88071E25D06E230085826F /* MockRooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806BB25D0699E0085826F /* MockRooms.swift */; };
+		6F88071F25D06E230085826F /* MockUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806B825D0699D0085826F /* MockUsers.swift */; };
+		6F88072025D06E230085826F /* rooms.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F8806B925D0699D0085826F /* rooms.json */; };
+		6F88072425D06E280085826F /* RoomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806D325D069C40085826F /* RoomList.swift */; };
+		6F88072525D06E280085826F /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806D225D069C40085826F /* RoomCell.swift */; };
+		6F88072625D06E280085826F /* CreateRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806D125D069C40085826F /* CreateRoom.swift */; };
+		6F88072725D06E280085826F /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CE25D069C40085826F /* SignUp.swift */; };
+		6F88072825D06E280085826F /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CB25D069C30085826F /* URLImage.swift */; };
+		6F88072925D06E280085826F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CD25D069C40085826F /* Home.swift */; };
+		6F88072A25D06E280085826F /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CF25D069C40085826F /* login.swift */; };
+		6F88072B25D06E280085826F /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806CC25D069C30085826F /* ChatRoom.swift */; };
+		6F88072C25D06E280085826F /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806D025D069C40085826F /* Menu.swift */; };
+		6F88073025D06E2B0085826F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806EF25D069DC0085826F /* AuthViewModel.swift */; };
+		6F88073125D06E2B0085826F /* RoomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806F025D069DC0085826F /* RoomsViewModel.swift */; };
+		6F88073225D06E2B0085826F /* TagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806EE25D069DC0085826F /* TagsViewModel.swift */; };
+		6F88073625D06E2C0085826F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806EF25D069DC0085826F /* AuthViewModel.swift */; };
+		6F88073725D06E2C0085826F /* TagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8806EE25D069DC0085826F /* TagsViewModel.swift */; };
+		6F88073B25D06E340085826F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88067125D069020085826F /* User.swift */; };
+		6F88073C25D06E340085826F /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88067B25D0692E0085826F /* Tag.swift */; };
+		6F88073D25D06E340085826F /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88066B25D068D30085826F /* Room.swift */; };
+		6F88073E25D06E340085826F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88067A25D0692E0085826F /* Session.swift */; };
+		6F88073F25D06E340085826F /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88068625D0693D0085826F /* Chat.swift */; };
+		6F88074325D06E380085826F /* theatalk_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8805E225D0671A0085826F /* theatalk_iosApp.swift */; };
+		6F88074725D06E380085826F /* theatalk_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8805E225D0671A0085826F /* theatalk_iosApp.swift */; };
+		6F88075F25D0713E0085826F /* ModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88075E25D0713E0085826F /* ModelTest.swift */; };
+		9D766580CE3FE6A74E677527 /* Pods_theatalk_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A47664E783AF0B85BB2A57 /* Pods_theatalk_ios.framework */; };
+		FBF41B30C89D26D5B241D4B2 /* Pods_theatalk_ios_theatalk_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D50FAED80B8A7C0C635D641 /* Pods_theatalk_ios_theatalk_iosUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6F547389258A3AE6000AD3FD /* PBXContainerItemProxy */ = {
+		6F8805F125D0671C0085826F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 6F54736F258A3AE4000AD3FD /* Project object */;
+			containerPortal = 6F8805D725D0671A0085826F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6F547376258A3AE4000AD3FD;
+			remoteGlobalIDString = 6F8805DE25D0671A0085826F;
 			remoteInfo = "theatalk-ios";
 		};
-		6F547394258A3AE6000AD3FD /* PBXContainerItemProxy */ = {
+		6F8805FC25D0671C0085826F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 6F54736F258A3AE4000AD3FD /* Project object */;
+			containerPortal = 6F8805D725D0671A0085826F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6F547376258A3AE4000AD3FD;
+			remoteGlobalIDString = 6F8805DE25D0671A0085826F;
 			remoteInfo = "theatalk-ios";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		53EF780D25C1B13E0009D1F6 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
-		6F547377258A3AE4000AD3FD /* theatalk-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "theatalk-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F54737A258A3AE4000AD3FD /* theatalk_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theatalk_iosApp.swift; sourceTree = "<group>"; };
-		6F54737C258A3AE4000AD3FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		6F54737E258A3AE6000AD3FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6F547381258A3AE6000AD3FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		6F547383258A3AE6000AD3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F547388258A3AE6000AD3FD /* theatalk-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "theatalk-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F54738C258A3AE6000AD3FD /* theatalk_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theatalk_iosTests.swift; sourceTree = "<group>"; };
-		6F54738E258A3AE6000AD3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F547393258A3AE6000AD3FD /* theatalk-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "theatalk-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F547397258A3AE6000AD3FD /* theatalk_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theatalk_iosUITests.swift; sourceTree = "<group>"; };
-		6F547399258A3AE6000AD3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0757411F1319C9466A833023 /* Pods-theatalk-ios-theatalk-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theatalk-ios-theatalk-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-theatalk-ios-theatalk-iosUITests/Pods-theatalk-ios-theatalk-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		0BB77B35786F9A9AD1021CCF /* Pods-theatalk-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theatalk-ios.debug.xcconfig"; path = "Target Support Files/Pods-theatalk-ios/Pods-theatalk-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		1D50FAED80B8A7C0C635D641 /* Pods_theatalk_ios_theatalk_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theatalk_ios_theatalk_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E25C67E9D6B992527135EA1 /* Pods-theatalk-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theatalk-ios.release.xcconfig"; path = "Target Support Files/Pods-theatalk-ios/Pods-theatalk-ios.release.xcconfig"; sourceTree = "<group>"; };
+		2EF1C0A0268968EFC8EF48DB /* Pods-theatalk-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theatalk-iosTests.release.xcconfig"; path = "Target Support Files/Pods-theatalk-iosTests/Pods-theatalk-iosTests.release.xcconfig"; sourceTree = "<group>"; };
+		42A47664E783AF0B85BB2A57 /* Pods_theatalk_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theatalk_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51F380B15C74A5741A901DB1 /* Pods-theatalk-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theatalk-iosTests.debug.xcconfig"; path = "Target Support Files/Pods-theatalk-iosTests/Pods-theatalk-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6F8805DF25D0671A0085826F /* theatalk-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "theatalk-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F8805E225D0671A0085826F /* theatalk_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theatalk_iosApp.swift; sourceTree = "<group>"; };
+		6F8805E425D0671A0085826F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6F8805E625D0671C0085826F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6F8805E925D0671C0085826F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6F8805EB25D0671C0085826F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F8805F025D0671C0085826F /* theatalk-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "theatalk-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F8805F425D0671C0085826F /* theatalk_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theatalk_iosTests.swift; sourceTree = "<group>"; };
+		6F8805F625D0671C0085826F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F8805FB25D0671C0085826F /* theatalk-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "theatalk-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F8805FF25D0671C0085826F /* theatalk_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theatalk_iosUITests.swift; sourceTree = "<group>"; };
+		6F88060125D0671C0085826F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F88066B25D068D30085826F /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		6F88067125D069020085826F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6F88067A25D0692E0085826F /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		6F88067B25D0692E0085826F /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		6F88068625D0693D0085826F /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		6F88069025D069790085826F /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		6F88069125D069790085826F /* TagFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagFetcher.swift; sourceTree = "<group>"; };
+		6F88069225D069790085826F /* UserFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFetcher.swift; sourceTree = "<group>"; };
+		6F88069325D069790085826F /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		6F88069425D069790085826F /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		6F88069525D069790085826F /* WBSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBSocket.swift; sourceTree = "<group>"; };
+		6F88069625D069790085826F /* youtube_player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = youtube_player.swift; sourceTree = "<group>"; };
+		6F88069725D069790085826F /* FetchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchAPI.swift; sourceTree = "<group>"; };
+		6F88069825D069790085826F /* Parse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parse.swift; sourceTree = "<group>"; };
+		6F88069925D069790085826F /* RoomFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomFetcher.swift; sourceTree = "<group>"; };
+		6F88069A25D069790085826F /* ChatFecher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatFecher.swift; sourceTree = "<group>"; };
+		6F8806B825D0699D0085826F /* MockUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUsers.swift; sourceTree = "<group>"; };
+		6F8806B925D0699D0085826F /* rooms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rooms.json; sourceTree = "<group>"; };
+		6F8806BA25D0699D0085826F /* MockChats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockChats.swift; sourceTree = "<group>"; };
+		6F8806BB25D0699E0085826F /* MockRooms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockRooms.swift; sourceTree = "<group>"; };
+		6F8806CB25D069C30085826F /* URLImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
+		6F8806CC25D069C30085826F /* ChatRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
+		6F8806CD25D069C40085826F /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		6F8806CE25D069C40085826F /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		6F8806CF25D069C40085826F /* login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
+		6F8806D025D069C40085826F /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		6F8806D125D069C40085826F /* CreateRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoom.swift; sourceTree = "<group>"; };
+		6F8806D225D069C40085826F /* RoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
+		6F8806D325D069C40085826F /* RoomList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomList.swift; sourceTree = "<group>"; };
+		6F8806ED25D069DC0085826F /* ChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		6F8806EE25D069DC0085826F /* TagsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsViewModel.swift; sourceTree = "<group>"; };
+		6F8806EF25D069DC0085826F /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		6F8806F025D069DC0085826F /* RoomsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewModel.swift; sourceTree = "<group>"; };
+		6F88075E25D0713E0085826F /* ModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTest.swift; sourceTree = "<group>"; };
+		BE6AF75577DE75F7A460C6FF /* Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig"; path = "Target Support Files/Pods-theatalk-ios-theatalk-iosUITests/Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F5B5CF214F41664075C6574B /* Pods_theatalk_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theatalk_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6F547374258A3AE4000AD3FD /* Frameworks */ = {
+		6F8805DC25D0671A0085826F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D766580CE3FE6A74E677527 /* Pods_theatalk_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6F547385258A3AE6000AD3FD /* Frameworks */ = {
+		6F8805ED25D0671C0085826F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F8228988157DCA0FD744ADE /* Pods_theatalk_iosTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6F547390258A3AE6000AD3FD /* Frameworks */ = {
+		6F8805F825D0671C0085826F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBF41B30C89D26D5B241D4B2 /* Pods_theatalk_ios_theatalk_iosUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6F54736E258A3AE4000AD3FD = {
+		4C9A78E4452AFFB02FDD0167 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6F547379258A3AE4000AD3FD /* theatalk-ios */,
-				6F54738B258A3AE6000AD3FD /* theatalk-iosTests */,
-				6F547396258A3AE6000AD3FD /* theatalk-iosUITests */,
-				6F547378258A3AE4000AD3FD /* Products */,
+				0BB77B35786F9A9AD1021CCF /* Pods-theatalk-ios.debug.xcconfig */,
+				1E25C67E9D6B992527135EA1 /* Pods-theatalk-ios.release.xcconfig */,
+				0757411F1319C9466A833023 /* Pods-theatalk-ios-theatalk-iosUITests.debug.xcconfig */,
+				BE6AF75577DE75F7A460C6FF /* Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig */,
+				51F380B15C74A5741A901DB1 /* Pods-theatalk-iosTests.debug.xcconfig */,
+				2EF1C0A0268968EFC8EF48DB /* Pods-theatalk-iosTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		519CDEFDE51F545F10122F73 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				42A47664E783AF0B85BB2A57 /* Pods_theatalk_ios.framework */,
+				1D50FAED80B8A7C0C635D641 /* Pods_theatalk_ios_theatalk_iosUITests.framework */,
+				F5B5CF214F41664075C6574B /* Pods_theatalk_iosTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F8805D625D0671A0085826F = {
+			isa = PBXGroup;
+			children = (
+				6F8805E125D0671A0085826F /* theatalk-ios */,
+				6F8805F325D0671C0085826F /* theatalk-iosTests */,
+				6F8805FE25D0671C0085826F /* theatalk-iosUITests */,
+				6F8805E025D0671A0085826F /* Products */,
+				4C9A78E4452AFFB02FDD0167 /* Pods */,
+				519CDEFDE51F545F10122F73 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		6F547378258A3AE4000AD3FD /* Products */ = {
+		6F8805E025D0671A0085826F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6F547377258A3AE4000AD3FD /* theatalk-ios.app */,
-				6F547388258A3AE6000AD3FD /* theatalk-iosTests.xctest */,
-				6F547393258A3AE6000AD3FD /* theatalk-iosUITests.xctest */,
+				6F8805DF25D0671A0085826F /* theatalk-ios.app */,
+				6F8805F025D0671C0085826F /* theatalk-iosTests.xctest */,
+				6F8805FB25D0671C0085826F /* theatalk-iosUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6F547379258A3AE4000AD3FD /* theatalk-ios */ = {
+		6F8805E125D0671A0085826F /* theatalk-ios */ = {
 			isa = PBXGroup;
 			children = (
-				53EF780D25C1B13E0009D1F6 /* UserView.swift */,
-				6F54737A258A3AE4000AD3FD /* theatalk_iosApp.swift */,
-				6F54737C258A3AE4000AD3FD /* ContentView.swift */,
-				6F54737E258A3AE6000AD3FD /* Assets.xcassets */,
-				6F547383258A3AE6000AD3FD /* Info.plist */,
-				6F547380258A3AE6000AD3FD /* Preview Content */,
+				6F8806EC25D069D00085826F /* ViewModel */,
+				6F8806CA25D069B00085826F /* view */,
+				6F8806B725D069870085826F /* MockData */,
+				6F88068F25D069560085826F /* FetchAPI */,
+				6F88063125D067ED0085826F /* model */,
+				6F8805E225D0671A0085826F /* theatalk_iosApp.swift */,
+				6F8805E425D0671A0085826F /* ContentView.swift */,
+				6F8805E625D0671C0085826F /* Assets.xcassets */,
+				6F8805EB25D0671C0085826F /* Info.plist */,
+				6F8805E825D0671C0085826F /* Preview Content */,
 			);
 			path = "theatalk-ios";
 			sourceTree = "<group>";
 		};
-		6F547380258A3AE6000AD3FD /* Preview Content */ = {
+		6F8805E825D0671C0085826F /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				6F547381258A3AE6000AD3FD /* Preview Assets.xcassets */,
+				6F8805E925D0671C0085826F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		6F54738B258A3AE6000AD3FD /* theatalk-iosTests */ = {
+		6F8805F325D0671C0085826F /* theatalk-iosTests */ = {
 			isa = PBXGroup;
 			children = (
-				6F54738C258A3AE6000AD3FD /* theatalk_iosTests.swift */,
-				6F54738E258A3AE6000AD3FD /* Info.plist */,
+				6F8805F425D0671C0085826F /* theatalk_iosTests.swift */,
+				6F8805F625D0671C0085826F /* Info.plist */,
+				6F88075E25D0713E0085826F /* ModelTest.swift */,
 			);
 			path = "theatalk-iosTests";
 			sourceTree = "<group>";
 		};
-		6F547396258A3AE6000AD3FD /* theatalk-iosUITests */ = {
+		6F8805FE25D0671C0085826F /* theatalk-iosUITests */ = {
 			isa = PBXGroup;
 			children = (
-				6F547397258A3AE6000AD3FD /* theatalk_iosUITests.swift */,
-				6F547399258A3AE6000AD3FD /* Info.plist */,
+				6F8805FF25D0671C0085826F /* theatalk_iosUITests.swift */,
+				6F88060125D0671C0085826F /* Info.plist */,
 			);
 			path = "theatalk-iosUITests";
+			sourceTree = "<group>";
+		};
+		6F88063125D067ED0085826F /* model */ = {
+			isa = PBXGroup;
+			children = (
+				6F88067125D069020085826F /* User.swift */,
+				6F88068625D0693D0085826F /* Chat.swift */,
+				6F88067A25D0692E0085826F /* Session.swift */,
+				6F88067B25D0692E0085826F /* Tag.swift */,
+				6F88066B25D068D30085826F /* Room.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		6F88068F25D069560085826F /* FetchAPI */ = {
+			isa = PBXGroup;
+			children = (
+				6F88069425D069790085826F /* Auth.swift */,
+				6F88069A25D069790085826F /* ChatFecher.swift */,
+				6F88069725D069790085826F /* FetchAPI.swift */,
+				6F88069025D069790085826F /* File.swift */,
+				6F88069325D069790085826F /* ImageLoader.swift */,
+				6F88069825D069790085826F /* Parse.swift */,
+				6F88069925D069790085826F /* RoomFetcher.swift */,
+				6F88069125D069790085826F /* TagFetcher.swift */,
+				6F88069225D069790085826F /* UserFetcher.swift */,
+				6F88069525D069790085826F /* WBSocket.swift */,
+				6F88069625D069790085826F /* youtube_player.swift */,
+			);
+			path = FetchAPI;
+			sourceTree = "<group>";
+		};
+		6F8806B725D069870085826F /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				6F8806BA25D0699D0085826F /* MockChats.swift */,
+				6F8806BB25D0699E0085826F /* MockRooms.swift */,
+				6F8806B825D0699D0085826F /* MockUsers.swift */,
+				6F8806B925D0699D0085826F /* rooms.json */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
+		6F8806CA25D069B00085826F /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6F8806CC25D069C30085826F /* ChatRoom.swift */,
+				6F8806D125D069C40085826F /* CreateRoom.swift */,
+				6F8806CD25D069C40085826F /* Home.swift */,
+				6F8806CF25D069C40085826F /* login.swift */,
+				6F8806D025D069C40085826F /* Menu.swift */,
+				6F8806D225D069C40085826F /* RoomCell.swift */,
+				6F8806D325D069C40085826F /* RoomList.swift */,
+				6F8806CE25D069C40085826F /* SignUp.swift */,
+				6F8806CB25D069C30085826F /* URLImage.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		6F8806EC25D069D00085826F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6F8806EF25D069DC0085826F /* AuthViewModel.swift */,
+				6F8806ED25D069DC0085826F /* ChatViewModel.swift */,
+				6F8806F025D069DC0085826F /* RoomsViewModel.swift */,
+				6F8806EE25D069DC0085826F /* TagsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6F547376258A3AE4000AD3FD /* theatalk-ios */ = {
+		6F8805DE25D0671A0085826F /* theatalk-ios */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F54739C258A3AE6000AD3FD /* Build configuration list for PBXNativeTarget "theatalk-ios" */;
+			buildConfigurationList = 6F88060425D0671C0085826F /* Build configuration list for PBXNativeTarget "theatalk-ios" */;
 			buildPhases = (
-				6F547373258A3AE4000AD3FD /* Sources */,
-				6F547374258A3AE4000AD3FD /* Frameworks */,
-				6F547375258A3AE4000AD3FD /* Resources */,
+				D0623D7B3360BF71F3492B25 /* [CP] Check Pods Manifest.lock */,
+				6F8805DB25D0671A0085826F /* Sources */,
+				6F8805DC25D0671A0085826F /* Frameworks */,
+				6F8805DD25D0671A0085826F /* Resources */,
+				1C8233917C6B88250C2C6A21 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -150,68 +399,72 @@
 			);
 			name = "theatalk-ios";
 			productName = "theatalk-ios";
-			productReference = 6F547377258A3AE4000AD3FD /* theatalk-ios.app */;
+			productReference = 6F8805DF25D0671A0085826F /* theatalk-ios.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6F547387258A3AE6000AD3FD /* theatalk-iosTests */ = {
+		6F8805EF25D0671C0085826F /* theatalk-iosTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F54739F258A3AE6000AD3FD /* Build configuration list for PBXNativeTarget "theatalk-iosTests" */;
+			buildConfigurationList = 6F88060725D0671C0085826F /* Build configuration list for PBXNativeTarget "theatalk-iosTests" */;
 			buildPhases = (
-				6F547384258A3AE6000AD3FD /* Sources */,
-				6F547385258A3AE6000AD3FD /* Frameworks */,
-				6F547386258A3AE6000AD3FD /* Resources */,
+				C92BE2259A19A01DDAFCC6E0 /* [CP] Check Pods Manifest.lock */,
+				6F8805EC25D0671C0085826F /* Sources */,
+				6F8805ED25D0671C0085826F /* Frameworks */,
+				6F8805EE25D0671C0085826F /* Resources */,
+				27A7FBF32B0FCF4AEAA823FA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6F54738A258A3AE6000AD3FD /* PBXTargetDependency */,
+				6F8805F225D0671C0085826F /* PBXTargetDependency */,
 			);
 			name = "theatalk-iosTests";
 			productName = "theatalk-iosTests";
-			productReference = 6F547388258A3AE6000AD3FD /* theatalk-iosTests.xctest */;
+			productReference = 6F8805F025D0671C0085826F /* theatalk-iosTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6F547392258A3AE6000AD3FD /* theatalk-iosUITests */ = {
+		6F8805FA25D0671C0085826F /* theatalk-iosUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F5473A2258A3AE6000AD3FD /* Build configuration list for PBXNativeTarget "theatalk-iosUITests" */;
+			buildConfigurationList = 6F88060A25D0671C0085826F /* Build configuration list for PBXNativeTarget "theatalk-iosUITests" */;
 			buildPhases = (
-				6F54738F258A3AE6000AD3FD /* Sources */,
-				6F547390258A3AE6000AD3FD /* Frameworks */,
-				6F547391258A3AE6000AD3FD /* Resources */,
+				98E607C140E8FE79987A68BE /* [CP] Check Pods Manifest.lock */,
+				6F8805F725D0671C0085826F /* Sources */,
+				6F8805F825D0671C0085826F /* Frameworks */,
+				6F8805F925D0671C0085826F /* Resources */,
+				FA2E1C1E36E3786975B64EA4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6F547395258A3AE6000AD3FD /* PBXTargetDependency */,
+				6F8805FD25D0671C0085826F /* PBXTargetDependency */,
 			);
 			name = "theatalk-iosUITests";
 			productName = "theatalk-iosUITests";
-			productReference = 6F547393258A3AE6000AD3FD /* theatalk-iosUITests.xctest */;
+			productReference = 6F8805FB25D0671C0085826F /* theatalk-iosUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6F54736F258A3AE4000AD3FD /* Project object */ = {
+		6F8805D725D0671A0085826F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1220;
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					6F547376258A3AE4000AD3FD = {
-						CreatedOnToolsVersion = 12.2;
+					6F8805DE25D0671A0085826F = {
+						CreatedOnToolsVersion = 12.4;
 					};
-					6F547387258A3AE6000AD3FD = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = 6F547376258A3AE4000AD3FD;
+					6F8805EF25D0671C0085826F = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 6F8805DE25D0671A0085826F;
 					};
-					6F547392258A3AE6000AD3FD = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = 6F547376258A3AE4000AD3FD;
+					6F8805FA25D0671C0085826F = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 6F8805DE25D0671A0085826F;
 					};
 				};
 			};
-			buildConfigurationList = 6F547372258A3AE4000AD3FD /* Build configuration list for PBXProject "theatalk-ios" */;
+			buildConfigurationList = 6F8805DA25D0671A0085826F /* Build configuration list for PBXProject "theatalk-ios" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -219,88 +472,309 @@
 				en,
 				Base,
 			);
-			mainGroup = 6F54736E258A3AE4000AD3FD;
-			productRefGroup = 6F547378258A3AE4000AD3FD /* Products */;
+			mainGroup = 6F8805D625D0671A0085826F;
+			productRefGroup = 6F8805E025D0671A0085826F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6F547376258A3AE4000AD3FD /* theatalk-ios */,
-				6F547387258A3AE6000AD3FD /* theatalk-iosTests */,
-				6F547392258A3AE6000AD3FD /* theatalk-iosUITests */,
+				6F8805DE25D0671A0085826F /* theatalk-ios */,
+				6F8805EF25D0671C0085826F /* theatalk-iosTests */,
+				6F8805FA25D0671C0085826F /* theatalk-iosUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6F547375258A3AE4000AD3FD /* Resources */ = {
+		6F8805DD25D0671A0085826F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F547382258A3AE6000AD3FD /* Preview Assets.xcassets in Resources */,
-				6F54737F258A3AE6000AD3FD /* Assets.xcassets in Resources */,
+				6F8805EA25D0671C0085826F /* Preview Assets.xcassets in Resources */,
+				6F8805E725D0671C0085826F /* Assets.xcassets in Resources */,
+				6F8806BE25D0699E0085826F /* rooms.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6F547386258A3AE6000AD3FD /* Resources */ = {
+		6F8805EE25D0671C0085826F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F8806BF25D0699E0085826F /* rooms.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6F547391258A3AE6000AD3FD /* Resources */ = {
+		6F8805F925D0671C0085826F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F88072025D06E230085826F /* rooms.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1C8233917C6B88250C2C6A21 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-theatalk-ios/Pods-theatalk-ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-theatalk-ios/Pods-theatalk-ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-theatalk-ios/Pods-theatalk-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		27A7FBF32B0FCF4AEAA823FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-theatalk-iosTests/Pods-theatalk-iosTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-theatalk-iosTests/Pods-theatalk-iosTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-theatalk-iosTests/Pods-theatalk-iosTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98E607C140E8FE79987A68BE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-theatalk-ios-theatalk-iosUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C92BE2259A19A01DDAFCC6E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-theatalk-iosTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0623D7B3360BF71F3492B25 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-theatalk-ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA2E1C1E36E3786975B64EA4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-theatalk-ios-theatalk-iosUITests/Pods-theatalk-ios-theatalk-iosUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-theatalk-ios-theatalk-iosUITests/Pods-theatalk-ios-theatalk-iosUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-theatalk-ios-theatalk-iosUITests/Pods-theatalk-ios-theatalk-iosUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		6F547373258A3AE4000AD3FD /* Sources */ = {
+		6F8805DB25D0671A0085826F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F54737D258A3AE4000AD3FD /* ContentView.swift in Sources */,
-				53EF780E25C1B13E0009D1F6 /* UserView.swift in Sources */,
-				6F54737B258A3AE4000AD3FD /* theatalk_iosApp.swift in Sources */,
+				6F8806E425D069C40085826F /* RoomList.swift in Sources */,
+				6F88067E25D0692E0085826F /* Tag.swift in Sources */,
+				6F8806AD25D0697A0085826F /* RoomFetcher.swift in Sources */,
+				6F8806AF25D0697A0085826F /* ChatFecher.swift in Sources */,
+				6F8806DC25D069C40085826F /* login.swift in Sources */,
+				6F8806AB25D0697A0085826F /* Parse.swift in Sources */,
+				6F8806F125D069DC0085826F /* ChatViewModel.swift in Sources */,
+				6F88067C25D0692E0085826F /* Session.swift in Sources */,
+				6F8806DE25D069C40085826F /* Menu.swift in Sources */,
+				6F8806F225D069DC0085826F /* TagsViewModel.swift in Sources */,
+				6F88068725D0693D0085826F /* Chat.swift in Sources */,
+				6F88067225D069020085826F /* User.swift in Sources */,
+				6F8806C025D0699E0085826F /* MockChats.swift in Sources */,
+				6F8806BC25D0699E0085826F /* MockUsers.swift in Sources */,
+				6F8805E525D0671A0085826F /* ContentView.swift in Sources */,
+				6F8806A125D069790085826F /* ImageLoader.swift in Sources */,
+				6F8806A525D069790085826F /* WBSocket.swift in Sources */,
+				6F88069B25D069790085826F /* File.swift in Sources */,
+				6F8806E225D069C40085826F /* RoomCell.swift in Sources */,
+				6F88069D25D069790085826F /* TagFetcher.swift in Sources */,
+				6F8806D625D069C40085826F /* ChatRoom.swift in Sources */,
+				6F8806F425D069DC0085826F /* RoomsViewModel.swift in Sources */,
+				6F8806A925D0697A0085826F /* FetchAPI.swift in Sources */,
+				6F8806C225D0699E0085826F /* MockRooms.swift in Sources */,
+				6F8805E325D0671A0085826F /* theatalk_iosApp.swift in Sources */,
+				6F8806E025D069C40085826F /* CreateRoom.swift in Sources */,
+				6F8806A725D0697A0085826F /* youtube_player.swift in Sources */,
+				6F88069F25D069790085826F /* UserFetcher.swift in Sources */,
+				6F88066C25D068D30085826F /* Room.swift in Sources */,
+				6F8806A325D069790085826F /* Auth.swift in Sources */,
+				6F8806F325D069DC0085826F /* AuthViewModel.swift in Sources */,
+				6F8806D825D069C40085826F /* Home.swift in Sources */,
+				6F8806D425D069C40085826F /* URLImage.swift in Sources */,
+				6F8806DA25D069C40085826F /* SignUp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6F547384258A3AE6000AD3FD /* Sources */ = {
+		6F8805EC25D0671C0085826F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F54738D258A3AE6000AD3FD /* theatalk_iosTests.swift in Sources */,
+				6F88072425D06E280085826F /* RoomList.swift in Sources */,
+				6F88069E25D069790085826F /* TagFetcher.swift in Sources */,
+				6F8806F825D06D140085826F /* ChatViewModel.swift in Sources */,
+				6F8806AC25D0697A0085826F /* Parse.swift in Sources */,
+				6F88075F25D0713E0085826F /* ModelTest.swift in Sources */,
+				6F88073225D06E2B0085826F /* TagsViewModel.swift in Sources */,
+				6F88067D25D0692E0085826F /* Session.swift in Sources */,
+				6F88072825D06E280085826F /* URLImage.swift in Sources */,
+				6F8806A225D069790085826F /* ImageLoader.swift in Sources */,
+				6F8806A625D0697A0085826F /* WBSocket.swift in Sources */,
+				6F88068825D0693D0085826F /* Chat.swift in Sources */,
+				6F8806BD25D0699E0085826F /* MockUsers.swift in Sources */,
+				6F88069C25D069790085826F /* File.swift in Sources */,
+				6F88073125D06E2B0085826F /* RoomsViewModel.swift in Sources */,
+				6F88066D25D068D30085826F /* Room.swift in Sources */,
+				6F8806AA25D0697A0085826F /* FetchAPI.swift in Sources */,
+				6F8806A425D069790085826F /* Auth.swift in Sources */,
+				6F8806AE25D0697A0085826F /* RoomFetcher.swift in Sources */,
+				6F8806C325D0699E0085826F /* MockRooms.swift in Sources */,
+				6F8806B025D0697A0085826F /* ChatFecher.swift in Sources */,
+				6F8806A825D0697A0085826F /* youtube_player.swift in Sources */,
+				6F88067F25D0692E0085826F /* Tag.swift in Sources */,
+				6F88072A25D06E280085826F /* login.swift in Sources */,
+				6F8806A025D069790085826F /* UserFetcher.swift in Sources */,
+				6F8805F525D0671C0085826F /* theatalk_iosTests.swift in Sources */,
+				6F88072625D06E280085826F /* CreateRoom.swift in Sources */,
+				6F88074325D06E380085826F /* theatalk_iosApp.swift in Sources */,
+				6F88072925D06E280085826F /* Home.swift in Sources */,
+				6F88072C25D06E280085826F /* Menu.swift in Sources */,
+				6F8806C125D0699E0085826F /* MockChats.swift in Sources */,
+				6F88073025D06E2B0085826F /* AuthViewModel.swift in Sources */,
+				6F88072525D06E280085826F /* RoomCell.swift in Sources */,
+				6F88067325D069020085826F /* User.swift in Sources */,
+				6F88072B25D06E280085826F /* ChatRoom.swift in Sources */,
+				6F88072725D06E280085826F /* SignUp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6F54738F258A3AE6000AD3FD /* Sources */ = {
+		6F8805F725D0671C0085826F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F547398258A3AE6000AD3FD /* theatalk_iosUITests.swift in Sources */,
+				6F88070F25D06E200085826F /* RoomFetcher.swift in Sources */,
+				6F88071125D06E200085826F /* Parse.swift in Sources */,
+				6F88071E25D06E230085826F /* MockRooms.swift in Sources */,
+				6F88071425D06E200085826F /* ChatFecher.swift in Sources */,
+				6F8806FC25D06D3E0085826F /* RoomsViewModel.swift in Sources */,
+				6F8806E525D069C40085826F /* RoomList.swift in Sources */,
+				6F88071F25D06E230085826F /* MockUsers.swift in Sources */,
+				6F8806D725D069C40085826F /* ChatRoom.swift in Sources */,
+				6F88073D25D06E340085826F /* Room.swift in Sources */,
+				6F88073B25D06E340085826F /* User.swift in Sources */,
+				6F88071925D06E200085826F /* File.swift in Sources */,
+				6F8806DD25D069C40085826F /* login.swift in Sources */,
+				6F88073E25D06E340085826F /* Session.swift in Sources */,
+				6F8806DF25D069C40085826F /* Menu.swift in Sources */,
+				6F88073C25D06E340085826F /* Tag.swift in Sources */,
+				6F88060025D0671C0085826F /* theatalk_iosUITests.swift in Sources */,
+				6F88071725D06E200085826F /* UserFetcher.swift in Sources */,
+				6F88071625D06E200085826F /* FetchAPI.swift in Sources */,
+				6F88071525D06E200085826F /* ImageLoader.swift in Sources */,
+				6F88071225D06E200085826F /* TagFetcher.swift in Sources */,
+				6F88071325D06E200085826F /* WBSocket.swift in Sources */,
+				6F88073725D06E2C0085826F /* TagsViewModel.swift in Sources */,
+				6F88073625D06E2C0085826F /* AuthViewModel.swift in Sources */,
+				6F88071D25D06E230085826F /* MockChats.swift in Sources */,
+				6F8806E125D069C40085826F /* CreateRoom.swift in Sources */,
+				6F88074725D06E380085826F /* theatalk_iosApp.swift in Sources */,
+				6F8806D925D069C40085826F /* Home.swift in Sources */,
+				6F8806D525D069C40085826F /* URLImage.swift in Sources */,
+				6F88071825D06E200085826F /* Auth.swift in Sources */,
+				6F88073F25D06E340085826F /* Chat.swift in Sources */,
+				6F88071025D06E200085826F /* youtube_player.swift in Sources */,
+				6F8806E325D069C40085826F /* RoomCell.swift in Sources */,
+				6F88070025D06D490085826F /* ChatViewModel.swift in Sources */,
+				6F8806DB25D069C40085826F /* SignUp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6F54738A258A3AE6000AD3FD /* PBXTargetDependency */ = {
+		6F8805F225D0671C0085826F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6F547376258A3AE4000AD3FD /* theatalk-ios */;
-			targetProxy = 6F547389258A3AE6000AD3FD /* PBXContainerItemProxy */;
+			target = 6F8805DE25D0671A0085826F /* theatalk-ios */;
+			targetProxy = 6F8805F125D0671C0085826F /* PBXContainerItemProxy */;
 		};
-		6F547395258A3AE6000AD3FD /* PBXTargetDependency */ = {
+		6F8805FD25D0671C0085826F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6F547376258A3AE4000AD3FD /* theatalk-ios */;
-			targetProxy = 6F547394258A3AE6000AD3FD /* PBXContainerItemProxy */;
+			target = 6F8805DE25D0671A0085826F /* theatalk-ios */;
+			targetProxy = 6F8805FC25D0671C0085826F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		6F54739A258A3AE6000AD3FD /* Debug */ = {
+		6F88060225D0671C0085826F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -351,7 +825,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -361,7 +835,7 @@
 			};
 			name = Debug;
 		};
-		6F54739B258A3AE6000AD3FD /* Release */ = {
+		6F88060325D0671C0085826F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -406,7 +880,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -416,8 +890,9 @@
 			};
 			name = Release;
 		};
-		6F54739D258A3AE6000AD3FD /* Debug */ = {
+		6F88060525D0671C0085826F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BB77B35786F9A9AD1021CCF /* Pods-theatalk-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -437,8 +912,9 @@
 			};
 			name = Debug;
 		};
-		6F54739E258A3AE6000AD3FD /* Release */ = {
+		6F88060625D0671C0085826F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E25C67E9D6B992527135EA1 /* Pods-theatalk-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -458,8 +934,9 @@
 			};
 			name = Release;
 		};
-		6F5473A0258A3AE6000AD3FD /* Debug */ = {
+		6F88060825D0671C0085826F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51F380B15C74A5741A901DB1 /* Pods-theatalk-iosTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -479,8 +956,9 @@
 			};
 			name = Debug;
 		};
-		6F5473A1258A3AE6000AD3FD /* Release */ = {
+		6F88060925D0671C0085826F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EF1C0A0268968EFC8EF48DB /* Pods-theatalk-iosTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -500,8 +978,9 @@
 			};
 			name = Release;
 		};
-		6F5473A3258A3AE6000AD3FD /* Debug */ = {
+		6F88060B25D0671C0085826F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0757411F1319C9466A833023 /* Pods-theatalk-ios-theatalk-iosUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -519,8 +998,9 @@
 			};
 			name = Debug;
 		};
-		6F5473A4258A3AE6000AD3FD /* Release */ = {
+		6F88060C25D0671C0085826F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE6AF75577DE75F7A460C6FF /* Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -541,43 +1021,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6F547372258A3AE4000AD3FD /* Build configuration list for PBXProject "theatalk-ios" */ = {
+		6F8805DA25D0671A0085826F /* Build configuration list for PBXProject "theatalk-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6F54739A258A3AE6000AD3FD /* Debug */,
-				6F54739B258A3AE6000AD3FD /* Release */,
+				6F88060225D0671C0085826F /* Debug */,
+				6F88060325D0671C0085826F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F54739C258A3AE6000AD3FD /* Build configuration list for PBXNativeTarget "theatalk-ios" */ = {
+		6F88060425D0671C0085826F /* Build configuration list for PBXNativeTarget "theatalk-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6F54739D258A3AE6000AD3FD /* Debug */,
-				6F54739E258A3AE6000AD3FD /* Release */,
+				6F88060525D0671C0085826F /* Debug */,
+				6F88060625D0671C0085826F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F54739F258A3AE6000AD3FD /* Build configuration list for PBXNativeTarget "theatalk-iosTests" */ = {
+		6F88060725D0671C0085826F /* Build configuration list for PBXNativeTarget "theatalk-iosTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6F5473A0258A3AE6000AD3FD /* Debug */,
-				6F5473A1258A3AE6000AD3FD /* Release */,
+				6F88060825D0671C0085826F /* Debug */,
+				6F88060925D0671C0085826F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F5473A2258A3AE6000AD3FD /* Build configuration list for PBXNativeTarget "theatalk-iosUITests" */ = {
+		6F88060A25D0671C0085826F /* Build configuration list for PBXNativeTarget "theatalk-iosUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6F5473A3258A3AE6000AD3FD /* Debug */,
-				6F5473A4258A3AE6000AD3FD /* Release */,
+				6F88060B25D0671C0085826F /* Debug */,
+				6F88060C25D0671C0085826F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 6F54736F258A3AE4000AD3FD /* Project object */;
+	rootObject = 6F8805D725D0671A0085826F /* Project object */;
 }
