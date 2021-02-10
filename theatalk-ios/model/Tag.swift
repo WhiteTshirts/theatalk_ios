@@ -6,7 +6,11 @@
 //
 
 import Foundation
-class Tag: Identifiable,Hashable{
+class Tags:Codable{
+    var tags:[Tag]!
+    
+}
+class Tag: Identifiable,Hashable,Codable{
     static func == (lhs: Tag, rhs: Tag) -> Bool {
         if((lhs.id  != nil)&&(rhs.id != nil)){
             if(lhs.id==rhs.id){

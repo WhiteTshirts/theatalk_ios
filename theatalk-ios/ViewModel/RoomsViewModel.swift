@@ -39,7 +39,7 @@ final class RoomsViewModel: ObservableObject{
 //        }
     }
     func EnterRoom(roomID_:Int){
-        roomfetcher.EnterRoom(with: roomID_)
+        roomfetcher.EnterRoom(roomId: roomID_)
     }
     
     

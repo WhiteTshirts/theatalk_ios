@@ -12,8 +12,8 @@ class theatalk_iosTests: XCTestCase {
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        var i = Room(admin_id_: 0, name_: "0", id_: 0, is_private_: false, start_time_: Date(), viewer_: 0, youtube_id_: "")
-        var j = User(name_: "", id_: 0, tags_: [0])
+//        var i = Room(admin_id_: 0, name_: "0", id_: 0, is_private_: false, start_time_: Date(), viewer_: 0, youtube_id_: "")
+//        var j = User(name_: "", id_: 0, tags_: [0])
     }
 
     override func tearDownWithError() throws {

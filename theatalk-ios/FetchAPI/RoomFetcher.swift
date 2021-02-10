@@ -11,11 +11,11 @@ protocol RoomFechable {
     func GETRooms(
     ) -> AnyPublisher<Rooms,APIError>
     func EnterRoom(
-        with roomId:Int
+        roomId:Int
     ) -> AnyPublisher<Room,APIError>
 //    func GETRoomsWithTag(
-//        forTag tag: String
-//    ) -> AnyPublisher<[Room],APIError>
+//         tagId: Int
+//    ) -> AnyPublisher<Rooms,APIError>
 //    func GetRoom(
 //        forRoomId roomId: Int
 //    ) -> AnyPublisher<Room,APIError>
@@ -79,7 +79,7 @@ extension RoomFetcher{
       return components
     }
     func makeEnterRoomComponents(
-        with roomId:Int, body:Data!
+        roomId:Int, body:Data!
     ) -> URLRequest {
         var url_components = URLComponents()
       url_components.scheme = "http"
@@ -103,7 +103,7 @@ extension RoomFetcher: RoomFechable{
         return fetchRoom(with: makeGetRoomsComponents())
     }
     func EnterRoom(
-        with roomId:Int
+        roomId:Int
     ) -> AnyPublisher<Room,APIError>{
         var body:Data!
         var room_info = Dictionary<String,Any>()
@@ -115,10 +115,20 @@ extension RoomFetcher: RoomFechable{
         } catch let encodeError as NSError {
             print("Encoder error: \(encodeError.localizedDescription)\n")
         }
-        return fetchRoom(with: makeEnterRoomComponents(with: roomId, body: body))
+        return fetchRoom(with: makeEnterRoomComponents(roomId: roomId, body: body))
     }
-//    func GETRoomsWithTag(forTag tag: String) -> AnyPublisher<[Room], APIError> {
-//
+//    func GETRoomsWithTag(forTag tag: Int) -> AnyPublisher<Rooms, APIError> {
+//        var body:Data!
+//        var room_info = Dictionary<String,Any>()
+//        room_info["room_id"] = roomId
+//        var jobj = Dictionary<String,Any>()
+//        jobj["user"] = room_info
+//        do {
+//            body = try JSONSerialization.data(withJSONObject: jobj, options: [])
+//        } catch let encodeError as NSError {
+//            print("Encoder error: \(encodeError.localizedDescription)\n")
+//        }
+//        return fetchRoom(with: makeEnterRoomComponents(roomId: roomId, body: body))
 //    }
 //
 //    func GetRoom(forRoomId roomId: Int) -> AnyPublisher<Room, APIError> {

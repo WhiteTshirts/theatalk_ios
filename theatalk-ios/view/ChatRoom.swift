@@ -21,7 +21,6 @@ struct ChatRoom: View {
                 ChatsVm.load(room_Id: room.id)
             }
             ScrollViewReader { value in
-                
                 List {
                     ForEach(ChatsVm.chats.indices, id: \.self){ index in
                         HStack{
@@ -33,24 +32,14 @@ struct ChatRoom: View {
                                     .font(.caption)
                             }
                         }.id(index)
-       
-                            
                     }
-                    
                 }
-            
             TextField("コメントを入力してください", text: $text,
                       onCommit: {
-                        //print("\(text)")
                         ChatsVm.SendMsg(msg: self.text,roomId: room.id)
                         self.text = ""
                         value.scrollTo(0, anchor: .top)
-                        
-                        
-                        
             })
-                
-            
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             }
@@ -58,9 +47,6 @@ struct ChatRoom: View {
         }.onAppear(perform: {
             ChatsVm.enter()
         })
-
-        
-
     }
 }
 

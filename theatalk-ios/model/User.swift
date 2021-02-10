@@ -30,7 +30,6 @@ class User:Identifiable,Codable{
         id = try container.decode(Int.self, forKey: .id)
         password = try container.decodeIfPresent(String.self, forKey: .name)
         tags = try container.decodeIfPresent([Int].self, forKey: .tags)
-        
-        
+  
     }
 }

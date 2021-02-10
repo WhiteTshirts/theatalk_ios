@@ -19,8 +19,6 @@ class ModelTest: XCTestCase,ObservableObject {
         guard let data = try? Data(contentsOf: url) else {
             fatalError("ファイル読み込みエラー")
         }
-         
-        /// ③JSONデコード処理
         let decoder = JSONDecoder()
         guard let rooms = try? decoder.decode(Rooms.self, from: data) else {
             fatalError("JOSN読み込みエラー")
@@ -38,16 +36,25 @@ class ModelTest: XCTestCase,ObservableObject {
               },
               receiveValue: { [weak self] forecast in
                 guard let self = self else { return }
-
-                // 7
             })
-
-            // 8
             .store(in: &disposables)
-
-
-        // 4
-
+        let ta = TagFetcher(url: "localhost:5000").GETTags()
+            .sink(
+              receiveCompletion: { [weak self] value in
+                guard let self = self else { return }
+                switch value {
+                case .failure:
+                  break
+                case .finished:
+                  break
+                }
+              },
+              receiveValue: { [weak self] forecast in
+                print("jfsdjfldsfjfldsfjsd")
+                print(forecast.tags[0].name)
+                guard let self = self else { return }
+            })
+            .store(in: &disposables)
 
                 
     }
