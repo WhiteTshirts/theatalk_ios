@@ -54,6 +54,7 @@ extension KeyedDecodingContainer {
         return try transformer.transform(decoded)
     }
 }
+
 class Room: Codable,Identifiable{
     
     var admin_id: Int!
@@ -80,6 +81,10 @@ class Room: Codable,Identifiable{
         youtube_id = try container.decodeIfPresent(String.self, forKey: .youtube_id)
         tags = try container.decodeIfPresent([Int].self, forKey: .tags)
     }
+}
+
+struct Room_:Codable{
+    var room:Room!
 }
 struct Rooms:Codable{
     var rooms:[Room]!

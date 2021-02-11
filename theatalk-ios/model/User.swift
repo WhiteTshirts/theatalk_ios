@@ -33,3 +33,8 @@ class User:Identifiable,Codable{
   
     }
 }
+
+
+class Users:Codable{
+    var users:[User]!
+}

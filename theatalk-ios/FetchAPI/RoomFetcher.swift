@@ -12,7 +12,7 @@ protocol RoomFechable {
     ) -> AnyPublisher<Rooms,APIError>
     func EnterRoom(
         roomId:Int
-    ) -> AnyPublisher<Room,APIError>
+    ) -> AnyPublisher<Room_,APIError>
 //    func GETRoomsWithTag(
 //         tagId: Int
 //    ) -> AnyPublisher<Rooms,APIError>
@@ -40,9 +40,6 @@ class RoomFetcher{
     init(url:String,session: URLSession = .shared){
         urllink = url
         self.session = session
-    }
-    func exitRoom(){
-        
     }
 
 
@@ -82,12 +79,35 @@ extension RoomFetcher{
 
 
 extension RoomFetcher: RoomFechable{
+    
+    func GetRoom(
+        roomId:Int
+    )->AnyPublisher<Room_,APIError>{
+        return fetchRoom(with: makeRoomsComponents(Path: "/rooms/\(roomId)", Type: "GET", body: nil))
+    }
     func GETRooms() -> AnyPublisher<Rooms, APIError> {
-        return fetchRoom(with: makeRoomsComponents(Path: "rooms", Type: "GET", body: nil))
+        return fetchRoom(with: makeRoomsComponents(Path: "/rooms", Type: "GET", body: nil))
+    }
+    func CreateRoom(room:Room) -> AnyPublisher<Room_,APIError>{
+        var data:Data!
+        var room_info = Dictionary<String,Any>()
+        //TODO implement encode
+        return fetchRoom(with: makeRoomsComponents(Path: "/rooms", Type: "POST", body: data))
+    }
+    func EditRoom(room:Room) -> AnyPublisher<Room_,APIError>{
+        var data:Data!
+
+        if let roomId = room.id{
+            return fetchRoom(with: makeRoomsComponents(Path: "/rooms/\(roomId)", Type: "PUT", body: data))
+        }else{
+            let error = APIError.network(description: "could not edit room")
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+
     }
     func EnterRoom(
         roomId:Int
-    ) -> AnyPublisher<Room,APIError>{
+    ) -> AnyPublisher<Room_,APIError>{
         var body:Data!
         var room_info = Dictionary<String,Any>()
         room_info["room_id"] = roomId
@@ -99,6 +119,12 @@ extension RoomFetcher: RoomFechable{
             print("Encoder error: \(encodeError.localizedDescription)\n")
         }
         return fetchRoom(with: makeRoomsComponents(Path: "/room_users", Type:"POST", body: body))
+    }
+    func ExitRoom()-> AnyPublisher<User,APIError>{
+        return fetchRoom(with: makeRoomsComponents(Path: "/room_users/leave", Type: "GET", body: nil))
+    }
+    func GetSameRoomUsers()->AnyPublisher<Users,APIError>{
+        return fetchRoom(with: makeRoomsComponents(Path: "/room_users", Type: "GET", body: nil))
     }
 //    func GETRoomsWithTag(forTag tag: Int) -> AnyPublisher<Rooms, APIError> {
 //        var body:Data!
