@@ -50,27 +50,19 @@ class TagFetcher{
 }
 
 extension TagFetcher{
-    func makeGetTagsComponents(
+    func makeTagsComponents(Path:String,Type:String,body: Data!
     ) -> URLRequest {
         var url_components = URLComponents()
       url_components.scheme = "http"
       url_components.host = "localhost"
         url_components.port = 5000
-      url_components.path = "/api/v1/tags"
-        let components = URLRequest(url:url_components.url!)
-      return components
-    }
-    func makePostTagsComponents( body:Data!
-    ) -> URLRequest {
-        var url_components = URLComponents()
-      url_components.scheme = "http"
-      url_components.host = "localhost"
-        url_components.port = 5000
-      url_components.path = "/api/v1/tag"
+      url_components.path = "/api/v1/"+Path
         var components = URLRequest(url:url_components.url!)
+        components.httpMethod = Type
         components.addValue("application/json", forHTTPHeaderField: "content-type")
-        components.httpMethod = "POST"
-        components.setValue("Bearer \(mockUserHashVal)", forHTTPHeaderField: "Authorization")
+        if(mockUserHashVal != nil){
+            components.setValue("Bearer \(mockUserHashVal)", forHTTPHeaderField: "Authorization")
+        }
         if(body != nil){
             components.httpBody = body
         }
@@ -92,11 +84,33 @@ extension TagFetcher:TagFechable{
         } catch let encodeError as NSError {
             print("Encoder error: \(encodeError.localizedDescription)\n")
         }
-        return fetchTag(with: makePostTagsComponents( body:data
-        ))
+        return fetchTag(with: makeTagsComponents(Path: "POST", Type: "/tags", body: data))
     }
     func GETTags(
     ) -> AnyPublisher<Tags,APIError>{
-        return fetchTag(with: makeGetTagsComponents())
+        return fetchTag(with: makeTagsComponents(Path: "/tags", Type: "GET", body: nil))
+    }
+    func GETTagUsers(tagId:Int)->AnyPublisher<Int,APIError>{
+        var data:Data!
+        return fetchTag(with: makeTagsComponents(Path: "/user_tags/get_num/\(tagId)", Type: "GET", body: data))
+    }
+    func GETUsersbyTag(tagId:Int) -> AnyPublisher<Users,APIError>{
+        var data:Data!
+        return fetchTag(with: makeTagsComponents(Path: "/users_tags", Type: "GET", body: data))
+    }
+    func DeleteUsersTag(tagId:Int)->AnyPublisher<Tags,APIError>{
+        var data:Data!
+        return fetchTag(with: makeTagsComponents(Path: "/user_tags/\(tagId)", Type: "DELETE", body: data))
+    }
+    func CreateRoomTag(roomId:Int)->AnyPublisher<Room_,APIError>{
+        var data:Data!
+        return fetchTag(with: makeTagsComponents(Path: "/room_tags", Type: "GET", body: data))
+    }
+    func DeleteRoomTag(roomId:Int)->AnyPublisher<Room_,APIError>{
+        var data:Data!
+        return fetchTag(with: makeTagsComponents(Path: "/room_tags/\(roomId)", Type: "DELETE", body: data))
+    }
+    func GETRoomsbyTag(tagId:Int)->AnyPublisher<Rooms,APIError>{
+        return fetchTag(with: makeTagsComponents(Path: "/room_tags/\(tagId)", Type: "GET", body: nil))
     }
 }
