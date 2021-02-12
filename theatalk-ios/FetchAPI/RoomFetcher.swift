@@ -92,23 +92,25 @@ extension RoomFetcher: RoomFechable{
         return fetchRoom(with: makeRoomsComponents(Path: "/rooms", Type: "GET", body: nil))
     }
     func CreateRoom(room:Room) -> AnyPublisher<Room_json,APIError>{
-        var data:Data!
-        var room_info = Dictionary<String,Any>()
         do{
-             data = try encoder.encode(room)
-            
+            let data = try encoder.encode(room)
+            return fetchRoom(with: makeRoomsComponents(Path: "/rooms", Type: "POST", body: data))
         }catch{
             let error = APIError.network(description: "could not encode")
             return Fail(error: error).eraseToAnyPublisher()
         }
-        //TODO implement encode
-        return fetchRoom(with: makeRoomsComponents(Path: "/rooms", Type: "POST", body: data))
+        
     }
     func EditRoom(room:Room) -> AnyPublisher<Room_json,APIError>{
-        var data:Data!
 
         if let roomId = room.id{
-            return fetchRoom(with: makeRoomsComponents(Path: "/rooms/\(roomId)", Type: "PUT", body: data))
+            do{
+                let data = try encoder.encode(room)
+                return fetchRoom(with: makeRoomsComponents(Path: "/rooms/\(roomId)", Type: "PUT", body: data))
+            }catch{
+                let error = APIError.network(description: "could not encode")
+                return Fail(error: error).eraseToAnyPublisher()
+            }
         }else{
             let error = APIError.network(description: "could not edit room")
             return Fail(error: error).eraseToAnyPublisher()
