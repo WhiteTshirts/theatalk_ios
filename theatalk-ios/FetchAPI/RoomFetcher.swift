@@ -40,6 +40,9 @@ class RoomFetcher{
     init(url:String,session: URLSession = .shared){
         urllink = url
         self.session = session
+        encoder.outputFormatting = .prettyPrinted
+        encoder.dateEncodingStrategy = .iso8601
+        //iso8601 2018-01-08T02:51:37Z
     }
 
 
@@ -91,6 +94,13 @@ extension RoomFetcher: RoomFechable{
     func CreateRoom(room:Room) -> AnyPublisher<Room_json,APIError>{
         var data:Data!
         var room_info = Dictionary<String,Any>()
+        do{
+             data = try encoder.encode(room)
+            
+        }catch{
+            let error = APIError.network(description: "could not encode")
+            return Fail(error: error).eraseToAnyPublisher()
+        }
         //TODO implement encode
         return fetchRoom(with: makeRoomsComponents(Path: "/rooms", Type: "POST", body: data))
     }

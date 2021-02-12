@@ -78,6 +78,16 @@ class Room: Codable,Identifiable{
     enum EncodeNestKeys:CodingKey{
         case room
     }
+    init(admin_id_:Int,name_:String,id_:Int,is_private_:Bool,start_time_:Date?,viewer_:Int,youtube_id_:String){
+        admin_id = admin_id_
+        id = id_
+        is_private = is_private_
+        name = name_
+        start_time = start_time_
+        viewer = viewer_
+        youtube_id = youtube_id_
+       
+    }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DecodingKeys.self)
@@ -106,6 +116,9 @@ class Room: Codable,Identifiable{
 }
 
 struct Room_json:Codable{
+    init(room:Room){
+        self.room = room
+    }
     var room:Room!
 }
 struct Rooms_json:Codable{

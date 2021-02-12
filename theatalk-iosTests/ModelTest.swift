@@ -61,6 +61,11 @@ class ModelTest: XCTestCase,ObservableObject {
         var co = Coordinate()
         let encoded = try! encoder.encode(co)
         print(String(data: encoded, encoding: .utf8)!)
+        var room = Room(admin_id_: -1, name_: "test", id_: -1, is_private_: false, start_time_: Date(), viewer_: 0, youtube_id_: "LEFsK9mUwAE")
+        var roomfe = RoomFetcher(url: "")
+        
+        roomfe.CreateRoom(room: room)
+        
 
         
                 
