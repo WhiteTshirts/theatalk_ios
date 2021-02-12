@@ -68,8 +68,19 @@ class Room: Codable,Identifiable{
     var viewer: Int!
     var youtube_id: String!
     var tags: [Int]!
+    
+    enum DecodingKeys: CodingKey{
+        case admin_id,id,is_private,name,password,created_at,start_time,updated_at,viewer,youtube_id,tags
+    }
+    enum EncodeKeys: CodingKey{
+        case name,youtube_id,start_time
+    }
+    enum EncodeNestKeys:CodingKey{
+        case room
+    }
+    
     required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: DecodingKeys.self)
         admin_id = try container.decodeIfPresent(Int.self, forKey: .admin_id)
         id = try container.decodeIfPresent(Int.self, forKey: .id)
         name = try container.decodeIfPresent(String.self, forKey: .name)
@@ -82,12 +93,22 @@ class Room: Codable,Identifiable{
         tags = try container.decodeIfPresent([Int].self, forKey: .tags)
     }
 
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: EncodeNestKeys.self)
+        
+        var nestObj = container.nestedContainer(keyedBy: EncodeKeys.self, forKey: .room)
+            try nestObj.encode(name, forKey: .name)
+            try nestObj.encode(youtube_id,forKey: .youtube_id)
+            try nestObj.encode(start_time, forKey: .start_time)
+        
+    }
+
 }
 
-struct Room_:Codable{
+struct Room_json:Codable{
     var room:Room!
 }
-struct Rooms:Codable{
+struct Rooms_json:Codable{
     var rooms:[Room]!
     
 }

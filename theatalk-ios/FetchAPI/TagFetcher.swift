@@ -102,15 +102,15 @@ extension TagFetcher:TagFechable{
         var data:Data!
         return fetchTag(with: makeTagsComponents(Path: "/user_tags/\(tagId)", Type: "DELETE", body: data))
     }
-    func CreateRoomTag(roomId:Int)->AnyPublisher<Room_,APIError>{
+    func CreateRoomTag(roomId:Int)->AnyPublisher<Room_json,APIError>{
         var data:Data!
         return fetchTag(with: makeTagsComponents(Path: "/room_tags", Type: "GET", body: data))
     }
-    func DeleteRoomTag(roomId:Int)->AnyPublisher<Room_,APIError>{
+    func DeleteRoomTag(roomId:Int)->AnyPublisher<Room_json,APIError>{
         var data:Data!
         return fetchTag(with: makeTagsComponents(Path: "/room_tags/\(roomId)", Type: "DELETE", body: data))
     }
-    func GETRoomsbyTag(tagId:Int)->AnyPublisher<Rooms,APIError>{
+    func GETRoomsbyTag(tagId:Int)->AnyPublisher<Rooms_json,APIError>{
         return fetchTag(with: makeTagsComponents(Path: "/room_tags/\(tagId)", Type: "GET", body: nil))
     }
 }

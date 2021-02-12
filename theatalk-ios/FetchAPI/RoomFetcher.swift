@@ -9,10 +9,10 @@ import Foundation
 import Combine
 protocol RoomFechable {
     func GETRooms(
-    ) -> AnyPublisher<Rooms,APIError>
+    ) -> AnyPublisher<Rooms_json,APIError>
     func EnterRoom(
         roomId:Int
-    ) -> AnyPublisher<Room_,APIError>
+    ) -> AnyPublisher<Room_json,APIError>
 //    func GETRoomsWithTag(
 //         tagId: Int
 //    ) -> AnyPublisher<Rooms,APIError>
@@ -82,19 +82,19 @@ extension RoomFetcher: RoomFechable{
     
     func GetRoom(
         roomId:Int
-    )->AnyPublisher<Room_,APIError>{
+    )->AnyPublisher<Room_json,APIError>{
         return fetchRoom(with: makeRoomsComponents(Path: "/rooms/\(roomId)", Type: "GET", body: nil))
     }
-    func GETRooms() -> AnyPublisher<Rooms, APIError> {
+    func GETRooms() -> AnyPublisher<Rooms_json, APIError> {
         return fetchRoom(with: makeRoomsComponents(Path: "/rooms", Type: "GET", body: nil))
     }
-    func CreateRoom(room:Room) -> AnyPublisher<Room_,APIError>{
+    func CreateRoom(room:Room) -> AnyPublisher<Room_json,APIError>{
         var data:Data!
         var room_info = Dictionary<String,Any>()
         //TODO implement encode
         return fetchRoom(with: makeRoomsComponents(Path: "/rooms", Type: "POST", body: data))
     }
-    func EditRoom(room:Room) -> AnyPublisher<Room_,APIError>{
+    func EditRoom(room:Room) -> AnyPublisher<Room_json,APIError>{
         var data:Data!
 
         if let roomId = room.id{
@@ -107,7 +107,7 @@ extension RoomFetcher: RoomFechable{
     }
     func EnterRoom(
         roomId:Int
-    ) -> AnyPublisher<Room_,APIError>{
+    ) -> AnyPublisher<Room_json,APIError>{
         var body:Data!
         var room_info = Dictionary<String,Any>()
         room_info["room_id"] = roomId

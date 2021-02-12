@@ -9,12 +9,18 @@ import Foundation
 
 
 
+
 struct Coordinate {
     var latitude: Double
     var longitude: Double
     var elevation: Double
 
     enum CodingKeys: String, CodingKey {
+
+        
+        case user
+    }
+    enum NestedKeys: String, CodingKey{
         case latitude
         case longitude
         case additionalInfo
@@ -30,8 +36,7 @@ struct Coordinate {
 extension Coordinate: Encodable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(latitude, forKey: .latitude)
-        try container.encode(longitude, forKey: .longitude)
-        try container.encode(elevation, forKey: .additionalInfo)
+        var nestObj = container.nestedContainer(keyedBy: NestedKeys.self, forKey: .user)
+        try nestObj.encode(latitude, forKey: .latitude)
     }
 }
