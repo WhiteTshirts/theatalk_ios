@@ -12,6 +12,11 @@ import Combine
 final public class AuthViewModel: ObservableObject{
     @Published var user: User?
     @Published var hashval: String?
+    @Published var userName:String = ""
+    @Published var password:String = ""
+    private var disposables = Set<AnyCancellable>()
+
+    private var authfetcher = AuthFetcher()
     //private var fetcher = AuthFetcher(url: "http://localhost:5000/api/v1/rooms/0")
     init(){
         self.user = mockUserData
@@ -26,9 +31,16 @@ final public class AuthViewModel: ObservableObject{
 //            self.rooms = returnData
 //        }
     }
-//    func login()->AnyPublisher<User,Error>{
-//        
-//    }
+    func login(completion:@escaping(User?,Bool?)->()){
+        authfetcher.login_(user: User(name_: self.userName, password_: self.password)).sink(receiveCompletion: { completion in
+            print("receiveCompletion:", completion)
+        }, receiveValue: { user_json in
+            var user = user_json.user
+            g_user_token = user_json.token
+            completion(user,true)
+            print(g_user_token)
+        }).store(in: &disposables)
+    }
     
     
 }

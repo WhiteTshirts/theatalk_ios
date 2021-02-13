@@ -17,40 +17,43 @@ final class TagsViewModel: ObservableObject{
     @Published var tags: [Tag] = []
     private var tagFetcher = TagFetcher(url: "http://localhost:5000/api/v1/tags")
     init(){
-        tagFetcher.GETTags()
-            .sink(
-          receiveCompletion: { [weak self] value in
-            guard let self = self else { return }
-            switch value {
-            case .failure:
-              break
-            case .finished:
-              break
-            }
-          },
-          receiveValue: { [weak self] tags in
-            guard let self = self else { return }
-            self.tags = tags.tags
-        })
-        .store(in: &disposables)
+        self.tags = mockTagsData
+//        tagFetcher.GETTags()
+//            .sink(
+//          receiveCompletion: { [weak self] value in
+//            guard let self = self else { return }
+//            switch value {
+//            case .failure:
+//              break
+//            case .finished:
+//              break
+//            }
+//          },
+//          receiveValue: { [weak self] tags in
+//            guard let self = self else { return }
+//            self.tags = tags.tags
+//        })
+//        .store(in: &disposables)
     }
     func load(){
-        tagFetcher.GETTags()
-            .sink(
-          receiveCompletion: { [weak self] value in
-            guard let self = self else { return }
-            switch value {
-            case .failure:
-              break
-            case .finished:
-              break
-            }
-          },
-          receiveValue: { [weak self] tags in
-            guard let self = self else { return }
-            self.tags = tags.tags
-        })
-        .store(in: &disposables)
+        self.tags = mockTagsData
+
+//        tagFetcher.GETTags()
+//            .sink(
+//          receiveCompletion: { [weak self] value in
+//            guard let self = self else { return }
+//            switch value {
+//            case .failure:
+//              break
+//            case .finished:
+//              break
+//            }
+//          },
+//          receiveValue: { [weak self] tags in
+//            guard let self = self else { return }
+//            self.tags = tags.tags
+//        })
+//        .store(in: &disposables)
         
     }
 //    func login() -> AnyPublisher<User, Error> {

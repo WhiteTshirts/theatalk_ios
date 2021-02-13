@@ -29,6 +29,19 @@ class  AuthFetcher{
         self.session = session
     }
     
+    private func fetchAuth<T>(
+        with reqcomponents: URLRequest
+    ) -> AnyPublisher<T, APIError> where T: Decodable {
+      return session.dataTaskPublisher(for: reqcomponents)
+        .mapError { error in
+          .network(description: error.localizedDescription)
+        }
+        .flatMap(maxPublishers: .max(1)) { pair in
+          decode(pair.data)
+        }
+        .eraseToAnyPublisher()
+    }
+    
     func login(name:String,password:String){
         UserData = User(name_: name, password_: password)
         
@@ -55,41 +68,29 @@ class  AuthFetcher{
 
         
     }
-    func signup(name:String,password:String){
-        
-    }
     
-    private func fetchAuth<T>(
-        with reqcomponents: URLRequest
-    ) -> AnyPublisher<T, APIError> where T: Decodable {
-      return session.dataTaskPublisher(for: reqcomponents)
-        .mapError { error in
-          .network(description: error.localizedDescription)
-        }
-        .flatMap(maxPublishers: .max(1)) { pair in
-          decode(pair.data)
-        }
-        .eraseToAnyPublisher()
-    }
+
 
 }
 
 extension AuthFetcher{
-    func login_(name:String,password:String) -> AnyPublisher<User,APIError>{
-        var body:Data!
-        var user = Dictionary<String,Any>()
-        user["name"] = name
-        user["password"] = password
-        var jobj = Dictionary<String,Any>()
-        jobj["user"] = user
+    func login_(user:User) -> AnyPublisher<User_Json,APIError>{
         do{
-            body = try JSONSerialization.data(withJSONObject: jobj, options: [])
-            
+            let body = try encoder.encode(user)
+            return fetchAuth(with: makeLoginComponents(Path: "login", Type: "POST", body: body))
         }catch{
-            print("json serialization Error")
+            let error = APIError.network(description: "couldnot decode")
+            return Fail(error: error).eraseToAnyPublisher()
         }
-        return fetchAuth(with: makeLoginComponents(Path: "/login", Type: "POST", body: body))
-        
+    }
+    func signup(user:User)->AnyPublisher<User_Json,APIError>{
+        do{
+            let body = try encoder.encode(user)
+            return fetchAuth(with: makeLoginComponents(Path: "/signup", Type: "POST", body: body))
+        }catch{
+            let error = APIError.network(description: "couldnot decode")
+            return Fail(error: error).eraseToAnyPublisher()
+        }
     }
 }
 
@@ -103,6 +104,7 @@ extension AuthFetcher{
       url_components.host = "localhost"
         url_components.port = 5000
       url_components.path = "/api/v1/"+Path
+        print(url_components.url!)
         var components = URLRequest(url:url_components.url!)
         components.httpMethod = Type
         components.addValue("application/json", forHTTPHeaderField: "content-type")

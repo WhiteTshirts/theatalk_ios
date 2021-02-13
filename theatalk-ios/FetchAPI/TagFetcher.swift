@@ -60,8 +60,8 @@ extension TagFetcher{
         var components = URLRequest(url:url_components.url!)
         components.httpMethod = Type
         components.addValue("application/json", forHTTPHeaderField: "content-type")
-        if(mockUserHashVal != nil){
-            components.setValue("Bearer \(mockUserHashVal)", forHTTPHeaderField: "Authorization")
+        if(g_user_token != nil){
+            components.setValue("Bearer \(g_user_token)", forHTTPHeaderField: "Authorization")
         }
         if(body != nil){
             components.httpBody = body
@@ -94,7 +94,7 @@ extension TagFetcher:TagFechable{
         var data:Data!
         return fetchTag(with: makeTagsComponents(Path: "/user_tags/get_num/\(tagId)", Type: "GET", body: data))
     }
-    func GETUsersbyTag(tagId:Int) -> AnyPublisher<Users,APIError>{
+    func GETUsersbyTag(tagId:Int) -> AnyPublisher<Users_Jsosn,APIError>{
         var data:Data!
         return fetchTag(with: makeTagsComponents(Path: "/users_tags", Type: "GET", body: data))
     }

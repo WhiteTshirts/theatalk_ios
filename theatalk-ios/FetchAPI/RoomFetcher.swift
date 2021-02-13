@@ -70,8 +70,8 @@ extension RoomFetcher{
         var components = URLRequest(url:url_components.url!)
         components.httpMethod = Type
         components.addValue("application/json", forHTTPHeaderField: "content-type")
-        if(mockUserHashVal != nil){
-            components.setValue("Bearer \(mockUserHashVal)", forHTTPHeaderField: "Authorization")
+        if(g_user_token != nil){
+            components.setValue("Bearer \(g_user_token)", forHTTPHeaderField: "Authorization")
         }
         if(body != nil){
             components.httpBody = body
@@ -135,7 +135,7 @@ extension RoomFetcher: RoomFechable{
     func ExitRoom()-> AnyPublisher<User,APIError>{
         return fetchRoom(with: makeRoomsComponents(Path: "/room_users/leave", Type: "GET", body: nil))
     }
-    func GetSameRoomUsers()->AnyPublisher<Users,APIError>{
+    func GetSameRoomUsers()->AnyPublisher<Users_Jsosn,APIError>{
         return fetchRoom(with: makeRoomsComponents(Path: "/room_users", Type: "GET", body: nil))
     }
 //    func GETRoomsWithTag(forTag tag: Int) -> AnyPublisher<Rooms, APIError> {

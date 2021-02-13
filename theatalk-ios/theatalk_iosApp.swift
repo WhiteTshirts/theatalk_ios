@@ -18,7 +18,7 @@ var ProfileSize = CGSize(width: min(UIScreen.screenWidth/10,30), height: min(UIS
 var RoomSize_Column2=CGSize(width: UIScreen.screenWidth/2.2, height: UIScreen.screenHeight/5)
 var RoomSize_Column1=CGSize(width: UIScreen.screenWidth/1.3, height: UIScreen.screenHeight/3)
 
-var g_user_token = mockUserHashVal
+var g_user_token = ""
 struct ActivityIndicator: UIViewRepresentable {
     typealias UIViewType = UIActivityIndicatorView
 
@@ -40,8 +40,7 @@ struct theatalk_iosApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Home().environmentObject(Session(login: true, user: mockUserData))
-
+            InitialView().environmentObject(Session(login: false, user: nil))
         }
     }
 }

@@ -122,6 +122,9 @@
 		6F9ED92325D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
 		6F9ED92425D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
 		6F9ED92525D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
+		6F9F40BE25D7A344000A7113 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9F40BD25D7A344000A7113 /* InitialView.swift */; };
+		6F9F40BF25D7A344000A7113 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9F40BD25D7A344000A7113 /* InitialView.swift */; };
+		6F9F40C025D7A344000A7113 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9F40BD25D7A344000A7113 /* InitialView.swift */; };
 		9D766580CE3FE6A74E677527 /* Pods_theatalk_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A47664E783AF0B85BB2A57 /* Pods_theatalk_ios.framework */; };
 		FBF41B30C89D26D5B241D4B2 /* Pods_theatalk_ios_theatalk_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D50FAED80B8A7C0C635D641 /* Pods_theatalk_ios_theatalk_iosUITests.framework */; };
 /* End PBXBuildFile section */
@@ -199,6 +202,7 @@
 		6F88075E25D0713E0085826F /* ModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTest.swift; sourceTree = "<group>"; };
 		6F8D71CC25D41BB000649F2C /* TagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
 		6F9ED92225D56896006F0951 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		6F9F40BD25D7A344000A7113 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		BE6AF75577DE75F7A460C6FF /* Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig"; path = "Target Support Files/Pods-theatalk-ios-theatalk-iosUITests/Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F5B5CF214F41664075C6574B /* Pods_theatalk_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theatalk_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -375,6 +379,7 @@
 				6F8806CE25D069C40085826F /* SignUp.swift */,
 				6F8806CB25D069C30085826F /* URLImage.swift */,
 				6F8D71CC25D41BB000649F2C /* TagList.swift */,
+				6F9F40BD25D7A344000A7113 /* InitialView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -677,6 +682,7 @@
 				6F8806E025D069C40085826F /* CreateRoom.swift in Sources */,
 				6F9ED92325D56896006F0951 /* TestModel.swift in Sources */,
 				6F8806A725D0697A0085826F /* youtube_player.swift in Sources */,
+				6F9F40BE25D7A344000A7113 /* InitialView.swift in Sources */,
 				6F88069F25D069790085826F /* UserFetcher.swift in Sources */,
 				6F88066C25D068D30085826F /* Room.swift in Sources */,
 				6F8806A325D069790085826F /* Auth.swift in Sources */,
@@ -702,6 +708,7 @@
 				6F88072825D06E280085826F /* URLImage.swift in Sources */,
 				6F8806A225D069790085826F /* ImageLoader.swift in Sources */,
 				6F8806A625D0697A0085826F /* WBSocket.swift in Sources */,
+				6F9F40BF25D7A344000A7113 /* InitialView.swift in Sources */,
 				6F88068825D0693D0085826F /* Chat.swift in Sources */,
 				6F8806BD25D0699E0085826F /* MockUsers.swift in Sources */,
 				6F88069C25D069790085826F /* File.swift in Sources */,
@@ -764,6 +771,7 @@
 				6F88074725D06E380085826F /* theatalk_iosApp.swift in Sources */,
 				6F9ED92525D56896006F0951 /* TestModel.swift in Sources */,
 				6F8806D925D069C40085826F /* Home.swift in Sources */,
+				6F9F40C025D7A344000A7113 /* InitialView.swift in Sources */,
 				6F8806D525D069C40085826F /* URLImage.swift in Sources */,
 				6F88071825D06E200085826F /* Auth.swift in Sources */,
 				6F88073F25D06E340085826F /* Chat.swift in Sources */,

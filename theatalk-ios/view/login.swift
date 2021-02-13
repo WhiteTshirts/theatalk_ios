@@ -8,52 +8,42 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var userName = ""
-    @State var password = ""
     @EnvironmentObject var session: Session
-    @ObservedObject var LoginVM:AuthViewModel
+    @ObservedObject var LoginVM = AuthViewModel()
+    typealias CompletionClosure = ((_ result:Int)->Bool)
     var body: some View {
-        VStack(alignment: .center){
-            HStack{
-                Text("ユーザ名")
-                TextField("username", text: $userName)
+        NavigationView{
+            VStack(alignment: .center){
+                HStack{
+                    Text("ユーザ名")
+                    TextField("username", text: $LoginVM.userName)
+                }
+                HStack{
+                    Text("パスワード")
+                    SecureField("*******", text: $LoginVM.password)
+                }
+                Button(action: {
+                    self.LoginVM.login(){
+                        user, bool in
+                        guard let _ = user else{
+                            //error handle
+                            return
+                        }
+                        self.session.user  = user
+                        self.session.isLogin = true
+                    }
+                }) {
+                    Text("決定")
+                        .foregroundColor(Color.red)
+                    
+                }
             }
-            HStack{
-                Text("パスワード")
-                SecureField("*******", text: $password)
-            }
-            Button(action: {
-                checkInput()
-            }) {
-                Text("決定")
-                    .foregroundColor(Color.red)
-                
-            }
-            if(userName == ""){
-                Text("ユーザ名が入力されていません")
-            }
-            if(password == ""){
-                Text("passwordが入力されていません")
-            }
-        }.frame(width: 250, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+        }
+
 
     }
-    func checkInput()->Bool{
-        if(userName == ""||password == ""){
-            return false
-        }else{
-            return true
-        }
-    }
     
-    func login(){
-        if(checkInput()){
-            
-            
-        }else{
-            
-        }
-    }
+
 }
 
 struct Login_Previews: PreviewProvider {

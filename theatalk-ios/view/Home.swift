@@ -61,16 +61,13 @@ struct Home: View {
     @State var authfetcher = AuthFetcher()
     var body: some View {
         GeometryReader{ geometry in
-            
             ZStack(alignment:.leading){
                 NavigationView {
                     VStack{
                         HStack{
-                            
                             ScrollView{
                                 RoomList(RoomsVM: RoomsViewModel())
                             }
-                            
                         }
                     }
                     .navigationBarItems(leading:VStack{
@@ -84,18 +81,12 @@ struct Home: View {
                         .background(Color.white)
                         .animation(.default)
                         .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-
-                        
-
                 }
-
-
             }.gesture(DragGesture(minimumDistance: 5)
                         .onChanged{_ in
                             
                         }
                         .onEnded{ _ in
-                            
                             
                         })
         }.onAppear{

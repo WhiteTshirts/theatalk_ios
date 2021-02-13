@@ -31,7 +31,7 @@ class Fetcher{
         var JsonObject: AnyObject?
         request.addValue("application/json", forHTTPHeaderField: "content-type")
         request.httpMethod = method
-        request.setValue("Bearer \(mockUserHashVal)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(g_user_token)", forHTTPHeaderField: "Authorization")
         if (body != nil) {
             request.httpBody = body
         }
