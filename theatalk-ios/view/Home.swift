@@ -24,6 +24,7 @@ struct Sidemenu: View{
                 Text("Profile")
             }
             HStack {
+                Spacer()
                 Image(systemName: "text.bubble")
                 Text("Tags")
             }
@@ -35,16 +36,43 @@ struct Sidemenu: View{
 struct NavItem: View{
     @Binding var info: Bool
     @Binding var textEntered: String
+    @State var TextInputting = true
+    @ObservedObject var TagsVM = TagsViewModel()
     var body: some View{
-        HStack(alignment: .top){
-            Button(action: {
-                info = !info
-            }){
-                Image(systemName: "list.dash").resizable()
-                .frame(width: ProfileSize.width,height: ProfileSize.height)
+        VStack(alignment: .center){
+            HStack(alignment: .top){
+                Button(action: {
+                    info = !info
+                }){
+                    Image(systemName: "list.dash").resizable()
+                    .frame(width: ProfileSize.width,height: ProfileSize.height)
+                }
+                HStack{
+                TextField("tagで検索",text:$textEntered,
+                          onEditingChanged: { begin in
+                               if begin {
+                                self.TextInputting = true
+                               } else {
+                                self.TextInputting = false
+                               }
+                            TagsVM.searchTags(tagName: textEntered)
+                           })
+                    
+                }
+                NavigationLink("+",destination:CreateRoom())
             }
-            TextField("検索",text:$textEntered)
-            NavigationLink("+",destination:CreateRoom())
+            HStack{
+                ScrollView(.horizontal){
+                    HStack{
+                        ForEach(TagsVM.tags){tag in
+                            Text("\(tag.name)")
+                                .font(.caption2)
+                        }
+                    }
+
+                }
+
+            }
         }
         
     }
@@ -59,20 +87,25 @@ struct Home: View {
     @State var textEntered = ""
     @State var info = false
     @State var authfetcher = AuthFetcher()
+    @State var SearchTagId = -1
     var body: some View {
         GeometryReader{ geometry in
             ZStack(alignment:.leading){
                 NavigationView {
-                    VStack{
+                    VStack(alignment: .center){
                         HStack{
                             ScrollView{
-                                RoomList(RoomsVM: RoomsViewModel())
+                                RoomList(RoomsVM: RoomsViewModel(tagId: SearchTagId))
                             }
                         }
                     }
-                    .navigationBarItems(leading:VStack{
-                        NavItem(info: self.$info, textEntered: self.$textEntered)
-                    })
+                    .navigationBarTitleDisplayMode(.large)
+                    .toolbar{
+                        ToolbarItem(placement: .navigationBarTrailing){
+                                NavItem(info: self.$info, textEntered: self.$textEntered)
+                            
+                        }
+                    }
 
                 }
                 if info {

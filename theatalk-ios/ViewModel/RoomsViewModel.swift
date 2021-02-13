@@ -10,16 +10,22 @@ import Combine
 
 final class RoomsViewModel: ObservableObject{
     private var disposables = Set<AnyCancellable>()
-
+    @Published var isLoading = false
     @Published var rooms: [Room] = []
+    private var tagId:Int?
     private var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
-    init(){
+    init(tagId:Int){
+        if(tagId>0){
+            self.tagId = tagId
+        }
+        self.isLoading = true
         roomfetcher.GETRooms()
             .sink(
           receiveCompletion: { [weak self] value in
             guard let self = self else { return }
             switch value {
             case .failure:
+                self.isLoading = false
               break
             case .finished:
               break
@@ -28,10 +34,12 @@ final class RoomsViewModel: ObservableObject{
           receiveValue: { [weak self] rooms in
             guard let self = self else { return }
             self.rooms = rooms.rooms
+            self.isLoading = false
           })
         .store(in: &disposables)
     }
     func load(){
+        
         //self.rooms = mockRoomsData
 //        roomfetcher.fetchRoomData{
 //            returnData in

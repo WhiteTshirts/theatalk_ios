@@ -66,7 +66,7 @@ extension RoomFetcher{
       url_components.scheme = "http"
       url_components.host = "localhost"
         url_components.port = 5000
-      url_components.path = "/api/v1/"+Path
+      url_components.path = "/api/v1"+Path
         var components = URLRequest(url:url_components.url!)
         components.httpMethod = Type
         components.addValue("application/json", forHTTPHeaderField: "content-type")

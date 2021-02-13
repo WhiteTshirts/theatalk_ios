@@ -10,10 +10,10 @@ import Foundation
 import Combine
 protocol TagFechable {
     func GETTags(
-    ) -> AnyPublisher<Tags,APIError>
+    ) -> AnyPublisher<Tags_json,APIError>
     func PostTag(
         tag_name: String
-    ) -> AnyPublisher<Tag,APIError>
+    ) -> AnyPublisher<Tag_json,APIError>
 //    func EditTag(
 //        forTag tag: Tag
 //    ) ->AnyPublisher<Tag,APIError>
@@ -50,13 +50,35 @@ class TagFetcher{
 }
 
 extension TagFetcher{
+    func makeTagsComponentsWithq(Path:String,query:URLQueryItem?,Type:String,body: Data!)-> URLRequest{
+        var url_components = URLComponents()
+        url_components.scheme = "http"
+        url_components.host = "localhost"
+        url_components.port = 5000
+        url_components.path = "/api/v1"+Path
+        if(query != nil){
+            url_components.queryItems = [query!]
+        }
+        var components = URLRequest(url:url_components.url!)
+        
+        print(components.url)
+        components.httpMethod = Type
+        components.addValue("application/json", forHTTPHeaderField: "content-type")
+        if(g_user_token != nil){
+            components.setValue("Bearer \(g_user_token)", forHTTPHeaderField: "Authorization")
+        }
+        if(body != nil){
+            components.httpBody = body
+        }
+      return components
+    }
     func makeTagsComponents(Path:String,Type:String,body: Data!
     ) -> URLRequest {
         var url_components = URLComponents()
       url_components.scheme = "http"
       url_components.host = "localhost"
         url_components.port = 5000
-      url_components.path = "/api/v1/"+Path
+      url_components.path = "/api/v1"+Path
         var components = URLRequest(url:url_components.url!)
         components.httpMethod = Type
         components.addValue("application/json", forHTTPHeaderField: "content-type")
@@ -71,7 +93,7 @@ extension TagFetcher{
 }
 
 extension TagFetcher:TagFechable{
-    func PostTag(tag_name: String) -> AnyPublisher<Tag, APIError> {
+    func PostTag(tag_name: String) -> AnyPublisher<Tag_json, APIError> {
         var tag_info = Dictionary<String,Any>()
         tag_info["name"] = tag_name
         var jobj = Dictionary<String,Any>()
@@ -87,7 +109,7 @@ extension TagFetcher:TagFechable{
         return fetchTag(with: makeTagsComponents(Path: "POST", Type: "/tags", body: data))
     }
     func GETTags(
-    ) -> AnyPublisher<Tags,APIError>{
+    ) -> AnyPublisher<Tags_json,APIError>{
         return fetchTag(with: makeTagsComponents(Path: "/tags", Type: "GET", body: nil))
     }
     func GETTagUsers(tagId:Int)->AnyPublisher<Int,APIError>{
@@ -98,7 +120,7 @@ extension TagFetcher:TagFechable{
         var data:Data!
         return fetchTag(with: makeTagsComponents(Path: "/users_tags", Type: "GET", body: data))
     }
-    func DeleteUsersTag(tagId:Int)->AnyPublisher<Tags,APIError>{
+    func DeleteUsersTag(tagId:Int)->AnyPublisher<Tags_json,APIError>{
         var data:Data!
         return fetchTag(with: makeTagsComponents(Path: "/user_tags/\(tagId)", Type: "DELETE", body: data))
     }
@@ -113,4 +135,9 @@ extension TagFetcher:TagFechable{
     func GETRoomsbyTag(tagId:Int)->AnyPublisher<Rooms_json,APIError>{
         return fetchTag(with: makeTagsComponents(Path: "/room_tags/\(tagId)", Type: "GET", body: nil))
     }
+    func SearchTagsbyName(tagName:String)->AnyPublisher<Tags_json,APIError>{
+        var query = URLQueryItem(name: "search", value: tagName)
+        return  fetchTag(with: makeTagsComponentsWithq(Path: "/tags/search",query: query, Type: "GET", body: nil))
+    }
 }
+

@@ -12,8 +12,10 @@ struct RoomList: View {
     @ObservedObject var RoomsVM: RoomsViewModel
 
     var body: some View{
-        if(RoomsVM.rooms.isEmpty){
+        if(RoomsVM.rooms.isEmpty && RoomsVM.isLoading){
             Image(systemName: "hourglass").resizable()
+                .scaledToFit()
+                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         }else{
             ForEach(RoomsVM.rooms){room in
                 HStack{
