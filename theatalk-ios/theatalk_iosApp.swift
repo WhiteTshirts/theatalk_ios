@@ -37,7 +37,6 @@ struct ActivityIndicator: UIViewRepresentable {
 @main
 struct theatalk_iosApp: App {
 
-
     var body: some Scene {
         WindowGroup {
             InitialView().environmentObject(Session(login: false, user: nil))

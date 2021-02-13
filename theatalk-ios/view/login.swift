@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @EnvironmentObject var session: Session
     @ObservedObject var LoginVM = AuthViewModel()
+    @ObservedObject var profile = UserProfile()
     typealias CompletionClosure = ((_ result:Int)->Bool)
     var body: some View {
         NavigationView{
@@ -23,12 +24,16 @@ struct LoginView: View {
                     SecureField("*******", text: $LoginVM.password)
                 }
                 Button(action: {
+                    profile.password = LoginVM.password
+                    
+                    profile.username = LoginVM.userName
                     self.LoginVM.login(){
                         user, bool in
                         guard let _ = user else{
                             //error handle
                             return
                         }
+                        profile.token = g_user_token
                         self.session.user  = user
                         self.session.isLogin = true
                     }
