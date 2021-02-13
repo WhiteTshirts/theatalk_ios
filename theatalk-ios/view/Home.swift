@@ -39,29 +39,30 @@ struct NavItem: View{
     @State var TextInputting = true
     @ObservedObject var TagsVM = TagsViewModel()
     var body: some View{
-        VStack(alignment: .center){
-            HStack(alignment: .top){
-                Button(action: {
-                    info = !info
-                }){
-                    Image(systemName: "list.dash").resizable()
-                    .frame(width: ProfileSize.width,height: ProfileSize.height)
+        VStack{
+            VStack(alignment: .leading){
+                HStack(alignment: .top){
+                    Button(action: {
+                        info = !info
+                    }){
+                        Image(systemName: "list.dash").resizable()
+                        .frame(width: ProfileSize.width,height: ProfileSize.height)
+                    }
+                    HStack{
+                    TextField("tagで検索",text:$textEntered,
+                              onEditingChanged: { begin in
+                                   if begin {
+                                    self.TextInputting = true
+                                   } else {
+                                    self.TextInputting = false
+                                   }
+                                TagsVM.searchTags(tagName: textEntered)
+                               })
+                        
+                    }
+                    NavigationLink("+",destination:CreateRoom())
                 }
-                HStack{
-                TextField("tagで検索",text:$textEntered,
-                          onEditingChanged: { begin in
-                               if begin {
-                                self.TextInputting = true
-                               } else {
-                                self.TextInputting = false
-                               }
-                            TagsVM.searchTags(tagName: textEntered)
-                           })
-                    
-                }
-                NavigationLink("+",destination:CreateRoom())
             }
-            HStack{
                 ScrollView(.horizontal){
                     HStack{
                         ForEach(TagsVM.tags){tag in
@@ -70,12 +71,15 @@ struct NavItem: View{
                         }
                     }
 
-                }
+                }.frame(width: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
 
-            }
+            
         }
+
         
     }
+
+
 }
 //protocol EnterRoomDele {
 //    func enterroom(room_num:Int)
@@ -101,7 +105,7 @@ struct Home: View {
                     }
                     .navigationBarTitleDisplayMode(.large)
                     .toolbar{
-                        ToolbarItem(placement: .navigationBarTrailing){
+                        ToolbarItem(placement: .principal){
                                 NavItem(info: self.$info, textEntered: self.$textEntered)
                             
                         }
