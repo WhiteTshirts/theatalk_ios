@@ -138,19 +138,9 @@ extension RoomFetcher: RoomFechable{
     func GetSameRoomUsers()->AnyPublisher<Users_Json,APIError>{
         return fetchRoom(with: makeRoomsComponents(Path: "/room_users", Type: "GET", body: nil))
     }
-//    func GETRoomsWithTag(forTag tag: Int) -> AnyPublisher<Rooms, APIError> {
-//        var body:Data!
-//        var room_info = Dictionary<String,Any>()
-//        room_info["room_id"] = roomId
-//        var jobj = Dictionary<String,Any>()
-//        jobj["user"] = room_info
-//        do {
-//            body = try JSONSerialization.data(withJSONObject: jobj, options: [])
-//        } catch let encodeError as NSError {
-//            print("Encoder error: \(encodeError.localizedDescription)\n")
-//        }
-//        return fetchRoom(with: makeEnterRoomComponents(roomId: roomId, body: body))
-//    }
+    func GETRoomsbyTag(tagId:Int)->AnyPublisher<Rooms_json,APIError>{
+        return fetchRoom(with: makeRoomsComponents(Path: "/room_tags/\(tagId)", Type: "GET", body: nil))
+    }
 //
 //    func GetRoom(forRoomId roomId: Int) -> AnyPublisher<Room, APIError> {
 //

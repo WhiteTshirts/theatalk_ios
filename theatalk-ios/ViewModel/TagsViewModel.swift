@@ -36,23 +36,27 @@ final class TagsViewModel: ObservableObject{
     }
     func load(){
 
-//        tagFetcher.GETTags()
-//            .sink(
-//          receiveCompletion: { [weak self] value in
-//            guard let self = self else { return }
-//            switch value {
-//            case .failure:
-//              break
-//            case .finished:
-//              break
-//            }
-//          },
-//          receiveValue: { [weak self] tags in
-//            guard let self = self else { return }
-//            self.tags = tags.tags
-//        })
-//        .store(in: &disposables)
+
         
+    }
+    func getTags(){
+            tagFetcher.GETTags()
+                .sink(
+              receiveCompletion: { [weak self] value in
+                guard let self = self else { return }
+                switch value {
+                case .failure:
+                    self.tags = []
+                  break
+                case .finished:
+                  break
+                }
+              },
+              receiveValue: { [weak self] tags in
+                guard let self = self else { return }
+                self.tags = tags.tags
+            })
+            .store(in: &disposables)
     }
     func searchTags(tagName:String){
         tagFetcher.SearchTagsbyName(tagName: tagName).sink(receiveCompletion: {[weak self] value in

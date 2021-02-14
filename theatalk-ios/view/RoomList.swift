@@ -10,7 +10,7 @@ import UIKit
 
 struct RoomList: View {
     @ObservedObject var RoomsVM: RoomsViewModel
-
+    @Binding var tagId:Int
     var body: some View{
         if(RoomsVM.rooms.isEmpty && RoomsVM.isLoading){
             Image(systemName: "hourglass").resizable()
@@ -28,7 +28,16 @@ struct RoomList: View {
                     }
                 }
             }.onAppear(){
-            }
+            }.onChange(of: self.tagId, perform: { value in
+                if(value > 0){
+                    RoomsVM.SetTagId(tagId: value)
+                    RoomsVM.GetRoomsByTagId(tagId: value)
+                }else{
+                    RoomsVM.SetTagId(tagId: 0)
+                    RoomsVM.GetallRooms()
+                }
+
+            })
         }
 
     }

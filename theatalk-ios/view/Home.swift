@@ -36,7 +36,11 @@ struct Sidemenu: View{
 struct NavItem: View{
     @Binding var info: Bool
     @Binding var textEntered: String
+    @Binding var TagId:Int
     @State var TextInputting = true
+    @State var TextChanged = false
+    @State var textEneredtmp = ""
+    @State var TagIdtmp = 0
     @ObservedObject var TagsVM = TagsViewModel()
     var body: some View{
         VStack{
@@ -51,10 +55,14 @@ struct NavItem: View{
                     HStack{
                     TextField("tagで検索",text:$textEntered,
                               onEditingChanged: { begin in
+
                                    if begin {
                                     self.TextInputting = true
                                    } else {
                                     self.TextInputting = false
+                                    if(textEntered == ""){
+                                        TagId = -1
+                                    }
                                    }
                                 TagsVM.searchTags(tagName: textEntered)
                                })
@@ -66,8 +74,15 @@ struct NavItem: View{
             ScrollView(.horizontal){
                 HStack{
                     ForEach(TagsVM.tags){tag in
-                        Text("\(tag.name)")
-                            .font(.caption2)
+                        Button(action:{
+                            TagId = tag.id
+                            textEntered = tag.name
+                            TextChanged = true
+                        }){
+                            Text("\(tag.name)")
+                                .font(.caption2)
+                        }
+
                     }
                 }
 
@@ -101,14 +116,14 @@ struct Home: View {
                     VStack(alignment: .center){
                         HStack{
                             ScrollView{
-                                RoomList(RoomsVM: RoomsViewModel(tagId: SearchTagId))
+                                RoomList(RoomsVM: RoomsViewModel(),tagId:self.$SearchTagId)
                             }
                         }
                     }
                     .navigationBarTitleDisplayMode(.large)
                     .toolbar{
                         ToolbarItem(placement: .principal){
-                                NavItem(info: self.$info, textEntered: self.$textEntered)
+                            NavItem(info: self.$info, textEntered: self.$textEntered,TagId: self.$SearchTagId)
                             
                         }
                     }
