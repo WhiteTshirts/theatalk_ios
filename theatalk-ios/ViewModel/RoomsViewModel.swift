@@ -20,12 +20,14 @@ final class RoomsViewModel: ObservableObject{
         }
         self.isLoading = true
         roomfetcher.GETRooms()
+            .receive(on: DispatchQueue.main)
             .sink(
           receiveCompletion: { [weak self] value in
             guard let self = self else { return }
             switch value {
             case .failure:
                 self.isLoading = false
+                self.rooms = []
               break
             case .finished:
               break

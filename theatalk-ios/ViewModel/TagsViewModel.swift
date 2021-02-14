@@ -59,6 +59,7 @@ final class TagsViewModel: ObservableObject{
             guard let self = self else {return}
             switch value {
             case .failure:
+                self.tags = []
                 break
                 
             case .finished:

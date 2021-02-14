@@ -128,8 +128,6 @@ struct Home: View {
                         .onEnded{ _ in
                             
                         })
-        }.onAppear{
-            authfetcher.login(name: "hoge", password: "hoge")
         }
 
     }
