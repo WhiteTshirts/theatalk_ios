@@ -17,7 +17,6 @@ final class TagsViewModel: ObservableObject{
     @Published var tags: [Tag] = []
     private var tagFetcher = TagFetcher(url: "http://localhost:5000/api/v1/tags")
     init(){
-        self.tags = mockTagsData
 //        tagFetcher.GETTags()
 //            .sink(
 //          receiveCompletion: { [weak self] value in
@@ -36,7 +35,6 @@ final class TagsViewModel: ObservableObject{
 //        .store(in: &disposables)
     }
     func load(){
-        self.tags = mockTagsData
 
 //        tagFetcher.GETTags()
 //            .sink(

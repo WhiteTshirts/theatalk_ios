@@ -119,6 +119,12 @@
 		6F8D71CD25D41BB000649F2C /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8D71CC25D41BB000649F2C /* TagList.swift */; };
 		6F8D71CE25D41BB000649F2C /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8D71CC25D41BB000649F2C /* TagList.swift */; };
 		6F8D71CF25D41BB000649F2C /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8D71CC25D41BB000649F2C /* TagList.swift */; };
+		6F97ABAD25D8DD2C00B3B5BF /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABAC25D8DD2C00B3B5BF /* UsersList.swift */; };
+		6F97ABAE25D8DD2C00B3B5BF /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABAC25D8DD2C00B3B5BF /* UsersList.swift */; };
+		6F97ABAF25D8DD2C00B3B5BF /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABAC25D8DD2C00B3B5BF /* UsersList.swift */; };
+		6F97ABB425D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */; };
+		6F97ABB525D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */; };
+		6F97ABB625D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */; };
 		6F9ED92325D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
 		6F9ED92425D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
 		6F9ED92525D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
@@ -204,6 +210,8 @@
 		6F8806F025D069DC0085826F /* RoomsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewModel.swift; sourceTree = "<group>"; };
 		6F88075E25D0713E0085826F /* ModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTest.swift; sourceTree = "<group>"; };
 		6F8D71CC25D41BB000649F2C /* TagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
+		6F97ABAC25D8DD2C00B3B5BF /* UsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
+		6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		6F9ED92225D56896006F0951 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		6F9F40BD25D7A344000A7113 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		6F9F40C425D7ED3B000A7113 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -385,6 +393,7 @@
 				6F8806CB25D069C30085826F /* URLImage.swift */,
 				6F8D71CC25D41BB000649F2C /* TagList.swift */,
 				6F9F40BD25D7A344000A7113 /* InitialView.swift */,
+				6F97ABAC25D8DD2C00B3B5BF /* UsersList.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -393,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				6F8806EF25D069DC0085826F /* AuthViewModel.swift */,
+				6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */,
 				6F8806ED25D069DC0085826F /* ChatViewModel.swift */,
 				6F8806F025D069DC0085826F /* RoomsViewModel.swift */,
 				6F8806EE25D069DC0085826F /* TagsViewModel.swift */,
@@ -672,6 +682,7 @@
 				6F88067225D069020085826F /* User.swift in Sources */,
 				6F8806C025D0699E0085826F /* MockChats.swift in Sources */,
 				6F8806BC25D0699E0085826F /* MockUsers.swift in Sources */,
+				6F97ABAD25D8DD2C00B3B5BF /* UsersList.swift in Sources */,
 				6F9F40C525D7ED3B000A7113 /* UserProfile.swift in Sources */,
 				6F8805E525D0671A0085826F /* ContentView.swift in Sources */,
 				6F8D71CD25D41BB000649F2C /* TagList.swift in Sources */,
@@ -686,6 +697,7 @@
 				6F8806C225D0699E0085826F /* MockRooms.swift in Sources */,
 				6F8805E325D0671A0085826F /* theatalk_iosApp.swift in Sources */,
 				6F8806E025D069C40085826F /* CreateRoom.swift in Sources */,
+				6F97ABB425D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
 				6F9ED92325D56896006F0951 /* TestModel.swift in Sources */,
 				6F8806A725D0697A0085826F /* youtube_player.swift in Sources */,
 				6F9F40BE25D7A344000A7113 /* InitialView.swift in Sources */,
@@ -715,6 +727,7 @@
 				6F8806A225D069790085826F /* ImageLoader.swift in Sources */,
 				6F8806A625D0697A0085826F /* WBSocket.swift in Sources */,
 				6F9F40BF25D7A344000A7113 /* InitialView.swift in Sources */,
+				6F97ABB525D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
 				6F88068825D0693D0085826F /* Chat.swift in Sources */,
 				6F8806BD25D0699E0085826F /* MockUsers.swift in Sources */,
 				6F88069C25D069790085826F /* File.swift in Sources */,
@@ -727,6 +740,7 @@
 				6F8806B025D0697A0085826F /* ChatFecher.swift in Sources */,
 				6F8806A825D0697A0085826F /* youtube_player.swift in Sources */,
 				6F88067F25D0692E0085826F /* Tag.swift in Sources */,
+				6F97ABAE25D8DD2C00B3B5BF /* UsersList.swift in Sources */,
 				6F88072A25D06E280085826F /* login.swift in Sources */,
 				6F8806A025D069790085826F /* UserFetcher.swift in Sources */,
 				6F8D71CE25D41BB000649F2C /* TagList.swift in Sources */,
@@ -763,6 +777,7 @@
 				6F8806DD25D069C40085826F /* login.swift in Sources */,
 				6F88073E25D06E340085826F /* Session.swift in Sources */,
 				6F8806DF25D069C40085826F /* Menu.swift in Sources */,
+				6F97ABAF25D8DD2C00B3B5BF /* UsersList.swift in Sources */,
 				6F9F40C725D7ED3B000A7113 /* UserProfile.swift in Sources */,
 				6F88073C25D06E340085826F /* Tag.swift in Sources */,
 				6F8D71CF25D41BB000649F2C /* TagList.swift in Sources */,
@@ -777,6 +792,7 @@
 				6F88071D25D06E230085826F /* MockChats.swift in Sources */,
 				6F8806E125D069C40085826F /* CreateRoom.swift in Sources */,
 				6F88074725D06E380085826F /* theatalk_iosApp.swift in Sources */,
+				6F97ABB625D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
 				6F9ED92525D56896006F0951 /* TestModel.swift in Sources */,
 				6F8806D925D069C40085826F /* Home.swift in Sources */,
 				6F9F40C025D7A344000A7113 /* InitialView.swift in Sources */,

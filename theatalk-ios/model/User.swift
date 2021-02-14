@@ -22,6 +22,10 @@ class User:Identifiable,Codable{
     enum EncodeNestKeys:CodingKey{
         case user
     }
+    init(name_: String,user_id: Int){
+        name = name_
+        id = user_id
+    }
     init(name_: String,password_: String){
         id = -1
         name = name_

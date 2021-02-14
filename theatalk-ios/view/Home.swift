@@ -63,15 +63,17 @@ struct NavItem: View{
                     NavigationLink("+",destination:CreateRoom())
                 }
             }
-                ScrollView(.horizontal){
-                    HStack{
-                        ForEach(TagsVM.tags){tag in
-                            Text("\(tag.name)")
-                                .font(.caption2)
-                        }
+            ScrollView(.horizontal){
+                HStack{
+                    ForEach(TagsVM.tags){tag in
+                        Text("\(tag.name)")
+                            .font(.caption2)
                     }
+                }
 
-                }.frame(width: RoomSize_Column1.width, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            }.frame(width: RoomSize_Column1.width, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            
+
 
             
         }

@@ -21,7 +21,6 @@ class ChatFetcher{
         jobj["chat"] = chat_info
         do {
             let data = try JSONSerialization.data(withJSONObject: jobj, options: [])
-            let jsonStr = String(bytes: data, encoding: .utf8)!
             fetcher.fetchData(method:"POST",path: "/api/v1/rooms/\(room_Id)/chats",body: data){ returnData in
             }
         } catch let encodeError as NSError {
