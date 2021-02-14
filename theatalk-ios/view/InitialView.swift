@@ -20,6 +20,7 @@ struct InitialView: View {
             }
         }.onAppear{
             if(profile.username != ""){
+                print(profile.username)
                 self.session.user = User(name_: profile.username, password_: profile.password)
                 g_user_token = profile.token
 

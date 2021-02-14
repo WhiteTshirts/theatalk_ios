@@ -9,8 +9,9 @@ import SwiftUI
 
 
 struct Sidemenu: View{
-    
+    @State private var showingAlert = false
     @Binding var info: Bool
+    var logoutdel: logoutDel
     var body: some View{
         VStack(alignment: .center){
             Button(action: {
@@ -20,13 +21,36 @@ struct Sidemenu: View{
                 .frame(width: ProfileSize.width,height: ProfileSize.height)
             }
             HStack {
-                Image(systemName: "person")
-                Text("Profile")
+                Button(action: {
+                }){
+                    Image(systemName: "person")
+                    Text("Profile")
+                    
+                }
+
             }
             HStack {
-                Spacer()
-                Image(systemName: "text.bubble")
-                Text("Tags")
+                Button(action: {
+                }){
+                    Image(systemName: "text.bubble")
+                    Text("Tags")
+                    
+                }.alert(isPresented: $showingAlert){
+                    Alert(title: Text("ログアウトしますか")
+                          ,primaryButton: .default(Text("はい"),
+                                                   action:{
+                                                    logoutdel.logout()
+                                                   }), secondaryButton: .default(Text("いいえ")))
+                }
+            }
+            HStack{
+                Button(action: {
+                    self.showingAlert = true
+
+                }){
+                    Text("logout")
+                    
+                }
             }
             Spacer()
         }
@@ -39,9 +63,15 @@ struct NavItem: View{
     @Binding var TagId:Int
     @State var TextInputting = true
     @State var TextChanged = false
-    @State var textEneredtmp = ""
-    @State var TagIdtmp = 0
     @ObservedObject var TagsVM = TagsViewModel()
+    func UpdateSearchTag(tag:Tag){
+        DispatchQueue.main.async {
+            self.TagId = tag.id
+            self.textEntered = tag.name
+            TextChanged = true
+            print(self.TagId)
+        }
+    }
     var body: some View{
         VStack{
             VStack(alignment: .leading){
@@ -55,14 +85,18 @@ struct NavItem: View{
                     HStack{
                     TextField("tagで検索",text:$textEntered,
                               onEditingChanged: { begin in
-
+                                
+//                                if(textEntered == ""){
+//                                    DispatchQueue.main.async {
+//                                        TagId = -1
+//                                    }
+//                                }
+                                
                                    if begin {
                                     self.TextInputting = true
                                    } else {
                                     self.TextInputting = false
-                                    if(textEntered == ""){
-                                        TagId = -1
-                                    }
+
                                    }
                                 TagsVM.searchTags(tagName: textEntered)
                                })
@@ -75,9 +109,7 @@ struct NavItem: View{
                 HStack{
                     ForEach(TagsVM.tags){tag in
                         Button(action:{
-                            TagId = tag.id
-                            textEntered = tag.name
-                            TextChanged = true
+                            UpdateSearchTag(tag: tag)
                         }){
                             Text("\(tag.name)")
                                 .font(.caption2)
@@ -88,12 +120,8 @@ struct NavItem: View{
 
             }.frame(width: RoomSize_Column1.width, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             
-
-
-            
         }
 
-        
     }
 
 
@@ -101,9 +129,20 @@ struct NavItem: View{
 //protocol EnterRoomDele {
 //    func enterroom(room_num:Int)
 //}
-struct Home: View {
+protocol logoutDel {
+    func logout()
+}
+struct Home: View,logoutDel {
+    func logout() {
+        session.user = nil
+        profile.token = ""
+        profile.password = ""
+        profile.username = ""
+        profile.user_Id = -1
+    }
+    
     @EnvironmentObject var session: Session
-
+    @ObservedObject var profile = UserProfile()
     @State var loading = true
     @State var textEntered = ""
     @State var info = false
@@ -130,7 +169,7 @@ struct Home: View {
 
                 }
                 if info {
-                    Sidemenu(info: self.$info)
+                    Sidemenu(info: self.$info,logoutdel: self)
                         .frame(width:UIScreen.screenWidth/2,height: UIScreen.screenHeight,alignment: .leading)
                         .background(Color.white)
                         .animation(.default)

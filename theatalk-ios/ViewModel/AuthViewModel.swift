@@ -19,9 +19,9 @@ final public class AuthViewModel: ObservableObject{
     private var authfetcher = AuthFetcher()
     //private var fetcher = AuthFetcher(url: "http://localhost:5000/api/v1/rooms/0")
     init(){
-        self.user = mockUserData
+        //self.user = mockUserData
         //if cannot get user data ask name and password
-        hashval = mockUserHashVal
+        //hashval = mockUserHashVal
         //login here if fail ask name and password in first scene
     }
     func load(){

@@ -18,7 +18,7 @@ class ChatFetcher:Fetcher{
     }
 
     func sendChatData(msg:String,room_Id:Int)->AnyPublisher<Chat_Json,APIError>{
-        var chat = Chat(user_id_: 0, text_: msg, created_at_: Date())
+        let chat = Chat(user_id_: 0, text_: msg, created_at_: Date())
         
         do {
             let data = try encoder.encode(chat)

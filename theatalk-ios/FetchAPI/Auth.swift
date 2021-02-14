@@ -83,7 +83,7 @@ extension AuthFetcher{
         var components = URLRequest(url:url_components.url!)
         components.httpMethod = Type
         components.addValue("application/json", forHTTPHeaderField: "content-type")
-        if(mockUserHashVal != nil){
+        if(mockUserHashVal != ""){
             components.setValue("Bearer \(mockUserHashVal)", forHTTPHeaderField: "Authorization")
         }
         if(body != nil){

@@ -22,27 +22,29 @@ final class RoomsViewModel: ObservableObject{
         self.tagId = tagId
     }
     func GetallRooms(){
-        self.isLoading = true
-        roomfetcher.GETRooms()
-            .receive(on: DispatchQueue.main)
-            .sink(
-          receiveCompletion: { [weak self] value in
-            guard let self = self else { return }
-            switch value {
-            case .failure:
-                self.isLoading = false
-                self.rooms = []
-              break
-            case .finished:
-              break
-            }
-          },
-          receiveValue: { [weak self] rooms_json in
-            guard let self = self else { return }
-            self.rooms = rooms_json.rooms
-            self.isLoading = false
-          })
-        .store(in: &disposables)
+        self.rooms = mockRoomsData
+//        self.isLoading = true
+//        roomfetcher.GETRooms()
+//            .receive(on: DispatchQueue.main)
+//            .sink(
+//          receiveCompletion: { [weak self] value in
+//            guard let self = self else { return }
+//            switch value {
+//            case .failure:
+//                self.isLoading = false
+//                self.rooms = []
+//              break
+//            case .finished:
+//              break
+//            }
+//          },
+//          receiveValue: { [weak self] rooms_json in
+//            guard let self = self else { return }
+//            self.rooms = rooms_json.rooms
+//            self.isLoading = false
+//            print(self.rooms)
+//          })
+//        .store(in: &disposables)
     }
     func GetRoomsByTagId(tagId:Int){
         self.isLoading = true
@@ -51,6 +53,7 @@ final class RoomsViewModel: ObservableObject{
             .sink(
           receiveCompletion: { [weak self] value in
             guard let self = self else { return }
+            print(value)
             switch value {
             case .failure:
                 self.isLoading = false

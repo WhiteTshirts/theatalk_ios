@@ -56,6 +56,7 @@ class RoomFetcher{
         .flatMap(maxPublishers: .max(1)) { pair in
           decode(pair.data)
         }
+        .receive(on: RunLoop.main)
         .eraseToAnyPublisher()
     }
   }
@@ -70,7 +71,7 @@ extension RoomFetcher{
         var components = URLRequest(url:url_components.url!)
         components.httpMethod = Type
         components.addValue("application/json", forHTTPHeaderField: "content-type")
-        if(g_user_token != nil){
+        if(g_user_token != ""){
             components.setValue("Bearer \(g_user_token)", forHTTPHeaderField: "Authorization")
         }
         if(body != nil){

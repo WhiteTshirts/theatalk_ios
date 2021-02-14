@@ -60,11 +60,10 @@ extension TagFetcher{
             url_components.queryItems = [query!]
         }
         var components = URLRequest(url:url_components.url!)
-        
-        print(components.url)
+
         components.httpMethod = Type
         components.addValue("application/json", forHTTPHeaderField: "content-type")
-        if(g_user_token != nil){
+        if(g_user_token != ""){
             components.setValue("Bearer \(g_user_token)", forHTTPHeaderField: "Authorization")
         }
         if(body != nil){
@@ -82,7 +81,7 @@ extension TagFetcher{
         var components = URLRequest(url:url_components.url!)
         components.httpMethod = Type
         components.addValue("application/json", forHTTPHeaderField: "content-type")
-        if(g_user_token != nil){
+        if(g_user_token != ""){
             components.setValue("Bearer \(g_user_token)", forHTTPHeaderField: "Authorization")
         }
         if(body != nil){
@@ -134,7 +133,7 @@ extension TagFetcher:TagFechable{
     }
 
     func SearchTagsbyName(tagName:String)->AnyPublisher<Tags_json,APIError>{
-        var query = URLQueryItem(name: "search", value: tagName)
+        let query = URLQueryItem(name: "search", value: tagName)
         return  fetchTag(with: makeTagsComponentsWithq(Path: "/tags/search",query: query, Type: "GET", body: nil))
     }
 }

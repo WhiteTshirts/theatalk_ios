@@ -21,7 +21,7 @@ class ChatWBSocket{
         let json = """
        {"command":"subscribe","identifier":"{\\"channel\\":\\"RoomChannel\\"}"}
        """
-        var message = URLSessionWebSocketTask.Message.string(json)
+        let message = URLSessionWebSocketTask.Message.string(json)
         task.send(message){ error in
             if let error = error {
                 print("WebSocket sending error: \(error)")
