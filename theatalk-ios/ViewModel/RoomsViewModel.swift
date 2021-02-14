@@ -33,9 +33,9 @@ final class RoomsViewModel: ObservableObject{
               break
             }
           },
-          receiveValue: { [weak self] rooms in
+          receiveValue: { [weak self] rooms_json in
             guard let self = self else { return }
-            self.rooms = rooms.rooms
+            self.rooms = rooms_json.rooms
             self.isLoading = false
           })
         .store(in: &disposables)

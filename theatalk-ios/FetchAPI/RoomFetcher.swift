@@ -135,7 +135,7 @@ extension RoomFetcher: RoomFechable{
     func ExitRoom()-> AnyPublisher<User,APIError>{
         return fetchRoom(with: makeRoomsComponents(Path: "/room_users/leave", Type: "GET", body: nil))
     }
-    func GetSameRoomUsers()->AnyPublisher<Users_Jsosn,APIError>{
+    func GetSameRoomUsers()->AnyPublisher<Users_Json,APIError>{
         return fetchRoom(with: makeRoomsComponents(Path: "/room_users", Type: "GET", body: nil))
     }
 //    func GETRoomsWithTag(forTag tag: Int) -> AnyPublisher<Rooms, APIError> {

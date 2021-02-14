@@ -19,7 +19,7 @@ class User:Identifiable,Codable{
     enum EncodeKeys:CodingKey{
         case name,password
     }
-    enum EncodeNestKeys:CodingKey{
+    enum EncodeRootKeys:CodingKey{
         case user
     }
     init(name_: String,user_id: Int){
@@ -45,7 +45,7 @@ class User:Identifiable,Codable{
         tags = try container.decodeIfPresent([Int].self, forKey: .tags)
     }
     func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: EncodeNestKeys.self)
+        var container = encoder.container(keyedBy: EncodeRootKeys.self)
         var nestObj = container.nestedContainer(keyedBy: EncodeKeys.self, forKey: .user)
         try nestObj.encode(name, forKey: .name)
         try nestObj.encode(name,forKey: .password)
@@ -57,6 +57,6 @@ class User_Json:Codable{
     var user:User!
     var token:String!
 }
-class Users_Jsosn:Codable{
+class Users_Json:Codable{
     var users:[User]!
 }

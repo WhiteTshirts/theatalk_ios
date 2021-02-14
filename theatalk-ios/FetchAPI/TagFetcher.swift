@@ -116,7 +116,7 @@ extension TagFetcher:TagFechable{
         var data:Data!
         return fetchTag(with: makeTagsComponents(Path: "/user_tags/get_num/\(tagId)", Type: "GET", body: data))
     }
-    func GETUsersbyTag(tagId:Int) -> AnyPublisher<Users_Jsosn,APIError>{
+    func GETUsersbyTag(tagId:Int) -> AnyPublisher<Users_Json,APIError>{
         var data:Data!
         return fetchTag(with: makeTagsComponents(Path: "/users_tags", Type: "GET", body: data))
     }

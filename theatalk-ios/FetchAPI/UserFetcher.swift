@@ -78,12 +78,12 @@ extension UserFetcher: UserFechable{
         return fetchUser(with: makeUsersComponents(Path: "/users/\(userId)", Type: "GET", body: nil))
     }
     func GETUsers(
-    ) -> AnyPublisher<Users_Jsosn,APIError>{
+    ) -> AnyPublisher<Users_Json,APIError>{
         return fetchUser(with: makeUsersComponents(Path: "/users", Type: "GET", body: nil))
     }
     func GETFollowers(
         user:User
-    ) -> AnyPublisher<Users_Jsosn,APIError>{
+    ) -> AnyPublisher<Users_Json,APIError>{
 
         do{
             let data = try encoder.encode(user)
