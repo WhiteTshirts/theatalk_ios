@@ -12,9 +12,11 @@ class User:Identifiable,Codable{
     var id: Int //user_id
     var password: String!
     var tags: [Int]!
+    var isFollowed = false
+    var isFollwing = false
     private var image_name: String!
     enum DecodingKeys: CodingKey{
-        case name,id,password,tags
+        case name,id,password,tags,isFollowd,isFollowing
     }
     enum EncodeKeys:CodingKey{
         case name,password
@@ -43,6 +45,8 @@ class User:Identifiable,Codable{
         id = try container.decode(Int.self, forKey: .id)
         password = try container.decodeIfPresent(String.self, forKey: .name)
         tags = try container.decodeIfPresent([Int].self, forKey: .tags)
+        isFollwing = try container.decodeIfPresent(Bool.self, forKey: .isFollowing) ?? false
+        isFollowed = try container.decodeIfPresent(Bool.self, forKey: .isFollowd) ?? false
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: EncodeRootKeys.self)
