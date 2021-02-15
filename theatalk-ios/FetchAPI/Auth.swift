@@ -52,7 +52,7 @@ extension AuthFetcher{
     func login_(user:User) -> AnyPublisher<User_Json,APIError>{
         do{
             let body = try encoder.encode(user)
-            return fetchAuth(with: makeLoginComponents(Path: "login", Type: "POST", body: body))
+            return fetchAuth(with: makeLoginComponents(Path: "/login", Type: "POST", body: body))
         }catch{
             let error = APIError.network(description: "couldnot decode")
             return Fail(error: error).eraseToAnyPublisher()
@@ -61,7 +61,7 @@ extension AuthFetcher{
     func signup(user:User)->AnyPublisher<User_Json,APIError>{
         do{
             let body = try encoder.encode(user)
-            return fetchAuth(with: makeLoginComponents(Path: "/signup", Type: "POST", body: body))
+            return fetchAuth(with: makeLoginComponents(Path: "/users", Type: "POST", body: body))
         }catch{
             let error = APIError.network(description: "couldnot decode")
             return Fail(error: error).eraseToAnyPublisher()
@@ -78,7 +78,7 @@ extension AuthFetcher{
       url_components.scheme = "http"
       url_components.host = "localhost"
         url_components.port = 5000
-      url_components.path = "/api/v1/"+Path
+      url_components.path = "/api/v1"+Path
         print(url_components.url!)
         var components = URLRequest(url:url_components.url!)
         components.httpMethod = Type

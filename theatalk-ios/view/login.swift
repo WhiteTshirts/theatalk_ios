@@ -28,7 +28,7 @@ struct SignupView:View{
                     SecureField("*******", text: self.$password_confirm)
                 }
                 Button(action: {
-                    self.authdel.login(name: self.name, password: self.password)
+                    self.authdel.signup(name: self.name, password: self.password)
                 }) {
                     Text("決定")
                         .foregroundColor(Color.red)
