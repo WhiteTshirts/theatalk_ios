@@ -31,8 +31,21 @@ final public class AuthViewModel: ObservableObject{
 //            self.rooms = returnData
 //        }
     }
+    func SetUser(name: String, password: String){
+        self.password = password
+        self.userName = name
+    }
     func login(completion:@escaping(User?,Bool?)->()){
         authfetcher.login_(user: User(name_: self.userName, password_: self.password)).sink(receiveCompletion: { completion in
+            print("receiveCompletion:", completion)
+        }, receiveValue: { [self] user_json in
+            var user = user_json.user
+            g_user_token = user_json.token
+            completion(user,true)
+        }).store(in: &disposables)
+    }
+    func signup(completion:@escaping(User?,Bool?)->()){
+        authfetcher.signup(user: User(name_: self.userName, password_: self.password)).sink(receiveCompletion: { completion in
             print("receiveCompletion:", completion)
         }, receiveValue: { [self] user_json in
             var user = user_json.user

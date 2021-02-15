@@ -16,7 +16,7 @@ struct InitialView: View {
             if session.user != nil{
                 Home().environmentObject(session)
             }else{
-                LoginView().environmentObject(session)
+                AuthView().environmentObject(session)
             }
         }.onAppear{
             if(profile.username != ""){

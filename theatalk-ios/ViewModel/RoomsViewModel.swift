@@ -20,7 +20,6 @@ final class CreateRoomViewModel: ObservableObject{
             print("receiveCompletion:", completion)
         }, receiveValue: { [self] room_json in
             var room = room_json.room
-            print(room)
         }).store(in: &disposables)
     }
 }
