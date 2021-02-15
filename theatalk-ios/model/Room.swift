@@ -78,6 +78,11 @@ class Room: Codable,Identifiable{
     enum EncodeNestKeys:CodingKey{
         case room
     }
+    init(name:String,start_time:Date,youtube_id:String){
+        self.name = name
+        self.start_time = start_time
+        self.youtube_id = youtube_id
+    }
     init(admin_id_:Int,name_:String,id_:Int,is_private_:Bool,start_time_:Date?,viewer_:Int,youtube_id_:String){
         admin_id = admin_id_
         id = id_

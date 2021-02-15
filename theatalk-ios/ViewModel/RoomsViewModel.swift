@@ -7,6 +7,23 @@
 
 import Foundation
 import Combine
+final class CreateRoomViewModel: ObservableObject{
+    @Published var isLoading = false
+    private var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
+    private var disposables = Set<AnyCancellable>()
+    init(){
+        
+    }
+    func CreateRoom(room:Room){
+        roomfetcher.CreateRoom(room: room)
+            .sink(receiveCompletion: { completion in
+            print("receiveCompletion:", completion)
+        }, receiveValue: { [self] room_json in
+            var room = room_json.room
+            print(room)
+        }).store(in: &disposables)
+    }
+}
 
 final class RoomsViewModel: ObservableObject{
     private var disposables = Set<AnyCancellable>()
@@ -22,29 +39,28 @@ final class RoomsViewModel: ObservableObject{
         self.tagId = tagId
     }
     func GetallRooms(){
-        self.rooms = mockRoomsData
-//        self.isLoading = true
-//        roomfetcher.GETRooms()
-//            .receive(on: DispatchQueue.main)
-//            .sink(
-//          receiveCompletion: { [weak self] value in
-//            guard let self = self else { return }
-//            switch value {
-//            case .failure:
-//                self.isLoading = false
-//                self.rooms = []
-//              break
-//            case .finished:
-//              break
-//            }
-//          },
-//          receiveValue: { [weak self] rooms_json in
-//            guard let self = self else { return }
-//            self.rooms = rooms_json.rooms
-//            self.isLoading = false
-//            print(self.rooms)
-//          })
-//        .store(in: &disposables)
+        self.isLoading = true
+        roomfetcher.GETRooms()
+            .receive(on: DispatchQueue.main)
+            .sink(
+          receiveCompletion: { [weak self] value in
+            guard let self = self else { return }
+            switch value {
+            case .failure:
+                self.isLoading = false
+                self.rooms = []
+              break
+            case .finished:
+              break
+            }
+          },
+          receiveValue: { [weak self] rooms_json in
+            guard let self = self else { return }
+            self.rooms = rooms_json.rooms
+            self.isLoading = false
+            print(self.rooms)
+          })
+        .store(in: &disposables)
     }
     func GetRoomsByTagId(tagId:Int){
         self.isLoading = true
@@ -73,6 +89,7 @@ final class RoomsViewModel: ObservableObject{
     func EnterRoom(roomID_:Int){
         roomfetcher.EnterRoom(roomId: roomID_)
     }
+    
     
     
 }

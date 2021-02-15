@@ -8,8 +8,43 @@
 import SwiftUI
 
 struct CreateRoom: View {
+    @State var RoomName:String=""
+    @State var Youtubelink:String=""
+    @State var StartDate = Date()
+    @ObservedObject var CrateRoomVM = CreateRoomViewModel()
+
+    func PostRoom(){
+        var youtube_id = ParseYoutubeurl(url: Youtubelink)
+        if let youtube_id = ParseYoutubeurl(url: Youtubelink){
+            var room  = Room(name: RoomName, start_time: StartDate, youtube_id: youtube_id)
+            CrateRoomVM.CreateRoom(room: room)
+        }else{
+            
+        }
+    }
     var body: some View {
-        Text("Hello, World!")
+        VStack{
+            HStack{
+                Text("Room名")
+                TextField("hogehoge", text: self.$RoomName)
+
+            }
+            HStack{
+                Text("Youtubeリンク")
+                TextField("https://www.youtube.com/watch?v=jNQXAC9IVRw&ab_channel=jawed", text: self.$Youtubelink)
+
+            }
+            
+            DatePicker("開始時刻",selection:$StartDate)
+            Button("登録", action: {
+                PostRoom()
+            })
+
+            
+
+        }
+        .padding(.horizontal, 30.0)
+        
     }
 }
 
