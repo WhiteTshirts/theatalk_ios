@@ -12,6 +12,21 @@ struct LoginView: View {
     @ObservedObject var LoginVM = AuthViewModel()
     @ObservedObject var profile = UserProfile()
     typealias CompletionClosure = ((_ result:Int)->Bool)
+    func login(){
+        profile.password = LoginVM.password
+        
+        profile.username = LoginVM.userName
+        self.LoginVM.login(){
+            user, bool in
+            guard let _ = user else{
+                //error handle
+                return
+            }
+            profile.token = g_user_token
+            self.session.user  = user
+            self.session.isLogin = true
+        }
+    }
     var body: some View {
         NavigationView{
             VStack(alignment: .center){
@@ -24,19 +39,7 @@ struct LoginView: View {
                     SecureField("*******", text: $LoginVM.password)
                 }
                 Button(action: {
-                    profile.password = LoginVM.password
-                    
-                    profile.username = LoginVM.userName
-                    self.LoginVM.login(){
-                        user, bool in
-                        guard let _ = user else{
-                            //error handle
-                            return
-                        }
-                        profile.token = g_user_token
-                        self.session.user  = user
-                        self.session.isLogin = true
-                    }
+                    self.login()
                 }) {
                     Text("決定")
                         .foregroundColor(Color.red)

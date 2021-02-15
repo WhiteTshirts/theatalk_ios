@@ -10,6 +10,12 @@ import Combine
 class ModelTest: XCTestCase,ObservableObject {
     var disposables = Set<AnyCancellable>()
     override func setUpWithError() throws {
+        if let id = ParseYoutubeurl(url: "https://www.youtube.com/watch?v=YxErrs4O12hjfljsflsdffdsff"){
+            print(id)
+        }else{
+            print("invllid id")
+        }
+
 //        // Put setup code here. This method is called before the invocation of each test method in the class.
 //        guard let url = Bundle.main.url(forResource: "rooms", withExtension: "json") else {
 //            fatalError("ファイルが見つからない")
@@ -55,17 +61,18 @@ class ModelTest: XCTestCase,ObservableObject {
 //                guard let self = self else { return }
 //            })
 //            .store(in: &disposables)
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-
-        var co = Coordinate()
-        let encoded = try! encoder.encode(co)
-        print(String(data: encoded, encoding: .utf8)!)
-        var room = Room(admin_id_: -1, name_: "test", id_: -1, is_private_: false, start_time_: Date(), viewer_: 0, youtube_id_: "LEFsK9mUwAE")
-        var roomfe = RoomFetcher(url: "")
+//        let encoder = JSONEncoder()
+//        encoder.outputFormatting = .prettyPrinted
+//
+//        var co = Coordinate()
+//        let encoded = try! encoder.encode(co)
+//        print(String(data: encoded, encoding: .utf8)!)
+//        var room = Room(admin_id_: -1, name_: "test", id_: -1, is_private_: false, start_time_: Date(), viewer_: 0, youtube_id_: "LEFsK9mUwAE")
+//        var roomfe = RoomFetcher(url: "")
+//
+//        roomfe.CreateRoom(room: room)
         
-        roomfe.CreateRoom(room: room)
-        
+        ParseYoutubeurl(url: "https://www.youtube.com/watch?v=YxErrs4O12U&ab_channel")
 
         
                 

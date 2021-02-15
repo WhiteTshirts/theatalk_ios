@@ -13,45 +13,66 @@ struct Sidemenu: View{
     @Binding var info: Bool
     var logoutdel: logoutDel
     var body: some View{
-        VStack(alignment: .center){
+        VStack(alignment: .trailing){
             Button(action: {
                 info = !info
             }){
-                Image(systemName: "list.dash").resizable()
-                .frame(width: ProfileSize.width,height: ProfileSize.height)
-            }
-            HStack {
-                Button(action: {
-                }){
-                    Image(systemName: "person")
-                    Text("Profile")
-                    
-                }
-
-            }
-            HStack {
-                Button(action: {
-                }){
-                    Image(systemName: "text.bubble")
-                    Text("Tags")
-                    
-                }.alert(isPresented: $showingAlert){
-                    Alert(title: Text("ログアウトしますか")
-                          ,primaryButton: .default(Text("はい"),
-                                                   action:{
-                                                    logoutdel.logout()
-                                                   }), secondaryButton: .default(Text("いいえ")))
-                }
+                Image(systemName: "xmark.circle").resizable()
+                    .frame(width: ProfileSize.width,height: ProfileSize.height)
+                    .foregroundColor(/*@START_MENU_TOKEN@*/.red/*@END_MENU_TOKEN@*/)
             }
             HStack{
-                Button(action: {
-                    self.showingAlert = true
+                Spacer()
+                    .frame(width: 15)
+                VStack(alignment: .leading) {
+                    Button(action: {
+                    }){
+                        Image(systemName: "person")
+                        Text("Profile")
+                    }
+                    Button(action: {
+                    }){
+                        Image(systemName: "text.bubble")
+                        Text("Tags")
+                        
+                    }
+                    Button(action: {
+                    }){
+                        Image(systemName: "person.circle")
+                        Text("Follows")
+                        
+                    }
+                    Button(action: {
+                    }){
+                        Image(systemName: "person.circle.fill")
+                        Text("Follower")
+                        
+                    }
+                    Button(action: {
+                    }){
+                        Image(systemName: "questionmark")
+                        Text("Help")
+                        
+                    }
+                    Button(action: {
+                        self.showingAlert = true
 
-                }){
-                    Text("logout")
-                    
-                }
+                    }){
+                        Image(systemName: "figure.wave.circle")
+                        Text("logout")
+                        
+                    }.alert(isPresented: $showingAlert){
+                        Alert(title: Text("ログアウトしますか")
+                              ,primaryButton: .default(Text("はい"),
+                                    action:{
+                                                        logoutdel.logout()
+                                                       }), secondaryButton: .default(Text("いいえ")))
+                    }
+                }.foregroundColor(.black)
+                
+                
             }
+
             Spacer()
         }
         
@@ -102,7 +123,7 @@ struct NavItem: View{
                                })
                         
                     }
-                    NavigationLink("+",destination:CreateRoom())
+                    NavigationLink("ルーム追加",destination:CreateRoom())
                 }
             }
             ScrollView(.horizontal){
@@ -149,8 +170,10 @@ struct Home: View,logoutDel {
     @State var authfetcher = AuthFetcher()
     @State var SearchTagId = -1
     var body: some View {
+        
         GeometryReader{ geometry in
             ZStack(alignment:.leading){
+
                 NavigationView {
                     VStack(alignment: .center){
                         HStack{
