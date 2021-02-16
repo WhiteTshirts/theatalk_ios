@@ -11,6 +11,7 @@ import UIKit
 struct RoomList: View {
     @ObservedObject var RoomsVM: RoomsViewModel
     @Binding var tagId:Int
+    @Binding var IsSelected:Bool
     var body: some View{
         if(RoomsVM.rooms.isEmpty && RoomsVM.isLoading){
             Image(systemName: "hourglass").resizable()
@@ -24,7 +25,9 @@ struct RoomList: View {
                             
                             enterroom(room_num: room.id)
                         }){
-                        RoomCell(room: room)
+                        RoomCell(room: room).onTapGesture {
+                            self.IsSelected = !self.IsSelected
+                        }
                     }
                 }
             }.onAppear(){

@@ -17,30 +17,15 @@ final class TagsViewModel: ObservableObject{
     @Published var tags: [Tag] = []
     private var tagFetcher = TagFetcher(url: "http://localhost:5000/api/v1/tags")
     init(){
-//        tagFetcher.GETTags()
-//            .sink(
-//          receiveCompletion: { [weak self] value in
-//            guard let self = self else { return }
-//            switch value {
-//            case .failure:
-//              break
-//            case .finished:
-//              break
-//            }
-//          },
-//          receiveValue: { [weak self] tags in
-//            guard let self = self else { return }
-//            self.tags = tags.tags
-//        })
-//        .store(in: &disposables)
+        load()
     }
     func load(){
-
-
+        getTags()
         
     }
     func getTags(){
             tagFetcher.GETTags()
+                .receive(on: DispatchQueue.main)
                 .sink(
               receiveCompletion: { [weak self] value in
                 guard let self = self else { return }
@@ -59,7 +44,9 @@ final class TagsViewModel: ObservableObject{
             .store(in: &disposables)
     }
     func searchTags(tagName:String){
-        tagFetcher.SearchTagsbyName(tagName: tagName).sink(receiveCompletion: {[weak self] value in
+        tagFetcher.SearchTagsbyName(tagName: tagName)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: {[weak self] value in
             guard let self = self else {return}
             switch value {
             case .failure:

@@ -11,9 +11,31 @@ import SwiftUI
 struct Sidemenu: View{
     @State private var showingAlert = false
     @Binding var info: Bool
-    var logoutdel: logoutDel
+    var sideDel: SideMenuDel
+    var MenuNames = ["Profile","Tags","Following","Follower","Help"]
+    var SystemImageNames = ["person","text.bubble","person.circle","person.circle.fill","questionmark"]
+    func logoutView()-> some View{
+        return
+            Button(action: {
+            self.showingAlert = true
+        }){
+            Image(systemName: "figure.wave.circle")
+            Text("logout")
+            
+        }.alert(isPresented: $showingAlert){
+            Alert(title: Text("ログアウトしますか")
+                  ,primaryButton: .default(Text("はい"),
+                        action:{
+                            sideDel.logout()
+                                           }), secondaryButton: .default(Text("いいえ")))
+        }
+    
+    }
     var body: some View{
+        
         VStack(alignment: .trailing){
+            
+            Spacer().frame(height:100)
             Button(action: {
                 info = !info
             }){
@@ -25,51 +47,17 @@ struct Sidemenu: View{
                 Spacer()
                     .frame(width: 15)
                 VStack(alignment: .leading) {
-                    Button(action: {
-                    }){
-                        Image(systemName: "person")
-                        Text("Profile")
+                    ForEach(0..<5){num in
+                        Button(action: {
+                            sideDel.toggle(sidemenu: MenuNames[num])
+                        }){
+                            Image(systemName: SystemImageNames[num])
+                            Text(MenuNames[num])
+                        }
                     }
-                    Button(action: {
-                    }){
-                        Image(systemName: "text.bubble")
-                        Text("Tags")
-                        
-                    }
-                    Button(action: {
-                    }){
-                        Image(systemName: "person.circle")
-                        Text("Follows")
-                        
-                    }
-                    Button(action: {
-                    }){
-                        Image(systemName: "person.circle.fill")
-                        Text("Follower")
-                        
-                    }
-                    Button(action: {
-                    }){
-                        Image(systemName: "questionmark")
-                        Text("Help")
-                        
-                    }
-                    Button(action: {
-                        self.showingAlert = true
+                    logoutView()
 
-                    }){
-                        Image(systemName: "figure.wave.circle")
-                        Text("logout")
-                        
-                    }.alert(isPresented: $showingAlert){
-                        Alert(title: Text("ログアウトしますか")
-                              ,primaryButton: .default(Text("はい"),
-                                    action:{
-                                                        logoutdel.logout()
-                                                       }), secondaryButton: .default(Text("いいえ")))
-                    }
-                }.foregroundColor(.black)
-                
+                }
                 
             }
 
@@ -150,17 +138,12 @@ struct NavItem: View{
 //protocol EnterRoomDele {
 //    func enterroom(room_num:Int)
 //}
-protocol logoutDel {
+protocol SideMenuDel {
     func logout()
+    func toggle(sidemenu:String)
 }
-struct Home: View,logoutDel {
-    func logout() {
-        session.user = nil
-        profile.token = ""
-        profile.password = ""
-        profile.username = ""
-        profile.user_Id = -1
-    }
+struct Home: View,SideMenuDel {
+
     
     @EnvironmentObject var session: Session
     @ObservedObject var profile = UserProfile()
@@ -169,46 +152,92 @@ struct Home: View,logoutDel {
     @State var info = false
     @State var authfetcher = AuthFetcher()
     @State var SearchTagId = -1
+    @State var SelectedRooms = false
+    @State var PushedPages = false
+    @State var SelectedMenu = ""
+    func toggle(sidemenu:String) {
+        self.SelectedMenu = sidemenu
+        self.PushedPages = true
+    }
+    func logout() {
+        session.user = nil
+        profile.token = ""
+        profile.password = ""
+        profile.username = ""
+        profile.user_Id = -1
+    }
+
+
     var body: some View {
-        
+
         GeometryReader{ geometry in
-            ZStack(alignment:.leading){
+            ZStack(alignment:.topLeading){
 
-                NavigationView {
-                    VStack(alignment: .center){
-                        HStack{
-                            ScrollView{
-                                RoomList(RoomsVM: RoomsViewModel(),tagId:self.$SearchTagId)
-                            }
-                        }
-                    }
-                    .navigationBarTitleDisplayMode(.large)
-                    .toolbar{
-                        ToolbarItem(placement: .principal){
-                            NavItem(info: self.$info, textEntered: self.$textEntered,TagId: self.$SearchTagId)
-                            
-                        }
-                    }
-
-                }
+                NavigationRooms()
                 if info {
-                    Sidemenu(info: self.$info,logoutdel: self)
+                    Sidemenu(info: self.$info, sideDel: self)
                         .frame(width:UIScreen.screenWidth/2,height: UIScreen.screenHeight,alignment: .leading)
                         .background(Color.white)
                         .animation(.default)
                         .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                        .edgesIgnoringSafeArea(.all)
                 }
-            }.gesture(DragGesture(minimumDistance: 5)
-                        .onChanged{_ in
-                            
-                        }
-                        .onEnded{ _ in
-                            
-                        })
-        }
+            }
+
+        }.gesture(DragGesture(minimumDistance: 5)
+                    .onChanged{_ in
+                        
+                    }
+                    .onEnded{ _ in
+                        
+                    })
+        .sheet(isPresented: self.$PushedPages, content: {
+                SideMenuView()
+        })
+
+        
+
 
     }
+    func NavigationRooms()-> some View{
+        return NavigationView {
 
+            VStack(alignment: .center){
+                HStack{
+                    ScrollView{
+                        RoomList(RoomsVM: RoomsViewModel(),tagId:self.$SearchTagId, IsSelected: self.$SelectedRooms)
+                    }
+                }
+            }
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar{
+                ToolbarItem(placement: .principal){
+                    NavItem(info: self.$info, textEntered: self.$textEntered,TagId: self.$SearchTagId)
+                    
+                }
+            }
+
+        }
+    }
+
+}
+extension Home{
+    func SideMenuView() -> some View{
+            switch SelectedMenu{
+                case "Profile":
+                    return AnyView(UserProfileView())
+                case "Tags":
+                    return AnyView(TagList())
+                case "Following":
+                    return AnyView(UsersList(users: mockUsersData, isFollowList: true))
+                case "Follower":
+                    return AnyView(UsersList(users: mockUsersData, isFollowList: false))
+                default:
+                    return AnyView(UserProfileView())
+            }
+
+        }
+    
 }
 
 struct Home_Previews: PreviewProvider {

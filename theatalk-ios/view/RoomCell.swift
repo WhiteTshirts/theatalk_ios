@@ -22,6 +22,7 @@ struct RoomCell: View {
                     .font(.largeTitle)
                     .opacity(0.3)
                     .frame(width: RoomSize_Column1.width,height: RoomSize_Column1.height)
+                    .cornerRadius(5)
                     
             }.onFailure { e in
                 }.frame(width:RoomSize_Column1.width)

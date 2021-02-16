@@ -57,7 +57,6 @@ final class RoomsViewModel: ObservableObject{
             guard let self = self else { return }
             self.rooms = rooms_json.rooms
             self.isLoading = false
-            print(self.rooms)
           })
         .store(in: &disposables)
     }
