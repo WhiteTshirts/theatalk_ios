@@ -25,9 +25,7 @@ struct RoomList: View {
                             
                             enterroom(room_num: room.id)
                         }){
-                        RoomCell(room: room).onTapGesture {
-                            self.IsSelected = !self.IsSelected
-                        }
+                        RoomCell(room: room)
                     }
                 }
             }.onAppear(){

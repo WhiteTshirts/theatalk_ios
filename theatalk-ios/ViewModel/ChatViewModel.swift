@@ -24,7 +24,8 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     }
     func load(room_Id:Int){
         isSending = true
-        chatfetcher.GetChats(roomId: room_Id).receive(on: DispatchQueue.main)
+        chatfetcher.GetChats(roomId: room_Id)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: {[weak self] value in
                 guard let self = self else  { return}
                 switch value{
@@ -43,7 +44,7 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     }
     func enter(){
         
-        chatwb.SubscribeChannel(path: "/", token: mockUserHashVal,delegate: self)
+        chatwb.SubscribeChannel(path: "/", token: g_user_token,delegate: self)
     }
     func chatreceive(chat: Chat){
         chats.insert(chat, at: 0)

@@ -50,6 +50,7 @@ final public class AuthViewModel: ObservableObject{
         }, receiveValue: { [self] user_json in
             var user = user_json.user
             g_user_token = user_json.token
+            print(g_user_token)
             completion(user,true)
         }).store(in: &disposables)
     }

@@ -93,6 +93,7 @@ extension RoomFetcher: RoomFechable{
         return fetchRoom(with: makeRoomsComponents(Path: "/rooms", Type: "GET", body: nil))
     }
     func CreateRoom(room:Room) -> AnyPublisher<Room_json,APIError>{
+
         do{
             let data = try encoder.encode(room)
             return fetchRoom(with: makeRoomsComponents(Path: "/rooms", Type: "POST", body: data))
