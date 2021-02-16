@@ -67,7 +67,6 @@ final class RoomsViewModel: ObservableObject{
             .sink(
           receiveCompletion: { [weak self] value in
             guard let self = self else { return }
-            print(value)
             switch value {
             case .failure:
                 self.isLoading = false
@@ -86,6 +85,23 @@ final class RoomsViewModel: ObservableObject{
     }
     func EnterRoom(roomID_:Int){
         roomfetcher.EnterRoom(roomId: roomID_)
+            .receive(on: DispatchQueue.main)
+            .sink(
+          receiveCompletion: { [weak self] value in
+            guard let self = self else { return }
+            switch value {
+            case .failure:
+                self.isLoading = false
+              break
+            case .finished:
+              break
+            }
+          },
+          receiveValue: { [weak self] room_json in
+            guard let self = self else { return }
+            self.isLoading = false
+          })
+        .store(in: &disposables)
     }
     
     

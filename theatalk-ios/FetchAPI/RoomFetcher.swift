@@ -12,7 +12,7 @@ protocol RoomFechable {
     ) -> AnyPublisher<Rooms_json,APIError>
     func EnterRoom(
         roomId:Int
-    ) -> AnyPublisher<Room_json,APIError>
+    ) -> AnyPublisher<User_Json,APIError>
 //    func GETRoomsWithTag(
 //         tagId: Int
 //    ) -> AnyPublisher<Rooms,APIError>
@@ -121,7 +121,7 @@ extension RoomFetcher: RoomFechable{
     }
     func EnterRoom(
         roomId:Int
-    ) -> AnyPublisher<Room_json,APIError>{
+    ) -> AnyPublisher<User_Json,APIError>{
         var body:Data!
         var room_info = Dictionary<String,Any>()
         room_info["room_id"] = roomId
