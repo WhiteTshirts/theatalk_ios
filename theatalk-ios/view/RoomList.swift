@@ -21,7 +21,7 @@ struct RoomList: View {
             ForEach(RoomsVM.rooms){room in
                 HStack{
                     NavigationLink(
-                        destination: ChatRoom(room:room,ChatsVm: ChatsViewModel(room_Id: room.id)).onAppear{
+                        destination: ChatRoom(room: room).onAppear{
                             
                             enterroom(room_num: room.id)
                         }){

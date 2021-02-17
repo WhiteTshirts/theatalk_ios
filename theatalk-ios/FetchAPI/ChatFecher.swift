@@ -30,8 +30,7 @@ class ChatFetcher:Fetcher{
 
     }
     func GetChats(roomId:Int)->AnyPublisher<Chats_Json,APIError>{
-        print("roomid sis")
-        print(roomId)
+
         return  fetchData(with: makeComponents(Path: "/rooms/\(roomId)/chats", Type: "GET", body: nil))
     }
 

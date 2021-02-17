@@ -84,6 +84,7 @@ final class RoomsViewModel: ObservableObject{
         .store(in: &disposables)
     }
     func EnterRoom(roomID_:Int){
+        print("you entered \(roomID_)")
         roomfetcher.EnterRoom(roomId: roomID_)
             .receive(on: DispatchQueue.main)
             .sink(

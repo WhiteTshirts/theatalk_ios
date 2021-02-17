@@ -62,10 +62,10 @@ class Chat: Identifiable,Codable{
     
 }
 
-class Chat_Json:Codable{
+struct Chat_Json:Codable{
     var chat:Chat!
 }
 
-class Chats_Json:Codable{
+struct Chats_Json:Codable{
     var chats:[Chat]!
 }

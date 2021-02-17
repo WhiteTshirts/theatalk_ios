@@ -6,11 +6,11 @@
 //
 
 import Foundation
-class Tags_json:Codable{
+struct Tags_json:Codable{
     var tags:[Tag]!
     
 }
-class Tag_json:Codable{
+struct Tag_json:Codable{
     var tag:Tag!
 }
 class Tag: Identifiable,Hashable,Codable{
