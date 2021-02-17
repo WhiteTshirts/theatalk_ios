@@ -8,6 +8,10 @@
 
 import Foundation
 import SwiftUI
+
+class ChatMessage: Codable{
+    
+}
 class Chat: Identifiable,Codable{
     var user_id: Int
     var room_id: Int!
