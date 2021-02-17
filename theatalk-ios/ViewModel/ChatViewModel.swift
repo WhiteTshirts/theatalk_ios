@@ -46,10 +46,16 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
         
         chatwb.SubscribeChannel(path: "/", token: g_user_token,delegate: self)
     }
+    func exit(){
+        chatwb.CloseChannel()
+    }
     func chatreceive(chat: Chat){
         chats.insert(chat, at: 0)
     }
     func SendMsg(msg:String,roomId:Int){
+        if(msg == ""){
+            return
+        }
         chatfetcher.sendChatData(msg: msg, room_Id: roomId)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: {[weak self] value in

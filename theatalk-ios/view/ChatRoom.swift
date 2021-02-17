@@ -47,6 +47,10 @@ struct ChatRoom: View {
         }.onAppear(perform: {
             ChatsVm.enter()
         })
+        .onDisappear(perform: {
+            ChatsVm.exit()
+            
+        })
     }
 }
 

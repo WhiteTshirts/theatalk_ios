@@ -30,8 +30,12 @@ class ChatWBSocket{
         listen()
         
     }
-    func listen(){
+    func CloseChannel(){
+        task?.cancel(with: .goingAway
+                     , reason: nil)
 
+    }
+    func listen(){
         task.receive{ result in
             switch result {
             case .failure(let error):
