@@ -15,13 +15,43 @@ var mockTagsData:[Tag] = [Tag(id_: 0, name_: "モルカー"),Tag(id_: 1, name_: 
 final class TagsViewModel: ObservableObject{
     private var disposables = Set<AnyCancellable>()
     @Published var tags: [Tag] = []
+    @Published var UserTags:[Tag] = []
+    var UserId:Int?
     private var tagFetcher = TagFetcher(url: "http://localhost:5000/api/v1/tags")
-    init(){
+    init(UserId:Int?){
+        self.UserId = UserId
         load()
+
     }
     func load(){
-        getTags()
+        //getTags()
+        self.tags = mockTagsData
+        if(UserId != nil){
+            self.UserTags = mockTagsData
+           // getUserTags()
+        }
         
+    }
+    func getUserTags(){
+        
+        tagFetcher.GetUserTags(userId: self.UserId!)
+            .receive(on: DispatchQueue.main)
+            .sink(
+          receiveCompletion: { [weak self] value in
+            guard let self = self else { return }
+            switch value {
+            case .failure:
+                self.UserTags = []
+              break
+            case .finished:
+              break
+            }
+          },
+          receiveValue: { [weak self] tags in
+            guard let self = self else { return }
+            self.UserTags = tags.tags
+        })
+        .store(in: &disposables)
     }
     func getTags(){
             tagFetcher.GETTags()
@@ -50,7 +80,7 @@ final class TagsViewModel: ObservableObject{
             guard let self = self else {return}
             switch value {
             case .failure:
-                self.tags = []
+                self.UserTags = []
                 break
                 
             case .finished:
@@ -58,7 +88,7 @@ final class TagsViewModel: ObservableObject{
             }
         }, receiveValue: {[weak self] tags_json in
             guard let self = self else {return}
-            self.tags = tags_json.tags
+            self.UserTags = tags_json.tags
             
         }).store(in: &disposables)
     }

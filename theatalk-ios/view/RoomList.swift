@@ -7,9 +7,8 @@
 
 import SwiftUI
 import UIKit
-
 struct RoomList: View {
-    @ObservedObject var RoomsVM: RoomsViewModel
+    @ObservedObject var RoomsVM = RoomsViewModel()
     @Binding var tagId:Int
     @Binding var IsSelected:Bool
     var body: some View{

@@ -72,7 +72,7 @@ struct NavItem: View{
     @Binding var TagId:Int
     @State var TextInputting = true
     @State var TextChanged = false
-    @ObservedObject var TagsVM = TagsViewModel()
+    @ObservedObject var TagsVM: TagsViewModel
     func UpdateSearchTag(tag:Tag){
         DispatchQueue.main.async {
             self.TagId = tag.id
@@ -205,14 +205,14 @@ struct Home: View,SideMenuDel {
             VStack(alignment: .center){
                 HStack{
                     ScrollView{
-                        RoomList(RoomsVM: RoomsViewModel(),tagId:self.$SearchTagId, IsSelected: self.$SelectedRooms)
+                        RoomList(tagId:self.$SearchTagId, IsSelected: self.$SelectedRooms)
                     }
                 }
             }
             .navigationBarTitleDisplayMode(.large)
             .toolbar{
                 ToolbarItem(placement: .principal){
-                    NavItem(info: self.$info, textEntered: self.$textEntered,TagId: self.$SearchTagId)
+                    NavItem(info: self.$info, textEntered: self.$textEntered,TagId: self.$SearchTagId, TagsVM: TagsViewModel(UserId: profile.user_Id))
                     
                 }
             }
@@ -227,7 +227,7 @@ extension Home{
                 case "Profile":
                     return AnyView(UserProfileView())
                 case "Tags":
-                    return AnyView(TagList())
+                    return AnyView(TagList(TagsVM: TagsViewModel(UserId: profile.user_Id)))
                 case "Following":
                     return AnyView(UsersList(users: mockUsersData, isFollowList: true))
                 case "Follower":

@@ -39,8 +39,14 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
                 }
             }, receiveValue: {[weak self] chats_json in
                 guard let self = self else { return }
-                self.chats = chats_json.chats
-                self.isLoading = false
+                if(chats_json.chats != nil){
+                    self.chats = chats_json.chats
+                    for chat_ in chats_json.chats{
+                        self.chatreceive(chat: chat_)
+                    }
+                    self.isLoading = false
+                }
+
             }).store(in: &disposables)
     }
     func enter(){
