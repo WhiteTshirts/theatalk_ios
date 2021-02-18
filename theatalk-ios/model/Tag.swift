@@ -40,3 +40,15 @@ class Tag: Identifiable,Hashable,Codable{
     }
 }
 
+class TagUser:Codable{
+    var tag_id:Int
+    init(tag_id:Int){
+        self.tag_id = tag_id
+    }
+}
+class TagUser_Json:Codable{
+    var tag_user:TagUser
+    init(tag_user:TagUser){
+        self.tag_user = tag_user
+    }
+}

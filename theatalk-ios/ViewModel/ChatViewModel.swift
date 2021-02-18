@@ -18,14 +18,10 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     var chatwb = ChatWBSocket()
     @Published var chats: [Chat] = []
     private var chatfetcher = ChatFetcher(url: "http://localhost:5000/api/v1/rooms/0")
-    init(room_Id:Int){
-        //print("initialize chat")
-        load(room_Id: room_Id)
+    init(){
+        load(room_Id: 0)
     }
-
     func load(room_Id:Int){
-        isSending = true
-        
         chatfetcher.GetChats(roomId: room_Id)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: {[weak self] value in
@@ -33,6 +29,7 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
                 switch value{
                     case .failure:
                         self.isLoading = false
+                        
                     break
                 case .finished:
                     break
@@ -40,11 +37,12 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
             }, receiveValue: {[weak self] chats_json in
                 guard let self = self else { return }
                 if(chats_json.chats != nil){
-                    self.chats = chats_json.chats
-                    for chat_ in chats_json.chats{
-                        self.chatreceive(chat: chat_)
+                    for chat in chats_json.chats{
+                        self.chatreceive(chat: chat)
                     }
+                    
                     self.isLoading = false
+                    
                 }
 
             }).store(in: &disposables)
@@ -58,6 +56,7 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
         chatwb.CloseChannel()
     }
     func chatreceive(chat: Chat){
+        print(chats.count)
         chats.insert(chat, at: 0)
 
     }

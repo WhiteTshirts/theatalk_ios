@@ -122,9 +122,20 @@ extension TagFetcher:TagFechable{
         var data:Data!
         return fetchTag(with: makeTagsComponents(Path: "/users_tags", Type: "GET", body: data))
     }
+    func CreateUsersTag(tagId:Int)->AnyPublisher<TagUser_Json,APIError>{
+        var taguser = TagUser(tag_id: tagId)
+        var taguser_j = TagUser_Json(tag_user: taguser)
+        do{
+            let data = try encoder.encode(taguser_j)
+            return fetchTag(with: makeTagsComponents(Path: "/user_tags/\(tagId)", Type: "POST", body: nil))
+
+        }catch{
+            let error = APIError.network(description: "could not encode")
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+    }
     func DeleteUsersTag(tagId:Int)->AnyPublisher<Tags_json,APIError>{
-        var data:Data!
-        return fetchTag(with: makeTagsComponents(Path: "/user_tags/\(tagId)", Type: "DELETE", body: data))
+        return fetchTag(with: makeTagsComponents(Path: "/user_tags/\(tagId)", Type: "DELETE", body: nil))
     }
     func CreateRoomTag(roomId:Int)->AnyPublisher<Room_json,APIError>{
         var data:Data!

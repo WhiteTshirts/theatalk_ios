@@ -32,6 +32,42 @@ final class TagsViewModel: ObservableObject{
         }
         
     }
+    func AddTagToUser(tagId:Int){
+        tagFetcher.CreateUsersTag(tagId: tagId)
+            .receive(on: DispatchQueue.main)
+            .sink(
+          receiveCompletion: { [weak self] value in
+            guard let self = self else { return }
+            switch value {
+            case .failure:
+              break
+            case .finished:
+              break
+            }
+          },
+          receiveValue: { [weak self] tags in
+            guard let self = self else { return }
+        })
+        .store(in: &disposables)
+    }
+    func DeleteTagFromUser(tagId:Int){
+        tagFetcher.DeleteUsersTag(tagId: tagId)
+            .receive(on: DispatchQueue.main)
+            .sink(
+          receiveCompletion: { [weak self] value in
+            guard let self = self else { return }
+            switch value {
+            case .failure:
+              break
+            case .finished:
+              break
+            }
+          },
+          receiveValue: { [weak self] tags in
+            guard let self = self else { return }
+        })
+        .store(in: &disposables)
+    }
     func getUserTags(){
         
         tagFetcher.GetUserTags(userId: self.UserId!)

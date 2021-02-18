@@ -20,10 +20,8 @@ struct RoomList: View {
             ForEach(RoomsVM.rooms){room in
                 HStack{
                     NavigationLink(
-                        destination: ChatRoom(room: room).onAppear{
-                            
-                            enterroom(room_num: room.id)
-                        }){
+                        destination: MoveToChatRoom(room:room, RoomsVM: RoomsVM)
+                        ){
                         RoomCell(room: room)
                     }
                 }

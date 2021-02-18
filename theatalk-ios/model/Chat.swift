@@ -12,7 +12,8 @@ import SwiftUI
 class ChatMessage: Codable{
     
 }
-class Chat: Identifiable,Codable{
+struct Chat: Codable{
+    
     var user_id: Int
     var room_id: Int!
     var text: String
@@ -32,7 +33,7 @@ class Chat: Identifiable,Codable{
         text  = text_
         created_at = created_at_
     }
-    func UpdateChat(user_name_: String,user_id_:Int,text_:String,created_at_:Date){
+    mutating func UpdateChat(user_name_: String,user_id_:Int,text_:String,created_at_:Date){
         user_name = user_name_
         user_id = user_id_
         text  = text_
@@ -46,7 +47,7 @@ class Chat: Identifiable,Codable{
         created_at = created_at_
     }
     
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DecodingKeys.self)
         user_id = try container.decode(Int.self, forKey: .user_id)
         room_id = try container.decodeIfPresent(Int.self, forKey: .room_id)

@@ -7,22 +7,35 @@
 
 import SwiftUI
 
-struct AllTagsListView: View{
-    var body : some View{
-        Text("a")
-    }
+protocol TagManage{
+    func DeleteTag(tagId:Int)
+    func AddTag(tagId:Int)
 }
+struct TagList: View ,TagManage{
 
-struct TagList: View {
     @ObservedObject var TagsVM: TagsViewModel
-    private func GetTags(tags:[Tag],color:Color) ->some View{
+    @State var IsEditTag = false
+    @State var textEntered = ""
+    @State var SearchTagId = -1
+    
+    
+    func DeleteTag(tagId: Int) {
+        print("deleteded tag")
+        TagsVM.DeleteTagFromUser(tagId: tagId)
+    }
+    
+    func AddTag(tagId: Int) {
+        print("added tag")
+        TagsVM.AddTagToUser(tagId: tagId)
+    }
+    
+    private func GetTags(tags:[Tag],isUserTag:Bool,color:Color) ->some View{
         var width = CGFloat.zero
         var height = CGFloat.zero
         
         return ZStack(alignment: .topLeading) {
             ForEach(tags){ tag in
-                TagItem(for: tag.name,color: color)
-                    .padding(.all,5)
+                TagItemView(for: tag, color: color, isUserTag: isUserTag)
                     .alignmentGuide(.leading, computeValue: { d in
                       if abs(width - d.width) > 300 {
                         width = 0
@@ -54,16 +67,39 @@ struct TagList: View {
             .background(color)
             .foregroundColor(.white)
             .cornerRadius(3)
+
+    }
+    func TagItemView(for tag:Tag,color:Color,isUserTag:Bool)->some View{
+        return
+            TagItem(for: tag.name,color: color)
+                .padding(.all,8)
+                .overlay(
+                    Button(action: {
+                        if(isUserTag){
+                            DeleteTag(tagId: tag.id
+                            )
+                        }else{
+                            AddTag(tagId: tag.id)
+                        }
+                    }, label: {
+                        Image(systemName:isUserTag ? "minus.circle":"plus.circle")
+                                .resizable()
+                                .frame(width: 16,height: 16)
+                        
+                    }),alignment: .topTrailing
+                    
+                )
     }
     
     var body: some View {
         VStack{
-            Text("ユーザタグ一覧")
-            
-            GetTags(tags: TagsVM.UserTags, color: Color.green)
             Text("登録タグ一覧")
             
-            GetTags(tags: TagsVM.tags, color: Color.red)
+            GetTags(tags: TagsVM.tags,isUserTag: false, color: Color.red)
+            Text("ユーザタグ一覧")
+            
+            GetTags(tags: TagsVM.UserTags,isUserTag: true ,color: Color.green)
+
 
         }
 
