@@ -15,10 +15,8 @@ struct UserCell: View{
     var isFollowList:Bool
     var Followdel:UserRelationshipdel
     var body: some View {
-        HStack{
+        VStack(alignment: .center){
             Button(action: {
-                print(user)
-                //move to user profile
             }){
                 Text("\(user.name)")
             }
@@ -65,8 +63,15 @@ struct UsersList: View,UserRelationshipdel {
     var isFollowList:Bool
    
     var body: some View {
-        ScrollView{
-            VStack{
+        VStack{
+            Spacer().frame(height:100)
+            if(isFollowList){
+                Text("フォローリスト")
+            }else{
+                Text("フォロワーリスト")
+            }
+            
+            ScrollView{
                 ForEach(users){ user in
 
                     UserCell(user:user,isFollowList: isFollowList,Followdel:self)
@@ -75,7 +80,11 @@ struct UsersList: View,UserRelationshipdel {
                 }
             }
 
+                
+
+            
         }
+
 
     }
 }

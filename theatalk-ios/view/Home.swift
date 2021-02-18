@@ -11,6 +11,8 @@ import SwiftUI
 struct Sidemenu: View{
     @State private var showingAlert = false
     @Binding var info: Bool
+    @Binding var pushed: Bool
+    @Binding var SelectedMenu: String
     var sideDel: SideMenuDel
     var MenuNames = ["Profile","Tags","Following","Follower","Help"]
     var SystemImageNames = ["person","text.bubble","person.circle","person.circle.fill","questionmark"]
@@ -49,6 +51,7 @@ struct Sidemenu: View{
                 VStack(alignment: .leading) {
                     ForEach(0..<5){num in
                         Button(action: {
+                            self.SelectedMenu = MenuNames[num]
                             sideDel.toggle(sidemenu: MenuNames[num])
                         }){
                             Image(systemName: SystemImageNames[num])
@@ -154,10 +157,13 @@ struct Home: View,SideMenuDel {
     @State var SearchTagId = -1
     @State var SelectedRooms = false
     @State var PushedPages = false
-    @State var SelectedMenu = ""
+    @State var SelectedMenu = "Profile"
     func toggle(sidemenu:String) {
-        self.SelectedMenu = sidemenu
-        self.PushedPages = true
+        DispatchQueue.main.async {
+            self.PushedPages = true
+        }
+
+
     }
     func logout() {
         session.user = nil
@@ -175,7 +181,7 @@ struct Home: View,SideMenuDel {
 
                 NavigationRooms()
                 if info {
-                    Sidemenu(info: self.$info, sideDel: self)
+                    Sidemenu(info: self.$info, pushed: self.$PushedPages, SelectedMenu: self.$SelectedMenu, sideDel: self)
                         .frame(width:UIScreen.screenWidth/2,height: UIScreen.screenHeight,alignment: .leading)
                         .background(Color.white)
                         .animation(.default)
@@ -192,7 +198,7 @@ struct Home: View,SideMenuDel {
                         
                     })
         .sheet(isPresented: self.$PushedPages, content: {
-                SideMenuView()
+                SelectedView
         })
 
         
@@ -222,10 +228,10 @@ struct Home: View,SideMenuDel {
 
 }
 extension Home{
-    func SideMenuView() -> some View{
-            switch SelectedMenu{
+    var SelectedView: some View {
+        switch self.SelectedMenu{
                 case "Profile":
-                    return AnyView(UserProfileView())
+                    return AnyView(UserProfileView(user:session.user!,tags:mockTagsData))
                 case "Tags":
                     return AnyView(TagList(TagsVM: TagsViewModel(UserId: profile.user_Id)))
                 case "Following":
@@ -233,7 +239,7 @@ extension Home{
                 case "Follower":
                     return AnyView(UsersList(users: mockUsersData, isFollowList: false))
                 default:
-                    return AnyView(UserProfileView())
+                    return AnyView(UserProfileView(user:session.user!,tags: mockTagsData))
             }
 
         }
