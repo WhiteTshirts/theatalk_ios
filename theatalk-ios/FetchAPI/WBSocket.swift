@@ -51,6 +51,7 @@ class ChatWBSocket{
                             if o["type"]! == nil,let chatobj = o["message"]! as AnyObject?{
                                 if type(of: chatobj) != String.Type.self, (chatobj["user_id"]) != nil{
                                     if(chatobj["type"]! == nil){
+                                        print(chatobj)
                                         let chat_ = Chat(user_name_:chatobj["name"]! as! String,user_id_: chatobj["user_id"]! as! Int, text_: chatobj["text"]! as! String, created_at_: Date())
                                         self.delegate!.chatreceive(chat: chat_)
                                     }else{

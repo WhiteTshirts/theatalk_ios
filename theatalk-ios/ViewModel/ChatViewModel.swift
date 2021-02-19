@@ -79,7 +79,6 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
         }
     }, receiveValue: {[weak self] chat_json in
         guard let self = self else { return }
-        self.chatreceive(chat: chat_json.chat)
         self.isSending = false
     }).store(in: &disposables)
         
