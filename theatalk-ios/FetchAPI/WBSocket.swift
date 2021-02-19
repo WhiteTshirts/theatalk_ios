@@ -27,6 +27,7 @@ class ChatWBSocket{
                 print("WebSocket sending error: \(error)")
             }
         }
+        
         listen()
         
     }
@@ -36,12 +37,12 @@ class ChatWBSocket{
 
     }
     func listen(){
+        
         task.receive{ result in
             switch result {
             case .failure(let error):
                 print("Failed to receive message: \(error)")
             case .success(let message):
-
                 switch message {
                     case .string(let text):
                         let msg = text.data(using: .utf8)!

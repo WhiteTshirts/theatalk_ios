@@ -13,22 +13,23 @@ struct MoveToChatRoom: View{
     var room:Room
     @ObservedObject var RoomsVM:RoomsViewModel
     var body: some View{
-        ChatRoom(room: room, ChatsVm: ChatsViewModel()).onAppear{
+        ChatRoom(room: room).onAppear{
             RoomsVM.EnterRoom(roomID_: room.id)
+        }.onDisappear{
         }
     }
 }
 struct ChatRoom: View {
     var room: Room
-    var player = WKYTPlayerView()
+    var player:WKYTPlayerView
     @ObservedObject var ChatsVm: ChatsViewModel
     @State var IsSuccess = false
     @State var text = ""
-    init(room:Room,ChatsVm:ChatsViewModel){
+    init(room:Room){
         self.room = room
-        self.ChatsVm = ChatsVm
+        self.ChatsVm = ChatsViewModel()
+        self.player = WKYTPlayerView()
     }
-
     var ChatView: some View{
         ForEach(ChatsVm.chats.indices, id: \.self){ index in
             HStack{
@@ -46,7 +47,6 @@ struct ChatRoom: View {
         VStack{
             YoutubePlayer(videoID: room.youtube_id).frame(height:200)
             Text("\(room.viewer)人が視聴中").onAppear{
-                
             }
             ScrollViewReader { value in
             List {
@@ -61,12 +61,14 @@ struct ChatRoom: View {
                                 .font(.caption)
                         }
                     }.id(index)
+                }.onAppear{
+
                 }
                     
                 }
             TextField("コメントを入力してください", text: $text,
                       onCommit: {
-                        ChatsVm.SendMsg(msg: self.text,roomId: room.id)
+                        self.ChatsVm.SendMsg(msg: self.text,roomId: room.id)
                         self.text = ""
                         value.scrollTo(0, anchor: .top)
             })
@@ -76,19 +78,14 @@ struct ChatRoom: View {
             
 
         }.onAppear(perform: {
-            OnEnterRoom()
+
         
         })
         .onDisappear(perform: {
-            ChatsVm.exit()
+            self.ChatsVm.exit()
             
         })
     }
-    func OnEnterRoom(){
-        ChatsVm.enter()
-
-    }
-
 }
 
 //struct ChatRoom_Previews: PreviewProvider {

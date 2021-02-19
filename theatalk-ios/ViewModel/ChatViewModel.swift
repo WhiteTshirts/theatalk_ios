@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+
 protocol ChatRecv {
     func chatreceive(chat: Chat)
 }
@@ -19,10 +20,11 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     @Published var chats: [Chat] = []
     private var chatfetcher = ChatFetcher(url: "http://localhost:5000/api/v1/rooms/0")
     init(){
-        load(room_Id: 0)
+        self.load(room_Id: 0)
+        self.enter()
     }
     func load(room_Id:Int){
-        chatfetcher.GetChats(roomId: room_Id)
+        self.chatfetcher.GetChats(roomId: room_Id)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: {[weak self] value in
                 guard let self = self else  { return}
@@ -37,9 +39,7 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
             }, receiveValue: {[weak self] chats_json in
                 guard let self = self else { return }
                 if(chats_json.chats != nil){
-                    for chat in chats_json.chats{
-                        self.chatreceive(chat: chat)
-                    }
+                    self.chats = chats_json.chats
                     
                     self.isLoading = false
                     
@@ -49,22 +49,24 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     }
     func enter(){
         
-        chatwb.SubscribeChannel(path: "/", token: g_user_token,delegate: self)
+        self.chatwb.SubscribeChannel(path: "/", token: g_user_token,delegate: self)
         
     }
     func exit(){
-        chatwb.CloseChannel()
+        self.chatwb.CloseChannel()
+        
+        
     }
     func chatreceive(chat: Chat){
-        print(chats.count)
-        chats.insert(chat, at: 0)
+        self.chats.insert(chat, at: 0)
+
 
     }
     func SendMsg(msg:String,roomId:Int){
         if(msg == ""){
             return
         }
-        chatfetcher.sendChatData(msg: msg, room_Id: roomId)
+        self.chatfetcher.sendChatData(msg: msg, room_Id: roomId)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: {[weak self] value in
         guard let self = self else  { return}
