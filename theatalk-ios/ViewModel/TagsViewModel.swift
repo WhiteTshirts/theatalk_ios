@@ -19,16 +19,17 @@ final class TagsViewModel: ObservableObject{
     var UserId:Int?
     private var tagFetcher = TagFetcher(url: "http://localhost:5000/api/v1/tags")
     init(UserId:Int?){
+        print(UserId)
         self.UserId = UserId
         load()
 
     }
     func load(){
-        //getTags()
-        self.tags = mockTagsData
+        getTags()
+        //self.tags = mockTagsData
         if(UserId != nil){
-            self.UserTags = mockTagsData
-           // getUserTags()
+            //self.UserTags = mockTagsData
+           getUserTags()
         }
         
     }
@@ -85,7 +86,10 @@ final class TagsViewModel: ObservableObject{
           },
           receiveValue: { [weak self] tags in
             guard let self = self else { return }
-            self.UserTags = tags.tags
+            if(tags.tags != nil){
+                self.UserTags = tags.tags
+
+            }
         })
         .store(in: &disposables)
     }
@@ -105,8 +109,10 @@ final class TagsViewModel: ObservableObject{
               },
               receiveValue: { [weak self] tags in
                 guard let self = self else { return }
-                self.tags = tags.tags
-            })
+                if(tags.tags != nil){
+                    self.tags = tags.tags
+
+                }            })
             .store(in: &disposables)
     }
     func searchTags(tagName:String){

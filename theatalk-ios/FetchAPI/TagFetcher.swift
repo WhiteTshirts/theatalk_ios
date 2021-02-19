@@ -127,7 +127,7 @@ extension TagFetcher:TagFechable{
         var taguser_j = TagUser_Json(tag_user: taguser)
         do{
             let data = try encoder.encode(taguser_j)
-            return fetchTag(with: makeTagsComponents(Path: "/user_tags/\(tagId)", Type: "POST", body: nil))
+            return fetchTag(with: makeTagsComponents(Path: "/user_tags", Type: "POST", body: data))
 
         }catch{
             let error = APIError.network(description: "could not encode")

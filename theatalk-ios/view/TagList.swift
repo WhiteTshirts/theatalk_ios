@@ -8,8 +8,8 @@
 import SwiftUI
 
 protocol TagManage{
-    func DeleteTag(tagId:Int)
-    func AddTag(tagId:Int)
+    func DeleteTag(tag:Tag)
+    func AddTag(tag:Tag)
 }
 struct TagList: View ,TagManage{
 
@@ -19,14 +19,25 @@ struct TagList: View ,TagManage{
     @State var SearchTagId = -1
     
     
-    func DeleteTag(tagId: Int) {
+    func DeleteTag(tag: Tag) {
         print("deleteded tag")
-        TagsVM.DeleteTagFromUser(tagId: tagId)
+        TagsVM.DeleteTagFromUser(tagId: tag.id)
+        DispatchQueue.main.async {
+            TagsVM.UserTags.removeAll(where: {$0.id == tag.id})
+        }
     }
     
-    func AddTag(tagId: Int) {
+    func AddTag(tag: Tag) {
         print("added tag")
-        TagsVM.AddTagToUser(tagId: tagId)
+        if let index = TagsVM.UserTags.index(where: {$0.id ==  tag.id}){
+            print("既に登録済みのタグです")
+        }else{
+            TagsVM.AddTagToUser(tagId: tag.id)
+            DispatchQueue.main.async {
+                TagsVM.UserTags.append(tag)
+            }
+        }
+
     }
     
     private func GetTags(tags:[Tag],isUserTag:Bool,color:Color) ->some View{
@@ -76,10 +87,9 @@ struct TagList: View ,TagManage{
                 .overlay(
                     Button(action: {
                         if(isUserTag){
-                            DeleteTag(tagId: tag.id
-                            )
+                            DeleteTag(tag: tag)
                         }else{
-                            AddTag(tagId: tag.id)
+                            AddTag(tag: tag)
                         }
                     }, label: {
                         Image(systemName:isUserTag ? "minus.circle":"plus.circle")
@@ -93,12 +103,12 @@ struct TagList: View ,TagManage{
     
     var body: some View {
         VStack{
-            Text("登録タグ一覧")
+            Text("全てのタグ")
             
-            GetTags(tags: TagsVM.tags,isUserTag: false, color: Color.red)
-            Text("ユーザタグ一覧")
+            GetTags(tags: TagsVM.tags,isUserTag: false, color: Color.green)
+            Text("登録中のタグ一覧")
             
-            GetTags(tags: TagsVM.UserTags,isUserTag: true ,color: Color.green)
+            GetTags(tags: TagsVM.UserTags,isUserTag: true ,color: Color.red)
 
 
         }

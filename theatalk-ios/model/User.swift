@@ -29,6 +29,13 @@ class User:Identifiable,Codable{
         name = name_
         id = user_id
     }
+    
+    init(name:String,user_id:Int,password:String){
+        self.name = name
+        
+        self.id = user_id
+        self.password = password
+    }
     init(name_: String,password_: String){
         id = -1
         name = name_

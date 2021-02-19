@@ -233,7 +233,7 @@ extension Home{
     var SelectedView: some View {
         switch self.SelectedMenu{
                 case "Profile":
-                    return AnyView(UserProfileView(user:session.user!,tags:mockTagsData))
+                    return AnyView(UserProfileView(user:session.user!,TagsVM: TagsViewModel(UserId: profile.user_Id)))
                 case "Tags":
                     return AnyView(TagList(TagsVM: TagsViewModel(UserId: profile.user_Id)))
                 case "Following":
@@ -241,7 +241,7 @@ extension Home{
                 case "Follower":
                     return AnyView(UsersList(UsersView: UsersViewModel(userId: self.session.user?.id ?? -1), isFollowList: false))
                 default:
-                    return AnyView(UserProfileView(user:session.user!,tags: mockTagsData))
+                    return AnyView(UserProfileView(user:session.user!,TagsVM: TagsViewModel(UserId: profile.user_Id)))
             }
 
         }

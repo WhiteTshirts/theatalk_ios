@@ -9,14 +9,14 @@ import SwiftUI
 
 struct UserProfileView: View {
     var user:User
-    var tags:[Tag]
+    @ObservedObject var TagsVM: TagsViewModel
     var body: some View {
         VStack{
             Text("名前:\(user.name)")
             Text("フォロー数:3")
             Text("フォロワー数:2")
             Text("登録タグ一覧")
-            GetTags(tags: tags, isUserTag: true, color: Color.red)
+            GetTags(tags: TagsVM.UserTags, isUserTag: true, color: Color.red)
         }
 
         
@@ -66,6 +66,6 @@ struct UserProfileView: View {
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView(user:mockUserData,tags: mockTagsData)
+        AnyView(UserProfileView(user:mockUserData,TagsVM: TagsViewModel(UserId: 0)))
     }
 }
