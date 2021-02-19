@@ -58,8 +58,8 @@ struct UsersList: View,UserRelationshipdel {
     func unfollow(userId: Int) {
         
     }
-    
-    @State var users:[User]
+    @ObservedObject var UsersView:UsersViewModel
+
     var isFollowList:Bool
    
     var body: some View {
@@ -72,12 +72,20 @@ struct UsersList: View,UserRelationshipdel {
             }
             
             ScrollView{
-                ForEach(users){ user in
+                if(isFollowList){
+                    ForEach(UsersView.followings){ user in
+                        UserCell(user:user,isFollowList: isFollowList,Followdel:self)
+                        Spacer()
 
-                    UserCell(user:user,isFollowList: isFollowList,Followdel:self)
-                    Spacer()
+                    }
+                }else{
+                    ForEach(UsersView.followers){ user in
+                        UserCell(user:user,isFollowList: isFollowList,Followdel:self)
+                        Spacer()
 
+                    }
                 }
+
             }
 
                 
@@ -91,6 +99,6 @@ struct UsersList: View,UserRelationshipdel {
 
 struct UsersList_Previews: PreviewProvider {
     static var previews: some View {
-        UsersList(users: mockUsersData,isFollowList: false)
+        UsersList(UsersView: UsersViewModel(userId: 1),isFollowList: false)
     }
 }

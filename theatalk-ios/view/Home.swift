@@ -158,6 +158,7 @@ struct Home: View,SideMenuDel {
     @State var SelectedRooms = false
     @State var PushedPages = false
     @State var SelectedMenu = "Profile"
+    
     func toggle(sidemenu:String) {
         DispatchQueue.main.async {
             self.PushedPages = true
@@ -228,6 +229,7 @@ struct Home: View,SideMenuDel {
 
 }
 extension Home{
+
     var SelectedView: some View {
         switch self.SelectedMenu{
                 case "Profile":
@@ -235,9 +237,9 @@ extension Home{
                 case "Tags":
                     return AnyView(TagList(TagsVM: TagsViewModel(UserId: profile.user_Id)))
                 case "Following":
-                    return AnyView(UsersList(users: mockUsersData, isFollowList: true))
+                    return AnyView(UsersList(UsersView: UsersViewModel(userId: self.session.user?.id ?? -1), isFollowList: true))
                 case "Follower":
-                    return AnyView(UsersList(users: mockUsersData, isFollowList: false))
+                    return AnyView(UsersList(UsersView: UsersViewModel(userId: self.session.user?.id ?? -1), isFollowList: false))
                 default:
                     return AnyView(UserProfileView(user:session.user!,tags: mockTagsData))
             }
