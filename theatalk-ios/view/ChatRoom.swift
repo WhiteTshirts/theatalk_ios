@@ -46,7 +46,7 @@ struct ChatRoom: View {
     var body: some View {
         VStack{
             YoutubePlayer(videoID: room.youtube_id).frame(height:200)
-            Text("\(room.viewer)人が視聴中").onAppear{
+            Text("").onAppear{
             }
             ScrollViewReader { value in
             List {
@@ -66,15 +66,17 @@ struct ChatRoom: View {
                 }
                     
                 }
-            TextField("コメントを入力してください", text: $text,
-                      onCommit: {
-                        self.ChatsVm.SendMsg(msg: self.text,roomId: room.id)
-                        self.text = ""
-                        value.scrollTo(0, anchor: .top)
-            })
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            }
+                VStack{
+                    TextField("コメントを入力してください", text: $text,
+                              onCommit: {
+                                self.ChatsVm.SendMsg(msg: self.text,roomId: room.id)
+                                self.text = ""
+                                value.scrollTo(0, anchor: .top)
+                    })
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    }
+            }.padding()
+
             
 
         }.onAppear(perform: {
@@ -88,8 +90,8 @@ struct ChatRoom: View {
     }
 }
 
-//struct ChatRoom_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChatRoom( room:mockRoomsData[0])
-//    }
-//}
+struct ChatRoom_Previews: PreviewProvider {
+    static var previews: some View {
+        ChatRoom( room:mockRoomsData[0])
+    }
+}

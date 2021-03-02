@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 struct RoomList: View {
-    @ObservedObject var RoomsVM = RoomsViewModel()
+    @ObservedObject var RoomsVM:RoomsViewModel
     @Binding var tagId:Int
     @Binding var IsSelected:Bool
     var body: some View{
@@ -27,10 +27,14 @@ struct RoomList: View {
                 }
             }.onAppear(){
             }.onChange(of: self.tagId, perform: { value in
+                print("value")
+                print(value)
                 if(value > 0){
                     RoomsVM.SetTagId(tagId: value)
                     RoomsVM.GetRoomsByTagId(tagId: value)
+                    print("tag")
                 }else{
+                    print("all")
                     RoomsVM.SetTagId(tagId: 0)
                     RoomsVM.GetallRooms()
                 }

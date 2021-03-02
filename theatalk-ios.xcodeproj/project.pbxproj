@@ -137,6 +137,9 @@
 		6F9ED92325D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
 		6F9ED92425D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
 		6F9ED92525D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
+		6F9EFF7D25E0B2DE0096AC98 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9EFF7C25E0B2DE0096AC98 /* ErrorView.swift */; };
+		6F9EFF7E25E0B2DE0096AC98 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9EFF7C25E0B2DE0096AC98 /* ErrorView.swift */; };
+		6F9EFF7F25E0B2DE0096AC98 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9EFF7C25E0B2DE0096AC98 /* ErrorView.swift */; };
 		6F9F40BE25D7A344000A7113 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9F40BD25D7A344000A7113 /* InitialView.swift */; };
 		6F9F40BF25D7A344000A7113 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9F40BD25D7A344000A7113 /* InitialView.swift */; };
 		6F9F40C025D7A344000A7113 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9F40BD25D7A344000A7113 /* InitialView.swift */; };
@@ -228,6 +231,7 @@
 		6F97ABAC25D8DD2C00B3B5BF /* UsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
 		6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		6F9ED92225D56896006F0951 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		6F9EFF7C25E0B2DE0096AC98 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		6F9F40BD25D7A344000A7113 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		6F9F40C425D7ED3B000A7113 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
@@ -413,6 +417,7 @@
 				6F9F40BD25D7A344000A7113 /* InitialView.swift */,
 				6F97ABAC25D8DD2C00B3B5BF /* UsersList.swift */,
 				6F13290525DAE621006D486A /* HelpView.swift */,
+				6F9EFF7C25E0B2DE0096AC98 /* ErrorView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -713,6 +718,7 @@
 				6F8806E225D069C40085826F /* RoomCell.swift in Sources */,
 				6F88069D25D069790085826F /* TagFetcher.swift in Sources */,
 				6F8806D625D069C40085826F /* ChatRoom.swift in Sources */,
+				6F9EFF7D25E0B2DE0096AC98 /* ErrorView.swift in Sources */,
 				6F8806F425D069DC0085826F /* RoomsViewModel.swift in Sources */,
 				6F8806A925D0697A0085826F /* FetchAPI.swift in Sources */,
 				6F8806C225D0699E0085826F /* MockRooms.swift in Sources */,
@@ -770,6 +776,7 @@
 				6F97ABAE25D8DD2C00B3B5BF /* UsersList.swift in Sources */,
 				6F88072A25D06E280085826F /* login.swift in Sources */,
 				6F8806A025D069790085826F /* UserFetcher.swift in Sources */,
+				6F9EFF7E25E0B2DE0096AC98 /* ErrorView.swift in Sources */,
 				6F8D71CE25D41BB000649F2C /* TagList.swift in Sources */,
 				6F8805F525D0671C0085826F /* theatalk_iosTests.swift in Sources */,
 				6F88072625D06E280085826F /* CreateRoom.swift in Sources */,
@@ -816,6 +823,7 @@
 				6F88071525D06E200085826F /* ImageLoader.swift in Sources */,
 				6F88071225D06E200085826F /* TagFetcher.swift in Sources */,
 				6F88071325D06E200085826F /* WBSocket.swift in Sources */,
+				6F9EFF7F25E0B2DE0096AC98 /* ErrorView.swift in Sources */,
 				6F88073725D06E2C0085826F /* TagsViewModel.swift in Sources */,
 				6F88073625D06E2C0085826F /* AuthViewModel.swift in Sources */,
 				6F88071D25D06E230085826F /* MockChats.swift in Sources */,

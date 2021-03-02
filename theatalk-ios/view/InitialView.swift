@@ -14,7 +14,7 @@ struct InitialView: View {
     var body: some View {
         VStack{
             if session.user != nil{
-                Home().environmentObject(session)
+                Home( TagsVM: TagsViewModel(UserId: profile.user_Id)).environmentObject(session)
             }else{
                 AuthView().environmentObject(session)
             }

@@ -111,6 +111,8 @@ struct TagList: View ,TagManage{
             GetTags(tags: TagsVM.UserTags,isUserTag: true ,color: Color.red)
 
 
+        }.onAppear{
+            self.TagsVM.load()
         }
 
 

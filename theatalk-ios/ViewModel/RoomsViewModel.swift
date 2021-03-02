@@ -19,7 +19,7 @@ final class CreateRoomViewModel: ObservableObject{
             .sink(receiveCompletion: { completion in
             print("receiveCompletion:", completion)
         }, receiveValue: { [self] room_json in
-            var room = room_json.room
+            var room = room_json.room//成功したら作成したルームに入る
         }).store(in: &disposables)
     }
 }
@@ -31,6 +31,7 @@ final class RoomsViewModel: ObservableObject{
     var tagId:Int?
     private var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
     init(){
+        print("iniitroomsview")
         GetallRooms()
     }
     
@@ -55,7 +56,10 @@ final class RoomsViewModel: ObservableObject{
           },
           receiveValue: { [weak self] rooms_json in
             guard let self = self else { return }
-            self.rooms = rooms_json.rooms
+            if(rooms_json.rooms != nil){
+                self.rooms = rooms_json.rooms
+
+            }
             self.isLoading = false
           })
         .store(in: &disposables)
@@ -78,7 +82,10 @@ final class RoomsViewModel: ObservableObject{
           },
           receiveValue: { [weak self] rooms_json in
             guard let self = self else { return }
-            self.rooms = rooms_json.rooms
+            if(rooms_json.rooms != nil){
+
+                self.rooms = rooms_json.rooms
+            }
             self.isLoading = false
           })
         .store(in: &disposables)

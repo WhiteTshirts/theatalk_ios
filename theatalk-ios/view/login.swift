@@ -120,10 +120,13 @@ struct AuthView: View,Authdel {
                 //error handle
                 return
             }
-            profile.token = g_user_token
-            profile.user_Id = user?.id ?? -1
-            self.session.user  = user
-            self.session.isLogin = true
+            DispatchQueue.main.async {
+                profile.token = g_user_token
+                profile.user_Id = user?.id ?? -1
+                self.session.user  = user
+                self.session.isLogin = true
+            }
+
         }
     }
     

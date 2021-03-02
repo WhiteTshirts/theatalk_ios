@@ -81,7 +81,6 @@ struct NavItem: View{
             self.TagId = tag.id
             self.textEntered = tag.name
             TextChanged = true
-            print(self.TagId)
         }
     }
     var body: some View{
@@ -126,17 +125,56 @@ struct NavItem: View{
                             Text("\(tag.name)")
                                 .font(.caption2)
                         }
-
                     }
                 }
 
             }.frame(width: RoomSize_Column1.width, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            
         }
-
     }
-
-
+}
+struct ChangeSearchTagView: View{
+    
+    @ObservedObject var TagsVM: TagsViewModel
+    @Binding var SelectedTagName:String
+    @Binding var SearchTagId:Int
+    func SetSearchTag(tag:Tag?){
+        if(tag == nil){
+            DispatchQueue.main.async {
+                self.SelectedTagName = ""
+                self.SearchTagId = -1
+            }
+        }else{
+            DispatchQueue.main.async {
+                self.SelectedTagName = tag!.name
+                self.SearchTagId = tag!.id
+            }
+        }
+    }
+    var body: some View{
+        HStack{
+            VStack(alignment: .leading){
+                Button(action: {
+                    SetSearchTag(tag:self.TagsVM.BeforeTag())
+                }, label: {
+                    Image(systemName: "arrow.left.circle")
+                        .resizable()
+                        .frame(width:40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)                })
+            }
+            Spacer()
+            Text("\(SelectedTagName)")
+            Spacer()
+            VStack(alignment: .trailing){
+                
+                Button(action: {
+                    SetSearchTag(tag:self.TagsVM.NextTag())
+                }, label: {
+                    Image(systemName: "arrow.right.circle")
+                        .resizable()
+                        .frame(width:40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)                })
+            }
+        }
+        
+    }
 }
 //protocol EnterRoomDele {
 //    func enterroom(room_num:Int)
@@ -145,11 +183,13 @@ protocol SideMenuDel {
     func logout()
     func toggle(sidemenu:String)
 }
+
 struct Home: View,SideMenuDel {
 
     
     @EnvironmentObject var session: Session
     @ObservedObject var profile = UserProfile()
+   
     @State var loading = true
     @State var textEntered = ""
     @State var info = false
@@ -158,7 +198,8 @@ struct Home: View,SideMenuDel {
     @State var SelectedRooms = false
     @State var PushedPages = false
     @State var SelectedMenu = "Profile"
-    
+    @State var SelectedTagName = ""
+    @ObservedObject var TagsVM :TagsViewModel
     func toggle(sidemenu:String) {
         DispatchQueue.main.async {
             self.PushedPages = true
@@ -173,13 +214,9 @@ struct Home: View,SideMenuDel {
         profile.username = ""
         profile.user_Id = -1
     }
-
-
     var body: some View {
-
         GeometryReader{ geometry in
             ZStack(alignment:.topLeading){
-
                 NavigationRooms()
                 if info {
                     Sidemenu(info: self.$info, pushed: self.$PushedPages, SelectedMenu: self.$SelectedMenu, sideDel: self)
@@ -193,7 +230,7 @@ struct Home: View,SideMenuDel {
 
         }.gesture(DragGesture(minimumDistance: 5)
                     .onChanged{_ in
-                        
+                        print("changed")
                     }
                     .onEnded{ _ in
                         
@@ -201,18 +238,16 @@ struct Home: View,SideMenuDel {
         .sheet(isPresented: self.$PushedPages, content: {
                 SelectedView
         })
-
-        
-
-
     }
     func NavigationRooms()-> some View{
         return NavigationView {
 
             VStack(alignment: .center){
+                ChangeSearchTagView(TagsVM: TagsViewModel(UserId: profile.user_Id), SelectedTagName: self.$textEntered, SearchTagId: self.$SearchTagId)
+                    .frame(width: UIScreen.screenWidth, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 HStack{
                     ScrollView{
-                        RoomList(tagId:self.$SearchTagId, IsSelected: self.$SelectedRooms)
+                        RoomList(RoomsVM: RoomsViewModel(), tagId:self.$SearchTagId, IsSelected: self.$SelectedRooms)
                     }
                 }
             }
@@ -251,7 +286,7 @@ extension Home{
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
                 ForEach(["iPhone SE", "iPhone X"], id: \.self) { deviceName in
-                    Home().environmentObject(Session(login: true, user: mockUserData))
+                    Home(TagsVM: TagsViewModel(UserId: 3)).environmentObject(Session(login: true, user: mockUserData))
                 .previewDevice(PreviewDevice(rawValue: deviceName))
                 .previewDisplayName(deviceName)
         }

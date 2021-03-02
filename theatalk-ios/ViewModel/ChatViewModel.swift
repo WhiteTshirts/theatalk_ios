@@ -17,6 +17,11 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     var isLoading = false
     var isSending = false
     var chatwb = ChatWBSocket()
+    struct StatusText{
+        var server_status:Int
+        var message:String
+    }
+    @Published var StatusMessage = StatusText(server_status: 0, message: "")
     @Published var chats: [Chat] = []
     private var chatfetcher = ChatFetcher(url: "http://localhost:5000/api/v1/rooms/0")
     init(){
@@ -54,6 +59,23 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     }
     func exit(){
         self.chatwb.CloseChannel()
+
+        self.chatfetcher.ExitRoom()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: {[weak self] value in
+                guard let self = self else  { return}
+                switch value{
+                    case .failure:
+                        self.isLoading = false
+                        
+                    break
+                case .finished:
+                    break
+                }
+            }, receiveValue: {[weak self] user_json in
+                guard let self = self else { return }
+
+            }).store(in: &disposables)
         
         
     }

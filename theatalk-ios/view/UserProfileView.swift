@@ -13,8 +13,6 @@ struct UserProfileView: View {
     var body: some View {
         VStack{
             Text("名前:\(user.name)")
-            Text("フォロー数:3")
-            Text("フォロワー数:2")
             Text("登録タグ一覧")
             GetTags(tags: TagsVM.UserTags, isUserTag: true, color: Color.red)
         }

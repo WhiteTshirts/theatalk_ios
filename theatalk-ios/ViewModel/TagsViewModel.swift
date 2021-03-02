@@ -17,12 +17,38 @@ final class TagsViewModel: ObservableObject{
     @Published var tags: [Tag] = []
     @Published var UserTags:[Tag] = []
     var UserId:Int?
+    var index:Int = 0
     private var tagFetcher = TagFetcher(url: "http://localhost:5000/api/v1/tags")
     init(UserId:Int?){
-        print(UserId)
         self.UserId = UserId
-        load()
+        //load()
 
+    }
+    func SearchTag()-> Tag?{
+        if(UserTags.count>0){
+            
+            return UserTags[self.index]
+        }else{
+            return nil
+        }
+    }
+    
+    func NextTag()->Tag?{
+        if(index+1 >= UserTags.count){
+            return nil
+        }else{
+            self.index += 1
+            return UserTags[index]
+        }
+    }
+    func BeforeTag()->Tag?{
+        if(index-1 >= 0){
+            self.index -= 1
+            return UserTags[self.index]
+            
+        }else{
+            return nil
+        }
     }
     func load(){
         getTags()
