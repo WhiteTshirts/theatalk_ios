@@ -176,6 +176,61 @@ struct ChangeSearchTagView: View{
         
     }
 }
+struct HomeLayoutView:View{
+    
+    @EnvironmentObject var session: Session
+    @ObservedObject var profile = UserProfile()
+    var body:some View{
+        TabView()
+    }
+}
+struct TabView:View{
+    @State private var selection: Tab = .Home
+    enum Tab{
+        case Home
+        case Search
+        case History
+        case DM
+    }
+    var body:some View{
+        TabView(selection: $selection){
+            RoomSearchView()
+                .tabItem{
+                    Label("Home",systemImage:"house")
+                }
+                .tag(Tab.Home)
+            RoomSearchView()
+                .tabItem{
+                    Label("Search",systemImage:"magnifyingglass")
+                }
+                .tag(Tab.Search)
+            RoomHistoryView()
+                .tabItem{
+                    Label("History",systemImage:"person")
+                }
+                .tag(Tab.History)
+            DMView()
+                .tabItem{
+                    Label("DM",systemImage:"message")
+                }
+                .tag(Tab.DM)
+            
+        }.onAppear() {
+            UITabBar.appearance().barTintColor = .white
+        }
+        .accentColor(.red)
+        
+    }
+}
+struct HomeLayout_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        HomeLayoutView()
+        
+    }
+    
+}
+
 //protocol EnterRoomDele {
 //    func enterroom(room_num:Int)
 //}
