@@ -31,7 +31,6 @@ final class RoomsViewModel: ObservableObject{
     var tagId:Int?
     private var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
     init(){
-        print("iniitroomsview")
         GetallRooms()
     }
     

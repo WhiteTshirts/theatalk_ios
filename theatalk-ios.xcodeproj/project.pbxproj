@@ -146,6 +146,9 @@
 		6F97ABB425D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */; };
 		6F97ABB525D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */; };
 		6F97ABB625D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */; };
+		6F9D4E9525EFA55800A1EF84 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D4E9425EFA55800A1EF84 /* SideMenuView.swift */; };
+		6F9D4E9625EFA55800A1EF84 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D4E9425EFA55800A1EF84 /* SideMenuView.swift */; };
+		6F9D4E9725EFA55800A1EF84 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D4E9425EFA55800A1EF84 /* SideMenuView.swift */; };
 		6F9ED92325D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
 		6F9ED92425D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
 		6F9ED92525D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
@@ -246,6 +249,7 @@
 		6F96C95725E0348600F579DA /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
 		6F97ABAC25D8DD2C00B3B5BF /* UsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
 		6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		6F9D4E9425EFA55800A1EF84 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		6F9ED92225D56896006F0951 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		6F9EFF7C25E0B2DE0096AC98 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		6F9F40BD25D7A344000A7113 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
@@ -320,6 +324,7 @@
 				6F736E1F25EE7E2200E26267 /* MyRoomView.swift */,
 				6F736E2625EE7E2C00E26267 /* DMView.swift */,
 				6F736E2D25EE828600E26267 /* RoomHistoryView.swift */,
+				6F9D4E9425EFA55800A1EF84 /* SideMenuView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -761,6 +766,7 @@
 				6F9EFF7D25E0B2DE0096AC98 /* ErrorView.swift in Sources */,
 				6F8806F425D069DC0085826F /* RoomsViewModel.swift in Sources */,
 				6F8806A925D0697A0085826F /* FetchAPI.swift in Sources */,
+				6F9D4E9525EFA55800A1EF84 /* SideMenuView.swift in Sources */,
 				6F8806C225D0699E0085826F /* MockRooms.swift in Sources */,
 				6FA0E32625D9679E00AE16D6 /* UtilityFunctions.swift in Sources */,
 				6F8805E325D0671A0085826F /* theatalk_iosApp.swift in Sources */,
@@ -803,6 +809,7 @@
 				6FA0E32725D9679F00AE16D6 /* UtilityFunctions.swift in Sources */,
 				6F736E2F25EE828600E26267 /* RoomHistoryView.swift in Sources */,
 				6F97ABB525D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
+				6F9D4E9625EFA55800A1EF84 /* SideMenuView.swift in Sources */,
 				6F88068825D0693D0085826F /* Chat.swift in Sources */,
 				6F8806BD25D0699E0085826F /* MockUsers.swift in Sources */,
 				6F88069C25D069790085826F /* File.swift in Sources */,
@@ -874,6 +881,7 @@
 				6F9EFF7F25E0B2DE0096AC98 /* ErrorView.swift in Sources */,
 				6F88073725D06E2C0085826F /* TagsViewModel.swift in Sources */,
 				6F88073625D06E2C0085826F /* AuthViewModel.swift in Sources */,
+				6F9D4E9725EFA55800A1EF84 /* SideMenuView.swift in Sources */,
 				6F88071D25D06E230085826F /* MockChats.swift in Sources */,
 				6FA0E32825D9679F00AE16D6 /* UtilityFunctions.swift in Sources */,
 				6F8806E125D069C40085826F /* CreateRoom.swift in Sources */,

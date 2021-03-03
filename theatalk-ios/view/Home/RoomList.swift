@@ -27,14 +27,10 @@ struct RoomList: View {
                 }
             }.onAppear(){
             }.onChange(of: self.tagId, perform: { value in
-                print("value")
-                print(value)
                 if(value > 0){
                     RoomsVM.SetTagId(tagId: value)
                     RoomsVM.GetRoomsByTagId(tagId: value)
-                    print("tag")
                 }else{
-                    print("all")
                     RoomsVM.SetTagId(tagId: 0)
                     RoomsVM.GetallRooms()
                 }

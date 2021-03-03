@@ -8,67 +8,6 @@
 import SwiftUI
 
 
-struct Sidemenu: View{
-    @State private var showingAlert = false
-    @Binding var info: Bool
-    @Binding var pushed: Bool
-    @Binding var SelectedMenu: String
-    var sideDel: SideMenuDel
-    var MenuNames = ["Profile","Tags","Following","Follower","Help"]
-    var SystemImageNames = ["person","text.bubble","person.circle","person.circle.fill","questionmark"]
-    func logoutView()-> some View{
-        return
-            Button(action: {
-            self.showingAlert = true
-        }){
-            Image(systemName: "figure.wave.circle")
-            Text("logout")
-            
-        }.alert(isPresented: $showingAlert){
-            Alert(title: Text("ログアウトしますか")
-                  ,primaryButton: .default(Text("はい"),
-                        action:{
-                            sideDel.logout()
-                                           }), secondaryButton: .default(Text("いいえ")))
-        }
-    
-    }
-    var body: some View{
-        
-        VStack(alignment: .trailing){
-            
-            Spacer().frame(height:100)
-            Button(action: {
-                info = !info
-            }){
-                Image(systemName: "xmark.circle").resizable()
-                    .frame(width: ProfileSize.width,height: ProfileSize.height)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.red/*@END_MENU_TOKEN@*/)
-            }
-            HStack{
-                Spacer()
-                    .frame(width: 15)
-                VStack(alignment: .leading) {
-                    ForEach(0..<5){num in
-                        Button(action: {
-                            self.SelectedMenu = MenuNames[num]
-                            sideDel.toggle(sidemenu: MenuNames[num])
-                        }){
-                            Image(systemName: SystemImageNames[num])
-                            Text(MenuNames[num])
-                        }
-                    }
-                    logoutView()
-
-                }
-                
-            }
-
-            Spacer()
-        }
-        
-    }
-}
 struct NavItem: View{
     @Binding var info: Bool
     @Binding var textEntered: String
@@ -102,7 +41,6 @@ struct NavItem: View{
 //                                        TagId = -1
 //                                    }
 //                                }
-                                
                                    if begin {
                                     self.TextInputting = true
                                    } else {
@@ -132,60 +70,135 @@ struct NavItem: View{
         }
     }
 }
-struct ChangeSearchTagView: View{
-    
-    @ObservedObject var TagsVM: TagsViewModel
-    @Binding var SelectedTagName:String
-    @Binding var SearchTagId:Int
-    func SetSearchTag(tag:Tag?){
-        if(tag == nil){
-            DispatchQueue.main.async {
-                self.SelectedTagName = ""
-                self.SearchTagId = -1
-            }
-        }else{
-            DispatchQueue.main.async {
-                self.SelectedTagName = tag!.name
-                self.SearchTagId = tag!.id
-            }
-        }
-    }
-    var body: some View{
-        HStack{
-            VStack(alignment: .leading){
-                Button(action: {
-                    SetSearchTag(tag:self.TagsVM.BeforeTag())
-                }, label: {
-                    Image(systemName: "arrow.left.circle")
-                        .resizable()
-                        .frame(width:40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)                })
-            }
-            Spacer()
-            Text("\(SelectedTagName)")
-            Spacer()
-            VStack(alignment: .trailing){
-                
-                Button(action: {
-                    SetSearchTag(tag:self.TagsVM.NextTag())
-                }, label: {
-                    Image(systemName: "arrow.right.circle")
-                        .resizable()
-                        .frame(width:40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)                })
-            }
-        }
-        
-    }
+//struct ChangeSearchTagView: View{
+//
+//    @ObservedObject var TagsVM: TagsViewModel
+//    @Binding var SelectedTagName:String
+//    @Binding var SearchTagId:Int
+//    func SetSearchTag(tag:Tag?){
+//        if(tag == nil){
+//            DispatchQueue.main.async {
+//                self.SelectedTagName = ""
+//                self.SearchTagId = -1
+//            }
+//        }else{
+//            DispatchQueue.main.async {
+//                self.SelectedTagName = tag!.name
+//                self.SearchTagId = tag!.id
+//            }
+//        }
+//    }
+//    var body: some View{
+//        HStack{
+//            VStack(alignment: .leading){
+//                Button(action: {
+//                    SetSearchTag(tag:self.TagsVM.BeforeTag())
+//                }, label: {
+//                    Image(systemName: "arrow.left.circle")
+//                        .resizable()
+//                        .frame(width:40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)                })
+//            }
+//            Spacer()
+//            Text("\(SelectedTagName)")
+//            Spacer()
+//            VStack(alignment: .trailing){
+//
+//                Button(action: {
+//                    SetSearchTag(tag:self.TagsVM.NextTag())
+//                }, label: {
+//                    Image(systemName: "arrow.right.circle")
+//                        .resizable()
+//                        .frame(width:40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)                })
+//            }
+//        }
+//
+//    }
+//}
+protocol SideMenuDel {
+    func logout()
+    func toggle(sidemenu:String)
 }
-struct HomeLayoutView:View{
+struct HomeLayoutView:View,SideMenuDel{
     
     @EnvironmentObject var session: Session
     @ObservedObject var profile = UserProfile()
+    @ObservedObject var TagsVM :TagsViewModel
+    @State var info = false
+    @State var PushedPages = false
+    @State var SelectedMenu = "Profile"
+    @State var SelectedTagName = ""
+    func logout() {
+        session.user = nil
+        profile.token = ""
+        profile.password = ""
+        profile.username = ""
+        profile.user_Id = -1
+    }
+    
+    func toggle(sidemenu: String) {
+        DispatchQueue.main.async {
+            self.PushedPages = true
+        }
+
+    }
+    
+    
+
     var body:some View{
-        TabView()
+        ZStack(alignment:.topLeading){
+            NavigationView{
+                SelectTabView()
+                    .toolbar(content: {
+                        ToolbarItem(placement: .navigationBarLeading){
+                             Button(action: {
+                                self.info = !self.info
+                             }) {
+                                 Image(systemName: "list.dash")
+                             }
+                         }
+                        
+                    })
+            }
+
+
+            if info {
+                SidemenuView(info: self.$info, pushed: self.$PushedPages, SelectedMenu: self.$SelectedMenu, sideDel: self)
+                    .frame(width:UIScreen.screenWidth/2,height: UIScreen.screenHeight,alignment: .leading)
+                    .background(Color.white)
+                    .animation(.default)
+                    .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                    .edgesIgnoringSafeArea(.all)
+            }
+            
+
+        }
+
     }
 }
-struct TabView:View{
+extension HomeLayoutView{
+
+    var SelectedView: some View {
+        switch self.SelectedMenu{
+                case "Profile":
+                    return AnyView(UserProfileView(user:session.user!,TagsVM: TagsViewModel(UserId: profile.user_Id)))
+                case "Tags":
+                    return AnyView(TagList(TagsVM: TagsViewModel(UserId: profile.user_Id)))
+                case "Following":
+                    return AnyView(UsersList(UsersView: UsersViewModel(userId: self.session.user?.id ?? -1), isFollowList: true))
+                case "Follower":
+                    return AnyView(UsersList(UsersView: UsersViewModel(userId: self.session.user?.id ?? -1), isFollowList: false))
+                default:
+                    return AnyView(UserProfileView(user:session.user!,TagsVM: TagsViewModel(UserId: profile.user_Id)))
+            }
+
+        }
+    
+}
+struct SelectTabView:View{
     @State private var selection: Tab = .Home
+    @State private var message = "ボタンをタップしてください"
+    @State private var selected = "Home"
+    @State  var TagId = -1
     enum Tab{
         case Home
         case Search
@@ -194,38 +207,56 @@ struct TabView:View{
     }
     var body:some View{
         TabView(selection: $selection){
-            RoomSearchView()
+            RoomSearchView(TagId: self.$TagId)
                 .tabItem{
                     Label("Home",systemImage:"house")
                 }
                 .tag(Tab.Home)
-            RoomSearchView()
+                .onAppear{
+                    self.selected = "Home"
+                }
+            RoomSearchView(TagId: self.$TagId)
                 .tabItem{
                     Label("Search",systemImage:"magnifyingglass")
                 }
                 .tag(Tab.Search)
+                .onAppear{
+                    self.selected = "Search"
+                }
             RoomHistoryView()
                 .tabItem{
                     Label("History",systemImage:"person")
                 }
                 .tag(Tab.History)
+                .onAppear{
+                    self.selected = "History"
+                }
             DMView()
                 .tabItem{
                     Label("DM",systemImage:"message")
                 }
                 .tag(Tab.DM)
+                .onAppear{
+                    self.selected = "DM"
+                }
             
         }.onAppear() {
             UITabBar.appearance().barTintColor = .white
         }
         .accentColor(.red)
+
+
         
     }
+}
+
+extension SelectTabView{
+    
 }
 struct HomeLayout_Previews: PreviewProvider {
     static var previews: some View {
         
-        HomeLayoutView()
+        HomeLayoutView( TagsVM: TagsViewModel(UserId: 8))
         
     }
     
@@ -234,12 +265,9 @@ struct HomeLayout_Previews: PreviewProvider {
 //protocol EnterRoomDele {
 //    func enterroom(room_num:Int)
 //}
-protocol SideMenuDel {
-    func logout()
-    func toggle(sidemenu:String)
-}
 
-struct Home: View,SideMenuDel {
+
+struct Home: View{
 
     
     @EnvironmentObject var session: Session
@@ -255,33 +283,20 @@ struct Home: View,SideMenuDel {
     @State var SelectedMenu = "Profile"
     @State var SelectedTagName = ""
     @ObservedObject var TagsVM :TagsViewModel
-    func toggle(sidemenu:String) {
-        DispatchQueue.main.async {
-            self.PushedPages = true
-        }
 
-
-    }
-    func logout() {
-        session.user = nil
-        profile.token = ""
-        profile.password = ""
-        profile.username = ""
-        profile.user_Id = -1
-    }
     var body: some View {
         GeometryReader{ geometry in
-            ZStack(alignment:.topLeading){
-                NavigationRooms()
-                if info {
-                    Sidemenu(info: self.$info, pushed: self.$PushedPages, SelectedMenu: self.$SelectedMenu, sideDel: self)
-                        .frame(width:UIScreen.screenWidth/2,height: UIScreen.screenHeight,alignment: .leading)
-                        .background(Color.white)
-                        .animation(.default)
-                        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                        .edgesIgnoringSafeArea(.all)
-                }
-            }
+//            ZStack(alignment:.topLeading){
+//                NavigationRooms()
+//                if info {
+//                    SidemenuView(info: self.$info, pushed: self.$PushedPages, SelectedMenu: self.$SelectedMenu, sideDel: self)
+//                        .frame(width:UIScreen.screenWidth/2,height: UIScreen.screenHeight,alignment: .leading)
+//                        .background(Color.white)
+//                        .animation(.default)
+//                        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+//                        .edgesIgnoringSafeArea(.all)
+//                }
+//            }
 
         }.gesture(DragGesture(minimumDistance: 5)
                     .onChanged{_ in
@@ -298,8 +313,8 @@ struct Home: View,SideMenuDel {
         return NavigationView {
 
             VStack(alignment: .center){
-                ChangeSearchTagView(TagsVM: TagsViewModel(UserId: profile.user_Id), SelectedTagName: self.$textEntered, SearchTagId: self.$SearchTagId)
-                    .frame(width: UIScreen.screenWidth, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//                ChangeSearchTagView(TagsVM: TagsViewModel(UserId: profile.user_Id), SelectedTagName: self.$textEntered, SearchTagId: self.$SearchTagId)
+//                    .frame(width: UIScreen.screenWidth, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 HStack{
                     ScrollView{
                         RoomList(RoomsVM: RoomsViewModel(), tagId:self.$SearchTagId, IsSelected: self.$SelectedRooms)
