@@ -15,15 +15,20 @@ struct RoomList: View {
         if(RoomsVM.rooms.isEmpty && RoomsVM.isLoading){
             Image(systemName: "hourglass").resizable()
                 .scaledToFit()
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: 80, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         }else{
             ForEach(RoomsVM.rooms){room in
                 HStack{
-                    NavigationLink(
-                        destination: MoveToChatRoom(room:room, RoomsVM: RoomsVM)
-                        ){
-                        RoomCell(room: room)
-                    }
+
+                        NavigationLink(
+                            destination: MoveToChatRoom(room:room, RoomsVM: RoomsVM)
+                            ){
+                            
+                            RoomCell(room: room)
+                        }
+
+                    
+ 
                 }
             }.onAppear(){
             }.onChange(of: self.tagId, perform: { value in
@@ -45,15 +50,16 @@ struct RoomList: View {
 
 }
 
-//
+
 //struct RoomList_Previews: PreviewProvider {
+//
 //    static var previews: some View {
 //                ForEach(["iPhone SE", "iPhone X"], id: \.self) { deviceName in
-//            RoomList(rooms: mockRoomsData)
+//                    RoomList(RoomsVM: RoomsViewModel(), tagId:i, IsSelected:j)
 //                .previewDevice(PreviewDevice(rawValue: deviceName))
 //                .previewDisplayName(deviceName)
 //        }
 //    }
 //}
 //
-
+//

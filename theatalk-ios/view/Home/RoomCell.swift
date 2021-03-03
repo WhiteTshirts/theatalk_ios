@@ -43,7 +43,6 @@ struct RoomCell: View {
     }
 
     var body: some View {
-        
         VStack{
             let url="http://img.youtube.com/vi/"+room.youtube_id+"/mqdefault.jpg"
             KFImage(URL(string:url))
@@ -55,7 +54,8 @@ struct RoomCell: View {
                     .cornerRadius(5)
                     
             }.onFailure { e in
-                }.frame(width:RoomSize_Column1.width)
+                }.resizable()
+                .frame(width:RoomSize_Column1.width)
                 .overlay(
                     
                     

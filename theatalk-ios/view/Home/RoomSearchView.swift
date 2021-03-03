@@ -12,16 +12,19 @@ struct RoomSearchView: View {
     @State var SelectedRooms = false
 
     var body: some View {
-        
-        VStack(alignment: .center){
-//                ChangeSearchTagView(TagsVM: TagsViewModel(UserId: profile.user_Id), SelectedTagName: self.$textEntered, SearchTagId: self.$SearchTagId)
-//                    .frame(width: UIScreen.screenWidth, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            HStack{
-                ScrollView{
-                    RoomList(RoomsVM: RoomsViewModel(), tagId:self.$TagId, IsSelected: self.$SelectedRooms)
+        ZStack{
+            Color.red.ignoresSafeArea()
+            VStack(alignment: .center){
+    //                ChangeSearchTagView(TagsVM: TagsViewModel(UserId: profile.user_Id), SelectedTagName: self.$textEntered, SearchTagId: self.$SearchTagId)
+    //                    .frame(width: UIScreen.screenWidth, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                HStack{
+                    ScrollView{
+                        RoomList(RoomsVM: RoomsViewModel(), tagId:self.$TagId, IsSelected: self.$SelectedRooms)
+                    }
                 }
             }
         }
+
     }
 }
 

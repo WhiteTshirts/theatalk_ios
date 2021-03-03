@@ -7,7 +7,12 @@
 
 import SwiftUI
 
-
+enum Tab{
+    case Home
+    case Search
+    case History
+    case DM
+}
 struct NavItem: View{
     @Binding var info: Bool
     @Binding var textEntered: String
@@ -118,6 +123,39 @@ protocol SideMenuDel {
     func logout()
     func toggle(sidemenu:String)
 }
+struct ToolBarView:View{
+    @Binding var SelectedTab:Tab
+    @Binding var TagId:Int
+    var body:some View{
+        switch SelectedTab {
+            case .Home:
+                    Text("Home")
+                
+            case .Search:
+                Text("Search")
+            case .History:
+                
+                Text("History")
+                Button(action: {
+                }){
+                    Image(systemName: "plus.app")
+
+                }
+            case .DM:
+                HStack{
+                    Text("DM")
+                    Spacer()
+                    Button(action: {
+                        
+                    }){
+                        Image(systemName: "plus.message")
+
+                    }
+
+                }
+        }
+    }
+}
 struct HomeLayoutView:View,SideMenuDel{
     
     @EnvironmentObject var session: Session
@@ -127,6 +165,8 @@ struct HomeLayoutView:View,SideMenuDel{
     @State var PushedPages = false
     @State var SelectedMenu = "Profile"
     @State var SelectedTagName = ""
+    @State var SelectedTab:Tab = .Home
+    @State var TagId = -1
     func logout() {
         session.user = nil
         profile.token = ""
@@ -142,20 +182,23 @@ struct HomeLayoutView:View,SideMenuDel{
 
     }
     
-    
 
     var body:some View{
         ZStack(alignment:.topLeading){
             NavigationView{
-                SelectTabView()
+
+                SelectTabView(selected: self.$SelectedTab, TagId: self.$TagId)
                     .toolbar(content: {
-                        ToolbarItem(placement: .navigationBarLeading){
+                        ToolbarItemGroup(placement: .navigationBarLeading){
                              Button(action: {
                                 self.info = !self.info
                              }) {
                                  Image(systemName: "list.dash")
                              }
-                         }
+                            ToolBarView(SelectedTab: self.$SelectedTab,TagId: self.$TagId)
+
+                            
+                        }
                         
                     })
             }
@@ -171,7 +214,7 @@ struct HomeLayoutView:View,SideMenuDel{
             }
             
 
-        }
+        }.background(Color.red)
 
     }
 }
@@ -197,31 +240,27 @@ extension HomeLayoutView{
 struct SelectTabView:View{
     @State private var selection: Tab = .Home
     @State private var message = "ボタンをタップしてください"
-    @State private var selected = "Home"
-    @State  var TagId = -1
-    enum Tab{
-        case Home
-        case Search
-        case History
-        case DM
-    }
+    @Binding var selected:Tab
+    @Binding var TagId:Int
+
     var body:some View{
         TabView(selection: $selection){
-            RoomSearchView(TagId: self.$TagId)
+            TimelineView()
                 .tabItem{
                     Label("Home",systemImage:"house")
                 }
                 .tag(Tab.Home)
                 .onAppear{
-                    self.selected = "Home"
+                    self.selected = .Home
                 }
             RoomSearchView(TagId: self.$TagId)
+                .background(Color.red)
                 .tabItem{
                     Label("Search",systemImage:"magnifyingglass")
                 }
                 .tag(Tab.Search)
                 .onAppear{
-                    self.selected = "Search"
+                    self.selected = .Search
                 }
             RoomHistoryView()
                 .tabItem{
@@ -229,7 +268,7 @@ struct SelectTabView:View{
                 }
                 .tag(Tab.History)
                 .onAppear{
-                    self.selected = "History"
+                    self.selected = .History
                 }
             DMView()
                 .tabItem{
@@ -237,13 +276,15 @@ struct SelectTabView:View{
                 }
                 .tag(Tab.DM)
                 .onAppear{
-                    self.selected = "DM"
+                    self.selected = .DM
                 }
+
             
         }.onAppear() {
             UITabBar.appearance().barTintColor = .white
         }
         .accentColor(.red)
+        .background(Color.red)
 
 
         

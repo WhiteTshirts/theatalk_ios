@@ -1,17 +1,18 @@
 //
-//  RoomHistoryView.swift
+//  TimelineView.swift
 //  theatalk-ios
 //
-//  Created by riku iwasaki on 2021/03/02.
+//  Created by riku iwasaki on 2021/03/04.
 //
 
 import SwiftUI
 
-struct RoomHistoryView: View {
+struct TimelineView: View {
     @State var TagId = 0
     @State var SelectedRooms = false
     var body: some View {
         ZStack{
+            //Color.red.ignoresSafeArea()
             VStack(alignment: .center){
                 HStack{
                     ScrollView{
@@ -24,3 +25,8 @@ struct RoomHistoryView: View {
     }
 }
 
+struct TimelineView_Previews: PreviewProvider {
+    static var previews: some View {
+        TimelineView()
+    }
+}

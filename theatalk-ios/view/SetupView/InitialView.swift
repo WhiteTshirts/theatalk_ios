@@ -10,12 +10,12 @@ import SwiftUI
 struct InitialView: View {
     @EnvironmentObject var session: Session
     @ObservedObject var profile = UserProfile()
-
     var body: some View {
         VStack{
             if session.user != nil{
                 
                 HomeLayoutView(TagsVM: TagsViewModel(UserId: profile.user_Id)).environmentObject(session)
+                
                 //Home( TagsVM: TagsViewModel(UserId: profile.user_Id)).environmentObject(session)
             }else{
                 AuthView().environmentObject(session)

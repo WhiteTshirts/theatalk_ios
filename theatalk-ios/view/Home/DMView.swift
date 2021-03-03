@@ -9,7 +9,17 @@ import SwiftUI
 
 struct DMView: View {
     var body: some View {
-        Text("we are developing now.")
+        
+        ZStack{
+            List{
+                
+                ForEach(0..<10){ num in
+                    Text("sample")
+                    
+                }
+            }
+
+        }
     }
 }
 
