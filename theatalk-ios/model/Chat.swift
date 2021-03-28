@@ -20,7 +20,7 @@ struct Chat: Codable{
     var created_at: Date!
     var user_name: String!
     enum DecodingKeys: CodingKey{
-        case user_id,room_id,text,created_at,user_name
+        case room_id,text,created_at,user
     }
     enum EncodeKeys:CodingKey{
         case text,user_name
@@ -28,6 +28,12 @@ struct Chat: Codable{
     enum EncodeRootKeys:CodingKey{
         case chat
     }
+    
+    enum UserKeys:CodingKey{
+        case id
+        case name
+    }
+    
     init(user_id_:Int,text_:String,created_at_:Date){
         user_id = user_id_
         text  = text_
@@ -49,10 +55,12 @@ struct Chat: Codable{
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DecodingKeys.self)
-        user_id = try container.decode(Int.self, forKey: .user_id)
         room_id = try container.decodeIfPresent(Int.self, forKey: .room_id)
         text = try container.decode(String.self, forKey: .text)
         created_at = try container.decodeIfPresent(with: DateTransformer(), forKey: .created_at)
+        let user_container = try container.nestedContainer(keyedBy: UserKeys.self, forKey: .user)
+        user_id = try user_container.decode(Int.self,forKey: .id)
+        user_name = try user_container.decode(String.self,forKey: .name)
 
     }
     func encode(to encoder: Encoder) throws {

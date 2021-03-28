@@ -27,6 +27,7 @@ final class CreateRoomViewModel: ObservableObject{
 final class RoomsViewModel: ObservableObject{
     private var disposables = Set<AnyCancellable>()
     @Published var isLoading = false
+    @Published var isSuccessed = false
     @Published var rooms: [Room] = []
     var tagId:Int?
     private var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
@@ -37,6 +38,9 @@ final class RoomsViewModel: ObservableObject{
     func SetTagId(tagId:Int){
         self.tagId = tagId
     }
+    func refresh(){
+        
+    }
     func GetallRooms(){
         self.isLoading = true
         roomfetcher.GETRooms()
@@ -46,6 +50,7 @@ final class RoomsViewModel: ObservableObject{
             guard let self = self else { return }
             switch value {
             case .failure:
+                print(value)
                 self.isLoading = false
                 self.rooms = []
               break
@@ -57,7 +62,6 @@ final class RoomsViewModel: ObservableObject{
             guard let self = self else { return }
             if(rooms_json.rooms != nil){
                 self.rooms = rooms_json.rooms
-
             }
             self.isLoading = false
           })
@@ -89,7 +93,7 @@ final class RoomsViewModel: ObservableObject{
           })
         .store(in: &disposables)
     }
-    func EnterRoom(roomID_:Int){
+    func EnterRoom(roomID_:Int){//非同期処理の関数に変更する
         roomfetcher.EnterRoom(roomId: roomID_)
             .receive(on: DispatchQueue.main)
             .sink(
@@ -103,9 +107,8 @@ final class RoomsViewModel: ObservableObject{
               break
             }
           },
-          receiveValue: { [weak self] room_json in
+          receiveValue: { [weak self] users_json in
             guard let self = self else { return }
-            self.isLoading = false
           })
         .store(in: &disposables)
     }

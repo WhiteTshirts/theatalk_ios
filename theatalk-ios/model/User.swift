@@ -61,7 +61,7 @@ class User:Identifiable,Codable{
         var container = encoder.container(keyedBy: EncodeRootKeys.self)
         var nestObj = container.nestedContainer(keyedBy: EncodeKeys.self, forKey: .user)
         try nestObj.encode(name, forKey: .name)
-        try nestObj.encode(name,forKey: .password)
+        try nestObj.encode(password,forKey: .password)
         
     }
 }

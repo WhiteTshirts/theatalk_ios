@@ -9,14 +9,12 @@ import SwiftUI
 
 struct TimelineView: View {
     @State var TagId = 0
-    @State var SelectedRooms = false
     var body: some View {
         ZStack{
-            //Color.red.ignoresSafeArea()
             VStack(alignment: .center){
                 HStack{
                     ScrollView{
-                        RoomList(RoomsVM: RoomsViewModel(), tagId:self.$TagId, IsSelected: self.$SelectedRooms)
+                        RoomList(RoomsVM: RoomsViewModel(), tagId:self.$TagId)
                     }
                 }
             }

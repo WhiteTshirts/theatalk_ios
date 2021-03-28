@@ -68,9 +68,10 @@ class Room: Codable,Identifiable{
     var viewer: Int!
     var youtube_id: String!
     var tags: [Int]!
+    var users: [User]!
     
     enum DecodingKeys: CodingKey{
-        case admin_id,id,is_private,name,password,created_at,start_time,updated_at,viewer,youtube_id,tags
+        case admin_id,id,is_private,name,password,created_at,start_time,updated_at,viewer,youtube_id,users,tags
     }
     enum EncodeKeys: CodingKey{
         case name,youtube_id,start_time
@@ -103,9 +104,12 @@ class Room: Codable,Identifiable{
         is_private = try container.decodeIfPresent(Bool.self, forKey: .is_private)
         updated_at = try container.decodeIfPresent(with: DateTransformer(), forKey: .updated_at)
         start_time = try container.decodeIfPresent(with: DateTransformer(), forKey: .start_time)
-        viewer = try container.decodeIfPresent(Int.self, forKey: .viewer)
         youtube_id = try container.decodeIfPresent(String.self, forKey: .youtube_id)
-        tags = try container.decodeIfPresent([Int].self, forKey: .tags)
+        users = try container.decodeIfPresent([User].self, forKey: .users)
+        if(users != nil){
+            viewer = users.count
+
+        }
     }
 
     func encode(to encoder: Encoder) throws {

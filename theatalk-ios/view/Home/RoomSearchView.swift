@@ -19,7 +19,7 @@ struct RoomSearchView: View {
     //                    .frame(width: UIScreen.screenWidth, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 HStack{
                     ScrollView{
-                        RoomList(RoomsVM: RoomsViewModel(), tagId:self.$TagId, IsSelected: self.$SelectedRooms)
+                        RoomList(RoomsVM: RoomsViewModel(), tagId:self.$TagId)
                     }
                 }
             }

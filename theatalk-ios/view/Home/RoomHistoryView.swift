@@ -15,7 +15,7 @@ struct RoomHistoryView: View {
             VStack(alignment: .center){
                 HStack{
                     ScrollView{
-                        RoomList(RoomsVM: RoomsViewModel(), tagId:self.$TagId, IsSelected: self.$SelectedRooms)
+                        RoomList(RoomsVM: RoomsViewModel(), tagId:self.$TagId)
                     }
                 }
             }

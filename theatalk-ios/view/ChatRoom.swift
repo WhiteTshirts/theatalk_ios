@@ -11,24 +11,21 @@ import WebKit
 import YoutubePlayer_in_WKWebView
 struct MoveToChatRoom: View{
     var room:Room
-    @ObservedObject var RoomsVM:RoomsViewModel
     var body: some View{
-        ChatRoom(room: room).onAppear{
-            RoomsVM.EnterRoom(roomID_: room.id)
-        }.onDisappear{
-        }
+        ChatRoom(room: room)
+
     }
 }
 struct ChatRoom: View {
     var room: Room
-    var player:WKYTPlayerView
+    var Youtubeplayer:YoutubePlayer
     @ObservedObject var ChatsVm: ChatsViewModel
     @State var IsSuccess = false
     @State var text = ""
     init(room:Room){
         self.room = room
         self.ChatsVm = ChatsViewModel()
-        self.player = WKYTPlayerView()
+        self.Youtubeplayer = YoutubePlayer(videoID: room.youtube_id,start_time: 100)
     }
     var ChatView: some View{
         ForEach(ChatsVm.chats.indices, id: \.self){ index in
@@ -45,8 +42,9 @@ struct ChatRoom: View {
     }
     var body: some View {
         VStack{
-            YoutubePlayer(videoID: room.youtube_id).frame(height:200)
-            Text("").onAppear{
+            Youtubeplayer.frame(height:200).onAppear{
+                
+                ChatsVm.load()
             }
             ScrollViewReader { value in
             List {
@@ -62,7 +60,6 @@ struct ChatRoom: View {
                         }
                     }.id(index)
                 }.onAppear{
-
                 }
                     
                 }
@@ -80,7 +77,7 @@ struct ChatRoom: View {
             
 
         }.onAppear(perform: {
-
+            
         
         })
         .onDisappear(perform: {

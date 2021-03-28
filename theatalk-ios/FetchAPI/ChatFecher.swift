@@ -29,9 +29,9 @@ class ChatFetcher:Fetcher{
         }
 
     }
-    func GetChats(roomId:Int)->AnyPublisher<Chats_Json,APIError>{
+    func GetChats()->AnyPublisher<Chats_Json,APIError>{
 
-        return  fetchData(with: makeComponents(Path: "/rooms/\(roomId)/chats", Type: "GET", body: nil))
+        return  fetchData(with: makeComponents(Path: "/rooms/0/chats", Type: "GET", body: nil))
     }
     func ExitRoom()-> AnyPublisher<User,APIError>{
         return fetchData(with: makeComponents(Path: "/room_users/leave", Type: "GET", body: nil))
