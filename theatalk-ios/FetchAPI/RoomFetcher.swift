@@ -92,6 +92,10 @@ extension RoomFetcher: RoomFechable{
     func GETRooms() -> AnyPublisher<Rooms_json, APIError> {
         return fetchRoom(with: makeRoomsComponents(Path: "/rooms", Type: "GET", body: nil))
     }
+    
+    func GetRoomsHistory()->AnyPublisher<Rooms_json, APIError> {
+        return fetchRoom(with: makeRoomsComponents(Path: "/room_histories", Type: "GET", body: nil))
+    }
     func CreateRoom(room:Room) -> AnyPublisher<Room_json,APIError>{
 
         do{

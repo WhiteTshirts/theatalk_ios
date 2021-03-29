@@ -9,8 +9,9 @@ import SwiftUI
 import UIKit
 struct RoomList: View {
     
-    @ObservedObject var RoomsVM:RoomsViewModel
+    @ObservedObject var RoomsVM:RoomsViewModelBase
     @Binding var tagId:Int
+    @State var toChatView = false
     var body: some View{
         if(RoomsVM.isLoading){
             Image(systemName: "hourglass").resizable()
@@ -21,15 +22,16 @@ struct RoomList: View {
                 HStack{
                     Button(action:{
                         RoomsVM.EnterRoom(roomID_: room.id)
-                    }){
-                        NavigationLink(
-                            destination: MoveToChatRoom(room: room)
-                        ){
-                            RoomCell(room: room)
-                        }
+                        toChatView=true
+                    },label:{
+                        RoomCell(room:room)
+                    })
+                    NavigationLink(destination:MoveToChatRoom(room:room),isActive:$toChatView){
+                        EmptyView()
                     }
 
                 }
+                Spacer()
             }
         }
 

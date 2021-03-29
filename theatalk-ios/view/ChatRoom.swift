@@ -42,10 +42,7 @@ struct ChatRoom: View {
     }
     var body: some View {
         VStack{
-            Youtubeplayer.frame(height:200).onAppear{
-                
-                ChatsVm.load()
-            }
+            Youtubeplayer.frame(height:200)
             ScrollViewReader { value in
             List {
                     

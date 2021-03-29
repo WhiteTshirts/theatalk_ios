@@ -13,13 +13,13 @@ struct RoomSearchView: View {
 
     var body: some View {
         ZStack{
-            Color.red.ignoresSafeArea()
+            //Color.black.ignoresSafeArea()
             VStack(alignment: .center){
     //                ChangeSearchTagView(TagsVM: TagsViewModel(UserId: profile.user_Id), SelectedTagName: self.$textEntered, SearchTagId: self.$SearchTagId)
     //                    .frame(width: UIScreen.screenWidth, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 HStack{
                     ScrollView{
-                        RoomList(RoomsVM: RoomsViewModel(), tagId:self.$TagId)
+                        RoomList(RoomsVM: RoomsViewModelTag(), tagId:self.$TagId)
                     }
                 }
             }

@@ -11,7 +11,7 @@ final class CreateRoomViewModel: ObservableObject{
     @Published var isLoading = false
     private var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
     private var disposables = Set<AnyCancellable>()
-    init(){
+    init(tagId:Int=0){
         
     }
     func CreateRoom(room:Room){
@@ -24,22 +24,13 @@ final class CreateRoomViewModel: ObservableObject{
     }
 }
 
-final class RoomsViewModel: ObservableObject{
-    private var disposables = Set<AnyCancellable>()
+class RoomsViewModelBase: ObservableObject{
+    var disposables = Set<AnyCancellable>()
     @Published var isLoading = false
     @Published var isSuccessed = false
     @Published var rooms: [Room] = []
-    var tagId:Int?
-    private var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
-    init(){
-        GetallRooms()
-    }
-    
-    func SetTagId(tagId:Int){
-        self.tagId = tagId
-    }
-    func refresh(){
-        
+    var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
+    init(tagId:Int=0){
     }
     func GetallRooms(){
         self.isLoading = true
@@ -67,6 +58,102 @@ final class RoomsViewModel: ObservableObject{
           })
         .store(in: &disposables)
     }
+    func EnterRoom(roomID_:Int){//非同期処理の関数に変更する
+        roomfetcher.EnterRoom(roomId: roomID_)
+            .receive(on: DispatchQueue.main)
+            .sink(
+          receiveCompletion: { [weak self] value in
+            guard let self = self else { return }
+
+            switch value {
+            case .failure:
+                self.isLoading = false
+              break
+            case .finished:
+              break
+            }
+          },
+          receiveValue: { [weak self] users_json in
+            guard let self = self else { return }
+          })
+        .store(in: &disposables)
+    }
+}
+
+final class RoomsViewModel: RoomsViewModelBase{
+    override init(tagId:Int=0){
+        super.init()
+        GetallRooms()
+    }
+    override func GetallRooms() {
+        super.GetallRooms()
+
+    }
+    
+}
+
+final class RoomsViewModelHistory: RoomsViewModelBase{
+    override init(tagId:Int=0){
+        super.init()
+        GetallRooms()
+    }
+    override func GetallRooms() {
+        GetRoomsByHistory()
+    }
+    func GetRoomsByHistory(){
+        self.isLoading = true
+        roomfetcher.GetRoomsHistory()
+            .receive(on: DispatchQueue.main)
+            .sink(
+          receiveCompletion: { [weak self] value in
+            guard let self = self else { return }
+            switch value {
+            case .failure:
+                self.isLoading = false
+                self.rooms = []
+              break
+            case .finished:
+              break
+            }
+          },
+          receiveValue: { [weak self] rooms_json in
+            guard let self = self else { return }
+            if(rooms_json.rooms != nil){
+
+                self.rooms = rooms_json.rooms
+            }
+            self.isLoading = false
+          })
+        .store(in: &disposables)
+    }
+}
+
+final class RoomsViewModelTag: RoomsViewModelBase{
+    var tagId:Int?
+    
+    func SetTagId(tagId:Int){
+        self.tagId = tagId
+    }
+    func refresh(){
+        GetallRooms()
+    }
+    override init(tagId:Int=0){
+        super.init()
+        self.tagId = tagId
+        GetallRooms()
+    }
+    override func GetallRooms() {
+        if tagId != nil{
+            if(tagId! > 0){
+                GetRoomsByTagId(tagId: self.tagId!)
+            }else{
+                super.GetallRooms()
+
+            }
+        }else{
+            super.GetallRooms()
+        }
+    }
     func GetRoomsByTagId(tagId:Int){
         self.isLoading = true
         roomfetcher.GETRoomsbyTag(tagId: tagId)
@@ -93,26 +180,6 @@ final class RoomsViewModel: ObservableObject{
           })
         .store(in: &disposables)
     }
-    func EnterRoom(roomID_:Int){//非同期処理の関数に変更する
-        roomfetcher.EnterRoom(roomId: roomID_)
-            .receive(on: DispatchQueue.main)
-            .sink(
-          receiveCompletion: { [weak self] value in
-            guard let self = self else { return }
-            switch value {
-            case .failure:
-                self.isLoading = false
-              break
-            case .finished:
-              break
-            }
-          },
-          receiveValue: { [weak self] users_json in
-            guard let self = self else { return }
-          })
-        .store(in: &disposables)
-    }
-    
-    
     
 }
+
