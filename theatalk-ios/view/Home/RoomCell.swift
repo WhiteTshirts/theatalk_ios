@@ -50,12 +50,12 @@ struct RoomCell: View {
                 Image(systemName: "arrow.2.circlepath.circle")
                     .font(.largeTitle)
                     .opacity(0.3)
-                    .frame(width: RoomSize_Column1.width,height: RoomSize_Column1.height)
+                    .frame(width: UIScreen.screenWidth)
                     .cornerRadius(5)
                     
             }.onFailure { e in
                 }.resizable()
-                .frame(width:RoomSize_Column1.width)
+                .frame(width:UIScreen.screenWidth)
                 .overlay(
                     
                     
@@ -64,21 +64,15 @@ struct RoomCell: View {
                             .background(Color.white).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
      
                 })
-                .overlay(
-                    ZStack{
-                        HStack(alignment: .bottom){
-                            Text(" "+room.name)
-                                .font(.headline)
-                                .foregroundColor(Color.black)
-                            Text("参加人数\(room.viewer)人")
-                                .font(.headline)
-                                .foregroundColor(Color.red)
+            HStack(alignment: .bottom){
+                Text(" "+room.name)
+                    .font(.headline)
+                    .foregroundColor(Color.black)
+                Text("参加人数\(room.viewer)人")
+                    .font(.headline)
+                    .foregroundColor(Color.red)
 
-                        }.background(Color.white).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                    }
-                    ,alignment: .bottomTrailing
-                    
-                )
+            }.background(Color.white).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
   
         }
         
