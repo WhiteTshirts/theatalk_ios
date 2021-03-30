@@ -18,6 +18,7 @@ struct ProfileView: View{
 struct UserProfileView: View {
     var logout:logoutDel
     var user:User
+    
 
     @ObservedObject var TagsVM: TagsViewModel
     @EnvironmentObject var session: Session
@@ -28,6 +29,11 @@ struct UserProfileView: View {
             Text("登録タグ一覧")
             if(ProfileVM.user.tags != nil){
                 GetTags(tags: ProfileVM.user.tags!, isUserTag: true, color: Color.red)
+            }
+            Button(action:{
+                logout.logout()
+            }){
+                Text("logout")
             }
         }
 

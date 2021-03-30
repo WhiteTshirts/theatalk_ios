@@ -250,7 +250,7 @@ struct SelectTabView:View, logoutDel{
                 .onAppear{
                     self.selected = .DM
                 }
-            UserProfileView(logout: self, user:session.user!, TagsVM: TagsViewModel(UserId: session.user!.id), ProfileVM: ProfileViewModel(user: session.user!))
+            UserProfileView(logout: self, user:session.user ?? User(name_:"",user_id:-1), TagsVM: TagsViewModel(UserId: profile.user_Id), ProfileVM: ProfileViewModel(user: session.user ?? User(name_:"",user_id:-1)))
                 .tabItem{
                     Label("Profile",systemImage:"person")
                 }
