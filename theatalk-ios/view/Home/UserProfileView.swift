@@ -6,15 +6,29 @@
 //
 
 import SwiftUI
-
-struct UserProfileView: View {
+struct ProfileView: View{
     var user:User
+
+    var body: some View{
+        VStack{
+            
+        }
+    }
+}
+struct UserProfileView: View {
+    var logout:logoutDel
+    var user:User
+
     @ObservedObject var TagsVM: TagsViewModel
+    @EnvironmentObject var session: Session
+    @ObservedObject var ProfileVM: ProfileViewModel
     var body: some View {
         VStack{
             Text("名前:\(user.name)")
             Text("登録タグ一覧")
-            GetTags(tags: TagsVM.UserTags, isUserTag: true, color: Color.red)
+            if(ProfileVM.user.tags != nil){
+                GetTags(tags: ProfileVM.user.tags!, isUserTag: true, color: Color.red)
+            }
         }
 
         
@@ -62,8 +76,8 @@ struct UserProfileView: View {
       }
 }
 
-struct UserProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        AnyView(UserProfileView(user:mockUserData,TagsVM: TagsViewModel(UserId: 0)))
-    }
-}
+//struct UserProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AnyView(UserProfileView(user:mockUserData, logout: SideMenuDel(),TagsVM: TagsViewModel(UserId: 0)))
+//    }
+//}

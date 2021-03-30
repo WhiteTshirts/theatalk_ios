@@ -11,13 +11,16 @@ class User:Identifiable,Codable{
     var name: String
     var id: Int //user_id
     var password: String!
-    var tags: [Int]!
+    var tags: [Tag]!
+    var rooms: [Room]!
+    var followings :[User]!
+    var followers :[User]!
     var isFollowed = false
     var isFollwing = false
     var room_id:Int!
     private var image_name: String!
     enum DecodingKeys: CodingKey{
-        case name,id,password,tags,isFollowd,isFollowing,room_id
+        case name,id,password,tags,isFollowed,isFollowing,room_id,rooms,followings,followers
     }
     enum EncodeKeys:CodingKey{
         case name,password
@@ -42,19 +45,30 @@ class User:Identifiable,Codable{
         password = password_
     }
     
-    init(name_: String,id_: Int,tags_: [Int]){
+    init(name_: String,id_: Int,tags_: [Tag]){
         name = name_
         id = id_
         tags = tags_
+    }
+    init(name_: String,id_: Int,tags_: [Tag],rooms:[Room],followings:[User],followers:[User]){
+        self.name = name_
+        self.id = id_
+        self.tags = tags_
+        self.rooms = rooms
+        self.followings = followings
+        self.followers = followers
     }
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DecodingKeys.self)
         name = try container.decode(String.self, forKey: .name)
         id = try container.decode(Int.self, forKey: .id)
         password = try container.decodeIfPresent(String.self, forKey: .name)
-        tags = try container.decodeIfPresent([Int].self, forKey: .tags)
+        tags = try container.decodeIfPresent([Tag].self, forKey: .tags)
+        rooms = try container.decodeIfPresent([Room].self, forKey: .rooms)
+        followings = try container.decodeIfPresent([User].self,forKey: .followings)
+        followers = try  container.decodeIfPresent([User].self, forKey: .followers)
         isFollwing = try container.decodeIfPresent(Bool.self, forKey: .isFollowing) ?? false
-        isFollowed = try container.decodeIfPresent(Bool.self, forKey: .isFollowd) ?? false
+        isFollowed = try container.decodeIfPresent(Bool.self, forKey: .isFollowed) ?? false
         room_id = try container.decodeIfPresent(Int.self, forKey: .room_id ) ?? 0
     }
     func encode(to encoder: Encoder) throws {

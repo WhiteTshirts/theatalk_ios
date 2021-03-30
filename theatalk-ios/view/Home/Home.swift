@@ -12,6 +12,7 @@ enum Tab{
     case Search
     case History
     case DM
+    case Profile
 }
 struct NavItem: View{
     @Binding var info: Bool
@@ -119,9 +120,8 @@ struct NavItem: View{
 //
 //    }
 //}
-protocol SideMenuDel {
+protocol logoutDel {
     func logout()
-    func toggle(sidemenu:String)
 }
 struct ToolBarView:View{
     @Binding var SelectedTab:Tab
@@ -141,6 +141,13 @@ struct ToolBarView:View{
                     Image(systemName: "plus.app")
 
                 }
+            case .Profile:
+                Text("Profile")
+                Button(action: {
+                }){
+                    Image(systemName: "person")
+
+                }
             case .DM:
                 HStack{
                     Text("DM")
@@ -153,10 +160,13 @@ struct ToolBarView:View{
                     }
 
                 }
+                
+            
+            
         }
     }
 }
-struct HomeLayoutView:View,SideMenuDel{
+struct HomeLayoutView:View{
     
     @EnvironmentObject var session: Session
     @ObservedObject var profile = UserProfile()
@@ -167,21 +177,7 @@ struct HomeLayoutView:View,SideMenuDel{
     @State var SelectedTagName = ""
     @State var SelectedTab:Tab = .Home
     @State var TagId = -1
-    func logout() {
-        session.user = nil
-        profile.token = ""
-        profile.password = ""
-        profile.username = ""
-        profile.user_Id = -1
-    }
-    
-    func toggle(sidemenu: String) {
-        DispatchQueue.main.async {
-            self.PushedPages = true
-        }
 
-    }
-    
 
     var body:some View{
         ZStack(alignment:.topLeading){
@@ -190,11 +186,6 @@ struct HomeLayoutView:View,SideMenuDel{
                 SelectTabView(selected: self.$SelectedTab, TagId: self.$TagId)
                     .toolbar(content: {
                         ToolbarItemGroup(placement: .navigationBarLeading){
-                             Button(action: {
-                                self.info = !self.info
-                             }) {
-                                 Image(systemName: "list.dash")
-                             }
                             ToolBarView(SelectedTab: self.$SelectedTab,TagId: self.$TagId)
 
                             
@@ -202,47 +193,28 @@ struct HomeLayoutView:View,SideMenuDel{
                         
                     })
             }
-
-
-            if info {
-                SidemenuView(info: self.$info, pushed: self.$PushedPages, SelectedMenu: self.$SelectedMenu, sideDel: self)
-                    .frame(width:UIScreen.screenWidth/2,height: UIScreen.screenHeight,alignment: .leading)
-                    .background(Color.white)
-                    .animation(.default)
-                    .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                    .edgesIgnoringSafeArea(.all)
-            }
             
 
         }.background(Color.red)
 
     }
 }
-extension HomeLayoutView{
+struct SelectTabView:View, logoutDel{
 
-    var SelectedView: some View {
-        switch self.SelectedMenu{
-                case "Profile":
-                    return AnyView(UserProfileView(user:session.user!,TagsVM: TagsViewModel(UserId: profile.user_Id)))
-                case "Tags":
-                    return AnyView(TagList(TagsVM: TagsViewModel(UserId: profile.user_Id)))
-                case "Following":
-                    return AnyView(UsersList(UsersView: UsersViewModel(userId: self.session.user?.id ?? -1), isFollowList: true))
-                case "Follower":
-                    return AnyView(UsersList(UsersView: UsersViewModel(userId: self.session.user?.id ?? -1), isFollowList: false))
-                default:
-                    return AnyView(UserProfileView(user:session.user!,TagsVM: TagsViewModel(UserId: profile.user_Id)))
-            }
-
-        }
-    
-}
-struct SelectTabView:View{
     @State private var selection: Tab = .Home
     @State private var message = "ボタンをタップしてください"
     @Binding var selected:Tab
     @Binding var TagId:Int
-
+    @ObservedObject var profile = UserProfile()
+    @EnvironmentObject var session: Session
+    func logout() {
+        session.user = nil
+        profile.token = ""
+        profile.password = ""
+        profile.username = ""
+        profile.user_Id = -1
+    }
+    
     var body:some View{
         TabView(selection: $selection){
             TimelineView()
@@ -264,7 +236,7 @@ struct SelectTabView:View{
                 }
             RoomHistoryView()
                 .tabItem{
-                    Label("History",systemImage:"person")
+                    Label("History",systemImage:"clock")
                 }
                 .tag(Tab.History)
                 .onAppear{
@@ -277,6 +249,14 @@ struct SelectTabView:View{
                 .tag(Tab.DM)
                 .onAppear{
                     self.selected = .DM
+                }
+            UserProfileView(logout: self, user:session.user!, TagsVM: TagsViewModel(UserId: session.user!.id), ProfileVM: ProfileViewModel(user: session.user!))
+                .tabItem{
+                    Label("Profile",systemImage:"person")
+                }
+                .tag(Tab.Profile)
+                .onAppear{
+                    self.selected = .Profile
                 }
 
             
@@ -345,10 +325,8 @@ struct Home: View{
                     }
                     .onEnded{ _ in
                         
-                    })
-        .sheet(isPresented: self.$PushedPages, content: {
-                SelectedView
         })
+       
     }
     func NavigationRooms()-> some View{
         return NavigationView {
@@ -374,25 +352,7 @@ struct Home: View{
     }
 
 }
-extension Home{
 
-    var SelectedView: some View {
-        switch self.SelectedMenu{
-                case "Profile":
-                    return AnyView(UserProfileView(user:session.user!,TagsVM: TagsViewModel(UserId: profile.user_Id)))
-                case "Tags":
-                    return AnyView(TagList(TagsVM: TagsViewModel(UserId: profile.user_Id)))
-                case "Following":
-                    return AnyView(UsersList(UsersView: UsersViewModel(userId: self.session.user?.id ?? -1), isFollowList: true))
-                case "Follower":
-                    return AnyView(UsersList(UsersView: UsersViewModel(userId: self.session.user?.id ?? -1), isFollowList: false))
-                default:
-                    return AnyView(UserProfileView(user:session.user!,TagsVM: TagsViewModel(UserId: profile.user_Id)))
-            }
-
-        }
-    
-}
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {

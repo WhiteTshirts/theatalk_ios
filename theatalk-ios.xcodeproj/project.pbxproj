@@ -137,15 +137,18 @@
 		6F8D71CD25D41BB000649F2C /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8D71CC25D41BB000649F2C /* TagList.swift */; };
 		6F8D71CE25D41BB000649F2C /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8D71CC25D41BB000649F2C /* TagList.swift */; };
 		6F8D71CF25D41BB000649F2C /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8D71CC25D41BB000649F2C /* TagList.swift */; };
+		6F96EF2326130BA20082F249 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96EF2226130BA20082F249 /* ProfileViewModel.swift */; };
+		6F96EF2426130BA20082F249 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96EF2226130BA20082F249 /* ProfileViewModel.swift */; };
+		6F96EF2526130BA20082F249 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96EF2226130BA20082F249 /* ProfileViewModel.swift */; };
+		6F96EF2E261310620082F249 /* AuthUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96EF2D261310620082F249 /* AuthUtility.swift */; };
+		6F96EF2F261310620082F249 /* AuthUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96EF2D261310620082F249 /* AuthUtility.swift */; };
+		6F96EF30261310620082F249 /* AuthUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96EF2D261310620082F249 /* AuthUtility.swift */; };
 		6F97ABAD25D8DD2C00B3B5BF /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABAC25D8DD2C00B3B5BF /* UsersList.swift */; };
 		6F97ABAE25D8DD2C00B3B5BF /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABAC25D8DD2C00B3B5BF /* UsersList.swift */; };
 		6F97ABAF25D8DD2C00B3B5BF /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABAC25D8DD2C00B3B5BF /* UsersList.swift */; };
 		6F97ABB425D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */; };
 		6F97ABB525D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */; };
 		6F97ABB625D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */; };
-		6F9D4E9525EFA55800A1EF84 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D4E9425EFA55800A1EF84 /* SideMenuView.swift */; };
-		6F9D4E9625EFA55800A1EF84 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D4E9425EFA55800A1EF84 /* SideMenuView.swift */; };
-		6F9D4E9725EFA55800A1EF84 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D4E9425EFA55800A1EF84 /* SideMenuView.swift */; };
 		6F9ED92325D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
 		6F9ED92425D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
 		6F9ED92525D56896006F0951 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9ED92225D56896006F0951 /* TestModel.swift */; };
@@ -246,9 +249,10 @@
 		6F8806F025D069DC0085826F /* RoomsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewModel.swift; sourceTree = "<group>"; };
 		6F88075E25D0713E0085826F /* ModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTest.swift; sourceTree = "<group>"; };
 		6F8D71CC25D41BB000649F2C /* TagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
+		6F96EF2226130BA20082F249 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		6F96EF2D261310620082F249 /* AuthUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUtility.swift; sourceTree = "<group>"; };
 		6F97ABAC25D8DD2C00B3B5BF /* UsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
 		6F97ABB325D8DD4B00B3B5BF /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
-		6F9D4E9425EFA55800A1EF84 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		6F9ED92225D56896006F0951 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		6F9EFF7C25E0B2DE0096AC98 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		6F9F40BD25D7A344000A7113 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
@@ -324,7 +328,6 @@
 				6F736E1F25EE7E2200E26267 /* MyRoomView.swift */,
 				6F736E2625EE7E2C00E26267 /* DMView.swift */,
 				6F736E2D25EE828600E26267 /* RoomHistoryView.swift */,
-				6F9D4E9425EFA55800A1EF84 /* SideMenuView.swift */,
 				6FAE627625EFF9B2003C6991 /* TimelineView.swift */,
 			);
 			path = Home;
@@ -365,6 +368,7 @@
 		6F8805E125D0671A0085826F /* theatalk-ios */ = {
 			isa = PBXGroup;
 			children = (
+				6F96EF2C2613104B0082F249 /* functions */,
 				6F8806EC25D069D00085826F /* ViewModel */,
 				6F8806CA25D069B00085826F /* view */,
 				6F8806B725D069870085826F /* MockData */,
@@ -472,8 +476,17 @@
 				6F8806ED25D069DC0085826F /* ChatViewModel.swift */,
 				6F8806F025D069DC0085826F /* RoomsViewModel.swift */,
 				6F8806EE25D069DC0085826F /* TagsViewModel.swift */,
+				6F96EF2226130BA20082F249 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6F96EF2C2613104B0082F249 /* functions */ = {
+			isa = PBXGroup;
+			children = (
+				6F96EF2D261310620082F249 /* AuthUtility.swift */,
+			);
+			path = functions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -764,13 +777,14 @@
 				6F88069D25D069790085826F /* TagFetcher.swift in Sources */,
 				6F8806D625D069C40085826F /* ChatRoom.swift in Sources */,
 				6F9EFF7D25E0B2DE0096AC98 /* ErrorView.swift in Sources */,
+				6F96EF2326130BA20082F249 /* ProfileViewModel.swift in Sources */,
 				6F8806F425D069DC0085826F /* RoomsViewModel.swift in Sources */,
 				6F8806A925D0697A0085826F /* FetchAPI.swift in Sources */,
-				6F9D4E9525EFA55800A1EF84 /* SideMenuView.swift in Sources */,
 				6F8806C225D0699E0085826F /* MockRooms.swift in Sources */,
 				6FA0E32625D9679E00AE16D6 /* UtilityFunctions.swift in Sources */,
 				6F8805E325D0671A0085826F /* theatalk_iosApp.swift in Sources */,
 				6F8806E025D069C40085826F /* CreateRoom.swift in Sources */,
+				6F96EF2E261310620082F249 /* AuthUtility.swift in Sources */,
 				6F97ABB425D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
 				6F9ED92325D56896006F0951 /* TestModel.swift in Sources */,
 				6F8806A725D0697A0085826F /* youtube_player.swift in Sources */,
@@ -797,10 +811,12 @@
 				6F8806F825D06D140085826F /* ChatViewModel.swift in Sources */,
 				6F8806AC25D0697A0085826F /* Parse.swift in Sources */,
 				6F13290725DAE621006D486A /* HelpView.swift in Sources */,
+				6F96EF2F261310620082F249 /* AuthUtility.swift in Sources */,
 				6F88075F25D0713E0085826F /* ModelTest.swift in Sources */,
 				6F13291125DAE6CD006D486A /* UserProfileView.swift in Sources */,
 				6F88073225D06E2B0085826F /* TagsViewModel.swift in Sources */,
 				6F736E2125EE7E2200E26267 /* MyRoomView.swift in Sources */,
+				6F96EF2426130BA20082F249 /* ProfileViewModel.swift in Sources */,
 				6F88067D25D0692E0085826F /* Session.swift in Sources */,
 				6F88072825D06E280085826F /* URLImage.swift in Sources */,
 				6F8806A225D069790085826F /* ImageLoader.swift in Sources */,
@@ -809,7 +825,6 @@
 				6FA0E32725D9679F00AE16D6 /* UtilityFunctions.swift in Sources */,
 				6F736E2F25EE828600E26267 /* RoomHistoryView.swift in Sources */,
 				6F97ABB525D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
-				6F9D4E9625EFA55800A1EF84 /* SideMenuView.swift in Sources */,
 				6F88068825D0693D0085826F /* Chat.swift in Sources */,
 				6F8806BD25D0699E0085826F /* MockUsers.swift in Sources */,
 				6F88069C25D069790085826F /* File.swift in Sources */,
@@ -879,13 +894,14 @@
 				6F88071225D06E200085826F /* TagFetcher.swift in Sources */,
 				6F88071325D06E200085826F /* WBSocket.swift in Sources */,
 				6F9EFF7F25E0B2DE0096AC98 /* ErrorView.swift in Sources */,
+				6F96EF2526130BA20082F249 /* ProfileViewModel.swift in Sources */,
 				6F88073725D06E2C0085826F /* TagsViewModel.swift in Sources */,
 				6F88073625D06E2C0085826F /* AuthViewModel.swift in Sources */,
-				6F9D4E9725EFA55800A1EF84 /* SideMenuView.swift in Sources */,
 				6F88071D25D06E230085826F /* MockChats.swift in Sources */,
 				6FA0E32825D9679F00AE16D6 /* UtilityFunctions.swift in Sources */,
 				6F8806E125D069C40085826F /* CreateRoom.swift in Sources */,
 				6F88074725D06E380085826F /* theatalk_iosApp.swift in Sources */,
+				6F96EF30261310620082F249 /* AuthUtility.swift in Sources */,
 				6F97ABB625D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
 				6F9ED92525D56896006F0951 /* TestModel.swift in Sources */,
 				6F8806D925D069C40085826F /* Home.swift in Sources */,
