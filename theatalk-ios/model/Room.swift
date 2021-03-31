@@ -83,17 +83,18 @@ class Room: Codable,Identifiable{
         self.name = name
         self.start_time = start_time
         self.youtube_id = youtube_id
+
     }
-    init(admin_id_:Int,name_:String,id_:Int,is_private_:Bool,start_time_:Date?,viewer_:Int,youtube_id_:String){
-        admin_id = admin_id_
-        id = id_
-        is_private = is_private_
-        name = name_
-        start_time = start_time_
-        viewer = viewer_
-        youtube_id = youtube_id_
-       
+    init(admin_id:Int,name:String,id:Int,is_private:Bool,start_time:Date?,viewer:Int,youtube_id:String){
+        self.admin_id = admin_id
+        self.id = id
+        self.is_private = is_private
+        self.name = name
+        self.start_time = start_time
+        self.viewer = viewer
+        self.youtube_id = youtube_id
     }
+    
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DecodingKeys.self)
@@ -108,7 +109,7 @@ class Room: Codable,Identifiable{
         users = try container.decodeIfPresent([User].self, forKey: .users)
         if(users != nil){
             viewer = users.count
-
+            
         }
     }
 

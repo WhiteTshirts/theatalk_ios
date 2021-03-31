@@ -12,6 +12,7 @@ import YoutubePlayer_in_WKWebView
 struct MoveToChatRoom: View{
     var room:Room
     var body: some View{
+        Text("\(room.users.count)")
         ChatRoom(room: room)
 
     }
@@ -43,6 +44,11 @@ struct ChatRoom: View {
     var body: some View {
         VStack{
             Youtubeplayer.frame(height:200)
+            NavigationLink(
+                destination: UsersList(users:self.room.users),
+                label: {
+                    Text("ルーム内:\(self.room.users.count)人")
+                })
             ScrollViewReader { value in
             List {
                     

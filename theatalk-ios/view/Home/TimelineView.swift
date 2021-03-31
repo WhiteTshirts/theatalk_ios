@@ -6,7 +6,13 @@
 //
 
 import SwiftUI
-
+struct TimelineBarView: View {
+    var body: some View {
+        HStack{
+            
+        }
+    }
+}
 struct TimelineView: View {
     @State var TagId = 0
     var body: some View {

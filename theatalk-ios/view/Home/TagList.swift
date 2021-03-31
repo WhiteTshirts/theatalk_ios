@@ -11,6 +11,7 @@ protocol TagManage{
     func DeleteTag(tag:Tag)
     func AddTag(tag:Tag)
 }
+
 struct TagList: View ,TagManage{
 
     @ObservedObject var TagsVM: TagsViewModel

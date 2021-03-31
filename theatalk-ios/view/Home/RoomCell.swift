@@ -83,7 +83,7 @@ struct RoomCell: View {
 
 struct RoomCell_Previews: PreviewProvider {
     static var previews: some View {
-        RoomCell(room: Room(admin_id_:0,name_:"test1",id_:0,is_private_: false,start_time_: Calendar.current.date(byAdding: .hour,value:0, to: Date()), viewer_: 1,youtube_id_:"kgeG9kXFb0A"))
+        RoomCell(room: Room(admin_id:0,name:"test1",id:0,is_private: false,start_time: Calendar.current.date(byAdding: .hour,value:0, to: Date()), viewer: 1,youtube_id:"kgeG9kXFb0A"))
 
     }
 }

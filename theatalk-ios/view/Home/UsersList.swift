@@ -12,7 +12,6 @@ protocol UserRelationshipdel {
 }
 struct UserCell: View{
     @State var user:User
-    var isFollowList:Bool
     var Followdel:UserRelationshipdel
     var body: some View {
         VStack(alignment: .center){
@@ -57,33 +56,18 @@ struct UsersList: View,UserRelationshipdel {
     
     func unfollow(userId: Int) {
         
+        
     }
-    @ObservedObject var UsersView:UsersViewModel
+    var users:[User]
 
-    var isFollowList:Bool
    
     var body: some View {
         VStack{
-            Spacer().frame(height:100)
-            if(isFollowList){
-                Text("フォローリスト")
-            }else{
-                Text("フォロワーリスト")
-            }
-            
             ScrollView{
-                if(isFollowList){
-                    ForEach(UsersView.followings){ user in
-                        UserCell(user:user,isFollowList: isFollowList,Followdel:self)
-                        Spacer()
+                ForEach(users){ user in
+                    UserCell(user:user,Followdel:self)
+                    Spacer()
 
-                    }
-                }else{
-                    ForEach(UsersView.followers){ user in
-                        UserCell(user:user,isFollowList: isFollowList,Followdel:self)
-                        Spacer()
-
-                    }
                 }
 
             }
@@ -97,8 +81,8 @@ struct UsersList: View,UserRelationshipdel {
     }
 }
 
-struct UsersList_Previews: PreviewProvider {
-    static var previews: some View {
-        UsersList(UsersView: UsersViewModel(userId: 1),isFollowList: false)
-    }
-}
+//struct UsersList_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UsersList(users,isFollowList: false)
+//    }
+//}

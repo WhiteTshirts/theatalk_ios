@@ -167,6 +167,12 @@
 		6FAE627725EFF9B2003C6991 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE627625EFF9B2003C6991 /* TimelineView.swift */; };
 		6FAE627825EFF9B2003C6991 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE627625EFF9B2003C6991 /* TimelineView.swift */; };
 		6FAE627925EFF9B2003C6991 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE627625EFF9B2003C6991 /* TimelineView.swift */; };
+		6FEDB03626147E37005C7924 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FEDB03526147E37005C7924 /* Colors.xcassets */; };
+		6FEDB03726147E37005C7924 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FEDB03526147E37005C7924 /* Colors.xcassets */; };
+		6FEDB03826147E37005C7924 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FEDB03526147E37005C7924 /* Colors.xcassets */; };
+		6FEDB03D26148629005C7924 /* TagSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEDB03C26148629005C7924 /* TagSearch.swift */; };
+		6FEDB03E26148629005C7924 /* TagSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEDB03C26148629005C7924 /* TagSearch.swift */; };
+		6FEDB03F26148629005C7924 /* TagSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEDB03C26148629005C7924 /* TagSearch.swift */; };
 		9D766580CE3FE6A74E677527 /* Pods_theatalk_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A47664E783AF0B85BB2A57 /* Pods_theatalk_ios.framework */; };
 		FBF41B30C89D26D5B241D4B2 /* Pods_theatalk_ios_theatalk_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D50FAED80B8A7C0C635D641 /* Pods_theatalk_ios_theatalk_iosUITests.framework */; };
 /* End PBXBuildFile section */
@@ -259,6 +265,8 @@
 		6F9F40C425D7ED3B000A7113 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		6FAE627625EFF9B2003C6991 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		6FEDB03526147E37005C7924 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		6FEDB03C26148629005C7924 /* TagSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSearch.swift; sourceTree = "<group>"; };
 		BE6AF75577DE75F7A460C6FF /* Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig"; path = "Target Support Files/Pods-theatalk-ios-theatalk-iosUITests/Pods-theatalk-ios-theatalk-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F5B5CF214F41664075C6574B /* Pods_theatalk_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theatalk_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -329,6 +337,7 @@
 				6F736E2625EE7E2C00E26267 /* DMView.swift */,
 				6F736E2D25EE828600E26267 /* RoomHistoryView.swift */,
 				6FAE627625EFF9B2003C6991 /* TimelineView.swift */,
+				6FEDB03C26148629005C7924 /* TagSearch.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -379,6 +388,7 @@
 				6F8805E625D0671C0085826F /* Assets.xcassets */,
 				6F8805EB25D0671C0085826F /* Info.plist */,
 				6F8805E825D0671C0085826F /* Preview Content */,
+				6FEDB03526147E37005C7924 /* Colors.xcassets */,
 			);
 			path = "theatalk-ios";
 			sourceTree = "<group>";
@@ -599,6 +609,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F8805EA25D0671C0085826F /* Preview Assets.xcassets in Resources */,
+				6FEDB03626147E37005C7924 /* Colors.xcassets in Resources */,
 				6F8805E725D0671C0085826F /* Assets.xcassets in Resources */,
 				6F8806BE25D0699E0085826F /* rooms.json in Resources */,
 			);
@@ -609,6 +620,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F8806BF25D0699E0085826F /* rooms.json in Resources */,
+				6FEDB03726147E37005C7924 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +629,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F88072025D06E230085826F /* rooms.json in Resources */,
+				6FEDB03826147E37005C7924 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,6 +808,7 @@
 				6F8806F325D069DC0085826F /* AuthViewModel.swift in Sources */,
 				6F8806D825D069C40085826F /* Home.swift in Sources */,
 				6F13290625DAE621006D486A /* HelpView.swift in Sources */,
+				6FEDB03D26148629005C7924 /* TagSearch.swift in Sources */,
 				6F8806D425D069C40085826F /* URLImage.swift in Sources */,
 				6FAE627725EFF9B2003C6991 /* TimelineView.swift in Sources */,
 				6F8806DA25D069C40085826F /* SignUp.swift in Sources */,
@@ -819,6 +833,7 @@
 				6F96EF2426130BA20082F249 /* ProfileViewModel.swift in Sources */,
 				6F88067D25D0692E0085826F /* Session.swift in Sources */,
 				6F88072825D06E280085826F /* URLImage.swift in Sources */,
+				6FEDB03E26148629005C7924 /* TagSearch.swift in Sources */,
 				6F8806A225D069790085826F /* ImageLoader.swift in Sources */,
 				6F8806A625D0697A0085826F /* WBSocket.swift in Sources */,
 				6F9F40BF25D7A344000A7113 /* InitialView.swift in Sources */,
@@ -912,6 +927,7 @@
 				6F88071025D06E200085826F /* youtube_player.swift in Sources */,
 				6F8806E325D069C40085826F /* RoomCell.swift in Sources */,
 				6F13290825DAE621006D486A /* HelpView.swift in Sources */,
+				6FEDB03F26148629005C7924 /* TagSearch.swift in Sources */,
 				6F88070025D06D490085826F /* ChatViewModel.swift in Sources */,
 				6FAE627925EFF9B2003C6991 /* TimelineView.swift in Sources */,
 				6F8806DB25D069C40085826F /* SignUp.swift in Sources */,

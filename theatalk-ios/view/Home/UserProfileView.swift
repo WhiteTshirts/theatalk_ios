@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
-struct ProfileView: View{
+struct OtherProfileView: View{
     var user:User
+    @ObservedObject var ProfileVM: ProfileViewModel
 
     var body: some View{
         VStack{
@@ -19,17 +20,62 @@ struct UserProfileView: View {
     var logout:logoutDel
     var user:User
     
-
+    @State var isEditing = false
     @ObservedObject var TagsVM: TagsViewModel
     @EnvironmentObject var session: Session
     @ObservedObject var ProfileVM: ProfileViewModel
+    init(logoutdel:logoutDel,user:User!){
+        self.logout = logoutdel
+        self.user = user  ?? User(name_: "", user_id: -1)
+        TagsVM = TagsViewModel(UserId: self.user.id)
+        ProfileVM = ProfileViewModel(user:self.user)
+    }
     var body: some View {
         VStack{
             Text("名前:\(user.name)")
-            Text("登録タグ一覧")
+            HStack{
+                Text("登録タグ一覧")
+                Image(systemName: "tag")
+                Button(action:{
+                    isEditing = !isEditing
+                }){
+                    if(isEditing){
+                        Image(systemName: "pencil.slash")
+                    }else{
+                        Image(systemName: "pencil")
+
+                    }
+                }
+            }
+
+
+            if(isEditing){
+                Text("taglist")
+            }
             if(ProfileVM.user.tags != nil){
                 GetTags(tags: ProfileVM.user.tags!, isUserTag: true, color: Color.red)
             }
+            if(ProfileVM.user.followings != nil && ProfileVM.user.followers != nil){
+                NavigationView{
+                    HStack{
+                        NavigationLink(
+                            destination: UsersList(users:ProfileVM.user.followings),
+                            label: {
+                                Text("フォロワー数:\(ProfileVM.user.followings.count)")
+                            })
+                        NavigationLink(
+                            destination: UsersList(users:ProfileVM.user.followers),
+                            label: {
+                                Text("フォロ-数:\(ProfileVM.user.followers.count)")
+                            })
+                    }
+
+                }
+
+
+            }
+            
+            
             Button(action:{
                 logout.logout()
             }){

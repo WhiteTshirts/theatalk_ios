@@ -129,18 +129,25 @@ struct ToolBarView:View{
     var body:some View{
         switch SelectedTab {
             case .Home:
+                HStack{
                     Text("Home")
+                        .multilineTextAlignment(.leading)
+                    
+                    NavigationLink(
+                        destination: CreateRoom(),
+                        label: {
+                            Text("部屋追加")
+                            Image(systemName: "plus")
+                        })
+
+                }
+                    
                 
             case .Search:
                 Text("Search")
             case .History:
                 
                 Text("History")
-                Button(action: {
-                }){
-                    Image(systemName: "plus.app")
-
-                }
             case .Profile:
                 Text("Profile")
                 Button(action: {
@@ -152,12 +159,12 @@ struct ToolBarView:View{
                 HStack{
                     Text("DM")
                     Spacer()
-                    Button(action: {
-                        
-                    }){
-                        Image(systemName: "plus.message")
-
-                    }
+                    NavigationLink(
+                        destination: CreateRoom(),
+                        label: {
+                            Text("DM追加")
+                            Image(systemName: "plus.message")
+                        })
 
                 }
                 
@@ -225,8 +232,7 @@ struct SelectTabView:View, logoutDel{
                 .onAppear{
                     self.selected = .Home
                 }
-            RoomSearchView(TagId: self.$TagId)
-                .background(Color.red)
+            RoomSearchView()
                 .tabItem{
                     Label("Search",systemImage:"magnifyingglass")
                 }
@@ -250,7 +256,7 @@ struct SelectTabView:View, logoutDel{
                 .onAppear{
                     self.selected = .DM
                 }
-            UserProfileView(logout: self, user:session.user ?? User(name_:"",user_id:-1), TagsVM: TagsViewModel(UserId: profile.user_Id), ProfileVM: ProfileViewModel(user: session.user ?? User(name_:"",user_id:-1)))
+            UserProfileView(logoutdel: self,user:session.user)
                 .tabItem{
                     Label("Profile",systemImage:"person")
                 }
@@ -258,7 +264,6 @@ struct SelectTabView:View, logoutDel{
                 .onAppear{
                     self.selected = .Profile
                 }
-
             
         }.onAppear() {
             UITabBar.appearance().barTintColor = .white
