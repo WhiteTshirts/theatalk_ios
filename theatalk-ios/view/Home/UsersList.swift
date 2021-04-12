@@ -15,34 +15,7 @@ struct UserCell: View{
     var Followdel:UserRelationshipdel
     var body: some View {
         VStack(alignment: .center){
-            Button(action: {
-            }){
-                Text("\(user.name)")
-            }
-            HStack{
-                Button(action:{
-                    if(user.isFollwing){
-                        user.isFollwing = false
-                        Followdel.unfollow(userId: user.id)
-                    }else{
-                        user.isFollwing = true
-                        Followdel.follow(userId: user.id)
-                    }
-                }){
-                    if(user.isFollwing){
-                        Text("フォロー中")
-                    }else{
-                        Text("フォローする")
-                    }
-                }
-                if(user.isFollowed){
-                    Text("フォローされています")
-                }else{
-                    Text("フォローされていません")
-                }
-            }.font(.caption2)
-
-
+  
             
         }
         
@@ -51,31 +24,65 @@ struct UserCell: View{
 
 struct UsersList: View,UserRelationshipdel {
     func follow(userId: Int) {
-        
     }
     
     func unfollow(userId: Int) {
         
-        
+
     }
     var users:[User]
+    
+    func UserCellView(user:User) -> some View{
+        VStack{
+            HStack{
+                Button(action:{
+                    
+                }){
+                    Text("\(user.name)")
+                }
+                Button(action: {
+                    if(user.isFollwing){
+                        user.isFollwing = false
+                        unfollow(userId: user.id)
+                    }else{
+                        user.isFollwing = true
+
+                        follow(userId: user.id)
+                    }
+                }){
+                    if(user.isFollwing){
+                        Image(systemName: "person.badge.plus")
+                    }else{
+                        Image(systemName: "person.badge.minus")
+                    }
+                }
+            }
+            HStack{
+                if(user.isFollower){
+                    Text("フォローされています")
+                }else{
+                    Text("フォローされていません")
+                }
+            }.font(.caption2)
+        }
+    }
 
    
     var body: some View {
-        VStack{
-            ScrollView{
-                ForEach(users){ user in
-                    UserCell(user:user,Followdel:self)
-                    Spacer()
+        NavigationView{
+            VStack{
+                ScrollView{
+                    ForEach(users){ user in
+                        UserCellView(user: user)
+                        Spacer()
+
+                    }
 
                 }
 
             }
-
-                
-
-            
         }
+
 
 
     }
