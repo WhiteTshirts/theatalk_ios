@@ -32,6 +32,24 @@ class RoomsViewModelBase: ObservableObject{
     var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
     init(tagId:Int=0){
     }
+    func ErrorHandle(e:APIError){
+        switch e{
+            case .token(description: let description):
+                print(description)
+            case .client(description: let description):
+                print(description)
+            case .server(description: let description):
+                print(description)
+            case .network(description: let description):
+                print(description)
+            case .parsing(description: let description):
+                print(description)
+            case .encoding(description: let description):
+                print(description)
+            case .other(error: let _):
+                print("unknown error")
+        }
+    }
     func GetallRooms(){
         self.isLoading = true
         roomfetcher.GETRooms()
@@ -40,8 +58,8 @@ class RoomsViewModelBase: ObservableObject{
           receiveCompletion: { [weak self] value in
             guard let self = self else { return }
             switch value {
-            case .failure:
-                print(value)
+            case .failure(let error):
+                self.ErrorHandle(e: error)
                 self.isLoading = false
                 self.rooms = []
               break
@@ -66,7 +84,8 @@ class RoomsViewModelBase: ObservableObject{
             guard let self = self else { return }
 
             switch value {
-            case .failure:
+            case .failure(let error):
+                self.ErrorHandle(e: error)
                 self.isLoading = false
               break
             case .finished:
@@ -108,7 +127,8 @@ final class RoomsViewModelHistory: RoomsViewModelBase{
           receiveCompletion: { [weak self] value in
             guard let self = self else { return }
             switch value {
-            case .failure:
+            case .failure(let error):
+                self.ErrorHandle(e: error)
                 self.isLoading = false
                 self.rooms = []
               break
@@ -162,7 +182,8 @@ final class RoomsViewModelTag: RoomsViewModelBase{
           receiveCompletion: { [weak self] value in
             guard let self = self else { return }
             switch value {
-            case .failure:
+            case .failure(let error):
+                self.ErrorHandle(e: error)
                 self.isLoading = false
                 self.rooms = []
               break

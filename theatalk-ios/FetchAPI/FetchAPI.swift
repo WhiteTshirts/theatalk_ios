@@ -10,8 +10,12 @@ import Combine
 import SwiftUI
 enum APIError: Error{
     case network(description: String)
+    case server(description:String)
+    case client(description:String)
     case parsing(description: String)
     case encoding(description: String)
+    case token(description:String)
+    case other(error:Error)
 }
 
 
@@ -52,15 +56,28 @@ class Fetcher{
         }
       return components
     }
-    func  fetchData<T>(
+    func  fetchData<T>(//401なら一回loginを試みる、それでもダメならログインさせる
         with reqcomponents: URLRequest
     ) -> AnyPublisher<T, APIError> where T: Decodable {
       return session.dataTaskPublisher(for: reqcomponents)
-        .mapError { error in
-          .network(description: error.localizedDescription)
-        }
-        .flatMap(maxPublishers: .max(1)) { pair in
-          decode(pair.data)
+        .tryMap({data, response -> Data in
+            guard let httpres = response as? HTTPURLResponse else{
+                throw APIError.network(description: "http response not found")
+            }
+            if(httpres.statusCode == 401){//unauthorized
+                throw APIError.token(description: "token expires")
+            }
+            if(500..<600).contains(httpres.statusCode){
+                throw APIError.server(description: "server error")
+            }
+            if (200..<300).contains(httpres.statusCode) == false {
+                throw APIError.client(description: "Bad Http Status Code")
+            }
+            return data
+        })
+        .decode(type: T.self,decoder:JSONDecoder())
+        .mapError{
+            $0 as? APIError ?? APIError.other(error: $0)
         }
         .eraseToAnyPublisher()
     }

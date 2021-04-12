@@ -31,32 +31,21 @@ struct UserProfileView: View {
         ProfileVM = ProfileViewModel(user:self.user)
     }
     var body: some View {
-        VStack{
-            Text("名前:\(user.name)")
-            HStack{
+        NavigationView{
+            VStack{
+                Text("名前:\(user.name)")
+                HStack{
                 Text("登録タグ一覧")
                 Image(systemName: "tag")
-                Button(action:{
-                    isEditing = !isEditing
-                }){
-                    if(isEditing){
-                        Image(systemName: "pencil.slash")
-                    }else{
-                        Image(systemName: "pencil")
-
-                    }
+                        NavigationLink(
+                            destination:TagList(TagsVM: TagsVM),label:{
+                            Image(systemName: "plus")
+                    })
                 }
-            }
-
-
-            if(isEditing){
-                Text("taglist")
-            }
-            if(ProfileVM.user.tags != nil){
-                GetTags(tags: ProfileVM.user.tags!, isUserTag: true, color: Color.red)
-            }
-            if(ProfileVM.user.followings != nil && ProfileVM.user.followers != nil){
-                NavigationView{
+                if(ProfileVM.user.tags != nil){
+                    GetTags(tags: ProfileVM.user.tags!, isUserTag: true, color: Color.red)
+                }
+                if(ProfileVM.user.followings != nil && ProfileVM.user.followers != nil){
                     HStack{
                         NavigationLink(
                             destination: UsersList(users:ProfileVM.user.followings),
@@ -66,24 +55,19 @@ struct UserProfileView: View {
                         NavigationLink(
                             destination: UsersList(users:ProfileVM.user.followers),
                             label: {
-                                Text("フォロ-数:\(ProfileVM.user.followers.count)")
+                                Text("フォロー数:\(ProfileVM.user.followers.count)")
                             })
                     }
-
+                    
                 }
-
-
-            }
-            
-            
-            Button(action:{
-                logout.logout()
-            }){
-                Text("logout")
+                Button(action:{
+                    logout.logout()
+                }){
+                    Text("logout")
+                }
             }
         }
 
-        
     }
     func TagItem(for text:String,color:Color) -> some View{
         Text(text)
