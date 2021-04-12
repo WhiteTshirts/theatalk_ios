@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-
+import SwiftUI
 enum APIError: Error{
     case network(description: String)
     case parsing(description: String)
@@ -16,6 +16,9 @@ enum APIError: Error{
 
 
 class Fetcher{
+    @Environment(\.PortEnvironment) private var PORT
+    @Environment(\.HostNameEnvironment) private var HNAME
+    @Environment(\.SchemeEnvironment) private var SCHEME
     
     let dateFormater = DateFormatter()
     let encoder = JSONEncoder()
@@ -32,9 +35,9 @@ class Fetcher{
     func makeComponents(Path:String,Type:String,body: Data!
     ) -> URLRequest {
         var url_components = URLComponents()
-      url_components.scheme = "http"
-      url_components.host = "localhost"
-        url_components.port = 5000
+      url_components.scheme = SCHEME
+      url_components.host = HNAME
+        url_components.port = PORT
       url_components.path = "/api/v1"+Path
         var components = URLRequest(url:url_components.url!)
         components.httpMethod = Type

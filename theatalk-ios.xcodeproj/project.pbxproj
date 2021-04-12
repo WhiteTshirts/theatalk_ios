@@ -14,6 +14,9 @@
 		6F13291025DAE6CD006D486A /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F13290F25DAE6CD006D486A /* UserProfileView.swift */; };
 		6F13291125DAE6CD006D486A /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F13290F25DAE6CD006D486A /* UserProfileView.swift */; };
 		6F13291225DAE6CD006D486A /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F13290F25DAE6CD006D486A /* UserProfileView.swift */; };
+		6F1B3F81262424E6001411F9 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1B3F80262424E6001411F9 /* Environment.swift */; };
+		6F1B3F82262424E6001411F9 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1B3F80262424E6001411F9 /* Environment.swift */; };
+		6F1B3F83262424E6001411F9 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1B3F80262424E6001411F9 /* Environment.swift */; };
 		6F736E1925EE7E0D00E26267 /* RoomSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F736E1825EE7E0D00E26267 /* RoomSearchView.swift */; };
 		6F736E1A25EE7E0D00E26267 /* RoomSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F736E1825EE7E0D00E26267 /* RoomSearchView.swift */; };
 		6F736E1B25EE7E0D00E26267 /* RoomSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F736E1825EE7E0D00E26267 /* RoomSearchView.swift */; };
@@ -204,6 +207,7 @@
 		51F380B15C74A5741A901DB1 /* Pods-theatalk-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theatalk-iosTests.debug.xcconfig"; path = "Target Support Files/Pods-theatalk-iosTests/Pods-theatalk-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F13290525DAE621006D486A /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		6F13290F25DAE6CD006D486A /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		6F1B3F80262424E6001411F9 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		6F736E1825EE7E0D00E26267 /* RoomSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSearchView.swift; sourceTree = "<group>"; };
 		6F736E1F25EE7E2200E26267 /* MyRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoomView.swift; sourceTree = "<group>"; };
 		6F736E2625EE7E2C00E26267 /* DMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMView.swift; sourceTree = "<group>"; };
@@ -495,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				6F96EF2D261310620082F249 /* AuthUtility.swift */,
+				6F1B3F80262424E6001411F9 /* Environment.swift */,
 			);
 			path = functions;
 			sourceTree = "<group>";
@@ -777,6 +782,7 @@
 				6F8806BC25D0699E0085826F /* MockUsers.swift in Sources */,
 				6F97ABAD25D8DD2C00B3B5BF /* UsersList.swift in Sources */,
 				6F9F40C525D7ED3B000A7113 /* UserProfile.swift in Sources */,
+				6F1B3F81262424E6001411F9 /* Environment.swift in Sources */,
 				6F8805E525D0671A0085826F /* ContentView.swift in Sources */,
 				6F8D71CD25D41BB000649F2C /* TagList.swift in Sources */,
 				6F8806A125D069790085826F /* ImageLoader.swift in Sources */,
@@ -868,6 +874,7 @@
 				6F88073025D06E2B0085826F /* AuthViewModel.swift in Sources */,
 				6F88072525D06E280085826F /* RoomCell.swift in Sources */,
 				6F88067325D069020085826F /* User.swift in Sources */,
+				6F1B3F82262424E6001411F9 /* Environment.swift in Sources */,
 				6F88072B25D06E280085826F /* ChatRoom.swift in Sources */,
 				6F88072725D06E280085826F /* SignUp.swift in Sources */,
 				6F9F40C625D7ED3B000A7113 /* UserProfile.swift in Sources */,
@@ -896,6 +903,7 @@
 				6F8806DF25D069C40085826F /* Menu.swift in Sources */,
 				6F97ABAF25D8DD2C00B3B5BF /* UsersList.swift in Sources */,
 				6F9F40C725D7ED3B000A7113 /* UserProfile.swift in Sources */,
+				6F1B3F83262424E6001411F9 /* Environment.swift in Sources */,
 				6F88073C25D06E340085826F /* Tag.swift in Sources */,
 				6F8D71CF25D41BB000649F2C /* TagList.swift in Sources */,
 				6F88060025D0671C0085826F /* theatalk_iosUITests.swift in Sources */,
