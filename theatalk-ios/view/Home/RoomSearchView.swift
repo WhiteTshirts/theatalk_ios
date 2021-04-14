@@ -9,9 +9,12 @@ import SwiftUI
 enum SelectedType{
     case tag
     case keyword
+    case user
+    
 }
-struct SearchRoomView: View{
-    @State var selected = SelectedType.keyword
+struct SearchFieldView: View{
+    @State var selected = SelectedType.tag
+    
     var body: some View{
         VStack{
             HStack{
@@ -19,9 +22,9 @@ struct SearchRoomView: View{
                     selected = .keyword
                 }, label: {
                     if(selected == .keyword){
-                        Text("キーワード")
+                        Text("キーワード").foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     }else{
-                        Text("キーワード")
+                        Text("キーワード").foregroundColor(.red)
 
                     }
                 })
@@ -29,12 +32,12 @@ struct SearchRoomView: View{
                     selected = .tag
                 }, label: {
                     if(selected == .tag){
-                        Text("タグ")
+                        Text("タグ").foregroundColor(.blue)
                     }else{
-                        Text("タグ")
+                        Text("タグ").foregroundColor(.red)
 
                     }
-                    
+
                 })
             }
         }
@@ -42,23 +45,44 @@ struct SearchRoomView: View{
     }
 }
 
-struct RoomSearchView: View {
-    @State var SelectedRooms = false
+struct RoomSearchByTagView: View{
     @State var TagId = -1
+
+    var body: some View {
+        VStack{
+            //tag
+            //roomlist
+            ScrollView{
+                RoomList(RoomsVM: RoomsViewModelTag(), tagId:self.$TagId)
+            }
+            
+        }
+    }
+}
+
+struct RoomSearchView: View {
+    @ObservedObject var RoomSearchVM = RoomSearchViewModel()
+
+    @State var SelectedRooms = false
+    @State var IsSearch = false
     var body: some View {
         ZStack{
-            //Color.black.ignoresSafeArea()
-            VStack(alignment: .center){
-                SearchRoomView()
-                //                ChangeSearchTagView(TagsVM: TagsViewModel(UserId: profile.user_Id), SelectedTagName: self.$textEntered, SearchTagId: self.$SearchTagId)
-    //                    .frame(width: UIScreen.screenWidth, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                HStack{
-                    ScrollView{
-                        RoomList(RoomsVM: RoomsViewModelTag(), tagId:self.$TagId)
+            NavigationView{
+                VStack{
+                    TextField("検索",text:$RoomSearchVM.text).onTapGesture {
+                        self.IsSearch = true
                     }
+                    NavigationLink(destination:SearchFieldView(),isActive:$IsSearch){
+                        RoomSearchByTagView()
+
+                    }
+                    
                 }
             }
+
         }
+
+
 
     }
 }

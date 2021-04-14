@@ -167,6 +167,9 @@
 		6FA0E32625D9679E00AE16D6 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */; };
 		6FA0E32725D9679F00AE16D6 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */; };
 		6FA0E32825D9679F00AE16D6 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */; };
+		6FA152A0262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
+		6FA152A1262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
+		6FA152A2262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
 		6FAE627725EFF9B2003C6991 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE627625EFF9B2003C6991 /* TimelineView.swift */; };
 		6FAE627825EFF9B2003C6991 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE627625EFF9B2003C6991 /* TimelineView.swift */; };
 		6FAE627925EFF9B2003C6991 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE627625EFF9B2003C6991 /* TimelineView.swift */; };
@@ -268,6 +271,7 @@
 		6F9F40BD25D7A344000A7113 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		6F9F40C425D7ED3B000A7113 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
+		6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSearchViewModel.swift; sourceTree = "<group>"; };
 		6FAE627625EFF9B2003C6991 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		6FEDB03526147E37005C7924 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		6FEDB03C26148629005C7924 /* TagSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSearch.swift; sourceTree = "<group>"; };
@@ -491,6 +495,7 @@
 				6F8806F025D069DC0085826F /* RoomsViewModel.swift */,
 				6F8806EE25D069DC0085826F /* TagsViewModel.swift */,
 				6F96EF2226130BA20082F249 /* ProfileViewModel.swift */,
+				6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -806,6 +811,7 @@
 				6F96EF2E261310620082F249 /* AuthUtility.swift in Sources */,
 				6F97ABB425D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
 				6F9ED92325D56896006F0951 /* TestModel.swift in Sources */,
+				6FA152A0262715FA001978B4 /* RoomSearchViewModel.swift in Sources */,
 				6F8806A725D0697A0085826F /* youtube_player.swift in Sources */,
 				6F9F40BE25D7A344000A7113 /* InitialView.swift in Sources */,
 				6F88069F25D069790085826F /* UserFetcher.swift in Sources */,
@@ -833,6 +839,7 @@
 				6F13290725DAE621006D486A /* HelpView.swift in Sources */,
 				6F96EF2F261310620082F249 /* AuthUtility.swift in Sources */,
 				6F88075F25D0713E0085826F /* ModelTest.swift in Sources */,
+				6FA152A1262715FA001978B4 /* RoomSearchViewModel.swift in Sources */,
 				6F13291125DAE6CD006D486A /* UserProfileView.swift in Sources */,
 				6F88073225D06E2B0085826F /* TagsViewModel.swift in Sources */,
 				6F736E2125EE7E2200E26267 /* MyRoomView.swift in Sources */,
@@ -927,6 +934,7 @@
 				6F96EF30261310620082F249 /* AuthUtility.swift in Sources */,
 				6F97ABB625D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
 				6F9ED92525D56896006F0951 /* TestModel.swift in Sources */,
+				6FA152A2262715FA001978B4 /* RoomSearchViewModel.swift in Sources */,
 				6F8806D925D069C40085826F /* Home.swift in Sources */,
 				6F9F40C025D7A344000A7113 /* InitialView.swift in Sources */,
 				6F8806D525D069C40085826F /* URLImage.swift in Sources */,

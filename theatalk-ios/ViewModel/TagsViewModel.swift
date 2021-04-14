@@ -141,6 +141,28 @@ final class TagsViewModel: ObservableObject{
                 }            })
             .store(in: &disposables)
     }
+    func postTag(tagName:String){
+        tagFetcher.PostTag(tag_name: tagName)
+            .receive(on: DispatchQueue.main)
+            .sink(
+          receiveCompletion: { [weak self] value in
+            guard let self = self else { return }
+            switch value {
+            case .failure:
+              break
+            case .finished:
+              break
+            }
+          },
+          receiveValue: { [weak self] tag in
+            guard let self = self else { return }
+            if(tag.tag != nil){
+                self.tags.append(tag.tag)
+            }
+            
+          })
+        .store(in: &disposables)
+    }
     func searchTags(tagName:String){
         tagFetcher.SearchTagsbyName(tagName: tagName)
             .receive(on: DispatchQueue.main)
