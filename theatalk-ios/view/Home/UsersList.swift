@@ -6,33 +6,27 @@
 //
 
 import SwiftUI
-protocol UserRelationshipdel {
-    func follow(userId:Int)
-    func unfollow(userId:Int)
-}
-struct UserCell: View{
-    @State var user:User
-    var Followdel:UserRelationshipdel
-    var body: some View {
-        VStack(alignment: .center){
-  
-            
-        }
+
+struct UsersList: View {
+    
+    @State var users:[User]
+    var userRelation:UsersRelationShip
+    func Follow(index:Int){
+        let _user = users[index]
+        _user.isFollwing = true
+        users[index] = _user
+        userRelation.Follow(userId: users[index].id)
         
     }
-}
-
-struct UsersList: View,UserRelationshipdel {
-    func follow(userId: Int) {
-    }
-    
-    func unfollow(userId: Int) {
+    func UnFollow(index:Int){
+        let _user = users[index]
+        _user.isFollwing = false
+        users[index] = _user
+        userRelation.UnFollow(userId: users[index].id)
         
-
     }
-    var users:[User]
     
-    func UserCellView(user:User) -> some View{
+    func UserCellView(user:User,index:Int) -> some View{
         VStack{
             HStack{
                 Button(action:{
@@ -42,18 +36,16 @@ struct UsersList: View,UserRelationshipdel {
                 }
                 Button(action: {
                     if(user.isFollwing){
-                        user.isFollwing = false
-                        unfollow(userId: user.id)
+                        self.UnFollow(index: index)
                     }else{
-                        user.isFollwing = true
+                        self.Follow(index: index)
 
-                        follow(userId: user.id)
                     }
                 }){
                     if(user.isFollwing){
-                        Image(systemName: "person.badge.plus")
+                        Image(systemName: "person.badge.minus").foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     }else{
-                        Image(systemName: "person.badge.minus")
+                        Image(systemName: "person.badge.plus").foregroundColor(.red)
                     }
                 }
             }
@@ -72,8 +64,8 @@ struct UsersList: View,UserRelationshipdel {
         NavigationView{
             VStack{
                 ScrollView{
-                    ForEach(users){ user in
-                        UserCellView(user: user)
+                    ForEach(users.indices){ index in
+                        UserCellView(user: users[index],index: index)
                         Spacer()
 
                     }

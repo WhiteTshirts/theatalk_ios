@@ -23,7 +23,7 @@ class User:Identifiable,Codable{
         case name,id,password,tags,isFollower,isFollowing,room_id,rooms,followings,followers
     }
     enum EncodeKeys:CodingKey{
-        case name,password
+        case name,password,id
     }
     enum EncodeRootKeys:CodingKey{
         case user
@@ -76,6 +76,7 @@ class User:Identifiable,Codable{
         var nestObj = container.nestedContainer(keyedBy: EncodeKeys.self, forKey: .user)
         try nestObj.encode(name, forKey: .name)
         try nestObj.encode(password,forKey: .password)
+        try nestObj.encode(id, forKey: .id)
         
     }
 }

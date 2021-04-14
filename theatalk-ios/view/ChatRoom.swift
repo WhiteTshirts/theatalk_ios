@@ -17,7 +17,15 @@ struct MoveToChatRoom: View{
 
     }
 }
-struct ChatRoom: View {
+struct ChatRoom: View,UsersRelationShip {
+    func Follow(userId: Int) {
+        self.ChatsVm.Follow(userId: userId)
+    }
+    
+    func UnFollow(userId: Int) {
+        self.ChatsVm.UnFollow(userId: userId)
+    }
+    
     var room: Room
     var Youtubeplayer:YoutubePlayer
     @ObservedObject var ChatsVm: ChatsViewModel
@@ -45,7 +53,7 @@ struct ChatRoom: View {
         VStack{
             Youtubeplayer.frame(height:200)
             NavigationLink(
-                destination: UsersList(users:self.room.users),
+                destination: UsersList(users:self.room.users, userRelation: self),
                 label: {
                     Text("ルーム内:\(self.room.users.count)人")
                 })

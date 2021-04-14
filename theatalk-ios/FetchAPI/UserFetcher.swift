@@ -98,26 +98,26 @@ extension UserFetcher: UserFechable{
         userId: Int
     ) ->AnyPublisher<User_Json,APIError>{
         do{
-            var follow_info = Dictionary<String,Any>()
-            follow_info["follow_id"] = userId
-            let data = try JSONSerialization.data(withJSONObject: follow_info, options: [])
-            return fetchUser(with: makeUsersComponents(Path: "/relationships", Type: "GET", body: data))
+            let user = User(name_: "", user_id: userId)
+            let data = try encoder.encode(user)
+            return fetchUser(with: makeUsersComponents(Path: "/relationships", Type: "POST", body: data))
         }catch{
             let error = APIError.network(description: "could not encode")
             return Fail(error: error).eraseToAnyPublisher()
         }
     }
-//    func DELETEFollow(
-//        forUser user: User
-//    ) -> AnyPublisher<Void,APIError>{
-//        do{
-//            let data = try encoder.encode(user)
-//            return fetchUser(with: makeUsersComponents(Path: "/relationships/follow_index", Type: "GET", body: data))
-//        }catch{
-//            let error = APIError.network(description: "could not encode")
-//            return Fail(error: error).eraseToAnyPublisher()
-//        }
-//    }
+    func DELETEFollow(
+        forUser userId: Int
+    ) -> AnyPublisher<Users_Json,APIError>{
+        do{
+            let user = User(name_: "", user_id: userId)
+            let data = try encoder.encode(user)
+            return fetchUser(with: makeUsersComponents(Path: "/relationships/1", Type: "DELETE", body: data))
+        }catch{
+            let error = APIError.network(description: "could not encode")
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+    }
 
 
 }

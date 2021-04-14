@@ -16,7 +16,16 @@ struct OtherProfileView: View{
         }
     }
 }
-struct UserProfileView: View {
+struct UserProfileView: View,UsersRelationShip {
+    func Follow(userId: Int) {
+        
+        self.ProfileVM.Follow(userId: userId)
+    }
+    
+    func UnFollow(userId: Int) {
+        self.ProfileVM.UnFollow(userId: userId)
+    }
+    
     var logout:logoutDel
     var user:User
     
@@ -48,12 +57,12 @@ struct UserProfileView: View {
                 if(ProfileVM.user.followings != nil && ProfileVM.user.followers != nil){
                     HStack{
                         NavigationLink(
-                            destination: UsersList(users:ProfileVM.user.followings),
+                            destination: UsersList(users:ProfileVM.user.followings, userRelation: self),
                             label: {
                                 Text("フォロワー数:\(ProfileVM.user.followings.count)")
                             })
                         NavigationLink(
-                            destination: UsersList(users:ProfileVM.user.followers),
+                            destination: UsersList(users:ProfileVM.user.followers, userRelation: self),
                             label: {
                                 Text("フォロー数:\(ProfileVM.user.followers.count)")
                             })

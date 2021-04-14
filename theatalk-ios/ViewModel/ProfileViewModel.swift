@@ -7,15 +7,25 @@
 
 import Foundation
 import Combine
+import SwiftUI
+
 final class ProfileViewModel: ObservableObject{
     
     private var disposables = Set<AnyCancellable>()
     @Published var user:User
     private var userfetcher = UserFetcher()
-
+    @ObservedObject var UsersVM:UsersViewModel
     init(user:User){
         self.user = user
+        self.UsersVM = UsersViewModel(userId: user.id)
         GetUserInfo()
+    }
+    func Follow(userId:Int){
+        
+        self.UsersVM.Follow(userId: userId)
+    }
+    func UnFollow(userId:Int){
+        self.UsersVM.UnFollow(userId: userId)
     }
     func GetUserInfo(){
         userfetcher.GetUser(userId: user.id)

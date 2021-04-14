@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-
+import SwiftUI
 protocol ChatRecv {
     func chatreceive(chat: Chat)
 }
@@ -17,6 +17,13 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     var isLoading = false
     var isSending = false
     var chatwb = ChatWBSocket()
+    @ObservedObject var UsersVM:UsersViewModel
+    func Follow(userId:Int){
+        self.UsersVM.Follow(userId: userId)
+    }
+    func UnFollow(userId:Int){
+        self.UsersVM.UnFollow(userId: userId)
+    }
     struct StatusText{
         var server_status:Int
         var message:String
@@ -25,8 +32,12 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     @Published var chats: [Chat] = []
     private var chatfetcher = ChatFetcher(url: "http://localhost:5000/api/v1/rooms/0")
     init(){
+        self.UsersVM = UsersViewModel(userId: UserProfile().user_Id)
+
         self.load()
         self.enter()
+
+
     }
     func load(){
         self.isLoading=true

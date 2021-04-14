@@ -21,7 +21,6 @@ struct TagList: View ,TagManage{
     
     
     func DeleteTag(tag: Tag) {
-        print("deleteded tag")
         TagsVM.DeleteTagFromUser(tagId: tag.id)
         DispatchQueue.main.async {
             TagsVM.UserTags.removeAll(where: {$0.id == tag.id})
