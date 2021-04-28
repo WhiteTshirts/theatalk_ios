@@ -14,32 +14,38 @@ enum SelectedType{
 }
 struct SearchFieldView: View{
     @State var selected = SelectedType.tag
-    
+    @State var text = ""
     var body: some View{
         VStack{
             HStack{
                 Button(action: {
                     selected = .keyword
                 }, label: {
-                    if(selected == .keyword){
-                        Text("キーワード").foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                    }else{
-                        Text("キーワード").foregroundColor(.red)
-
-                    }
+                    Text("キーワード").foregroundColor(selected == .keyword ? .blue : .red)
+                    
                 })
                 Button(action: {
                     selected = .tag
                 }, label: {
-                    if(selected == .tag){
-                        Text("タグ").foregroundColor(.blue)
-                    }else{
-                        Text("タグ").foregroundColor(.red)
-
-                    }
+                    Text("タグ").foregroundColor(selected == .tag ? .blue : .red)
 
                 })
             }
+            TextField("検索",text:$text)
+            if(selected == .tag){
+                List{
+                    Text("tag1")
+                    Text("tag2")
+                }
+            }else{
+                
+                List{
+                    Text("a")
+                    Text("b")
+                }
+            }
+            
+            
         }
 
     }
@@ -67,18 +73,17 @@ struct RoomSearchView: View {
     @State var IsSearch = false
     var body: some View {
         ZStack{
-            NavigationView{
-                VStack{
-                    TextField("検索",text:$RoomSearchVM.text).onTapGesture {
-                        self.IsSearch = true
-                    }
-                    NavigationLink(destination:SearchFieldView(),isActive:$IsSearch){
-                        RoomSearchByTagView()
-
-                    }
-                    
+            VStack{
+                TextField("検索",text:$RoomSearchVM.text).onTapGesture {
+                    self.IsSearch = true
                 }
+                NavigationLink(destination:SearchFieldView(),isActive:$IsSearch){
+                    RoomSearchByTagView()
+
+                }
+                
             }
+            
 
         }
 
