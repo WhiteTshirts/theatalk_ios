@@ -22,8 +22,6 @@ struct CreateRoom: View {
     @ObservedObject var CrateRoomVM = CreateRoomViewModel()
     func ParseYoutubeId(){
         var youtube_id = ParseYoutubeurl(url: Youtubelink)
-        print(Youtubelink)
-        print(youtube_id)
         if let youtube_id = ParseYoutubeurl(url: Youtubelink){
             self.YoutubeId = youtube_id
         }
@@ -50,10 +48,6 @@ struct CreateRoom: View {
                 Text("Youtubeリンク")
                 TextField("https://www.youtube.com/watch?v=jNQXAC9IVRw&ab_channel=jawed", text: self.$Youtubelink,onEditingChanged:{ begin in
 
-                    ParseYoutubeId()
-                    print(YoutubeId)
-                },onCommit:{
-                    print("oncommit")
                     ParseYoutubeId()
                 })
 
