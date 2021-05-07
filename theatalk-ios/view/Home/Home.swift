@@ -126,6 +126,7 @@ protocol logoutDel {
 struct ToolBarView:View{
     @Binding var SelectedTab:Tab
     @Binding var TagId:Int
+    @State var createdRoom:Room!
     var body:some View{
         switch SelectedTab {
             case .Home:
@@ -134,12 +135,15 @@ struct ToolBarView:View{
                         .multilineTextAlignment(.leading)
                     
                     NavigationLink(
+                        
                         destination: CreateRoom(),
                         label: {
                             Text("部屋追加")
                             Image(systemName: "plus")
                         })
 
+                }.onDisappear(){
+                    createdRoom = nil
                 }
                     
                 

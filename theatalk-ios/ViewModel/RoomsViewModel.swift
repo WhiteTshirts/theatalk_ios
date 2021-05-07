@@ -7,22 +7,7 @@
 
 import Foundation
 import Combine
-final class CreateRoomViewModel: ObservableObject{
-    @Published var isLoading = false
-    private var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
-    private var disposables = Set<AnyCancellable>()
-    init(tagId:Int=0){
-        
-    }
-    func CreateRoom(room:Room){
-        roomfetcher.CreateRoom(room: room)
-            .sink(receiveCompletion: { completion in
-            print("receiveCompletion:", completion)
-        }, receiveValue: { [self] room_json in
-            var room = room_json.room//成功したら作成したルームに入る
-        }).store(in: &disposables)
-    }
-}
+
 
 class RoomsViewModelBase: ObservableObject{
     var disposables = Set<AnyCancellable>()
@@ -77,6 +62,7 @@ class RoomsViewModelBase: ObservableObject{
         .store(in: &disposables)
     }
     func EnterRoom(roomID_:Int){//非同期処理の関数に変更する
+        self.isSuccessed = false
         roomfetcher.EnterRoom(roomId: roomID_)
             .receive(on: DispatchQueue.main)
             .sink(
@@ -89,6 +75,7 @@ class RoomsViewModelBase: ObservableObject{
                 self.isLoading = false
               break
             case .finished:
+                self.isSuccessed = true
               break
             }
           },
@@ -98,7 +85,22 @@ class RoomsViewModelBase: ObservableObject{
         .store(in: &disposables)
     }
 }
-
+final class CreateRoomViewModel: RoomsViewModelBase{
+    @Published var createdRoom:Room!
+    init(){
+        super.init()
+        self.createdRoom = nil
+    }
+    func CreateRoom(room:Room){
+        roomfetcher.CreateRoom(room: room)
+            .sink(receiveCompletion: { completion in
+            print("receiveCompletion:", completion)
+        }, receiveValue: { [self] room_json in
+            self.createdRoom = room_json.room//成功したら作成したルームに入る
+            EnterRoom(roomID_: createdRoom!.id)
+        }).store(in: &disposables)
+    }
+}
 final class RoomsViewModel: RoomsViewModelBase{
     override init(tagId:Int=0){
         super.init()

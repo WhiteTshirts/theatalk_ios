@@ -32,6 +32,7 @@ struct CreateRoom: View {
             self.YoutubeId = youtube_id
             var room  = Room(name: RoomName, start_time: StartDate, youtube_id: youtube_id)
             CrateRoomVM.CreateRoom(room: room)
+            
         }else{
             
         }
@@ -71,6 +72,14 @@ struct CreateRoom: View {
             Button("登録", action: {
                 PostRoom()
             })
+            if(self.CrateRoomVM.isSuccessed){
+                NavigationLink(
+                    destination: ChatRoom(room: self.CrateRoomVM.createdRoom),
+                    isActive: self.$CrateRoomVM.isSuccessed,
+                    label: {
+                        EmptyView()
+                    })
+            }
 
             
 
