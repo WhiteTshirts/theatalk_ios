@@ -5,18 +5,36 @@
 //  Created by riku iwasaki on 2021/02/05.
 //
 
-import Foundation
 
+import Foundation
+import Combine
+import SwiftUI
 class ChatWBSocket{
     var task:URLSessionWebSocketTask!
     var delegate: ChatRecv?
-
+    @Environment(\.PortEnvironment) private var PORT
+    @Environment(\.HostNameEnvironment) private var HNAME
+    @Environment(\.WSSchemeEnvironment) private var WSSCHEME
     init(){
         
     }
     func SubscribeChannel(path:String, token:String,delegate:ChatRecv){
+        var url_components = URLComponents()
+        
+        url_components.scheme = WSSCHEME
+        url_components.port = PORT
+        url_components.host = HNAME
+        url_components.path = "/cable"
+        url_components.queryItems=[
+            URLQueryItem(name:"token",value:token)
+        ]
         self.delegate = delegate
-        task = URLSession.shared.webSocketTask(with: URL(string: "ws://localhost:5000/cable?token=\(token)")!)
+        if let url_str = url_components.string{
+            task = URLSession.shared.webSocketTask(with: URL(string: url_str)!)
+        }else{
+            return
+        }
+
         task.resume()
         let json = """
        {"command":"subscribe","identifier":"{\\"channel\\":\\"RoomChannel\\"}"}

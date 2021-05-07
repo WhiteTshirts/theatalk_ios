@@ -21,53 +21,19 @@ protocol UserFechable {
 //    ) -> AnyPublisher<Void,APIError>
     
 }
-class UserFetcher{
-    let encoder = JSONEncoder()
-    var fetcher  = Fetcher()
-    private let session: URLSession
+class UserFetcher:Fetcher{
     @Published var userData: [User]=[]
-    init(session: URLSession = .shared){
-        self.session = session
-        encoder.outputFormatting = .prettyPrinted
-        encoder.dateEncodingStrategy = .iso8601
+    init(url:String,session: URLSession = .shared){
+//        encoder.outputFormatting = .prettyPrinted
+//        encoder.dateEncodingStrategy = .iso8601
         //iso8601 2018-01-08T02:51:37Z
+        super.init()
     }
 
 
-    private func fetchUser<T>(
-        with reqcomponents: URLRequest
-    ) -> AnyPublisher<T, APIError> where T: Decodable {
-      return session.dataTaskPublisher(for: reqcomponents)
-        .mapError { error in
-          .network(description: error.localizedDescription)
-        }
-        .flatMap(maxPublishers: .max(1)) { pair in
-          decode(pair.data)
-        }
-        .eraseToAnyPublisher()
-    }
   }
 
-extension UserFetcher{
-    func makeUsersComponents(Path:String,Type:String,body: Data!
-    ) -> URLRequest {
-        var url_components = URLComponents()
-      url_components.scheme = "http"
-      url_components.host = "localhost"
-        url_components.port = 5000
-      url_components.path = "/api/v1"+Path
-        var components = URLRequest(url:url_components.url!)
-        components.httpMethod = Type
-        components.addValue("application/json", forHTTPHeaderField: "content-type")
-        if(g_user_token != ""){
-            components.setValue("Bearer \(g_user_token)", forHTTPHeaderField: "Authorization")
-        }
-        if(body != nil){
-            components.httpBody = body
-        }
-      return components
-    }
-}
+
 
 
 extension UserFetcher: UserFechable{
@@ -75,11 +41,11 @@ extension UserFetcher: UserFechable{
     func GetUser(
         userId:Int
     )->AnyPublisher<User_Json,APIError>{
-        return fetchUser(with: makeUsersComponents(Path: "/users/\(userId)", Type: "GET", body: nil))
+        return fetchData(with: makeComponents(Path: "/users/\(userId)", Type: "GET", body: nil))
     }
     func GETUsers(
     ) -> AnyPublisher<Users_Json,APIError>{
-        return fetchUser(with: makeUsersComponents(Path: "/users", Type: "GET", body: nil))
+        return fetchData(with: makeComponents(Path: "/users", Type: "GET", body: nil))
     }
     func GETFollowers(
         user:User
@@ -87,7 +53,7 @@ extension UserFetcher: UserFechable{
 
         do{
             let data = try encoder.encode(user)
-            return fetchUser(with: makeUsersComponents(Path: "/relationships/follow_index", Type: "GET", body: data))
+            return fetchData(with: makeComponents(Path: "/relationships/follow_index", Type: "GET", body: data))
         }catch{
             let error = APIError.network(description: "could not encode")
             return Fail(error: error).eraseToAnyPublisher()
@@ -100,7 +66,7 @@ extension UserFetcher: UserFechable{
         do{
             let user = User(name_: "", user_id: userId)
             let data = try encoder.encode(user)
-            return fetchUser(with: makeUsersComponents(Path: "/relationships", Type: "POST", body: data))
+            return fetchData(with: makeComponents(Path: "/relationships", Type: "POST", body: data))
         }catch{
             let error = APIError.network(description: "could not encode")
             return Fail(error: error).eraseToAnyPublisher()
@@ -112,7 +78,7 @@ extension UserFetcher: UserFechable{
         do{
             let user = User(name_: "", user_id: userId)
             let data = try encoder.encode(user)
-            return fetchUser(with: makeUsersComponents(Path: "/relationships/1", Type: "DELETE", body: data))
+            return fetchData(with: makeComponents(Path: "/relationships/1", Type: "DELETE", body: data))
         }catch{
             let error = APIError.network(description: "could not encode")
             return Fail(error: error).eraseToAnyPublisher()

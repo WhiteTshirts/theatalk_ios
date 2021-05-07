@@ -17,7 +17,7 @@ final class UsersViewModel: ObservableObject{
     @Published var isLoading:Bool
     @Published var followers: [User]
     @Published var followings: [User]
-    private var userfetcher:UserFetcher
+    private var userfetcher = UserFetcher(url: "")
     @Published var userId:Int
     init(userId:Int){
         self.disposables = Set<AnyCancellable>()
@@ -25,7 +25,6 @@ final class UsersViewModel: ObservableObject{
         self.followers = []
         self.followings = []
         self.userId = userId
-        self.userfetcher = UserFetcher()
         GetFollowers(userId: userId)
         GetFollowings(userId: userId)
     }
