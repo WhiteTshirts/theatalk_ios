@@ -46,9 +46,10 @@ struct CreateRoom: View {
             }
             HStack{
                 Text("Youtubeリンク")
-                TextField("https://www.youtube.com/watch?v=jNQXAC9IVRw&ab_channel=jawed", text: self.$Youtubelink,onCommit:{
+                TextField("https://www.youtube.com/watch?v=jNQXAC9IVRw&ab_channel=jawed", text: self.$Youtubelink,onEditingChanged:{ begin in
+
                     ParseYoutubeId()
-                })
+                    })
 
             }
             if(YoutubeId != ""){
