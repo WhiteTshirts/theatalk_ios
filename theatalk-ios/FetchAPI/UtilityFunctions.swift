@@ -11,7 +11,7 @@ extension String {}
 
 
 func ParseYoutubeurl(url:String)->String?{
-    let pattern = "^(?:https?://)?(www.)?(youtube.com|youtu.be)/(watch\\?v=|embed/|watch\\?.+&v=|v/)?([A-Za-z0-9]{11})"
+    let pattern = "^(?:https?://)?(www.)?(youtube.com|youtu.be)/(watch\\?v=|embed/|watch\\?.+&v=|v/)?(([A-Za-z0-9]|-){11})"
     //https://www.youtube.com/watch?v=LjkDJHk2KrE&ab_channel=YuNi-officialchannel- ->LjkDJHk2KrE
     var youtube_id:String?
     guard let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)else{
