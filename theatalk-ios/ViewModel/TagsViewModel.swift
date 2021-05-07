@@ -21,7 +21,7 @@ final class TagsViewModel: ObservableObject{
     private var tagFetcher = TagFetcher(url: "http://localhost:5000/api/v1/tags")
     init(UserId:Int?){
         self.UserId = UserId
-        //load()
+        load()
 
     }
     func SearchTag()-> Tag?{

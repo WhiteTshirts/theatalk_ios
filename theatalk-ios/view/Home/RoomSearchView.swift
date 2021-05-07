@@ -33,16 +33,11 @@ struct SearchFieldView: View{
             }
             TextField("検索",text:$text)
             if(selected == .tag){
-                List{
-                    Text("tag1")
-                    Text("tag2")
-                }
-            }else{
                 
-                List{
-                    Text("a")
-                    Text("b")
-                }
+                TagSearchView(SearchText: self.$text)
+            }else{
+                RoomSearchByTagView()
+
             }
             
             
@@ -56,12 +51,24 @@ struct RoomSearchByTagView: View{
 
     var body: some View {
         VStack{
-            //tag
-            //roomlist
             ScrollView{
                 RoomList(RoomsVM: RoomsViewModelTag(), tagId:self.$TagId)
             }
             
+        }
+    }
+}
+
+struct TagSearchView:View{
+    @ObservedObject var TagVM = TagsViewModel(UserId: UserProfile().user_Id)
+    @Binding var SearchText:String
+    var body: some View {
+        VStack{
+            List{
+                ForEach(TagVM.tags){tag in
+                    Text(tag.name)
+                }
+            }
         }
     }
 }
