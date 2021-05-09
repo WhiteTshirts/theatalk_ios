@@ -33,11 +33,23 @@ class UserProfile: ObservableObject{
             UserDefaults.standard.set(token,forKey: "token")
         }
     }
+    @Published var token_valid:Bool{
+        didSet{
+            UserDefaults.standard.set(token_valid,forKey: "token_valid")
+        }
+    }
+    @Published var server_status:Bool{
+        didSet{
+            UserDefaults.standard.set(server_status,forKey: "server_status")
+        }
+    }
     
     init(){
         username = UserDefaults.standard.string(forKey: "username") ?? ""
         password = UserDefaults.standard.string(forKey: "password") ?? ""
         token = UserDefaults.standard.string(forKey: "token") ?? ""
+        token_valid = UserDefaults.standard.bool(forKey: "token_valid")
+        server_status = UserDefaults.standard.bool(forKey: "server_status")
         user_Id = UserDefaults.standard.object(forKey: "user_Id") as? Int ?? -1
         
     }

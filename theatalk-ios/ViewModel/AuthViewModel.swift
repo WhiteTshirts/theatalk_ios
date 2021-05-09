@@ -10,15 +10,18 @@ import Combine
 
 import CoreData
 final public class AuthViewModel: ObservableObject{
+    
     @Published var user: User?
     @Published var hashval: String?
     @Published var userName:String = ""
     @Published var password:String = ""
+    @Published var isSuccessed:Bool = true
     private var disposables = Set<AnyCancellable>()
 
     private var authfetcher = AuthFetcher()
     //private var fetcher = AuthFetcher(url: "http://localhost:5000/api/v1/rooms/0")
     init(){
+        
         //self.user = mockUserData
         //if cannot get user data ask name and password
         //hashval = mockUserHashVal
@@ -40,6 +43,7 @@ final public class AuthViewModel: ObservableObject{
             print("receiveCompletion:", completion)
         }, receiveValue: { [self] user_json in
             var user = user_json.user
+            
             g_user_token = user_json.token
             completion(user,true)
         }).store(in: &disposables)

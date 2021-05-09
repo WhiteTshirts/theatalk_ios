@@ -31,6 +31,7 @@ class ChatWBSocket{
         self.delegate = delegate
         if let url_str = url_components.string{
             task = URLSession.shared.webSocketTask(with: URL(string: url_str)!)
+            print(url_str)
         }else{
             return
         }

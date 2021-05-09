@@ -41,6 +41,8 @@ extension AuthFetcher{
             return fetchData(with: makeComponents(Path: "/users", Type: "POST", body: body))
         }catch{
             let error = APIError.network(description: "couldnot decode")
+            
+
             return Fail(error: error).eraseToAnyPublisher()
         }
     }

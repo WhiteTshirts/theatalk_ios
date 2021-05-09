@@ -6,41 +6,57 @@
 //
 
 import SwiftUI
+
 struct SignupView:View{
     var authdel:Authdel
     @State var name:String=""
     @State var password:String=""
     @State var password_confirm:String=""
     var body: some View {
-        NavigationView{
-            VStack(alignment: .center){
-                Text("新規ユーザ作成")
+            Text("新規ユーザ作成")
+            VStack(spacing: 24) {
+
                 HStack{
-                    Text("ユーザ名")
                     TextField("username", text: self.$name)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(maxWidth:200)
                 }
                 HStack{
-                    Text("パスワード")
-                    SecureField("*******", text: self.$password)
+                    SecureField("パスワード", text: self.$password)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(maxWidth:200)
                 }
                 HStack{
-                    Text("パスワード")
-                    SecureField("*******", text: self.$password_confirm)
-                }
-                Button(action: {
-                    self.authdel.signup(name: self.name, password: self.password)
-                }) {
-                    Text("決定")
-                        .foregroundColor(Color.red)
-                }
-                Button(action: {
-                    self.authdel.ToggleLogin()
-                }) {
-                    Text("loginする")
-                        .foregroundColor(Color.red)
+                    SecureField("パスワード確認", text: self.$password_confirm)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(maxWidth:200)
                 }
             }
-        }
+
+            Button(action: {
+                self.authdel.signup(name: self.name, password: self.password)
+            }) {
+                Text("決定")
+                    .fontWeight(.medium)
+                     .frame(minWidth: 160)
+                     .foregroundColor(.white)
+                     .padding(12)
+                     .background(Color.accentColor)
+                     .cornerRadius(8)
+            }
+            Button(action: {
+                self.authdel.ToggleLogin()
+            }) {
+                Text("loginする")
+                    .fontWeight(.medium)
+                     .frame(minWidth: 160)
+                     .foregroundColor(.white)
+                     .padding(12)
+                     .background(Color.accentColor)
+                     .cornerRadius(8)
+            }
+        
+        
     }
     
 }
@@ -49,32 +65,45 @@ struct LoginView:View{
     @State var name:String=""
     @State var password:String=""
     var body: some View {
-        NavigationView{
-            VStack(alignment: .center){
-                Text("ログイン")
+        Text("ログイン")
 
-                HStack{
-                    Text("ユーザ名")
-                    TextField("username", text: self.$name)
-                }
-                HStack{
-                    Text("パスワード")
-                    SecureField("*******", text: self.$password)
-                }
-                Button(action: {
-                    self.authdel.login(name: self.name, password: self.password)
-                }) {
-                    Text("決定")
-                        .foregroundColor(Color.red)
-                }
-                Button(action: {
-                    self.authdel.ToggleLogin()
-                }) {
-                    Text("signupする")
-                        .foregroundColor(Color.red)
-                }
+        VStack(spacing: 24) {
+
+            HStack{
+                TextField("username", text: self.$name)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(maxWidth:200)
+            }
+            HStack{
+                SecureField("パスワード", text: self.$password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(maxWidth:200)
             }
         }
+        Button(action: {
+            self.authdel.login(name: self.name, password: self.password)
+        }) {
+            Text("決定")
+                .fontWeight(.medium)
+                 .frame(minWidth: 160)
+                 .foregroundColor(.white)
+                 .padding(12)
+                 .background(Color.accentColor)
+                 .cornerRadius(8)
+        }
+        Button(action: {
+            self.authdel.ToggleLogin()
+        }) {
+            Text("signupする")
+                .fontWeight(.medium)
+                 .frame(minWidth: 160)
+                 .foregroundColor(.white)
+                 .padding(12)
+                 .background(Color.accentColor)
+                 .cornerRadius(8)
+        }
+        
+        
 
     }
     
@@ -110,7 +139,7 @@ struct AuthView: View,Authdel {
         self.is_login = !(self.is_login)
     }
     
-    func signup(name: String, password: String) {
+    func signup(name: String, password: String){
         self.LoginVM.SetUser(name: name, password: password)
         profile.password = password
         profile.username = name
@@ -139,19 +168,27 @@ struct AuthView: View,Authdel {
 
     }
     var body: some View {
-        if(is_login){
-            LoginView(authdel: self)
-        }else{
-            SignupView(authdel: self)
+        NavigationView{
+            VStack(alignment:.center){
+                Text("Theatalk")
+                    .font(.system(size:48,weight:.heavy))
+                if(is_login){
+                    LoginView(authdel: self)
+                }else{
+                    SignupView(authdel: self)
+                }
+            }
+
         }
+
 
     }
     
 
 }
 
-//struct Login_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LoginView(authdel: <#Authdel#>, LoginVM:AuthViewModel()).environmentObject(Session(login: false, user: mockUserData))
-//    }
-//}
+struct Login_Previews: PreviewProvider {
+    static var previews: some View {
+        AuthView()
+    }
+}
