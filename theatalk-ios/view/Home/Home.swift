@@ -41,12 +41,6 @@ struct NavItem: View{
                     HStack{
                     TextField("tagで検索",text:$textEntered,
                               onEditingChanged: { begin in
-                                
-//                                if(textEntered == ""){
-//                                    DispatchQueue.main.async {
-//                                        TagId = -1
-//                                    }
-//                                }
                                    if begin {
                                     self.TextInputting = true
                                    } else {
@@ -76,50 +70,6 @@ struct NavItem: View{
         }
     }
 }
-//struct ChangeSearchTagView: View{
-//
-//    @ObservedObject var TagsVM: TagsViewModel
-//    @Binding var SelectedTagName:String
-//    @Binding var SearchTagId:Int
-//    func SetSearchTag(tag:Tag?){
-//        if(tag == nil){
-//            DispatchQueue.main.async {
-//                self.SelectedTagName = ""
-//                self.SearchTagId = -1
-//            }
-//        }else{
-//            DispatchQueue.main.async {
-//                self.SelectedTagName = tag!.name
-//                self.SearchTagId = tag!.id
-//            }
-//        }
-//    }
-//    var body: some View{
-//        HStack{
-//            VStack(alignment: .leading){
-//                Button(action: {
-//                    SetSearchTag(tag:self.TagsVM.BeforeTag())
-//                }, label: {
-//                    Image(systemName: "arrow.left.circle")
-//                        .resizable()
-//                        .frame(width:40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)                })
-//            }
-//            Spacer()
-//            Text("\(SelectedTagName)")
-//            Spacer()
-//            VStack(alignment: .trailing){
-//
-//                Button(action: {
-//                    SetSearchTag(tag:self.TagsVM.NextTag())
-//                }, label: {
-//                    Image(systemName: "arrow.right.circle")
-//                        .resizable()
-//                        .frame(width:40, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)                })
-//            }
-//        }
-//
-//    }
-//}
 protocol logoutDel {
     func logout()
 }
@@ -132,7 +82,9 @@ struct ToolBarView:View{
             case .Home:
                 HStack{
                     Text("Home")
+                        .fontWeight(.heavy)
                         .multilineTextAlignment(.leading)
+                        
                     
                     NavigationLink(
                         
@@ -149,11 +101,17 @@ struct ToolBarView:View{
                 
             case .Search:
                 Text("Search")
+                    .fontWeight(.heavy)
+
             case .History:
                 
                 Text("History")
+                    .fontWeight(.heavy)
+
             case .Profile:
                 Text("Profile")
+                    .fontWeight(.heavy)
+
                 Button(action: {
                 }){
                     Image(systemName: "person")
@@ -162,6 +120,8 @@ struct ToolBarView:View{
             case .DM:
                 HStack{
                     Text("DM")
+                        .fontWeight(.heavy)
+
                     Spacer()
                     NavigationLink(
                         destination: CreateRoom(),
@@ -199,13 +159,10 @@ struct HomeLayoutView:View{
                         ToolbarItemGroup(placement: .navigationBarLeading){
                             ToolBarView(SelectedTab: self.$SelectedTab,TagId: self.$TagId)
 
-                            
                         }
                         
                     })
             }
-            
-
         }.background(Color.red)
 
     }
@@ -215,22 +172,31 @@ struct SelectTabView:View, logoutDel{
     @State private var selection: Tab = .Home
     @State private var message = "ボタンをタップしてください"
     @Binding var selected:Tab
+    @State var a:Bool = false
     @Binding var TagId:Int
     @ObservedObject var profile = UserProfile()
     @EnvironmentObject var session: Session
     func logout() {
+        
         session.user = nil
         profile.token = ""
         profile.password = ""
         profile.username = ""
         profile.user_Id = -1
+        profile.token_invalid = true
     }
     
     var body:some View{
         TabView(selection: $selection){
             TimelineView()
                 .tabItem{
-                    Label("Home",systemImage:"house")
+                    if(profile.token_invalid){
+                        
+                        Label("invalid",systemImage:"house")
+                    }else{
+                        
+                        Label("valid",systemImage:"house")
+                    }
                 }
                 .tag(Tab.Home)
                 .onAppear{
@@ -247,6 +213,7 @@ struct SelectTabView:View, logoutDel{
             RoomHistoryView()
                 .tabItem{
                     Label("History",systemImage:"clock")
+                    
                 }
                 .tag(Tab.History)
                 .onAppear{
@@ -269,7 +236,16 @@ struct SelectTabView:View, logoutDel{
                     self.selected = .Profile
                 }
             
-        }.onAppear() {
+        }.alert(isPresented:
+                    $profile.token_invalid, content: {
+            Alert(title: Text("認証期限切れ"),                message: Text("ログインしますか?"),
+                  primaryButton: .default(Text("閉じる"))
+                  ,secondaryButton: .default(Text("ログインする"),action: {
+                    session.user = nil
+                  })
+            )
+        })
+        .onAppear() {
             UITabBar.appearance().barTintColor = .white
         }
         .accentColor(.red)
@@ -292,10 +268,6 @@ struct HomeLayout_Previews: PreviewProvider {
     
 }
 
-//protocol EnterRoomDele {
-//    func enterroom(room_num:Int)
-//}
-
 
 struct Home: View{
 
@@ -316,18 +288,6 @@ struct Home: View{
 
     var body: some View {
         GeometryReader{ geometry in
-//            ZStack(alignment:.topLeading){
-//                NavigationRooms()
-//                if info {
-//                    SidemenuView(info: self.$info, pushed: self.$PushedPages, SelectedMenu: self.$SelectedMenu, sideDel: self)
-//                        .frame(width:UIScreen.screenWidth/2,height: UIScreen.screenHeight,alignment: .leading)
-//                        .background(Color.white)
-//                        .animation(.default)
-//                        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-//                        .edgesIgnoringSafeArea(.all)
-//                }
-//            }
-
         }.gesture(DragGesture(minimumDistance: 5)
                     .onChanged{_ in
                         print("changed")
@@ -341,8 +301,6 @@ struct Home: View{
         return NavigationView {
 
             VStack(alignment: .center){
-//                ChangeSearchTagView(TagsVM: TagsViewModel(UserId: profile.user_Id), SelectedTagName: self.$textEntered, SearchTagId: self.$SearchTagId)
-//                    .frame(width: UIScreen.screenWidth, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 HStack{
                     ScrollView{
                         RoomList(RoomsVM: RoomsViewModel(), tagId:self.$SearchTagId)

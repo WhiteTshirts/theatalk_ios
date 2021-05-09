@@ -127,6 +127,7 @@ struct AuthView: View,Authdel {
             }
             DispatchQueue.main.async {
                 profile.token = g_user_token
+                profile.token_invalid = false
                 profile.user_Id = user?.id ?? -1
                 self.session.user  = user
                 self.session.isLogin = true
@@ -151,6 +152,7 @@ struct AuthView: View,Authdel {
             }
             DispatchQueue.main.async {
                 profile.token = g_user_token
+                profile.token_invalid = false
                 profile.user_Id = user?.id ?? -1
                 self.session.user  = user
                 self.session.isLogin = true

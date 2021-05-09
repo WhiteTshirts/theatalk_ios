@@ -65,7 +65,7 @@ class Fetcher{
                 throw APIError.network(description: "http response not found")
             }
             if(httpres.statusCode == 401){//unauthorized
-                UserProfile().token_valid = false
+                UserProfile().token_invalid = true
 
                 throw APIError.token(description: "token expires")
             }

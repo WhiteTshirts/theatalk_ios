@@ -7,10 +7,11 @@
 
 import Foundation
 
-func logout() {
-    let profile = UserProfile()
-    profile.token = ""
-    profile.password = ""
-    profile.username = ""
-    profile.user_Id = -1
-}
+//func logout() {
+//    let profile = UserProfile()
+//    profile.token = ""
+//    profile.password = ""
+//    profile.username = ""
+//    profile.user_Id = -1
+//    profile.token_invalid = true
+//}

@@ -70,8 +70,17 @@ struct CreateRoom: View {
             }
             
             DatePicker("開始時刻",selection:$StartDate)
-            Button("登録", action: {
+            Button(action: {
                 PostRoom()
+
+            }, label: {
+                Text("登録")
+                    .fontWeight(.medium)
+                    .frame(minWidth: 160)
+                    .foregroundColor(.white)
+                    .padding(12)
+                    .background(Color.accentColor)
+                    .cornerRadius(8)
             })
             if(self.CrateRoomVM.isSuccessed){
                 NavigationLink(
