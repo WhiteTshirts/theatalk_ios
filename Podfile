@@ -7,6 +7,7 @@ target 'theatalk-ios' do
   pod "YoutubePlayer-in-WKWebView", "~> 0.3.5"
   pod 'Kingfisher', '~> 6.0'
   pod 'ActionCableSwift'
+  pod 'YouTubePlayer'
 
 # Pods for theatalk-ios
 
@@ -14,6 +15,8 @@ target 'theatalk-ios' do
     pod "YoutubePlayer-in-WKWebView", "~> 0.3.5"
     pod 'Kingfisher', '~> 6.0'
     pod 'ActionCableSwift'
+    pod 'YouTubePlayer'
+
     inherit! :search_paths
 
 # Pods for testing
@@ -23,6 +26,8 @@ target 'theatalk-ios' do
     pod "YoutubePlayer-in-WKWebView", "~> 0.3.5"
     pod 'Kingfisher', '~> 6.0'
     pod 'ActionCableSwift'
+    pod 'YouTubePlayer'
+
 
 
 # Pods for testing
