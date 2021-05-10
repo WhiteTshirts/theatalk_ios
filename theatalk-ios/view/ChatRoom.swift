@@ -11,12 +11,24 @@ import WebKit
 import YoutubePlayer_in_WKWebView
 struct MoveToChatRoom: View{
     @ObservedObject var room:Room
+    @State private var playerSize: CGSize = .zero
+    @State var action:PlayerAction = .play
     var body: some View{
-        ChatRoom(room: room)
+        
+        PlayerView(action:$action, videoId: self.$room.youtube_id).frame(width: playerSize.width, height: playerSize.height).onDisappear(){
+            self.action = .stop
+        }
+        ChatArea(room: room)
+            .onAppear(){
+                let frame = UIApplication.shared.windows.first?.frame ?? .zero
+                playerSize = CGSize(
+                    width: frame.width, height: frame.width/16*9
+                )
+            }
 
     }
 }
-struct ChatRoom: View,UsersRelationShip {
+struct ChatArea: View,UsersRelationShip {
     func Follow(userId: Int) {
         self.ChatsVm.Follow(userId: userId)
     }
@@ -24,8 +36,7 @@ struct ChatRoom: View,UsersRelationShip {
     func UnFollow(userId: Int) {
         self.ChatsVm.UnFollow(userId: userId)
     }
-    @State private var playerSize: CGSize = .zero
-    @State var action:PlayerAction = .play
+
     @ObservedObject var room: Room
     @ObservedObject var ChatsVm: ChatsViewModel = ChatsViewModel()
     @State var IsSuccess = false
@@ -47,9 +58,7 @@ struct ChatRoom: View,UsersRelationShip {
     var body: some View {
         VStack{
 
-            PlayerView(action:$action, videoId: self.$room.youtube_id).frame(width: playerSize.width, height: playerSize.height).onDisappear(){
-                self.action = .stop
-            }
+
             NavigationLink(
                 destination: UsersList(users:self.room.users, userRelation: self),
                 label: {
@@ -58,18 +67,7 @@ struct ChatRoom: View,UsersRelationShip {
             ScrollViewReader { value in
             List {
                     
-                ForEach(ChatsVm.chats.indices, id: \.self){ index in
-                    HStack{
-                        if let user_name = ChatsVm.chats[index].user_name{
-                            Text("\(user_name)さん:\(ChatsVm.chats[index].text)")
-                                .font(.caption)
-                        }else{
-                            Text("名前読み込み中:\(ChatsVm.chats[index].text)")
-                                .font(.caption)
-                        }
-                    }.id(index)
-                }.onAppear{
-                }
+                ChatView
                     
                 }
                 VStack{
@@ -86,10 +84,7 @@ struct ChatRoom: View,UsersRelationShip {
             
 
         }.onAppear(perform: {
-            let frame = UIApplication.shared.windows.first?.frame ?? .zero
-            playerSize = CGSize(
-                width: frame.width, height: frame.width/16*9
-            )
+
         
         })
         .onDisappear(perform: {
@@ -101,6 +96,6 @@ struct ChatRoom: View,UsersRelationShip {
 
 //struct ChatRoom_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ChatRoom( room:mockRoomsData[0])
+//        ChatArea( room:mockRoomsData[0])
 //    }
 //}
