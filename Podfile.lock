@@ -5,13 +5,13 @@ PODS:
   - SwiftExtensionsPack (0.4.6):
     - SwiftRegularExpression (~> 0.2.3)
   - SwiftRegularExpression (0.2.3)
-  - YouTubePlayer (0.7.2)
+  - YoutubeKit (0.5.0)
   - YoutubePlayer-in-WKWebView (0.3.5)
 
 DEPENDENCIES:
   - ActionCableSwift
   - Kingfisher (~> 6.0)
-  - YouTubePlayer
+  - YoutubeKit
   - YoutubePlayer-in-WKWebView (~> 0.3.5)
 
 SPEC REPOS:
@@ -20,7 +20,7 @@ SPEC REPOS:
     - Kingfisher
     - SwiftExtensionsPack
     - SwiftRegularExpression
-    - YouTubePlayer
+    - YoutubeKit
     - YoutubePlayer-in-WKWebView
 
 SPEC CHECKSUMS:
@@ -28,9 +28,9 @@ SPEC CHECKSUMS:
   Kingfisher: f5d8d60a0ef3edd642fd781bae60918599901aff
   SwiftExtensionsPack: 4fd94d1adfe8508e9a1cfcb8dc23fdd3c8ae5cc3
   SwiftRegularExpression: 6c6dbe7ead85e07de0effb5972f5374f0bc3cc1c
-  YouTubePlayer: 2b5f2830d8f9b2cde942083211291e382c9e6bd5
+  YoutubeKit: 9f66eba839211158f2aac7ad3833593bd56fa8f9
   YoutubePlayer-in-WKWebView: cfbf46da51d7370662a695a8f351e5fa1d3e1008
 
-PODFILE CHECKSUM: 991aac631026c304e26e0cfc3546dd6c216afc10
+PODFILE CHECKSUM: 0b894ededfce04b4ab4257a07a12dcda8f3524d3
 
 COCOAPODS: 1.10.1
