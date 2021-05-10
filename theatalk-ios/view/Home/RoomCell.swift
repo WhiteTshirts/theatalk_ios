@@ -71,6 +71,8 @@ struct RoomCell: View {
                 Text("参加人数\(room.viewer)人")
                     .font(.headline)
                     .foregroundColor(Color.red)
+                
+                Text(room.youtube_id)
 
             }.background(Color.white).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
   

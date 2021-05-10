@@ -11,7 +11,7 @@ struct RoomList: View {
     
     @ObservedObject var RoomsVM:RoomsViewModelBase
     @Binding var tagId:Int
-    @State var toChatView = false
+    @State var toChatView = -1
     var body: some View{
         if(RoomsVM.isLoading){
             Image(systemName: "hourglass").resizable()
@@ -20,15 +20,13 @@ struct RoomList: View {
         }else{
             ForEach(RoomsVM.rooms.indices, id:\.self){index in
                 HStack{
-                    Button(action:{
-                        RoomsVM.EnterRoom(roomID_: RoomsVM.rooms[index].id)
-                        toChatView=true
-                    },label:{
-                        RoomCell(room:RoomsVM.rooms[index])
+     
+                    NavigationLink(destination:MoveToChatRoom(room:self.RoomsVM.rooms[index])){
+                        RoomCell(room:self.RoomsVM.rooms[index])
+                    }.simultaneousGesture(TapGesture().onEnded{
+                        RoomsVM.EnterRoom(roomID_: self.RoomsVM.rooms[index].id)
+
                     })
-                    NavigationLink(destination:MoveToChatRoom(room:self.$RoomsVM.rooms[index]),isActive:$toChatView){
-                        EmptyView()
-                    }
 
                 }
                 Spacer()

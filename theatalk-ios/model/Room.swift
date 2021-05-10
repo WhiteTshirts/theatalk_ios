@@ -55,7 +55,7 @@ extension KeyedDecodingContainer {
     }
 }
 
-class Room: Codable,Identifiable{
+class Room: Codable,Identifiable,ObservableObject{
     
     var admin_id: Int!
     var id: Int!

@@ -10,9 +10,9 @@ import UIKit
 import WebKit
 import YoutubePlayer_in_WKWebView
 struct MoveToChatRoom: View{
-    @Binding var room:Room
+    @ObservedObject var room:Room
     var body: some View{
-        ChatRoom(room: $room)
+        ChatRoom(room: room)
 
     }
 }
@@ -26,7 +26,7 @@ struct ChatRoom: View,UsersRelationShip {
     }
     @State private var playerSize: CGSize = .zero
     @State var action:PlayerAction = .play
-    @Binding var room: Room
+    @ObservedObject var room: Room
     @ObservedObject var ChatsVm: ChatsViewModel = ChatsViewModel()
     @State var IsSuccess = false
     @State var text = ""
@@ -46,6 +46,7 @@ struct ChatRoom: View,UsersRelationShip {
     }
     var body: some View {
         VStack{
+
             PlayerView(action:$action, videoId: self.$room.youtube_id).frame(width: playerSize.width, height: playerSize.height).onDisappear(){
                 self.action = .stop
             }
