@@ -10,10 +10,9 @@ import UIKit
 import WebKit
 import YoutubePlayer_in_WKWebView
 struct MoveToChatRoom: View{
-    var room:Room
+    @Binding var room:Room
     var body: some View{
-        Text("\(room.users.count)")
-        ChatRoom(room: room)
+        ChatRoom(room: $room)
 
     }
 }
@@ -25,17 +24,13 @@ struct ChatRoom: View,UsersRelationShip {
     func UnFollow(userId: Int) {
         self.ChatsVm.UnFollow(userId: userId)
     }
-    
-    var room: Room
-    var Youtubeplayer:YoutubePlayer
-    @ObservedObject var ChatsVm: ChatsViewModel
+    @State private var playerSize: CGSize = .zero
+    @State var action:PlayerAction = .play
+    @Binding var room: Room
+    @ObservedObject var ChatsVm: ChatsViewModel = ChatsViewModel()
     @State var IsSuccess = false
     @State var text = ""
-    init(room:Room){
-        self.room = room
-        self.ChatsVm = ChatsViewModel()
-        self.Youtubeplayer = YoutubePlayer(videoID: room.youtube_id,start_time: 100)
-    }
+
     var ChatView: some View{
         ForEach(ChatsVm.chats.indices, id: \.self){ index in
             HStack{
@@ -51,7 +46,9 @@ struct ChatRoom: View,UsersRelationShip {
     }
     var body: some View {
         VStack{
-            Youtubeplayer.frame(height:200)
+            PlayerView(action:$action, videoId: self.$room.youtube_id).frame(width: playerSize.width, height: playerSize.height).onDisappear(){
+                self.action = .stop
+            }
             NavigationLink(
                 destination: UsersList(users:self.room.users, userRelation: self),
                 label: {
@@ -88,7 +85,10 @@ struct ChatRoom: View,UsersRelationShip {
             
 
         }.onAppear(perform: {
-            
+            let frame = UIApplication.shared.windows.first?.frame ?? .zero
+            playerSize = CGSize(
+                width: frame.width, height: frame.width/16*9
+            )
         
         })
         .onDisappear(perform: {
@@ -98,8 +98,8 @@ struct ChatRoom: View,UsersRelationShip {
     }
 }
 
-struct ChatRoom_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatRoom( room:mockRoomsData[0])
-    }
-}
+//struct ChatRoom_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatRoom( room:mockRoomsData[0])
+//    }
+//}

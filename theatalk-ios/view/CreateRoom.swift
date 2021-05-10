@@ -84,7 +84,7 @@ struct CreateRoom: View {
             })
             if(self.CrateRoomVM.isSuccessed){
                 NavigationLink(
-                    destination: ChatRoom(room: self.CrateRoomVM.createdRoom),
+                    destination: ChatRoom(room: self.$CrateRoomVM.createdRoom),
                     isActive: self.$CrateRoomVM.isSuccessed,
                     label: {
                         EmptyView()

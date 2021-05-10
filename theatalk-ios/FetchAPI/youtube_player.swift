@@ -11,23 +11,43 @@ import SwiftUI
 //import WebKit
 import AVKit
 import UIKit
-import YoutubePlayer_in_WKWebView
 
-struct YoutubePlayer : UIViewRepresentable{
-
-    
-    let videoID: String
-    let start_time:Int
-    var player = WKYTPlayerView()
-    func makeUIView(context: UIViewRepresentableContext<YoutubePlayer>) -> WKYTPlayerView {
-        
+import YoutubeKit
+enum PlayerAction{
+    case none
+    case play
+    case stop
+}
+struct PlayerView: UIViewRepresentable{
+    @Binding var action:PlayerAction
+    typealias UIViewType = YTSwiftyPlayer
+    @Binding var videoId:String
+    func makeUIView(context: Context) -> YTSwiftyPlayer {
+        let player = YTSwiftyPlayer()
+        player.autoplay = true
         return player
     }
-    func updateUIView(_ uiView: WKYTPlayerView, context: UIViewRepresentableContext<YoutubePlayer>) {
-        uiView.load(withVideoId: videoID,playerVars: ["playsinline":1,"autoplay":1,"start":start_time])
-    }
     
+    func updateUIView(_ uiView: YTSwiftyPlayer, context: Context) {
+        uiView.setPlayerParameters([
+            .playsInline(true),
+            .videoID(videoId),
+        ])
+        uiView.loadPlayer()
+        switch action {
+        case .play:
+            uiView.loadPlayer()
+        case .stop:
+            uiView.stopVideo()
+        case .none:
+            break
+        }
+        action = .none
+        
+
+    }
 }
+
 
 //
 //class ViewController: UIViewController, WKUIDelegate {

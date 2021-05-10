@@ -18,15 +18,15 @@ struct RoomList: View {
                 .scaledToFit()
                 .frame(width: 80, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         }else{
-            ForEach(RoomsVM.rooms){room in
+            ForEach(RoomsVM.rooms.indices, id:\.self){index in
                 HStack{
                     Button(action:{
-                        RoomsVM.EnterRoom(roomID_: room.id)
+                        RoomsVM.EnterRoom(roomID_: RoomsVM.rooms[index].id)
                         toChatView=true
                     },label:{
-                        RoomCell(room:room)
+                        RoomCell(room:RoomsVM.rooms[index])
                     })
-                    NavigationLink(destination:MoveToChatRoom(room:room),isActive:$toChatView){
+                    NavigationLink(destination:MoveToChatRoom(room:self.$RoomsVM.rooms[index]),isActive:$toChatView){
                         EmptyView()
                     }
 
