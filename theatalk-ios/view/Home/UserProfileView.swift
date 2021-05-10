@@ -59,12 +59,12 @@ struct UserProfileView: View,UsersRelationShip {
                         NavigationLink(
                             destination: UsersList(users:ProfileVM.user.followings, userRelation: self),
                             label: {
-                                Text("フォロワー数:\(ProfileVM.user.followings.count)")
+                                Text("フォロー数:\(ProfileVM.user.followings.count)")
                             })
                         NavigationLink(
                             destination: UsersList(users:ProfileVM.user.followers, userRelation: self),
                             label: {
-                                Text("フォロー数:\(ProfileVM.user.followers.count)")
+                                Text("フォロワー数:\(ProfileVM.user.followers.count)")
                             })
                     }
                     
@@ -73,6 +73,12 @@ struct UserProfileView: View,UsersRelationShip {
                     logout.logout()
                 }){
                     Text("logout")
+                        .fontWeight(.medium)
+                         .frame(minWidth: 160)
+                         .foregroundColor(.white)
+                         .padding(12)
+                         .background(Color.accentColor)
+                         .cornerRadius(8)
                 }
             }
         }
