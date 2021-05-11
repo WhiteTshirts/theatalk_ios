@@ -13,10 +13,19 @@ struct MoveToChatRoom: View{
     @ObservedObject var room:Room
     @State private var playerSize: CGSize = .zero
     @State var action:PlayerAction = .play
+    @State var time_offset:Int = 0
+    func Caltime_offset(){
+        if let stime = room.start_time{
+            time_offset = Int(Date().timeIntervalSince(room.start_time))
+
+        }
+    }
     var body: some View{
         
-        PlayerView(action:$action, videoId: self.$room.youtube_id).frame(width: playerSize.width, height: playerSize.height).onDisappear(){
+        PlayerView(action:$action, videoId: self.$room.youtube_id, time_offset: $time_offset).frame(width: playerSize.width, height: playerSize.height).onDisappear(){
             self.action = .stop
+        }.onAppear(){
+            Caltime_offset()
         }
         ChatArea(room: room)
             .onAppear(){
@@ -58,12 +67,15 @@ struct ChatArea: View,UsersRelationShip {
     var body: some View {
         VStack{
 
+            if((self.room.users) != nil){
+                NavigationLink(
+                    
+                    destination: UsersList(users:self.room.users, userRelation: self),
+                    label: {
+                        Text("ルーム内:\(self.room.users.count)人")
+                    })
 
-            NavigationLink(
-                destination: UsersList(users:self.room.users, userRelation: self),
-                label: {
-                    Text("ルーム内:\(self.room.users.count)人")
-                })
+            }
             ScrollViewReader { value in
             List {
                     

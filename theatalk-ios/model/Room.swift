@@ -83,7 +83,6 @@ class Room: Codable,Identifiable,ObservableObject{
         self.name = name
         self.start_time = start_time
         self.youtube_id = youtube_id
-
     }
     init(admin_id:Int,name:String,id:Int,is_private:Bool,start_time:Date?,viewer:Int,youtube_id:String){
         self.admin_id = admin_id
@@ -107,9 +106,9 @@ class Room: Codable,Identifiable,ObservableObject{
         start_time = try container.decodeIfPresent(with: DateTransformer(), forKey: .start_time)
         youtube_id = try container.decodeIfPresent(String.self, forKey: .youtube_id)
         users = try container.decodeIfPresent([User].self, forKey: .users)
+        tags = try container.decodeIfPresent([Int].self, forKey: .tags)
         if(users != nil){
             viewer = users.count
-            
         }
     }
 

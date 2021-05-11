@@ -17,11 +17,14 @@ enum PlayerAction{
     case none
     case play
     case stop
+    case load
 }
 struct PlayerView: UIViewRepresentable{
     @Binding var action:PlayerAction
     typealias UIViewType = YTSwiftyPlayer
     @Binding var videoId:String
+    
+    @Binding var time_offset:Int
     func makeUIView(context: Context) -> YTSwiftyPlayer {
         let player = YTSwiftyPlayer()
         player.autoplay = true
@@ -31,6 +34,7 @@ struct PlayerView: UIViewRepresentable{
     func updateUIView(_ uiView: YTSwiftyPlayer, context: Context) {
         uiView.setPlayerParameters([
             .playsInline(true),
+            .registerStartTimeAt(time_offset),
             .videoID(videoId),
         ])
         uiView.loadPlayer()
@@ -39,6 +43,9 @@ struct PlayerView: UIViewRepresentable{
             uiView.loadPlayer()
         case .stop:
             uiView.stopVideo()
+        case .load:
+            break
+            
         case .none:
             break
         }
