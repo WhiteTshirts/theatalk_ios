@@ -23,6 +23,7 @@ class Fetcher{
     @Environment(\.PortEnvironment) private var PORT
     @Environment(\.HostNameEnvironment) private var HNAME
     @Environment(\.SchemeEnvironment) private var SCHEME
+    @Environment(\.ApiPathEnvironment) private var APIPATH
     
     let dateFormater = DateFormatter()
     let encoder = JSONEncoder()
@@ -42,7 +43,7 @@ class Fetcher{
       url_components.scheme = SCHEME
       url_components.host = HNAME
         url_components.port = PORT
-      url_components.path = "/api/v1"+Path
+      url_components.path = APIPATH+Path
         var components = URLRequest(url:url_components.url!)
         components.httpMethod = Type
         components.addValue("application/json", forHTTPHeaderField: "content-type")

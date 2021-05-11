@@ -15,6 +15,7 @@ class ChatWBSocket{
     @Environment(\.PortEnvironment) private var PORT
     @Environment(\.HostNameEnvironment) private var HNAME
     @Environment(\.WSSchemeEnvironment) private var WSSCHEME
+    @Environment(\.WebSocketPathEnvironment) private var WBPATH
     init(){
         
     }
@@ -24,7 +25,7 @@ class ChatWBSocket{
         url_components.scheme = WSSCHEME
         url_components.port = PORT
         url_components.host = HNAME
-        url_components.path = "/cable"
+        url_components.path = WBPATH
         url_components.queryItems=[
             URLQueryItem(name:"token",value:token)
         ]

@@ -43,6 +43,24 @@ struct WSSchemeEnvironment: EnvironmentKey{
 
     #endif
 }
+struct ApiPATHEnvironment: EnvironmentKey{
+    typealias Value = String
+    #if DEBUG
+        static var defaultValue: String = "/api/v1"
+    #else
+        static var defaultValue: String = "/theatalk/api/v1"
+
+    #endif
+}
+struct WebSocketPathEnvironment: EnvironmentKey{
+    typealias Value = String
+    #if DEBUG
+        static var defaultValue: String = "/cable"
+    #else
+        static var defaultValue: String = "/theatalk/cable"
+
+    #endif
+}
 extension EnvironmentValues{
     var HostNameEnvironment: String{
         get{
@@ -62,6 +80,16 @@ extension EnvironmentValues{
     var WSSchemeEnvironment: String{
         get{
             return self[theatalk_ios.WSSchemeEnvironment.self]
+        }
+    }
+    var ApiPathEnvironment: String{
+        get{
+            return self[theatalk_ios.ApiPATHEnvironment.self]
+        }
+    }
+    var WebSocketPathEnvironment:String{
+        get{
+            return self[theatalk_ios.WebSocketPathEnvironment.self]
         }
     }
 }
