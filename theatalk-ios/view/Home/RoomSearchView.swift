@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import Combine
 enum SelectedType{
     case tag
     case keyword
     case user
     
+}
+protocol IncrementSearchInterface {
+    func IncrementSearch()
 }
 struct SearchFieldView: View{
     @State var selected = SelectedType.tag
@@ -31,22 +35,24 @@ struct SearchFieldView: View{
 
                 })
             }
-            TextField("検索",text:$text)
             if(selected == .tag){
                 
-                TagSearchView(SearchText: self.$text)
+                TagSearchView()
             }else{
                 RoomSearchByTagView()
 
             }
-            
             
         }
 
     }
 }
 
-struct RoomSearchByTagView: View{
+struct RoomSearchByTagView: View,IncrementSearchInterface{
+    func IncrementSearch() {
+        
+    }
+    
     @State var TagId = -1
 
     var body: some View {
@@ -59,26 +65,43 @@ struct RoomSearchByTagView: View{
     }
 }
 
-struct TagSearchView:View{
-    @ObservedObject var TagVM = TagsViewModel(UserId: UserProfile().user_Id)
-    @Binding var SearchText:String
+
+struct TagSearchView:View,IncrementSearchInterface{
+    func IncrementSearch() {
+    }
+    
+    @ObservedObject var TagVM = SearchTagsViewModel(UserId: UserProfile().user_Id)
+    @State var SearchText:String =  ""
     var body: some View {
+        TextField("検索",text:$TagVM.SearchText)
+    
         VStack{
             List{
-                ForEach(TagVM.tags){tag in
-                    Text(tag.name)
+                if(TagVM.tags.count>0){
+                    ForEach(TagVM.tags){tag in
+                        Text(tag.name)
+                    }
+                }else if(TagVM.tags.count == 0 && TagVM.SearchText != ""){
+                    HStack{
+                        Text(TagVM.SearchText)
+                        Button(action: {
+                            TagVM.postTag(tagName: TagVM.SearchText)
+                        }, label: {
+                            Text("追加")
+                        })
+                    }
                 }
             }
         }
     }
 }
-
 struct RoomSearchView: View {
     @ObservedObject var RoomSearchVM = RoomSearchViewModel()
 
     @State var SelectedRooms = false
     @State var IsSearch = false
     var body: some View {
+
         ZStack{
             VStack{
                 TextField("検索",text:$RoomSearchVM.text).onTapGesture {
@@ -99,8 +122,8 @@ struct RoomSearchView: View {
     }
 }
 //
-struct RoomSearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        RoomSearchView()
-    }
-}
+//struct RoomSearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RoomSearchView()
+//    }
+//}

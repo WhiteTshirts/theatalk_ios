@@ -12,13 +12,18 @@ import Combine
 
 var mockTagsData:[Tag] = [Tag(id_: 0, name_: "モルカー"),Tag(id_: 1, name_: "test2"),Tag(id_: 2, name_: "test3"),Tag(id_: 3, name_: "test4"),Tag(id_: 5, name_: "test5"),Tag(id_: 6, name_: "test6"),Tag(id_: 7, name_: "test7"),Tag(id_: 8, name_: "test8"),Tag(id_: 9, name_: "test9"),Tag(id_: 10, name_: "test10"),Tag(id_: 11, name_: "test11"),Tag(id_: 12, name_: "test12"),Tag(id_: 13, name_: "test13")]
 
-final class TagsViewModel: ObservableObject{
+class TagsViewModel: ObservableObject{
     private var disposables = Set<AnyCancellable>()
     @Published var tags: [Tag] = []
     @Published var UserTags:[Tag] = []
     var UserId:Int?
     var index:Int = 0
-    private var tagFetcher = TagFetcher(url: "http://localhost:5000/api/v1/tags")
+    @Published var SearchText:String = ""{
+        didSet{
+            self.searchTags(tagName: SearchText)
+        }
+    }
+    private var tagFetcher = TagFetcher(url: "")
     init(UserId:Int?){
         self.UserId = UserId
         load()
@@ -51,13 +56,12 @@ final class TagsViewModel: ObservableObject{
         }
     }
     func load(){
-        getTags()
-        //self.tags = mockTagsData
         if(UserId != nil){
-            //self.UserTags = mockTagsData
            getUserTags()
+            return
         }
-        
+        getTags()
+
     }
     func AddTagToUser(tagId:Int){
         tagFetcher.CreateUsersTag(tagId: tagId)
@@ -137,8 +141,8 @@ final class TagsViewModel: ObservableObject{
                 guard let self = self else { return }
                 if(tags.tags != nil){
                     self.tags = tags.tags
-
-                }            })
+                }
+              })
             .store(in: &disposables)
     }
     func postTag(tagName:String){
@@ -147,6 +151,7 @@ final class TagsViewModel: ObservableObject{
             .sink(
           receiveCompletion: { [weak self] value in
             guard let self = self else { return }
+            print(value)
             switch value {
             case .failure:
               break
@@ -170,7 +175,7 @@ final class TagsViewModel: ObservableObject{
             guard let self = self else {return}
             switch value {
             case .failure:
-                self.UserTags = []
+                self.tags = []
                 break
                 
             case .finished:
@@ -178,14 +183,16 @@ final class TagsViewModel: ObservableObject{
             }
         }, receiveValue: {[weak self] tags_json in
             guard let self = self else {return}
-            self.UserTags = tags_json.tags
+            
+            self.tags = tags_json.tags
             
         }).store(in: &disposables)
     }
-//    func login() -> AnyPublisher<User, Error> {
-//
-//    }
-    
     
 }
-
+class SearchTagsViewModel: TagsViewModel{
+    override init(UserId:Int?){
+        super.init(UserId: UserId)
+        getTags();
+    }
+}

@@ -17,6 +17,10 @@ struct TagSearch: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             
+            List{
+                Text("aa")
+            }
+            
         }
     }
 }

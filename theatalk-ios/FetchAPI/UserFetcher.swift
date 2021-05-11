@@ -24,9 +24,7 @@ protocol UserFechable {
 class UserFetcher:Fetcher{
     @Published var userData: [User]=[]
     init(url:String,session: URLSession = .shared){
-//        encoder.outputFormatting = .prettyPrinted
-//        encoder.dateEncodingStrategy = .iso8601
-        //iso8601 2018-01-08T02:51:37Z
+
         super.init()
     }
 

@@ -36,14 +36,20 @@ class Fetcher{
         encoder.dateEncodingStrategy = .iso8601
         self.session = session
     }
-    
-    func makeComponents(Path:String,Type:String,body: Data!
-    ) -> URLRequest {
+    func makeUrlComponents(Path:String,body:Data!)->URLComponents{
         var url_components = URLComponents()
       url_components.scheme = SCHEME
       url_components.host = HNAME
         url_components.port = PORT
       url_components.path = APIPATH+Path
+        return url_components
+    }
+    func makeComponentsWithq(Path:String,Type:String,query:URLQueryItem?,body:Data!)-> URLRequest {
+        var url_components = makeUrlComponents(Path: Path, body: body)
+        if(query != nil){
+            url_components.queryItems = [query!]
+        }
+        
         var components = URLRequest(url:url_components.url!)
         components.httpMethod = Type
         components.addValue("application/json", forHTTPHeaderField: "content-type")
@@ -57,7 +63,22 @@ class Fetcher{
         }
       return components
     }
-    func  fetchData<T>(//401なら一回loginを試みる、それでもダメならログインさせる
+    func makeComponents(Path:String,Type:String,body: Data!
+    ) -> URLRequest {
+        let url_components = makeUrlComponents(Path: Path, body: body)
+        var components = URLRequest(url:url_components.url!)
+        components.httpMethod = Type
+        components.addValue("application/json", forHTTPHeaderField: "content-type")
+        if(g_user_token != ""
+        ){
+            components.setValue("Bearer \(g_user_token)", forHTTPHeaderField: "Authorization")
+        }
+        if(body != nil){
+            components.httpBody = body
+        }
+      return components
+    }
+    func  fetchData<T>(
         with reqcomponents: URLRequest
     ) -> AnyPublisher<T, APIError> where T: Decodable {
       return session.dataTaskPublisher(for: reqcomponents)
