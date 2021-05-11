@@ -67,8 +67,8 @@ class Room: Codable,Identifiable,ObservableObject{
     var updated_at: Date!
     var viewer: Int!
     var youtube_id: String!
-    var tags: [Int]!
-    var users: [User]!
+    var tags: [Int]
+    var users: [User]
     
     enum DecodingKeys: CodingKey{
         case admin_id,id,is_private,name,password,created_at,start_time,updated_at,viewer,youtube_id,users,tags
@@ -83,6 +83,8 @@ class Room: Codable,Identifiable,ObservableObject{
         self.name = name
         self.start_time = start_time
         self.youtube_id = youtube_id
+        self.tags = []
+        self.users = []
     }
     init(admin_id:Int,name:String,id:Int,is_private:Bool,start_time:Date?,viewer:Int,youtube_id:String){
         self.admin_id = admin_id
@@ -92,6 +94,9 @@ class Room: Codable,Identifiable,ObservableObject{
         self.start_time = start_time
         self.viewer = viewer
         self.youtube_id = youtube_id
+        
+        self.tags = []
+        self.users = []
     }
     
     
@@ -105,10 +110,16 @@ class Room: Codable,Identifiable,ObservableObject{
         updated_at = try container.decodeIfPresent(with: DateTransformer(), forKey: .updated_at)
         start_time = try container.decodeIfPresent(with: DateTransformer(), forKey: .start_time)
         youtube_id = try container.decodeIfPresent(String.self, forKey: .youtube_id)
-        users = try container.decodeIfPresent([User].self, forKey: .users)
-        tags = try container.decodeIfPresent([Int].self, forKey: .tags)
-        if(users != nil){
-            viewer = users.count
+        if let users_ = try container.decodeIfPresent([User].self, forKey: .users){
+            self.users = users_
+            self.viewer = users_.count
+        }else{
+            self.users = []
+        }
+        if let tags_ = try container.decodeIfPresent([Int].self, forKey: .tags){
+            self.tags =  tags_
+        }else{
+            self.tags = []
         }
     }
 
