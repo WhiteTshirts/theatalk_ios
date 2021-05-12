@@ -167,9 +167,6 @@
 		6FA0E32625D9679E00AE16D6 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */; };
 		6FA0E32725D9679F00AE16D6 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */; };
 		6FA0E32825D9679F00AE16D6 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */; };
-		6FA11716264ADB1C0053BDA1 /* Singelton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA11715264ADB1C0053BDA1 /* Singelton.swift */; };
-		6FA11717264ADB1C0053BDA1 /* Singelton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA11715264ADB1C0053BDA1 /* Singelton.swift */; };
-		6FA11718264ADB1C0053BDA1 /* Singelton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA11715264ADB1C0053BDA1 /* Singelton.swift */; };
 		6FA152A0262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
 		6FA152A1262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
 		6FA152A2262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
@@ -274,7 +271,6 @@
 		6F9F40BD25D7A344000A7113 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		6F9F40C425D7ED3B000A7113 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
-		6FA11715264ADB1C0053BDA1 /* Singelton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singelton.swift; sourceTree = "<group>"; };
 		6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSearchViewModel.swift; sourceTree = "<group>"; };
 		6FAE627625EFF9B2003C6991 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		6FEDB03526147E37005C7924 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -517,7 +513,6 @@
 		6FA11714264ADB060053BDA1 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				6FA11715264ADB1C0053BDA1 /* Singelton.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -808,7 +803,6 @@
 				6F8806A525D069790085826F /* WBSocket.swift in Sources */,
 				6F736E2025EE7E2200E26267 /* MyRoomView.swift in Sources */,
 				6F88069B25D069790085826F /* File.swift in Sources */,
-				6FA11716264ADB1C0053BDA1 /* Singelton.swift in Sources */,
 				6F13291025DAE6CD006D486A /* UserProfileView.swift in Sources */,
 				6F8806E225D069C40085826F /* RoomCell.swift in Sources */,
 				6F736E1925EE7E0D00E26267 /* RoomSearchView.swift in Sources */,
@@ -890,7 +884,6 @@
 				6F88072625D06E280085826F /* CreateRoom.swift in Sources */,
 				6F88074325D06E380085826F /* theatalk_iosApp.swift in Sources */,
 				6F88072925D06E280085826F /* Home.swift in Sources */,
-				6FA11717264ADB1C0053BDA1 /* Singelton.swift in Sources */,
 				6F88072C25D06E280085826F /* Menu.swift in Sources */,
 				6F8806C125D0699E0085826F /* MockChats.swift in Sources */,
 				6F88073025D06E2B0085826F /* AuthViewModel.swift in Sources */,
@@ -933,7 +926,6 @@
 				6F88071725D06E200085826F /* UserFetcher.swift in Sources */,
 				6F736E2225EE7E2200E26267 /* MyRoomView.swift in Sources */,
 				6F88071625D06E200085826F /* FetchAPI.swift in Sources */,
-				6FA11718264ADB1C0053BDA1 /* Singelton.swift in Sources */,
 				6F13291225DAE6CD006D486A /* UserProfileView.swift in Sources */,
 				6F88071525D06E200085826F /* ImageLoader.swift in Sources */,
 				6F736E1B25EE7E0D00E26267 /* RoomSearchView.swift in Sources */,

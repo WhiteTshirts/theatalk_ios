@@ -19,6 +19,13 @@ class User:Identifiable,Codable{
     var isFollwing = false
     var room_id:Int!
     private var image_name: String!
+    var image:Image{
+        if(image_name != nil){
+            return Image(image_name!)
+        }else{
+            return Image("default")
+        }
+    }
     enum DecodingKeys: CodingKey{
         case name,id,password,tags,isFollower,isFollowing,room_id,rooms,followings,followers
     }
