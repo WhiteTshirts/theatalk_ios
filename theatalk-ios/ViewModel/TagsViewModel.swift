@@ -57,6 +57,8 @@ class TagsViewModel: ObservableObject{
     }
     func load(){
         if(UserId != nil){
+            
+           getTags()
            getUserTags()
             return
         }

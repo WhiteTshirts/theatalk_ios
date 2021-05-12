@@ -104,7 +104,6 @@ struct TagList: View ,TagManage{
     var body: some View {
         VStack{
             Text("全てのタグ")
-            
             GetTags(tags: TagsVM.tags,isUserTag: false, color: Color.green)
             Text("登録中のタグ一覧")
             
@@ -120,8 +119,8 @@ struct TagList: View ,TagManage{
     }
 }
 
-struct TagList_Previews: PreviewProvider {
-    static var previews: some View {
-        TagList(TagsVM: TagsViewModel(UserId: 1))
-    }
-}
+//struct TagList_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TagList(TagsVM: TagsViewModel(UserId: 1))
+//    }
+//}
