@@ -17,6 +17,9 @@ class RoomsViewModelBase: ObservableObject{
     var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
     init(tagId:Int=0){
     }
+    func refresh(){
+        GetallRooms()
+    }
     func ErrorHandle(e:APIError){
         switch e{
             case .token(description: let description):
@@ -91,6 +94,7 @@ final class CreateRoomViewModel: RoomsViewModelBase{
         super.init()
         self.createdRoom = nil
     }
+    
     func CreateRoom(room:Room){
         roomfetcher.CreateRoom(room: room)
             .sink(receiveCompletion: { completion in
@@ -110,12 +114,18 @@ final class RoomsViewModel: RoomsViewModelBase{
         super.GetallRooms()
 
     }
+    override func refresh() {
+        self.GetallRooms()
+    }
     
 }
 
 final class RoomsViewModelHistory: RoomsViewModelBase{
     override init(tagId:Int=0){
         super.init()
+        GetallRooms()
+    }
+    override func refresh() {
         GetallRooms()
     }
     override func GetallRooms() {
@@ -156,7 +166,7 @@ final class RoomsViewModelTag: RoomsViewModelBase{
     func SetTagId(tagId:Int){
         self.tagId = tagId
     }
-    func refresh(){
+    override func refresh(){
         GetallRooms()
     }
     override init(tagId:Int=0){

@@ -13,25 +13,30 @@ struct RoomList: View {
     @Binding var tagId:Int
     @State var toChatView = -1
     var body: some View{
-        if(RoomsVM.isLoading){
-            Image(systemName: "hourglass").resizable()
-                .scaledToFit()
-                .frame(width: 80, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-        }else{
-            ForEach(RoomsVM.rooms.indices, id:\.self){index in
-                HStack{
-     
-                    NavigationLink(destination:MoveToChatRoom(room:self.RoomsVM.rooms[index])){
-                        RoomCell(room:self.RoomsVM.rooms[index])
-                    }.simultaneousGesture(TapGesture().onEnded{
-                        RoomsVM.EnterRoom(roomID_: self.RoomsVM.rooms[index].id)
+        VStack{
+            if(RoomsVM.isLoading){
+                Image(systemName: "hourglass").resizable()
+                    .scaledToFit()
+                    .frame(width: 80, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            }else{
+                ForEach(RoomsVM.rooms.indices, id:\.self){index in
+                    HStack{
+         
+                        NavigationLink(destination:MoveToChatRoom(room:self.RoomsVM.rooms[index])){
+                            RoomCell(room:self.RoomsVM.rooms[index])
+                        }.simultaneousGesture(TapGesture().onEnded{
+                            RoomsVM.EnterRoom(roomID_: self.RoomsVM.rooms[index].id)
 
-                    })
+                        })
 
+                    }
+                    Spacer()
                 }
-                Spacer()
             }
+        }.onAppear(){
+            RoomsVM.refresh()
         }
+
 
     }
 

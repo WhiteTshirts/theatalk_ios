@@ -67,7 +67,7 @@ class Room: Codable,Identifiable,ObservableObject{
     var updated_at: Date!
     var viewer: Int!
     var youtube_id: String!
-    var tags: [Int]
+    var tags: [Tag]
     var users: [User]
     
     enum DecodingKeys: CodingKey{
@@ -116,7 +116,7 @@ class Room: Codable,Identifiable,ObservableObject{
         }else{
             self.users = []
         }
-        if let tags_ = try container.decodeIfPresent([Int].self, forKey: .tags){
+        if let tags_ = try container.decodeIfPresent([Tag].self, forKey: .tags){
             self.tags =  tags_
         }else{
             self.tags = []
