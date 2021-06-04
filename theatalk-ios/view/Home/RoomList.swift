@@ -10,7 +10,6 @@ import UIKit
 struct RoomList: View {
     
     @ObservedObject var RoomsVM:RoomsViewModelBase
-    @Binding var tagId:Int
     @State var toChatView = -1
     var body: some View{
         VStack{

@@ -303,7 +303,7 @@ struct Home: View{
             VStack(alignment: .center){
                 HStack{
                     ScrollView{
-                        RoomList(RoomsVM: RoomsViewModel(), tagId:self.$SearchTagId)
+                        RoomList(RoomsVM: RoomsViewModel())
                     }
                 }
             }

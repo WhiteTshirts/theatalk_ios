@@ -67,7 +67,6 @@ struct TagList: View ,TagManage{
                       }
                       return result
                     })
-                
             }
         }
       }
@@ -78,7 +77,6 @@ struct TagList: View ,TagManage{
             .background(color)
             .foregroundColor(.white)
             .cornerRadius(3)
-
     }
     func TagItemView(for tag:Tag,color:Color,isUserTag:Bool)->some View{
         return
@@ -95,27 +93,19 @@ struct TagList: View ,TagManage{
                         Image(systemName:isUserTag ? "minus.circle":"plus.circle")
                                 .resizable()
                                 .frame(width: 16,height: 16)
-                        
                     }),alignment: .topTrailing
                     
                 )
     }
-    
     var body: some View {
         VStack{
             Text("全てのタグ")
             GetTags(tags: TagsVM.tags,isUserTag: false, color: Color.green)
             Text("登録中のタグ一覧")
-            
             GetTags(tags: TagsVM.UserTags,isUserTag: true ,color: Color.red)
-
-
         }.onAppear{
             self.TagsVM.load()
         }
-
-
-        
     }
 }
 

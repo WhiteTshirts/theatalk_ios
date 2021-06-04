@@ -58,7 +58,7 @@ struct RoomSearchByTagView: View,IncrementSearchInterface{
     var body: some View {
         VStack{
             ScrollView{
-                RoomList(RoomsVM: RoomsViewModelTag(), tagId:self.$TagId)
+                RoomList(RoomsVM: RoomsViewModelTag())
             }
             
         }
@@ -79,7 +79,9 @@ struct TagSearchView:View,IncrementSearchInterface{
             List{
                 if(TagVM.tags.count>0){
                     ForEach(TagVM.tags){tag in
-                        Text(tag.name)
+                        NavigationLink(destination: RoomList(RoomsVM: RoomsViewModelTag(tagId: tag.id))) {
+                            Text(tag.name)
+                        }
                     }
                 }else if(TagVM.tags.count == 0 && TagVM.SearchText != ""){
                     HStack{

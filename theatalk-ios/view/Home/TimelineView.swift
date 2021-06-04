@@ -20,7 +20,7 @@ struct TimelineView: View {
             VStack(alignment: .center){
                 HStack{
                     ScrollView{
-                        RoomList(RoomsVM: RoomsViewModel(), tagId:self.$TagId)
+                        RoomList(RoomsVM: RoomsViewModel())
                     }
                 }
             }

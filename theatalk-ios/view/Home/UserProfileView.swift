@@ -9,7 +9,6 @@ import SwiftUI
 struct OtherProfileView: View{
     var user:User
     @ObservedObject var ProfileVM: ProfileViewModel
-
     var body: some View{
         VStack{
             
