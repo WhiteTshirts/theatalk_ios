@@ -65,7 +65,7 @@ class Room: Codable,Identifiable,ObservableObject{
     var created_at: Date!
     var start_time: Date!
     var updated_at: Date!
-    var viewer: Int!
+    var viewer: Int = 0
     var youtube_id: String!
     var tags: [Tag]
     var users: [User]
@@ -85,6 +85,8 @@ class Room: Codable,Identifiable,ObservableObject{
         self.youtube_id = youtube_id
         self.tags = []
         self.users = []
+        
+        
     }
     init(admin_id:Int,name:String,id:Int,is_private:Bool,start_time:Date?,viewer:Int,youtube_id:String){
         self.admin_id = admin_id
