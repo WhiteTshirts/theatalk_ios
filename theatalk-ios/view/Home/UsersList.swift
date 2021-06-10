@@ -10,7 +10,7 @@ import SwiftUI
 struct UsersList: View {
     
     @State var users:[User]
-    var userRelation:UsersRelationShip
+    var userRelation:UsersRelationShip!
     func Follow(index:Int){
         let _user = users[index]
         _user.isFollwing = true
@@ -32,6 +32,7 @@ struct UsersList: View {
                 Button(action:{
                     
                 }){
+                    user.image.resizable().frame(width: 15, height: 15, alignment: .center)
                     Text("\(user.name)")
                 }
                 Button(action: {
@@ -79,9 +80,9 @@ struct UsersList: View {
 
     }
 }
-
-//struct UsersList_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UsersList(users,isFollowList: false)
-//    }
-//}
+//
+struct UsersList_Previews: PreviewProvider {
+    static var previews: some View {
+        UsersList(users: mockUsersData, userRelation:nil )
+    }
+}

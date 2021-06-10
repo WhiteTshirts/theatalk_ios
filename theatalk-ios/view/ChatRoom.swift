@@ -106,8 +106,8 @@ struct ChatArea: View,UsersRelationShip {
     }
 }
 
-//struct ChatRoom_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChatArea( room:mockRoomsData[0])
-//    }
-//}
+struct ChatRoom_Previews: PreviewProvider {
+    static var previews: some View {
+        ChatArea( room:mockRoomsData[0])
+    }
+}
