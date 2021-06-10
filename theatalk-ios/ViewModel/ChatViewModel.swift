@@ -30,7 +30,7 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     }
     @Published var StatusMessage = StatusText(server_status: 0, message: "")
     @Published var chats: [Chat] = []
-    private var chatfetcher = ChatFetcher(url: "http://localhost:5000/api/v1/rooms/0")
+    private var chatfetcher = ChatFetcher()
     init(){
         self.UsersVM = UsersViewModel(userId: UserProfile().user_Id)
 

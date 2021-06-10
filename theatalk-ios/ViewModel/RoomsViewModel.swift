@@ -14,7 +14,7 @@ class RoomsViewModelBase: ObservableObject{
     @Published var isLoading = false
     @Published var isSuccessed = false
     @Published var rooms: [Room] = []
-    var roomfetcher = RoomFetcher(url: "http://localhost:5000/api/v1/rooms")
+    var roomfetcher = RoomFetcher()
     init(tagId:Int=0){
     }
     func refresh(){

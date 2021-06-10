@@ -23,7 +23,7 @@ protocol UserFechable {
 }
 class UserFetcher:Fetcher{
     @Published var userData: [User]=[]
-    init(url:String,session: URLSession = .shared){
+    override init(session: URLSession = .shared){
 
         super.init()
     }

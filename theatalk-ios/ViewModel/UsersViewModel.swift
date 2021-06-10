@@ -17,7 +17,8 @@ final class UsersViewModel: ObservableObject{
     @Published var isLoading:Bool
     @Published var followers: [User]
     @Published var followings: [User]
-    private var userfetcher = UserFetcher(url: "")
+    private var imagefetcher = ImageFetcher()
+    private var userfetcher = UserFetcher()
     @Published var userId:Int
     init(userId:Int){
         self.disposables = Set<AnyCancellable>()

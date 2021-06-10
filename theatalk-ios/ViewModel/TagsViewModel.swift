@@ -23,7 +23,7 @@ class TagsViewModel: ObservableObject{
             self.searchTags(tagName: SearchText)
         }
     }
-    private var tagFetcher = TagFetcher(url: "")
+    private var tagFetcher = TagFetcher()
     init(UserId:Int?){
         self.UserId = UserId
         load()
@@ -69,6 +69,7 @@ class TagsViewModel: ObservableObject{
         tagFetcher.CreateUsersTag(tagId: tagId)
             .receive(on: DispatchQueue.main)
             .sink(
+                
           receiveCompletion: { [weak self] value in
             guard let self = self else { return }
             switch value {

@@ -32,7 +32,7 @@ protocol RoomFechable {
 }
 class RoomFetcher:Fetcher{
     @Published var roomData: [Room]=[]
-    init(url:String,session: URLSession = .shared){
+    override init(session: URLSession = .shared){
         super.init()
         //iso8601 2018-01-08T02:51:37Z
     }

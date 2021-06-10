@@ -18,7 +18,7 @@ protocol TagFechable {
 }
 class TagFetcher:Fetcher{
     @Published var tagData: [Tag]=[]
-    init(url:String,session: URLSession = .shared){
+    override init(session: URLSession = .shared){
         super.init()
     }
 

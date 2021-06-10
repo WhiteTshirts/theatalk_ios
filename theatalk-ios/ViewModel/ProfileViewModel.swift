@@ -13,7 +13,7 @@ final class ProfileViewModel: ObservableObject{
     
     private var disposables = Set<AnyCancellable>()
     @Published var user:User
-    private var userfetcher = UserFetcher(url:"")
+    private var userfetcher = UserFetcher()
     @ObservedObject var UsersVM:UsersViewModel
     init(user:User){
         self.user = user

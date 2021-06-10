@@ -11,7 +11,7 @@ import Combine
 class ChatFetcher:Fetcher{
     @Published var chatData: [Chat]=[]
 
-    init(url:String){
+    init(){
         super.init()
  
         //iso8601 2018-01-08T02:51:37Z
