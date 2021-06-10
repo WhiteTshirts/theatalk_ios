@@ -170,6 +170,9 @@
 		6FA152A0262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
 		6FA152A1262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
 		6FA152A2262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
+		6FAA192A2671E8DD00B97DEF /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAA19292671E8DD00B97DEF /* ImageFetcher.swift */; };
+		6FAA192B2671E8DD00B97DEF /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAA19292671E8DD00B97DEF /* ImageFetcher.swift */; };
+		6FAA192C2671E8DD00B97DEF /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAA19292671E8DD00B97DEF /* ImageFetcher.swift */; };
 		6FAE627725EFF9B2003C6991 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE627625EFF9B2003C6991 /* TimelineView.swift */; };
 		6FAE627825EFF9B2003C6991 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE627625EFF9B2003C6991 /* TimelineView.swift */; };
 		6FAE627925EFF9B2003C6991 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE627625EFF9B2003C6991 /* TimelineView.swift */; };
@@ -272,6 +275,7 @@
 		6F9F40C425D7ED3B000A7113 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSearchViewModel.swift; sourceTree = "<group>"; };
+		6FAA19292671E8DD00B97DEF /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		6FAE627625EFF9B2003C6991 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		6FEDB03526147E37005C7924 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		6FEDB03C26148629005C7924 /* TagSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSearch.swift; sourceTree = "<group>"; };
@@ -458,6 +462,7 @@
 				6F88069525D069790085826F /* WBSocket.swift */,
 				6F88069625D069790085826F /* youtube_player.swift */,
 				6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */,
+				6FAA19292671E8DD00B97DEF /* ImageFetcher.swift */,
 			);
 			path = FetchAPI;
 			sourceTree = "<group>";
@@ -787,6 +792,7 @@
 				6F8806F125D069DC0085826F /* ChatViewModel.swift in Sources */,
 				6F88067C25D0692E0085826F /* Session.swift in Sources */,
 				6F8806DE25D069C40085826F /* Menu.swift in Sources */,
+				6FAA192A2671E8DD00B97DEF /* ImageFetcher.swift in Sources */,
 				6F8806F225D069DC0085826F /* TagsViewModel.swift in Sources */,
 				6F736E2E25EE828600E26267 /* RoomHistoryView.swift in Sources */,
 				6F88068725D0693D0085826F /* Chat.swift in Sources */,
@@ -864,6 +870,7 @@
 				6F88068825D0693D0085826F /* Chat.swift in Sources */,
 				6F8806BD25D0699E0085826F /* MockUsers.swift in Sources */,
 				6F88069C25D069790085826F /* File.swift in Sources */,
+				6FAA192B2671E8DD00B97DEF /* ImageFetcher.swift in Sources */,
 				6F88073125D06E2B0085826F /* RoomsViewModel.swift in Sources */,
 				6F88066D25D068D30085826F /* Room.swift in Sources */,
 				6F8806AA25D0697A0085826F /* FetchAPI.swift in Sources */,
@@ -910,6 +917,7 @@
 				6F88071F25D06E230085826F /* MockUsers.swift in Sources */,
 				6F8806D725D069C40085826F /* ChatRoom.swift in Sources */,
 				6F88073D25D06E340085826F /* Room.swift in Sources */,
+				6FAA192C2671E8DD00B97DEF /* ImageFetcher.swift in Sources */,
 				6F88073B25D06E340085826F /* User.swift in Sources */,
 				6F736E3025EE828600E26267 /* RoomHistoryView.swift in Sources */,
 				6F88071925D06E200085826F /* File.swift in Sources */,
