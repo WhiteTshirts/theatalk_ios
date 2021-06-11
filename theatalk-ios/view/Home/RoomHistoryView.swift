@@ -14,9 +14,9 @@ struct RoomHistoryView: View {
         ZStack{
             VStack(alignment: .center){
                 HStack{
-                    ScrollView{
-                        RoomList(RoomsVM: RoomsViewModelHistory())
-                    }
+
+                    RoomList(RoomsVM: RoomsViewModelHistory())
+                    
                 }
             }
         }

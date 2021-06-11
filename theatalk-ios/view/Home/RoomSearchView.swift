@@ -21,7 +21,7 @@ struct SearchFieldView: View{
     @State var text = ""
     var body: some View{
         VStack{
-                KeywordSearchView()
+            RoomSearchByTagView()
 
             
         }
@@ -37,12 +37,12 @@ struct RoomSearchByTagView: View,IncrementSearchInterface{
     @State var TagId = -1
 
     var body: some View {
-        VStack{
+
             ScrollView{
                 RoomList(RoomsVM: RoomsViewModelTag())
             }
             
-        }
+    
     }
 }
 struct KeywordSearchView:View,IncrementSearchInterface{
@@ -67,7 +67,7 @@ struct TagSearchView:View,IncrementSearchInterface{
     @ObservedObject var TagVM = SearchTagsViewModel(UserId: UserProfile().user_Id)
     var body: some View {
         TextField("検索",text:$TagVM.SearchText)
-    
+        
         VStack{
             List{
                 if(TagVM.tags.count>0){

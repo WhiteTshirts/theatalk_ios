@@ -19,9 +19,8 @@ struct TimelineView: View {
         ZStack{
             VStack(alignment: .center){
                 HStack{
-                    ScrollView{
                         RoomList(RoomsVM: RoomsViewModel())
-                    }
+                    
                 }
             }
         }
