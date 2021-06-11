@@ -48,23 +48,18 @@ struct ChatCell: View{
     @ObservedObject var userVM = UserViewModle()
     var body: some View{
         ZStack{
-            if(self.userVM.user.name==""){
-                ProgressView("Now Loading...")
-
-            }else{
                 HStack{
-                    VStack{
-                        self.userVM.user.image.resizable().frame(width: 10, height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        Text(self.userVM.user.name)
+                    if(self.userVM.user.name==""){
+                            ProgressView("Now Loading...")
+                    }else{
+                        VStack{
+                            self.userVM.user.image.resizable().frame(width: 10, height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            Text(self.userVM.user.name)
+                        }
                     }
+ 
                     Text(chat.text)
                 }
-
-
-            }
-            
-
-
         }
     }
 }
@@ -92,7 +87,6 @@ struct ChatArea: View,UsersRelationShip {
     }
     var body: some View {
         VStack{
-
             if((self.room.users) != nil){
                 NavigationLink(
                     
@@ -104,9 +98,7 @@ struct ChatArea: View,UsersRelationShip {
             }
             ScrollViewReader { value in
             List {
-                    
                 ChatView
-                    
                 }
                 VStack{
                     TextField("コメントを入力してください", text: $text,
