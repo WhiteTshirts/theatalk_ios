@@ -21,27 +21,8 @@ struct SearchFieldView: View{
     @State var text = ""
     var body: some View{
         VStack{
-            HStack{
-                Button(action: {
-                    selected = .keyword
-                }, label: {
-                    Text("キーワード").foregroundColor(selected == .keyword ? .blue : .red)
-                    
-                })
-                Button(action: {
-                    selected = .tag
-                }, label: {
-                    Text("タグ").foregroundColor(selected == .tag ? .blue : .red)
+                KeywordSearchView()
 
-                })
-            }
-            if(selected == .tag){
-                
-                TagSearchView()
-            }else{
-                RoomSearchByTagView()
-
-            }
             
         }
 
@@ -64,6 +45,19 @@ struct RoomSearchByTagView: View,IncrementSearchInterface{
         }
     }
 }
+struct KeywordSearchView:View,IncrementSearchInterface{
+    func IncrementSearch() {
+    }
+    
+    @ObservedObject var TagVM = SearchTagsViewModel(UserId: UserProfile().user_Id)
+    
+    var body: some View {
+        TextField("検索",text:$TagVM.SearchText)
+    
+        VStack{
+        }
+    }
+}
 
 
 struct TagSearchView:View,IncrementSearchInterface{
@@ -71,7 +65,6 @@ struct TagSearchView:View,IncrementSearchInterface{
     }
     
     @ObservedObject var TagVM = SearchTagsViewModel(UserId: UserProfile().user_Id)
-    @State var SearchText:String =  ""
     var body: some View {
         TextField("検索",text:$TagVM.SearchText)
     
@@ -109,7 +102,7 @@ struct RoomSearchView: View {
                 TextField("検索",text:$RoomSearchVM.text).onTapGesture {
                     self.IsSearch = true
                 }
-                NavigationLink(destination:SearchFieldView(),isActive:$IsSearch){
+                NavigationLink(destination:TagSearchView(),isActive:$IsSearch){
                     RoomSearchByTagView()
 
                 }

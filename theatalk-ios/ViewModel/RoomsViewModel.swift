@@ -175,8 +175,6 @@ final class RoomsViewModelTag: RoomsViewModelBase{
         self.GetallRooms()
     }
     override func GetallRooms() {
-        print("get all room tag ")
-        print(tagId)
         if tagId != nil{
             if(tagId! > 0){
                 GetRoomsByTagId(tagId: self.tagId!)
