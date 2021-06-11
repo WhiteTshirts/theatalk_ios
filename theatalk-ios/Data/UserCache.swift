@@ -7,10 +7,13 @@
 
 import Foundation
 struct UserCache{
-    var users:[User] = []
+    private static var users:[User] = []
     private init(){}
-    func find(id:Int)->User?{
-        return users.filter({$0.id == id}).first
+    static func find(id:Int)->User?{
+        return UserCache.users.filter({$0.id == id}).first
+    }
+    static mutating func add(user:User){
+        UserCache.users.append(user)
     }
     
     
