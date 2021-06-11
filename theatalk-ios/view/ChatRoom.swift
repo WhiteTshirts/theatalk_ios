@@ -37,6 +37,37 @@ struct MoveToChatRoom: View{
 
     }
 }
+
+struct ChatCell: View{
+
+    init(chat:Chat){
+        self.chat = chat
+        self.userVM.GetUser(userId: chat.user_id)
+    }
+    var chat:Chat
+    @ObservedObject var userVM = UserViewModle()
+    var body: some View{
+        ZStack{
+            if(self.userVM.user.name==""){
+                ProgressView("Now Loading...")
+
+            }else{
+                HStack{
+                    VStack{
+                        self.userVM.user.image.resizable().frame(width: 10, height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        Text(self.userVM.user.name)
+                    }
+                    Text(chat.text)
+                }
+
+
+            }
+            
+
+
+        }
+    }
+}
 struct ChatArea: View,UsersRelationShip {
     func Follow(userId: Int) {
         self.ChatsVm.Follow(userId: userId)
@@ -54,13 +85,8 @@ struct ChatArea: View,UsersRelationShip {
     var ChatView: some View{
         ForEach(ChatsVm.chats.indices, id: \.self){ index in
             HStack{
-                if let user_name = ChatsVm.chats[index].user_name{
-                    Text("\(user_name)さん:\(ChatsVm.chats[index].text)")
-                        .font(.caption)
-                }else{
-                    Text("名前読み込み中:\(ChatsVm.chats[index].text)")
-                        .font(.caption)
-                }
+                ChatCell(chat: ChatsVm.chats[index])
+                
             }.id(index)
         }
     }

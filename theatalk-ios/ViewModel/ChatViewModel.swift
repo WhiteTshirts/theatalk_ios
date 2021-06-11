@@ -30,6 +30,7 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     }
     @Published var StatusMessage = StatusText(server_status: 0, message: "")
     @Published var chats: [Chat] = []
+    @Published var users: [User] = []
     private var chatfetcher = ChatFetcher()
     init(){
         self.UsersVM = UsersViewModel(userId: UserProfile().user_Id)

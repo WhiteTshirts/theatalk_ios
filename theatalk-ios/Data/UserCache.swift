@@ -12,7 +12,7 @@ struct UserCache{
     static func find(id:Int)->User?{
         return UserCache.users.filter({$0.id == id}).first
     }
-    static mutating func add(user:User){
+    static func add(user:User){
         UserCache.users.append(user)
     }
     
