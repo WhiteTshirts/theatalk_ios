@@ -16,6 +16,7 @@ class ChatWBSocket{
     @Environment(\.HostNameEnvironment) private var HNAME
     @Environment(\.WSSchemeEnvironment) private var WSSCHEME
     @Environment(\.WebSocketPathEnvironment) private var WBPATH
+
     init(){
         
     }
@@ -32,7 +33,6 @@ class ChatWBSocket{
         self.delegate = delegate
         if let url_str = url_components.string{
             task = URLSession.shared.webSocketTask(with: URL(string: url_str)!)
-            print(url_str)
         }else{
             return
         }
@@ -56,6 +56,21 @@ class ChatWBSocket{
                      , reason: nil)
 
     }
+    func message_process(o:AnyObject){
+        if let message_type = o["type"]{
+            if let message_type_str = message_type as? String{
+                if(message_type as! String == "add"){
+                }else if(message_type as! String == "comment"){
+                    if let chat_obj = o["chat"]! as AnyObject?{
+                        let chat = Chat(user_name_: chat_obj["name"]! as! String, user_id_: chat_obj["user_id"]! as! Int, text_: chat_obj["text"]! as! String, created_at_: Date())
+                        self.delegate!.chatreceive(chat: chat)
+                    }
+
+                }
+            }
+
+        }
+    }
     func listen(){
         
         task.receive{ result in
@@ -68,17 +83,8 @@ class ChatWBSocket{
                         let msg = text.data(using: .utf8)!
                         do{
                             let o = try JSONSerialization.jsonObject(with: msg) as AnyObject
-                            if o["type"]! == nil,let chatobj = o["message"]! as AnyObject?{
-                                if type(of: chatobj) != String.Type.self, (chatobj["user_id"]) != nil{
-                                    if(chatobj["type"]! == nil){
-                                        print(chatobj)
-                                        let chat_ = Chat(user_name_:chatobj["name"]! as! String,user_id_: chatobj["user_id"]! as! Int, text_: chatobj["text"]! as! String, created_at_: Date())
-                                        self.delegate!.chatreceive(chat: chat_)
-                                    }else{
-                                        
-                                    }
-
-                                }
+                            if let chat_obj = o["message"]! as AnyObject?{
+                                self.message_process(o: chat_obj)
                             }
                         }catch{
                             
