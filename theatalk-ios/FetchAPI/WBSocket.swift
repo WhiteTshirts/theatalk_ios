@@ -56,11 +56,22 @@ class ChatWBSocket{
                      , reason: nil)
 
     }
+    func UserControl(user:User,type:String){
+        if(type=="add"){
+            self.delegate!.useradd(user: user)
+        }else if(type=="del"){
+            self.delegate!.userdel(user: user)
+        }
+    }
     func message_process(o:AnyObject){
         if let message_type = o["type"]{
             if let message_type_str = message_type as? String{
-                if(message_type as! String == "add"){
-                }else if(message_type as! String == "comment"){
+                if(message_type_str == "add" || message_type_str == "del"){
+                    if let user_obj = o["user"]! as AnyObject?{
+                        let user = User(name_: user_obj["name"]! as! String, user_id: user_obj["id"]! as! Int)
+                        self.UserControl(user: user, type: message_type_str)
+                    }
+                }else if(message_type_str == "comment"){
                     if let chat_obj = o["chat"]! as AnyObject?{
                         let chat = Chat(user_name_: chat_obj["name"]! as! String, user_id_: chat_obj["user_id"]! as! Int, text_: chat_obj["text"]! as! String, created_at_: Date())
                         self.delegate!.chatreceive(chat: chat)

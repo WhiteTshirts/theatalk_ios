@@ -10,9 +10,12 @@ import Combine
 import SwiftUI
 protocol ChatRecv {
     func chatreceive(chat: Chat)
+    func userdel(user:User)
+    func useradd(user:User)
 }
 
 final class ChatsViewModel: ObservableObject,ChatRecv{
+
     private var disposables = Set<AnyCancellable>()
     var isLoading = false
     var isSending = false
@@ -91,8 +94,16 @@ final class ChatsViewModel: ObservableObject,ChatRecv{
     func chatreceive(chat: Chat){
         self.chats.insert(chat, at: 0)
 
+    }
+    func userdel(user: User) {
+        self.users.removeAll(where: {$0.id == user.id})
+    }
+    
+    func useradd(user: User) {
+        self.users.append(user)
 
     }
+    
     func SendMsg(msg:String,roomId:Int){
         if(msg == ""){
             return
