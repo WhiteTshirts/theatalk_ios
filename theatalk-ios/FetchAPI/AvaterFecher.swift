@@ -14,8 +14,6 @@ class AvaterFetcher:Fetcher{
 
         super.init()
     }
-
-
   }
 
 
@@ -24,12 +22,12 @@ class AvaterFetcher:Fetcher{
 extension AvaterFetcher{
     
     func GETAvaterImages(
-    ) -> AnyPublisher<Users_Json,APIError>{
+    ) -> AnyPublisher<Avater_Json,APIError>{
         return fetchData(with: makeComponents(Path: "/images", Type: "GET", body: nil))
     }
     func GETAvaterImage(
         avaterId:Int
-    ) -> AnyPublisher<Users_Json,APIError>{
+    ) -> AnyPublisher<Avater_Json,APIError>{
 
         do{
             return fetchData(with: makeComponents(Path: "/images/\(avaterId)", Type: "GET", body: nil))

@@ -74,7 +74,7 @@ class Room: Codable,Identifiable,ObservableObject{
         case admin_id,id,is_private,name,password,created_at,start_time,updated_at,viewer,youtube_id,users,tags
     }
     enum EncodeKeys: CodingKey{
-        case name,youtube_id,start_time
+        case name,youtube_id,start_time,is_private
     }
     enum EncodeNestKeys:CodingKey{
         case room
@@ -85,6 +85,7 @@ class Room: Codable,Identifiable,ObservableObject{
         self.youtube_id = youtube_id
         self.tags = []
         self.users = []
+        self.is_private = false
         
         
     }
@@ -132,6 +133,7 @@ class Room: Codable,Identifiable,ObservableObject{
             try nestObj.encode(name, forKey: .name)
             try nestObj.encode(youtube_id,forKey: .youtube_id)
             try nestObj.encode(start_time, forKey: .start_time)
+            try nestObj.encode(is_private,forKey: .is_private)
         
     }
 
