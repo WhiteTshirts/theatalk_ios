@@ -41,9 +41,14 @@ struct UserProfileView: View,UsersRelationShip {
     var body: some View {
         NavigationView{
             VStack{
-                user.image
-                    .resizable()
-                    .frame(width:100,height: 100)
+                NavigationLink(
+                    destination: /*@START_MENU_TOKEN@*/Text("Destination")/*@END_MENU_TOKEN@*/,
+                    label: {
+                        user.image
+                            .resizable()
+                            .frame(width:100,height: 100)
+                    })
+
                 Text("名前:\(user.name)")
                 HStack{
                 Text("登録タグ一覧")
