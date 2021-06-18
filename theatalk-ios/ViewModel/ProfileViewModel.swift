@@ -20,6 +20,9 @@ final class ProfileViewModel: ObservableObject{
         self.UsersVM = UsersViewModel(userId: user.id)
         GetUserInfo()
     }
+    func refresh(){
+        GetUserInfo()
+    }
     func Follow(userId:Int){
         
         self.UsersVM.Follow(userId: userId)

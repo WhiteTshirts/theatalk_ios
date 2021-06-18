@@ -87,6 +87,8 @@ struct UserProfileView: View,UsersRelationShip {
                          .background(Color.accentColor)
                          .cornerRadius(8)
                 }
+            }.onAppear(){
+                self.ProfileVM.refresh()
             }
         }
 

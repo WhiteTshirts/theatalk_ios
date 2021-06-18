@@ -72,11 +72,8 @@ class ChatWBSocket{
                         self.UserControl(user: user, type: message_type_str)
                     }
                 }else if(message_type_str == "comment"){
-                    print(o)
                     if let chat_obj = o["chat"]! as AnyObject?{
                         let chat = Chat(user_name_: chat_obj["name"]! as! String, user_id_: chat_obj["user_id"]! as! Int, text_: chat_obj["text"]! as! String, created_at_: Date())
-                        print("chat")
-                        print(chat)
                         self.delegate!.chatreceive(chat: chat)
                     }
 
