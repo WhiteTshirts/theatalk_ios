@@ -20,12 +20,16 @@ struct MoveToChatRoom: View{
 
         }
     }
+    func addSelf(){
+        room.users.append(User(name_: UserProfile().username, user_id: UserProfile().user_Id))
+    }
     var body: some View{
         
         PlayerView(action:$action, videoId: self.$room.youtube_id, time_offset: $time_offset).frame(width: playerSize.width, height: playerSize.height).onDisappear(){
             self.action = .stop
         }.onAppear(){
             Caltime_offset()
+            addSelf()
         }
         ChatArea(room: room)
             .onAppear(){
