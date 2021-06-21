@@ -14,21 +14,24 @@ struct MoveToChatRoom: View{
     @State private var playerSize: CGSize = .zero
     @State var action:PlayerAction = .play
     @State var time_offset:Int = 0
-    func Caltime_offset(){
+    func CaltimeOffset(){
         if let stime = room.start_time{
             time_offset = Int(Date().timeIntervalSince(room.start_time))
 
         }
     }
     func addSelf(){
-        room.users.append(User(name_: UserProfile().username, user_id: UserProfile().user_Id))
+        if(!room.users.contains(where: {$0.id == UserProfile().user_Id}) ){
+            room.users.append(User(name_: UserProfile().username, user_id: UserProfile().user_Id))
+        }
+
     }
     var body: some View{
         
         PlayerView(action:$action, videoId: self.$room.youtube_id, time_offset: $time_offset).frame(width: playerSize.width, height: playerSize.height).onDisappear(){
             self.action = .stop
         }.onAppear(){
-            Caltime_offset()
+            CaltimeOffset()
             addSelf()
         }
         ChatArea(room: room)
