@@ -20,6 +20,11 @@ struct MoveToChatRoom: View{
 
         }
     }
+    func isAdmin()->Bool{
+
+        return room.admin_id == UserProfile().user_Id
+        
+    }
     func addSelf(){
         if(!room.users.contains(where: {$0.id == UserProfile().user_Id}) ){
             room.users.append(User(name_: UserProfile().username, user_id: UserProfile().user_Id))
@@ -40,6 +45,10 @@ struct MoveToChatRoom: View{
                 addSelf()
             }.onDisappear(){
                 removeSelf()
+            }
+            if(isAdmin()){
+                
+                
             }
             ChatArea(room: room)
                 .onAppear(){

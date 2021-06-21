@@ -17,6 +17,9 @@
 		6F1B3F81262424E6001411F9 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1B3F80262424E6001411F9 /* Environment.swift */; };
 		6F1B3F82262424E6001411F9 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1B3F80262424E6001411F9 /* Environment.swift */; };
 		6F1B3F83262424E6001411F9 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1B3F80262424E6001411F9 /* Environment.swift */; };
+		6F3BE4D12680E671006BC03D /* ChatForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3BE4D02680E671006BC03D /* ChatForm.swift */; };
+		6F3BE4D22680E671006BC03D /* ChatForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3BE4D02680E671006BC03D /* ChatForm.swift */; };
+		6F3BE4D32680E671006BC03D /* ChatForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3BE4D02680E671006BC03D /* ChatForm.swift */; };
 		6F736E1925EE7E0D00E26267 /* RoomSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F736E1825EE7E0D00E26267 /* RoomSearchView.swift */; };
 		6F736E1A25EE7E0D00E26267 /* RoomSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F736E1825EE7E0D00E26267 /* RoomSearchView.swift */; };
 		6F736E1B25EE7E0D00E26267 /* RoomSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F736E1825EE7E0D00E26267 /* RoomSearchView.swift */; };
@@ -226,6 +229,7 @@
 		6F13290525DAE621006D486A /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		6F13290F25DAE6CD006D486A /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		6F1B3F80262424E6001411F9 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		6F3BE4D02680E671006BC03D /* ChatForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatForm.swift; sourceTree = "<group>"; };
 		6F736E1825EE7E0D00E26267 /* RoomSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSearchView.swift; sourceTree = "<group>"; };
 		6F736E1F25EE7E2200E26267 /* MyRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoomView.swift; sourceTree = "<group>"; };
 		6F736E2625EE7E2C00E26267 /* DMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMView.swift; sourceTree = "<group>"; };
@@ -505,6 +509,7 @@
 				6F736E1225EE7D6A00E26267 /* Home */,
 				6F8806CC25D069C30085826F /* ChatRoom.swift */,
 				6F8806D125D069C40085826F /* CreateRoom.swift */,
+				6F3BE4D02680E671006BC03D /* ChatForm.swift */,
 				6F8806D025D069C40085826F /* Menu.swift */,
 				6F8806CB25D069C30085826F /* URLImage.swift */,
 				6F9EFF7C25E0B2DE0096AC98 /* ErrorView.swift */,
@@ -844,6 +849,7 @@
 				6F88069D25D069790085826F /* TagFetcher.swift in Sources */,
 				6F8806D625D069C40085826F /* ChatRoom.swift in Sources */,
 				6F9EFF7D25E0B2DE0096AC98 /* ErrorView.swift in Sources */,
+				6F3BE4D12680E671006BC03D /* ChatForm.swift in Sources */,
 				6F96EF2326130BA20082F249 /* ProfileViewModel.swift in Sources */,
 				6F8806F425D069DC0085826F /* RoomsViewModel.swift in Sources */,
 				6FA46D302674E624009F9817 /* AvaterSelectView.swift in Sources */,
@@ -901,6 +907,7 @@
 				6F8806A625D0697A0085826F /* WBSocket.swift in Sources */,
 				6F9F40BF25D7A344000A7113 /* InitialView.swift in Sources */,
 				6FA0E32725D9679F00AE16D6 /* UtilityFunctions.swift in Sources */,
+				6F3BE4D22680E671006BC03D /* ChatForm.swift in Sources */,
 				6F736E2F25EE828600E26267 /* RoomHistoryView.swift in Sources */,
 				6F97ABB525D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
 				6F88068825D0693D0085826F /* Chat.swift in Sources */,
@@ -977,6 +984,7 @@
 				6F88071225D06E200085826F /* TagFetcher.swift in Sources */,
 				6F88071325D06E200085826F /* WBSocket.swift in Sources */,
 				6F9EFF7F25E0B2DE0096AC98 /* ErrorView.swift in Sources */,
+				6F3BE4D32680E671006BC03D /* ChatForm.swift in Sources */,
 				6F96EF2526130BA20082F249 /* ProfileViewModel.swift in Sources */,
 				6F88073725D06E2C0085826F /* TagsViewModel.swift in Sources */,
 				6FA46D322674E624009F9817 /* AvaterSelectView.swift in Sources */,
