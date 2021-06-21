@@ -26,21 +26,30 @@ struct MoveToChatRoom: View{
         }
 
     }
-    var body: some View{
-        
-        PlayerView(action:$action, videoId: self.$room.youtube_id, time_offset: $time_offset).frame(width: playerSize.width, height: playerSize.height).onDisappear(){
-            self.action = .stop
-        }.onAppear(){
-            CaltimeOffset()
-            addSelf()
+    func removeSelf(){
+        if let self_user = room.users.firstIndex(where: {$0.id == UserProfile().user_Id}){
+            room.users.remove(at: self_user)
         }
-        ChatArea(room: room)
-            .onAppear(){
-                let frame = UIApplication.shared.windows.first?.frame ?? .zero
-                playerSize = CGSize(
-                    width: frame.width, height: frame.width/16*9
-                )
+    }
+    var body: some View{
+        VStack{
+            PlayerView(action:$action, videoId: self.$room.youtube_id, time_offset: $time_offset).frame(width: playerSize.width, height: playerSize.height).onDisappear(){
+                self.action = .stop
+            }.onAppear(){
+                CaltimeOffset()
+                addSelf()
+            }.onDisappear(){
+                removeSelf()
             }
+            ChatArea(room: room)
+                .onAppear(){
+                    let frame = UIApplication.shared.windows.first?.frame ?? .zero
+                    playerSize = CGSize(
+                        width: frame.width, height: frame.width/16*9
+                    )
+                }
+        }
+  
 
     }
 }
@@ -133,6 +142,9 @@ struct ChatArea: View,UsersRelationShip {
 
 struct ChatRoom_Previews: PreviewProvider {
     static var previews: some View {
-        ChatArea( room:mockRoomsData[0])
+        Group{
+            MoveToChatRoom( room:mockRoomsData[0])
+
+        }
     }
 }
