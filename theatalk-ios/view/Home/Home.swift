@@ -51,7 +51,7 @@ struct NavItem: View{
                                })
                         
                     }
-                    NavigationLink("ルーム追加",destination:CreateRoom())
+                    NavigationLink("ルーム追加",destination:CreateRoom(RoomName: <#String#>, Youtubelink: <#String#>, YoutubeId: <#String#>))
                 }
             }
             ScrollView(.horizontal){

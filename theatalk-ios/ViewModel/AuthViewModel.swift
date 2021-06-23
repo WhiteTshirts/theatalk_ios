@@ -16,6 +16,7 @@ final public class AuthViewModel: ObservableObject{
     @Published var userName:String = ""
     @Published var password:String = ""
     @Published var isSuccessed:Bool = true
+    @Published var ErrorMessage = ""
     private var disposables = Set<AnyCancellable>()
 
     private var authfetcher = AuthFetcher()

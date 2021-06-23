@@ -14,7 +14,8 @@ protocol UsersRelationShip {
 final class UserViewModle:ObservableObject{
     private var disposables:Set<AnyCancellable>
     private var userfetcher = UserFetcher()
-
+    @Published var isSuccessed:Bool = true
+    @Published var ErrorMessage = ""
     @Published var user = User(name_: "", user_id: -1)
     init(){
         self.disposables = Set<AnyCancellable>()
@@ -30,12 +31,15 @@ final class UserViewModle:ObservableObject{
                 .sink(
               receiveCompletion: { [weak self] value in
                 guard let self = self else { return }
-                
+                print(value)
                 switch value {
+                
                 case .failure:
+                    self.isSuccessed = false
                   break
                 case .finished:
                   break
+                
                 }
               },
               receiveValue: { [weak self] user_json in
