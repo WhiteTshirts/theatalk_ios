@@ -51,7 +51,7 @@ struct NavItem: View{
                                })
                         
                     }
-                    NavigationLink("ルーム追加",destination:CreateRoom(RoomName: <#String#>, Youtubelink: <#String#>, YoutubeId: <#String#>))
+                    NavigationLink("ルーム追加",destination:EmptyView())
                 }
             }
             ScrollView(.horizontal){
@@ -124,7 +124,7 @@ struct ToolBarView:View{
 
                     Spacer()
                     NavigationLink(
-                        destination: CreateRoom(),
+                        destination: EmptyView(),
                         label: {
                             Text("DM追加")
                             Image(systemName: "plus.message")

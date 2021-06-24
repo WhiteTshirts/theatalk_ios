@@ -15,6 +15,8 @@ final class ProfileViewModel: ObservableObject{
     @Published var user:User
     private var userfetcher = UserFetcher()
     @ObservedObject var UsersVM:UsersViewModel
+    @Published var isSuccessed:Bool = true
+    @Published var ErrorMessage = ""
     init(user:User){
         self.user = user
         self.UsersVM = UsersViewModel(userId: user.id)

@@ -173,6 +173,9 @@
 		6FA152A0262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
 		6FA152A1262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
 		6FA152A2262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
+		6FA42E0C2684531800736C2A /* ViewModelProtocl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA42E0B2684531800736C2A /* ViewModelProtocl.swift */; };
+		6FA42E0D2684531800736C2A /* ViewModelProtocl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA42E0B2684531800736C2A /* ViewModelProtocl.swift */; };
+		6FA42E0E2684531800736C2A /* ViewModelProtocl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA42E0B2684531800736C2A /* ViewModelProtocl.swift */; };
 		6FA46D302674E624009F9817 /* AvaterSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA46D2F2674E624009F9817 /* AvaterSelectView.swift */; };
 		6FA46D312674E624009F9817 /* AvaterSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA46D2F2674E624009F9817 /* AvaterSelectView.swift */; };
 		6FA46D322674E624009F9817 /* AvaterSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA46D2F2674E624009F9817 /* AvaterSelectView.swift */; };
@@ -291,6 +294,7 @@
 		6F9F40C425D7ED3B000A7113 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSearchViewModel.swift; sourceTree = "<group>"; };
+		6FA42E0B2684531800736C2A /* ViewModelProtocl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocl.swift; sourceTree = "<group>"; };
 		6FA46D2F2674E624009F9817 /* AvaterSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaterSelectView.swift; sourceTree = "<group>"; };
 		6FA46D332674ECAF009F9817 /* AvaterFecher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaterFecher.swift; sourceTree = "<group>"; };
 		6FAA19292671E8DD00B97DEF /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
@@ -543,6 +547,7 @@
 		6FA11714264ADB060053BDA1 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				6FA42E0B2684531800736C2A /* ViewModelProtocl.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -865,6 +870,7 @@
 				6F9ED92325D56896006F0951 /* TestModel.swift in Sources */,
 				6FA152A0262715FA001978B4 /* RoomSearchViewModel.swift in Sources */,
 				6F8806A725D0697A0085826F /* youtube_player.swift in Sources */,
+				6FA42E0C2684531800736C2A /* ViewModelProtocl.swift in Sources */,
 				6F9F40BE25D7A344000A7113 /* InitialView.swift in Sources */,
 				6F88069F25D069790085826F /* UserFetcher.swift in Sources */,
 				6F88066C25D068D30085826F /* Room.swift in Sources */,
@@ -927,6 +933,7 @@
 				6F97ABAE25D8DD2C00B3B5BF /* UsersList.swift in Sources */,
 				6F736E2825EE7E2C00E26267 /* DMView.swift in Sources */,
 				6F88072A25D06E280085826F /* login.swift in Sources */,
+				6FA42E0D2684531800736C2A /* ViewModelProtocl.swift in Sources */,
 				6F8806A025D069790085826F /* UserFetcher.swift in Sources */,
 				6F9EFF7E25E0B2DE0096AC98 /* ErrorView.swift in Sources */,
 				6F8D71CE25D41BB000649F2C /* TagList.swift in Sources */,
@@ -1000,6 +1007,7 @@
 				6F9ED92525D56896006F0951 /* TestModel.swift in Sources */,
 				6FA152A2262715FA001978B4 /* RoomSearchViewModel.swift in Sources */,
 				6F8806D925D069C40085826F /* Home.swift in Sources */,
+				6FA42E0E2684531800736C2A /* ViewModelProtocl.swift in Sources */,
 				6F9F40C025D7A344000A7113 /* InitialView.swift in Sources */,
 				6F8806D525D069C40085826F /* URLImage.swift in Sources */,
 				6F88071825D06E200085826F /* Auth.swift in Sources */,

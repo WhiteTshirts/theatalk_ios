@@ -18,6 +18,8 @@ class TagsViewModel: ObservableObject{
     @Published var UserTags:[Tag] = []
     var UserId:Int?
     var index:Int = 0
+    @Published var isSuccessed:Bool = true
+    @Published var ErrorMessage = ""
     @Published var SearchText:String = ""{
         didSet{
             self.searchTags(tagName: SearchText)

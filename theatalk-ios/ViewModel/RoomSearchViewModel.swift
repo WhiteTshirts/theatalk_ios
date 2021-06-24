@@ -13,6 +13,8 @@ import SwiftUI
 final class RoomSearchViewModel: ObservableObject{
     @Published var text: String = ""
     private var disposables = Set<AnyCancellable>()
+    @Published var isSuccessed:Bool = true
+    @Published var ErrorMessage = ""
     @ObservedObject var TagsVM:TagsViewModel
     
     init(){

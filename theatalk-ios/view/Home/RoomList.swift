@@ -36,6 +36,8 @@ struct RoomList: View {
             }.onAppear(){
                 RoomsVM.refresh()
             }
+        }.alert(isPresented: self.$RoomsVM.isFailed) {
+            Alert(title: Text(self.RoomsVM.ErrorMessage))
         }
 
 

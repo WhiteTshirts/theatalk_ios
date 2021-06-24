@@ -12,34 +12,36 @@ import Combine
 class RoomsViewModelBase: ObservableObject{
     var disposables = Set<AnyCancellable>()
     @Published var isLoading = false
-    @Published var isSuccessed = false
     @Published var rooms: [Room] = []
+    @Published var isFailed:Bool = false
+    @Published var ErrorMessage = ""
     var roomfetcher = RoomFetcher()
     init(tagId:Int=0){
     }
     func refresh(){
         GetallRooms()
     }
-    func ErrorHandle(e:APIError){
+    func ErrorHandle(e:APIError)->String{
         switch e{
             case .token(description: let description):
-                print(description)
+                return(description)
             case .client(description: let description):
-                print(description)
+                return(description)
             case .server(description: let description):
-                print(description)
+                return(description)
+                ErrorMessage = description
             case .network(description: let description):
-                print(description)
+                return(description)
             case .parsing(description: let description):
-                print(description)
+                return(description)
             case .encoding(description: let description):
-                print(description)
+                return (description)
             case .other(error: let _):
-                print("unknown error")
+                return "server unreachable or other error happened"
         }
     }
     func GetallRooms(){
-        self.isLoading = true
+        self.isFailed = false
         roomfetcher.GETRooms()
             .receive(on: DispatchQueue.main)
             .sink(
@@ -47,8 +49,8 @@ class RoomsViewModelBase: ObservableObject{
             guard let self = self else { return }
             switch value {
             case .failure(let error):
-                self.ErrorHandle(e: error)
-                self.isLoading = false
+                self.ErrorMessage = self.ErrorHandle(e: error)
+                self.isFailed = true
                 self.rooms = []
               break
             case .finished:
@@ -65,7 +67,7 @@ class RoomsViewModelBase: ObservableObject{
         .store(in: &disposables)
     }
     func EnterRoom(roomID_:Int){//非同期処理の関数に変更する
-        self.isSuccessed = false
+        self.isFailed = false
         roomfetcher.EnterRoom(roomId: roomID_)
             .receive(on: DispatchQueue.main)
             .sink(
@@ -74,11 +76,11 @@ class RoomsViewModelBase: ObservableObject{
 
             switch value {
             case .failure(let error):
-                self.ErrorHandle(e: error)
+                self.ErrorMessage = self.ErrorHandle(e: error)
+                self.isFailed = true
                 self.isLoading = false
               break
             case .finished:
-                self.isSuccessed = true
               break
             }
           },

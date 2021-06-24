@@ -31,10 +31,10 @@ struct CreateRoom: View,RoomFormat {
         return true
     }
     
-    @State var RoomName:String
-    @State var Youtubelink:String
+    @State var RoomName:String=""
+    @State var Youtubelink:String=""
     @State var StartDate = Date()
-    @State var YoutubeId:String
+    @State var YoutubeId:String=""
     @ObservedObject var CrateRoomVM = CreateRoomViewModel()
 
     var body: some View {

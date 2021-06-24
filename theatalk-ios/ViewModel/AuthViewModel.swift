@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 import CoreData
+
 final public class AuthViewModel: ObservableObject{
     
     @Published var user: User?
@@ -41,7 +42,7 @@ final public class AuthViewModel: ObservableObject{
     }
     func login(completion:@escaping(User?,Bool?)->()){
         authfetcher.login_(user: User(name_: self.userName, password_: self.password)).sink(receiveCompletion: { completion in
-            print("receiveCompletion:", completion)
+            print("login receiveCompletion:", completion)
         }, receiveValue: { [self] user_json in
             var user = user_json.user
             
@@ -51,7 +52,7 @@ final public class AuthViewModel: ObservableObject{
     }
     func signup(completion:@escaping(User?,Bool?)->()){
         authfetcher.signup(user: User(name_: self.userName, password_: self.password)).sink(receiveCompletion: { completion in
-            print("receiveCompletion:", completion)
+            print("signup receiveCompletion:", completion)
         }, receiveValue: { [self] user_json in
             var user = user_json.user
             g_user_token = user_json.token
