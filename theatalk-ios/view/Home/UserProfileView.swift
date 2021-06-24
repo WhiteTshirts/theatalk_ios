@@ -90,6 +90,8 @@ struct UserProfileView: View,UsersRelationShip {
             }.onAppear(){
                 self.ProfileVM.refresh()
             }
+        }.alert(isPresented: self.$ProfileVM.isFailed) {
+            Alert(title: Text(self.ProfileVM.ErrorMessage))
         }
 
     }

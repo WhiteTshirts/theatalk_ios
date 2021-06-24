@@ -19,7 +19,7 @@ final class ProfileViewModel: ObservableObject,ViewModelErrorHandle{
     @Published var user:User
     private var userfetcher = UserFetcher()
     @ObservedObject var UsersVM:UsersViewModel
-    @Published var isSuccessed:Bool = true
+    @Published var isFailed:Bool = false
     @Published var ErrorMessage = ""
     init(user:User){
         self.user = user
@@ -43,7 +43,9 @@ final class ProfileViewModel: ObservableObject,ViewModelErrorHandle{
           receiveCompletion: { [weak self] value in
             guard let self = self else { return }
             switch value {
-            case .failure:
+            case .failure(let error):
+                self.ErrorMessage = self.ErrorHandle(e:error)
+                self.isFailed = true
               break
             case .finished:
               break

@@ -128,7 +128,7 @@ final class RoomsViewModelHistory: RoomsViewModelBase{
             switch value {
             case .failure(let error):
                 self.ErrorMessage = self.ErrorHandle(e: error)
-                self.isLoading = false
+                self.isFailed = true
                 self.rooms = []
               break
             case .finished:
