@@ -10,7 +10,11 @@ import Foundation
 import Combine
 import SwiftUI
 
-final class RoomSearchViewModel: ObservableObject{
+final class RoomSearchViewModel: ObservableObject,ViewModelErrorHandle{
+    func ErrorHandle(e: APIError) -> String {
+        return ErrorHandling(e: e)
+    }
+    
     @Published var text: String = ""
     private var disposables = Set<AnyCancellable>()
     @Published var isSuccessed:Bool = true

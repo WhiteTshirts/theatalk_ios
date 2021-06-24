@@ -9,7 +9,10 @@ import Foundation
 import Combine
 
 
-class RoomsViewModelBase: ObservableObject{
+class RoomsViewModelBase: ObservableObject,ViewModelErrorHandle{
+    func ErrorHandle(e: APIError) -> String {
+        return ErrorHandling(e: e)
+    }
     var disposables = Set<AnyCancellable>()
     @Published var isLoading = false
     @Published var rooms: [Room] = []
@@ -21,25 +24,7 @@ class RoomsViewModelBase: ObservableObject{
     func refresh(){
         GetallRooms()
     }
-    func ErrorHandle(e:APIError)->String{
-        switch e{
-            case .token(description: let description):
-                return(description)
-            case .client(description: let description):
-                return(description)
-            case .server(description: let description):
-                return(description)
-                ErrorMessage = description
-            case .network(description: let description):
-                return(description)
-            case .parsing(description: let description):
-                return(description)
-            case .encoding(description: let description):
-                return (description)
-            case .other(error: let _):
-                return "server unreachable or other error happened"
-        }
-    }
+    
     func GetallRooms(){
         self.isFailed = false
         roomfetcher.GETRooms()
@@ -142,7 +127,7 @@ final class RoomsViewModelHistory: RoomsViewModelBase{
             guard let self = self else { return }
             switch value {
             case .failure(let error):
-                self.ErrorHandle(e: error)
+                self.ErrorMessage = self.ErrorHandle(e: error)
                 self.isLoading = false
                 self.rooms = []
               break
@@ -197,7 +182,7 @@ final class RoomsViewModelTag: RoomsViewModelBase{
             guard let self = self else { return }
             switch value {
             case .failure(let error):
-                self.ErrorHandle(e: error)
+                self.ErrorMessage = self.ErrorHandle(e: error)
                 self.isLoading = false
                 self.rooms = []
               break

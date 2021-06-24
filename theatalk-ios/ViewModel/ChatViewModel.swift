@@ -14,7 +14,11 @@ protocol ChatRecv {
     func useradd(user:User)
 }
 
-final class ChatsViewModel: ObservableObject,ChatRecv{
+final class ChatsViewModel: ObservableObject,ChatRecv,ViewModelErrorHandle{
+    func ErrorHandle(e: APIError) -> String {
+        return ErrorHandling(e: e)
+    }
+    
 
     private var disposables = Set<AnyCancellable>()
     var isLoading = false

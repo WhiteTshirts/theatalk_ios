@@ -10,7 +10,11 @@ import Combine
 
 import CoreData
 
-final public class AuthViewModel: ObservableObject{
+final public class AuthViewModel: ObservableObject,ViewModelErrorHandle{
+    func ErrorHandle(e: APIError) -> String {
+        return ErrorHandling(e: e)
+    }
+    
     
     @Published var user: User?
     @Published var hashval: String?

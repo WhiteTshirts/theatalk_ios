@@ -11,7 +11,11 @@ protocol UsersRelationShip {
     func Follow(userId:Int)
     func UnFollow(userId:Int)
 }
-final class UserViewModle:ObservableObject{
+final class UserViewModle:ObservableObject,ViewModelErrorHandle{
+    func ErrorHandle(e: APIError) -> String {
+        return ErrorHandling(e: e)
+    }
+    
     private var disposables:Set<AnyCancellable>
     private var userfetcher = UserFetcher()
     @Published var isSuccessed:Bool = true

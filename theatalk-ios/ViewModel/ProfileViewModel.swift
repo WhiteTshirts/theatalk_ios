@@ -9,7 +9,11 @@ import Foundation
 import Combine
 import SwiftUI
 
-final class ProfileViewModel: ObservableObject{
+final class ProfileViewModel: ObservableObject,ViewModelErrorHandle{
+    func ErrorHandle(e: APIError) -> String {
+        return ErrorHandling(e: e)
+    }
+    
     
     private var disposables = Set<AnyCancellable>()
     @Published var user:User
