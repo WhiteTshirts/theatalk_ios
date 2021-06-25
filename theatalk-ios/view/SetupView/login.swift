@@ -179,6 +179,8 @@ struct AuthView: View,Authdel {
                 }else{
                     SignupView(authdel: self)
                 }
+            }.alert(isPresented: self.$LoginVM.isFailed) {
+                Alert(title: Text(self.LoginVM.ErrorMessage))
             }
 
         }

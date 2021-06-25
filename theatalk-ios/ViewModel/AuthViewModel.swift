@@ -20,7 +20,7 @@ final public class AuthViewModel: ObservableObject,ViewModelErrorHandle{
     @Published var hashval: String?
     @Published var userName:String = ""
     @Published var password:String = ""
-    @Published var isSuccessed:Bool = true
+    @Published var isFailed:Bool = false
     @Published var ErrorMessage = ""
     private var disposables = Set<AnyCancellable>()
 
@@ -46,7 +46,8 @@ final public class AuthViewModel: ObservableObject,ViewModelErrorHandle{
     }
     func login(completion:@escaping(User?,Bool?)->()){
         authfetcher.login_(user: User(name_: self.userName, password_: self.password)).sink(receiveCompletion: { completion in
-            print("login receiveCompletion:", completion)
+            self.isFailed = true
+            self.ErrorMessage = "usernameもしくは,passwordが間違っています。"
         }, receiveValue: { [self] user_json in
             var user = user_json.user
             
@@ -56,7 +57,8 @@ final public class AuthViewModel: ObservableObject,ViewModelErrorHandle{
     }
     func signup(completion:@escaping(User?,Bool?)->()){
         authfetcher.signup(user: User(name_: self.userName, password_: self.password)).sink(receiveCompletion: { completion in
-            print("signup receiveCompletion:", completion)
+            self.isFailed = true
+            self.ErrorMessage = "そのユーザ名は使用されています。"
         }, receiveValue: { [self] user_json in
             var user = user_json.user
             g_user_token = user_json.token

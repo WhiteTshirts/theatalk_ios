@@ -83,8 +83,8 @@ class ChatWBSocket{
         }
     }
     func listen(){
-        
         task.receive{ result in
+            
             switch result {
             case .failure(let error):
                 print("Failed to receive message: \(error)")

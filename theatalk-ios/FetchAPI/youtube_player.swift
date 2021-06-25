@@ -31,6 +31,7 @@ struct PlayerView: UIViewRepresentable{
         return player
     }
     
+    
     func updateUIView(_ uiView: YTSwiftyPlayer, context: Context) {
         uiView.setPlayerParameters([
             .playsInline(true),

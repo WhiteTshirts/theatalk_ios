@@ -44,6 +44,7 @@ struct MoveToChatRoom: View{
                 CaltimeOffset()
                 addSelf()
             }.onDisappear(){
+                self.action = .stop
                 removeSelf()
             }
             if(isAdmin()){
