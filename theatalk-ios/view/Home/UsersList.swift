@@ -62,18 +62,21 @@ struct UsersList: View {
 
    
     var body: some View {
-        NavigationView{
-            VStack{
-                ScrollView{
-                    ForEach(users.indices){ index in
+            ScrollView{
+                ForEach(users.indices){ index in
+                    if(users[index].id == UserProfile().user_Id){
+                        
+                    }else{
                         UserCellView(user: users[index],index: index)
-                        Spacer()
-
+                        
                     }
+                    Spacer()
 
                 }
 
-            }
+            
+
+            
         }
 
 

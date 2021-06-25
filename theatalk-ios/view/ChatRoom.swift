@@ -38,14 +38,15 @@ struct MoveToChatRoom: View{
     }
     var body: some View{
         VStack{
-            PlayerView(action:$action, videoId: self.$room.youtube_id, time_offset: $time_offset).frame(width: playerSize.width, height: playerSize.height).onDisappear(){
+            PlayerView(action:$action, videoId: self.$room.youtube_id, time_offset: $time_offset).frame(width: playerSize.width, height: playerSize.height)
+                .onDisappear(){
+                
                 self.action = .stop
+                removeSelf()
+
             }.onAppear(){
                 CaltimeOffset()
                 addSelf()
-            }.onDisappear(){
-                self.action = .stop
-                removeSelf()
             }
             if(isAdmin()){
                 
@@ -102,6 +103,7 @@ struct ChatArea: View,UsersRelationShip {
     @ObservedObject var ChatsVm: ChatsViewModel = ChatsViewModel()
     @State var IsSuccess = false
     @State var text = ""
+    @State var usersDisplay = false
 
     var ChatView: some View{
         ForEach(ChatsVm.chats.indices, id: \.self){ index in
@@ -113,16 +115,31 @@ struct ChatArea: View,UsersRelationShip {
     }
     var body: some View {
         VStack{
-            if((self.room.users) != nil){
-                NavigationLink(
-                    
-                    destination: UsersList(users:self.room.users, userRelation: self),
-                    label: {
-                        Text("ルーム内:\(self.room.users.count)人")
-                    })
+                if((self.room.users) != nil){
+                    Button(action:{
+                        usersDisplay = !usersDisplay
+                    }){
+                        VStack{
+                            HStack{
+                                Text("ルーム内:\(self.room.users.count)人")
+                                if(usersDisplay){
+                                    Image(systemName: "xmark.circle.fill")
+                                }
+                            }
 
+                            
+                            if(usersDisplay){
+                                UsersList(users:self.room.users,userRelation: self)
+                            }
+                        }
+
+                        
+
+                    }
             }
+
             ScrollViewReader { value in
+
             List {
                 ChatView
                 }

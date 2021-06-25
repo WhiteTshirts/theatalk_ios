@@ -100,11 +100,13 @@ final class ChatsViewModel: ObservableObject,ChatRecv,ViewModelErrorHandle{
 
     }
     func userdel(user: User) {
+        print("user exited")
         self.users.removeAll(where: {$0.id == user.id})
     }
     
     func useradd(user: User) {
-        self.users.append(user)
+        print("uuser added")
+        self.users.insert(user,at:0)
 
     }
     
