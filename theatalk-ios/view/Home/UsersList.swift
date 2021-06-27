@@ -25,6 +25,16 @@ struct UsersList: View {
         userRelation.UnFollow(userId: users[index].id)
         
     }
+    func UserFollowStatus(isFollowing:Bool)->some View{
+        Group{
+            if(isFollowing){
+                Image(systemName: "person.badge.minus").foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+            }else{
+                Image(systemName: "person.badge.plus").foregroundColor(.red)
+            }
+        }
+
+    }
     
     func UserCellView(user:User,index:Int) -> some View{
         VStack{
@@ -43,11 +53,7 @@ struct UsersList: View {
 
                     }
                 }){
-                    if(user.isFollwing){
-                        Image(systemName: "person.badge.minus").foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                    }else{
-                        Image(systemName: "person.badge.plus").foregroundColor(.red)
-                    }
+                    UserFollowStatus(isFollowing: user.isFollwing)
                 }
             }
             HStack{
