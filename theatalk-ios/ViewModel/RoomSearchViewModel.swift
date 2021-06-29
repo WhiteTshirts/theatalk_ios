@@ -22,7 +22,7 @@ final class RoomSearchViewModel: ObservableObject,ViewModelErrorHandle{
     @ObservedObject var TagsVM:TagsViewModel
     
     init(){
-        self.TagsVM = TagsViewModel(UserId: UserProfile().user_Id)
+        self.TagsVM = TagsViewModel(Id: UserProfile().user_Id)
     }
 
     func getTags(){

@@ -49,7 +49,7 @@ struct KeywordSearchView:View,IncrementSearchInterface{
     func IncrementSearch() {
     }
     
-    @ObservedObject var TagVM = SearchTagsViewModel(UserId: UserProfile().user_Id)
+    @ObservedObject var TagVM = SearchTagsViewModel(Id: UserProfile().user_Id)
     
     var body: some View {
         TextField("検索",text:$TagVM.SearchText)
@@ -64,7 +64,7 @@ struct TagSearchView:View,IncrementSearchInterface{
     func IncrementSearch() {
     }
     
-    @ObservedObject var TagVM = SearchTagsViewModel(UserId: UserProfile().user_Id)
+    @ObservedObject var TagVM = SearchTagsViewModel(Id: UserProfile().user_Id)
     var body: some View {
         TextField("検索",text:$TagVM.SearchText)
         

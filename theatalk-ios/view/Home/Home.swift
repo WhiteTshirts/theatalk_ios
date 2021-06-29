@@ -262,7 +262,7 @@ extension SelectTabView{
 struct HomeLayout_Previews: PreviewProvider {
     static var previews: some View {
         
-        HomeLayoutView( TagsVM: TagsViewModel(UserId: 8))
+        HomeLayoutView( TagsVM: TagsViewModel(Id: 8))
         
     }
     
@@ -310,7 +310,7 @@ struct Home: View{
             .navigationBarTitleDisplayMode(.large)
             .toolbar{
                 ToolbarItem(placement: .principal){
-                    NavItem(info: self.$info, textEntered: self.$textEntered,TagId: self.$SearchTagId, TagsVM: TagsViewModel(UserId: profile.user_Id))
+                    NavItem(info: self.$info, textEntered: self.$textEntered,TagId: self.$SearchTagId, TagsVM: TagsViewModel(Id: profile.user_Id))
                     
                 }
             }
@@ -324,7 +324,7 @@ struct Home: View{
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
                 ForEach(["iPhone SE", "iPhone X"], id: \.self) { deviceName in
-                    Home(TagsVM: TagsViewModel(UserId: 3)).environmentObject(Session(login: true, user: mockUserData))
+                    Home(TagsVM: TagsViewModel(Id: 3)).environmentObject(Session(login: true, user: mockUserData))
                 .previewDevice(PreviewDevice(rawValue: deviceName))
                 .previewDisplayName(deviceName)
         }

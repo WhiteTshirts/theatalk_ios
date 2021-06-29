@@ -16,6 +16,7 @@ class RoomsViewModelBase: ObservableObject,ViewModelErrorHandle{
     var disposables = Set<AnyCancellable>()
     @Published var isLoading = false
     @Published var rooms: [Room] = []
+    
     @Published var isFailed:Bool = false
     @Published var ErrorMessage = ""
     var roomfetcher = RoomFetcher()

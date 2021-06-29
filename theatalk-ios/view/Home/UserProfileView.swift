@@ -35,7 +35,7 @@ struct UserProfileView: View,UsersRelationShip {
     init(logoutdel:logoutDel,user:User!){
         self.logout = logoutdel
         self.user = user  ?? User(name_: "", user_id: -1)
-        TagsVM = TagsViewModel(UserId: self.user.id)
+        TagsVM = TagsViewModel(Id: self.user.id)
         ProfileVM = ProfileViewModel(user:self.user)
     }
     var body: some View {

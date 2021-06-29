@@ -25,14 +25,23 @@ struct UsersList: View {
         userRelation.UnFollow(userId: users[index].id)
         
     }
-    func UserFollowStatus(isFollowing:Bool)->some View{
-        Group{
-            if(isFollowing){
+    func UserFollowButton(user:User,index:Int)->some View{
+        Button(action: {
+            if(user.isFollwing){
+                self.UnFollow(index: index)
+            }else{
+                self.Follow(index: index)
+
+            }
+        }){
+            if(user.isFollwing){
                 Image(systemName: "person.badge.minus").foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
             }else{
                 Image(systemName: "person.badge.plus").foregroundColor(.red)
             }
+            
         }
+
 
     }
     
@@ -45,23 +54,20 @@ struct UsersList: View {
                     user.image.resizable().frame(width: 15, height: 15, alignment: .center)
                     Text("\(user.name)")
                 }
-                Button(action: {
-                    if(user.isFollwing){
-                        self.UnFollow(index: index)
-                    }else{
-                        self.Follow(index: index)
-
-                    }
-                }){
-                    UserFollowStatus(isFollowing: user.isFollwing)
+                if(user.id != UserProfile().user_Id){
+                    UserFollowButton(user: user, index: index)
                 }
+
             }
             HStack{
-                if(user.isFollower){
-                    Text("フォローされています")
-                }else{
-                    Text("フォローされていません")
+                if(user.id != UserProfile().user_Id){
+                    if(user.isFollower){
+                        Text("フォローされています")
+                    }else{
+                        Text("フォローされていません")
+                    }
                 }
+
             }.font(.caption2)
         }
     }
@@ -77,16 +83,8 @@ struct UsersList: View {
                         
                     }
                     Spacer()
-
                 }
-
-            
-
-            
         }
-
-
-
     }
 }
 //

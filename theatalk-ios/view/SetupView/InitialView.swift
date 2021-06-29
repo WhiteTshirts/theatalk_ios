@@ -14,7 +14,7 @@ struct InitialView: View {
         VStack{
             if session.user != nil{
                 
-                HomeLayoutView(TagsVM: TagsViewModel(UserId: profile.user_Id)).environmentObject(session)
+                HomeLayoutView(TagsVM: TagsViewModel(Id: profile.user_Id)).environmentObject(session)
                 
                 //Home( TagsVM: TagsViewModel(UserId: profile.user_Id)).environmentObject(session)
             }else{
