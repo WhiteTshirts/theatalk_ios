@@ -32,28 +32,19 @@ struct RoomForm: View {
             .foregroundColor(.white)
             .cornerRadius(3)
     }
-    func DeleteTag(tag: Tag) {
-        if let index = roomTagVM.RoomTags.firstIndex(where: {$0.id == tag.id}){
-            roomTagVM.RoomTags.remove(at: index)
-        }
-    }
-    
-    func AddTag(tag: Tag) {
-        if roomTagVM.RoomTags.firstIndex(where: {$0.id == tag.id}) != nil{
-            roomTagVM.RoomTags.append(tag)
-        }
 
-    }
     func TagItemView(for tag:Tag,color:Color,isRoomTag:Bool)->some View{
         return
             TagItem(for: tag.name,color: color)
                 .padding(.all,8)
                 .overlay(
                     Button(action: {
+                        print(tag.id)
+                        print(isRoomTag)
                         if(isRoomTag){
-                            DeleteTag(tag: tag)
+                            roomTagVM.RemoveTagFromRoom(tag: tag)
                         }else{
-                            AddTag(tag: tag)
+                            roomTagVM.AddTagToRoom(tag:tag)
                         }
                     }, label: {
                         Image(systemName:isRoomTag ? "minus.circle":"plus.circle")
@@ -96,7 +87,11 @@ struct RoomForm: View {
     func TagSearchField()-> some View{
         
         VStack{
-            TextField("tag名", text: $roomTagVM.SearchText)
+            HStack{
+                Text("タグ入力:")
+                TextField("tag名", text: $roomTagVM.SearchText)
+            }
+
             Text("全てのタグ")
             GetTags(tags: roomTagVM.tags,isRoomTag: false, color: Color.green)
             Text("登録中のタグ一覧")

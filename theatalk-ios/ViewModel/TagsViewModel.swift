@@ -107,6 +107,17 @@ class RoomTagsViewModel:TagsViewBaseModel{
         self.load()
 
     }
+    func AddTagToRoom(tag:Tag){
+        if self.RoomTags.firstIndex(where: {$0.id == tag.id}) == nil{
+            self.RoomTags.append(tag)
+        }
+    }
+
+    func RemoveTagFromRoom(tag:Tag){
+        if let index = self.RoomTags.firstIndex(where: {$0.id == tag.id}){
+            self.RoomTags.remove(at: index)
+        }
+    }
     func load(){
         if(self.Id != nil){
             
