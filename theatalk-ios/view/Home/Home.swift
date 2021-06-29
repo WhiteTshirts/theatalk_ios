@@ -195,7 +195,7 @@ struct SelectTabView:View, logoutDel{
                         Label("invalid",systemImage:"house")
                     }else{
                         
-                        Label("valid",systemImage:"house")
+                        Label("home",systemImage:"house")
                     }
                 }
                 .tag(Tab.Home)

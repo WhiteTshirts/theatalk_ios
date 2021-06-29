@@ -19,7 +19,6 @@ class TagsViewBaseModel:ObservableObject,ViewModelErrorHandle{
     }
     var disposables = Set<AnyCancellable>()
     @Published var tags: [Tag] = []
-    @Published var UserTags:[Tag] = []
     var Id:Int?
     var index:Int = 0
     @Published var isSuccessed:Bool = true
@@ -101,6 +100,8 @@ class TagsViewBaseModel:ObservableObject,ViewModelErrorHandle{
     
 }
 class RoomTagsViewModel:TagsViewBaseModel{
+    @Published var RoomTags:[Tag] = []
+
     override init(Id:Int?){
         super.init(Id: Id)
         self.load()
@@ -117,6 +118,7 @@ class RoomTagsViewModel:TagsViewBaseModel{
     }
 }
 class TagsViewModel: TagsViewBaseModel{
+    @Published var UserTags:[Tag] = []
 
     override init(Id:Int?){
         super.init(Id: Id)

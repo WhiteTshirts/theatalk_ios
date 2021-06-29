@@ -38,7 +38,7 @@ struct CreateRoom: View,RoomFormat {
     @ObservedObject var CrateRoomVM = CreateRoomViewModel()
 
     var body: some View {
-        RoomForm(RoomName: self.$RoomName, Youtubelink: self.$Youtubelink, StartDate: self.$StartDate, YoutubeId: self.$YoutubeId, roomFormat: self, CrateRoomVM: self.CrateRoomVM)
+        RoomForm(RoomName: self.$RoomName, Youtubelink: self.$Youtubelink, StartDate: self.$StartDate, YoutubeId: self.$YoutubeId, roomTagVM: RoomTagsViewModel(Id: 0), roomFormat: self, CrateRoomVM: self.CrateRoomVM)
         
     }
 }

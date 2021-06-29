@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-
+import SwiftUI
 
 class RoomsViewModelBase: ObservableObject,ViewModelErrorHandle{
     func ErrorHandle(e: APIError) -> String {
