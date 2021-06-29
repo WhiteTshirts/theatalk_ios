@@ -15,11 +15,22 @@ struct RoomTagManageView: View{
     }
 }
 struct CreateRoom: View,RoomFormat {
+
+
+    
+    @State var RoomName:String=""
+    @State var Youtubelink:String=""
+    @State var StartDate = Date()
+    @State var YoutubeId:String=""
+    @State var roomTags:[Tag]=[]
+    @ObservedObject var CrateRoomVM = CreateRoomViewModel()
+    
     func ConfirmRoom() {
         var youtube_id = ParseYoutubeurl(url: Youtubelink)
         if let youtube_id = ParseYoutubeurl(url: Youtubelink){
             self.YoutubeId = youtube_id
             var room  = Room(name: RoomName, start_time: StartDate, youtube_id: youtube_id)
+            room.tags = self.roomTags
             CrateRoomVM.CreateRoom(room: room)
             
         }else{
@@ -30,15 +41,8 @@ struct CreateRoom: View,RoomFormat {
     func isSucceeded() -> Bool {
         return true
     }
-    
-    @State var RoomName:String=""
-    @State var Youtubelink:String=""
-    @State var StartDate = Date()
-    @State var YoutubeId:String=""
-    @ObservedObject var CrateRoomVM = CreateRoomViewModel()
-
     var body: some View {
-        RoomForm(RoomName: self.$RoomName, Youtubelink: self.$Youtubelink, StartDate: self.$StartDate, YoutubeId: self.$YoutubeId, roomTagVM: RoomTagsViewModel(Id: 0), roomFormat: self, CrateRoomVM: self.CrateRoomVM)
+        RoomForm(RoomName: self.$RoomName, Youtubelink: self.$Youtubelink, StartDate: self.$StartDate, YoutubeId: self.$YoutubeId, roomTags: self.$roomTags, roomTagVM: RoomTagsViewModel(Id: 0), roomFormat: self, CrateRoomVM: self.CrateRoomVM)
         
     }
 }

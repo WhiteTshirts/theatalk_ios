@@ -55,9 +55,12 @@ extension RoomFetcher: RoomFechable{
         return fetchData(with: makeComponents(Path: "/room_histories", Type: "GET", body: nil))
     }
     func CreateRoom(room:Room) -> AnyPublisher<Room_json,APIError>{
-
+        print("roomtag count")
+        print(room.tags.count)
         do{
             let data = try encoder.encode(room)
+            print(String(data: data, encoding: .utf8)!)
+
             return fetchData(with: makeComponents(Path: "/rooms", Type: "POST", body: data))
         }catch{
             let error = APIError.network(description: "could not encode")

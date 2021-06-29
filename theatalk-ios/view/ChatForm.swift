@@ -19,6 +19,7 @@ struct RoomForm: View {
     @Binding var Youtubelink:String
     @Binding var StartDate:Date
     @Binding var YoutubeId:String
+    @Binding var roomTags:[Tag]
     
     @ObservedObject var roomTagVM:RoomTagsViewModel
     var roomFormat:RoomFormat!
@@ -39,8 +40,6 @@ struct RoomForm: View {
                 .padding(.all,8)
                 .overlay(
                     Button(action: {
-                        print(tag.id)
-                        print(isRoomTag)
                         if(isRoomTag){
                             roomTagVM.RemoveTagFromRoom(tag: tag)
                         }else{
@@ -141,6 +140,7 @@ struct RoomForm: View {
             
             DatePicker("開始時刻",selection:$StartDate)
             Button(action: {
+                self.roomTags = roomTagVM.RoomTags
                 roomFormat.ConfirmRoom()
 
             }, label: {

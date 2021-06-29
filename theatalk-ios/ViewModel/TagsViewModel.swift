@@ -120,7 +120,6 @@ class RoomTagsViewModel:TagsViewBaseModel{
     }
     func load(){
         if(self.Id != nil){
-            
            getTags()
             return
         }
