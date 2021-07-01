@@ -14,6 +14,7 @@ struct MoveToChatRoom: View{
     @State private var playerSize: CGSize = .zero
     @State var action:PlayerAction = .play
     @State var time_offset:Int = 0
+    @State var toEditForm = false
     func CaltimeOffset(){
         if let stime = room.start_time{
             time_offset = Int(Date().timeIntervalSince(room.start_time))
@@ -49,7 +50,18 @@ struct MoveToChatRoom: View{
                 addSelf()
             }
             if(isAdmin()){
-                
+                NavigationLink(
+                    destination: EditRoom(RoomName: $room.name, Youtubelink: $room.youtube_id, StartDate: $room.updated_at, YoutubeId: $room.youtube_id, roomTags: $room.tags),
+                    isActive: $toEditForm,
+                    label: {
+                        Button(action: {
+                            toEditForm = true
+                        }, label: {
+                            Image(systemName: "pencil")
+                        })
+                    })
+            
+
                 
             }
             ChatArea(room: room)

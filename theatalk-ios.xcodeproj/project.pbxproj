@@ -182,6 +182,9 @@
 		6FA46D342674ECAF009F9817 /* AvaterFecher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA46D332674ECAF009F9817 /* AvaterFecher.swift */; };
 		6FA46D352674ECAF009F9817 /* AvaterFecher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA46D332674ECAF009F9817 /* AvaterFecher.swift */; };
 		6FA46D362674ECAF009F9817 /* AvaterFecher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA46D332674ECAF009F9817 /* AvaterFecher.swift */; };
+		6FA77694268DF8A7003F5AAD /* EditRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA77693268DF8A7003F5AAD /* EditRoom.swift */; };
+		6FA77695268DF8A7003F5AAD /* EditRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA77693268DF8A7003F5AAD /* EditRoom.swift */; };
+		6FA77696268DF8A7003F5AAD /* EditRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA77693268DF8A7003F5AAD /* EditRoom.swift */; };
 		6FAA192A2671E8DD00B97DEF /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAA19292671E8DD00B97DEF /* ImageFetcher.swift */; };
 		6FAA192B2671E8DD00B97DEF /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAA19292671E8DD00B97DEF /* ImageFetcher.swift */; };
 		6FAA192C2671E8DD00B97DEF /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAA19292671E8DD00B97DEF /* ImageFetcher.swift */; };
@@ -297,6 +300,7 @@
 		6FA42E0B2684531800736C2A /* ViewModelProtocl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocl.swift; sourceTree = "<group>"; };
 		6FA46D2F2674E624009F9817 /* AvaterSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaterSelectView.swift; sourceTree = "<group>"; };
 		6FA46D332674ECAF009F9817 /* AvaterFecher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaterFecher.swift; sourceTree = "<group>"; };
+		6FA77693268DF8A7003F5AAD /* EditRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoom.swift; sourceTree = "<group>"; };
 		6FAA19292671E8DD00B97DEF /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		6FAD699026738A6300227DA6 /* UserCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
 		6FAE627625EFF9B2003C6991 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
@@ -512,6 +516,7 @@
 				6F736E1325EE7D9900E26267 /* SetupView */,
 				6F736E1225EE7D6A00E26267 /* Home */,
 				6F8806CC25D069C30085826F /* ChatRoom.swift */,
+				6FA77693268DF8A7003F5AAD /* EditRoom.swift */,
 				6F8806D125D069C40085826F /* CreateRoom.swift */,
 				6F3BE4D02680E671006BC03D /* ChatForm.swift */,
 				6F8806D025D069C40085826F /* Menu.swift */,
@@ -865,6 +870,7 @@
 				6FA0E32625D9679E00AE16D6 /* UtilityFunctions.swift in Sources */,
 				6F8805E325D0671A0085826F /* theatalk_iosApp.swift in Sources */,
 				6F8806E025D069C40085826F /* CreateRoom.swift in Sources */,
+				6FA77694268DF8A7003F5AAD /* EditRoom.swift in Sources */,
 				6F96EF2E261310620082F249 /* AuthUtility.swift in Sources */,
 				6F97ABB425D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
 				6F9ED92325D56896006F0951 /* TestModel.swift in Sources */,
@@ -951,6 +957,7 @@
 				6F88072725D06E280085826F /* SignUp.swift in Sources */,
 				6F9F40C625D7ED3B000A7113 /* UserProfile.swift in Sources */,
 				6FAE627825EFF9B2003C6991 /* TimelineView.swift in Sources */,
+				6FA77695268DF8A7003F5AAD /* EditRoom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1002,6 +1009,7 @@
 				6FA0E32825D9679F00AE16D6 /* UtilityFunctions.swift in Sources */,
 				6F8806E125D069C40085826F /* CreateRoom.swift in Sources */,
 				6F88074725D06E380085826F /* theatalk_iosApp.swift in Sources */,
+				6FA77696268DF8A7003F5AAD /* EditRoom.swift in Sources */,
 				6F96EF30261310620082F249 /* AuthUtility.swift in Sources */,
 				6F97ABB625D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
 				6F9ED92525D56896006F0951 /* TestModel.swift in Sources */,
