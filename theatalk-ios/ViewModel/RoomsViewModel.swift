@@ -76,6 +76,22 @@ class RoomsViewModelBase: ObservableObject,ViewModelErrorHandle{
         .store(in: &disposables)
     }
 }
+final class EditRoomViewModel: RoomsViewModelBase{
+    @Published var editedRoom:Room!
+    init(){
+        super.init()
+    }
+    
+    func CreateRoom(room:Room){
+        roomfetcher.EditRoom(room: room)
+            .sink(receiveCompletion: { completion in
+            print("receiveCompletion:", completion)
+        }, receiveValue: { [self] room_json in
+            self.editedRoom = room_json.room//成功したら作成したルームに入る
+            EnterRoom(roomID_: editedRoom!.id)
+        }).store(in: &disposables)
+    }
+}
 final class CreateRoomViewModel: RoomsViewModelBase{
     @Published var createdRoom:Room!
     init(){
