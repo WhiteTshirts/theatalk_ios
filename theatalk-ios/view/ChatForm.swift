@@ -14,7 +14,9 @@ protocol RoomFormat{
     
 }
 
-struct RoomForm: View {
+struct RoomForm: View,TagManage {
+
+    
     @Binding var RoomName:String
     @Binding var Youtubelink:String
     @Binding var StartDate:Date
@@ -25,41 +27,24 @@ struct RoomForm: View {
     var roomFormat:RoomFormat!
     
     @ObservedObject var RoomVM = RoomsViewModelBase()
-    func TagItem(for text:String,color:Color) -> some View{
-        Text(text)
-            .padding(.all,5)
-            .font(.footnote)
-            .background(color)
-            .foregroundColor(.white)
-            .cornerRadius(3)
+
+    func DeleteTag(tag: Tag) {
+        roomTagVM.RemoveTagFromRoom(tag: tag)
+
+    }
+    
+    func AddTag(tag: Tag) {
+        roomTagVM.AddTagToRoom(tag: tag)
+
     }
 
-    func TagItemView(for tag:Tag,color:Color,isRoomTag:Bool)->some View{
-        return
-            TagItem(for: tag.name,color: color)
-                .padding(.all,8)
-                .overlay(
-                    Button(action: {
-                        if(isRoomTag){
-                            roomTagVM.RemoveTagFromRoom(tag: tag)
-                        }else{
-                            roomTagVM.AddTagToRoom(tag:tag)
-                        }
-                    }, label: {
-                        Image(systemName:isRoomTag ? "minus.circle":"plus.circle")
-                                .resizable()
-                                .frame(width: 16,height: 16)
-                    }),alignment: .topTrailing
-                    
-                )
-    }
     private func GetTags(tags:[Tag],isRoomTag:Bool,color:Color) ->some View{
         var width = CGFloat.zero
         var height = CGFloat.zero
         
         return ZStack(alignment: .topLeading) {
             ForEach(tags){ tag in
-                TagItemView(for: tag, color: color, isRoomTag: isRoomTag)
+                TagItemView(for: tag, color: color, isAddedTag: isRoomTag, tagdelegate: self)
                     .alignmentGuide(.leading, computeValue: { d in
                       if abs(width - d.width) > 300 {
                         width = 0

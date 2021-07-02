@@ -70,14 +70,6 @@ struct TagList: View ,TagManage{
             }
         }
       }
-    func TagItem(for text:String,color:Color) -> some View{
-        Text(text)
-            .padding(.all,5)
-            .font(.footnote)
-            .background(color)
-            .foregroundColor(.white)
-            .cornerRadius(3)
-    }
     func TagItemView(for tag:Tag,color:Color,isUserTag:Bool)->some View{
         return
             TagItem(for: tag.name,color: color)

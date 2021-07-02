@@ -173,6 +173,9 @@
 		6FA152A0262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
 		6FA152A1262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
 		6FA152A2262715FA001978B4 /* RoomSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */; };
+		6FA3D79A268F7C12007C4030 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3D799268F7C12007C4030 /* TagsView.swift */; };
+		6FA3D79B268F7C12007C4030 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3D799268F7C12007C4030 /* TagsView.swift */; };
+		6FA3D79C268F7C12007C4030 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3D799268F7C12007C4030 /* TagsView.swift */; };
 		6FA42E0C2684531800736C2A /* ViewModelProtocl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA42E0B2684531800736C2A /* ViewModelProtocl.swift */; };
 		6FA42E0D2684531800736C2A /* ViewModelProtocl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA42E0B2684531800736C2A /* ViewModelProtocl.swift */; };
 		6FA42E0E2684531800736C2A /* ViewModelProtocl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA42E0B2684531800736C2A /* ViewModelProtocl.swift */; };
@@ -297,6 +300,7 @@
 		6F9F40C425D7ED3B000A7113 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		6FA0E32525D9679E00AE16D6 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		6FA1529F262715FA001978B4 /* RoomSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSearchViewModel.swift; sourceTree = "<group>"; };
+		6FA3D799268F7C12007C4030 /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		6FA42E0B2684531800736C2A /* ViewModelProtocl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocl.swift; sourceTree = "<group>"; };
 		6FA46D2F2674E624009F9817 /* AvaterSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaterSelectView.swift; sourceTree = "<group>"; };
 		6FA46D332674ECAF009F9817 /* AvaterFecher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaterFecher.swift; sourceTree = "<group>"; };
@@ -513,6 +517,7 @@
 		6F8806CA25D069B00085826F /* view */ = {
 			isa = PBXGroup;
 			children = (
+				6FA3D798268F7BF7007C4030 /* Items */,
 				6F736E1325EE7D9900E26267 /* SetupView */,
 				6F736E1225EE7D6A00E26267 /* Home */,
 				6F8806CC25D069C30085826F /* ChatRoom.swift */,
@@ -555,6 +560,14 @@
 				6FA42E0B2684531800736C2A /* ViewModelProtocl.swift */,
 			);
 			path = Interface;
+			sourceTree = "<group>";
+		};
+		6FA3D798268F7BF7007C4030 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				6FA3D799268F7C12007C4030 /* TagsView.swift */,
+			);
+			path = Items;
 			sourceTree = "<group>";
 		};
 		6FAD698F26738A5400227DA6 /* Data */ = {
@@ -870,6 +883,7 @@
 				6FA0E32625D9679E00AE16D6 /* UtilityFunctions.swift in Sources */,
 				6F8805E325D0671A0085826F /* theatalk_iosApp.swift in Sources */,
 				6F8806E025D069C40085826F /* CreateRoom.swift in Sources */,
+				6FA3D79A268F7C12007C4030 /* TagsView.swift in Sources */,
 				6FA77694268DF8A7003F5AAD /* EditRoom.swift in Sources */,
 				6F96EF2E261310620082F249 /* AuthUtility.swift in Sources */,
 				6F97ABB425D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
@@ -914,6 +928,7 @@
 				6F88072825D06E280085826F /* URLImage.swift in Sources */,
 				6FEDB03E26148629005C7924 /* TagSearch.swift in Sources */,
 				6FAD699226738A6300227DA6 /* UserCache.swift in Sources */,
+				6FA3D79B268F7C12007C4030 /* TagsView.swift in Sources */,
 				6F8806A225D069790085826F /* ImageLoader.swift in Sources */,
 				6FA46D352674ECAF009F9817 /* AvaterFecher.swift in Sources */,
 				6F8806A625D0697A0085826F /* WBSocket.swift in Sources */,
@@ -1009,6 +1024,7 @@
 				6FA0E32825D9679F00AE16D6 /* UtilityFunctions.swift in Sources */,
 				6F8806E125D069C40085826F /* CreateRoom.swift in Sources */,
 				6F88074725D06E380085826F /* theatalk_iosApp.swift in Sources */,
+				6FA3D79C268F7C12007C4030 /* TagsView.swift in Sources */,
 				6FA77696268DF8A7003F5AAD /* EditRoom.swift in Sources */,
 				6F96EF30261310620082F249 /* AuthUtility.swift in Sources */,
 				6F97ABB625D8DD4B00B3B5BF /* UsersViewModel.swift in Sources */,
