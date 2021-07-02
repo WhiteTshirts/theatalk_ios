@@ -42,7 +42,7 @@ struct CreateRoom: View,RoomFormat {
         return true
     }
     var body: some View {
-        RoomForm(RoomName: self.$RoomName, Youtubelink: self.$Youtubelink, StartDate: self.$StartDate, YoutubeId: self.$YoutubeId, roomTags: self.$roomTags, roomTagVM: RoomTagsViewModel(Id: 0), roomFormat: self, CrateRoomVM: self.CrateRoomVM)
+        RoomForm(RoomName: self.$RoomName, Youtubelink: self.$Youtubelink, StartDate: self.$StartDate, YoutubeId: self.$YoutubeId, roomTags: self.$roomTags, roomTagVM: RoomTagsViewModel(Id: 0), roomFormat: self, RoomVM: self.CrateRoomVM)
         
     }
 }

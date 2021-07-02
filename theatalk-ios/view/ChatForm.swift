@@ -24,7 +24,7 @@ struct RoomForm: View {
     @ObservedObject var roomTagVM:RoomTagsViewModel
     var roomFormat:RoomFormat!
     
-    @ObservedObject var CrateRoomVM = CreateRoomViewModel()
+    @ObservedObject var RoomVM = RoomsViewModelBase()
     func TagItem(for text:String,color:Color) -> some View{
         Text(text)
             .padding(.all,5)
