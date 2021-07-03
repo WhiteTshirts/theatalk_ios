@@ -24,7 +24,7 @@ final class ProfileViewModel: ObservableObject,ViewModelErrorHandle{
     init(user:User){
         self.user = user
         self.UsersVM = UsersViewModel(userId: user.id)
-        GetUserInfo()
+        //GetUserInfo()
     }
     func refresh(){
         GetUserInfo()

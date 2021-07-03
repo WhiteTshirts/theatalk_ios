@@ -6,12 +6,51 @@
 //
 
 import SwiftUI
-struct OtherProfileView: View{
+
+struct ProfileView: View, UsersRelationShip{
     var user:User
     @ObservedObject var ProfileVM: ProfileViewModel
-    var body: some View{
-        VStack{
-            
+    init(user:User!){
+        self.user = user  ?? User(name_: "", user_id: user.id)
+        ProfileVM = ProfileViewModel(user:self.user)
+    }
+    func Follow(userId: Int) {
+        self.ProfileVM.Follow(userId: userId)
+
+    }
+    
+    func UnFollow(userId: Int) {
+        self.ProfileVM.UnFollow(userId: userId)
+    }
+
+    var body: some View {
+        NavigationView{
+            VStack{
+                ProfileVM.user.image
+                .resizable()
+                .frame(width:100,height: 100)
+                Text("名前:\(ProfileVM.user.name)")
+                HStack{
+                    Text("登録タグ一覧")
+                    if(ProfileVM.user.tags != nil){
+                        GetTags(tags: user.tags!, isUserTag: true, color: Color.red)
+                    }
+                    if(ProfileVM.user.followings != nil && ProfileVM.user.followers != nil){
+                        HStack{
+                            NavigationLink(
+                                destination: UsersList(users:ProfileVM.user.followings, userRelation: self),
+                                label: {
+                                    Text("フォロー数:\(ProfileVM.user.followings.count)")
+                                })
+                            NavigationLink(
+                                destination: UsersList(users:ProfileVM.user.followers, userRelation: self),
+                                label: {
+                                    Text("フォロワー数:\(ProfileVM.user.followers.count)")
+                                })
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -104,38 +143,7 @@ struct UserProfileView: View,UsersRelationShip {
             .cornerRadius(3)
 
     }
-    private func GetTags(tags:[Tag],isUserTag:Bool,color:Color) ->some View{
-        var width = CGFloat.zero
-        var height = CGFloat.zero
-        
-        return ZStack(alignment: .topLeading) {
-            ForEach(tags){ tag in
-                TagItem(for: tag.name, color: color)
-                    .padding(.all,8)
-                    .alignmentGuide(.leading, computeValue: { d in
-                      if abs(width - d.width) > 300 {
-                        width = 0
-                        height -= d.height
-                      }
-                      let result = width
-                        if tag == tags.last {
-                        width = 0
-                      } else {
-                        width -= d.width
-                      }
-                      return result
-                    })
-                    .alignmentGuide(.top, computeValue: { _ in
-                      let result = height
-                        if tag == tags.last {
-                        height = 0
-                      }
-                      return result
-                    })
-                
-            }
-        }
-      }
+
 }
 
 //struct UserProfileView_Previews: PreviewProvider {

@@ -37,3 +37,35 @@ func TagItemView(for tag:Tag,color:Color,isAddedTag:Bool,tagdelegate:TagManage)-
                 
             )
 }
+func GetTags(tags:[Tag],isUserTag:Bool,color:Color) ->some View{
+    var width = CGFloat.zero
+    var height = CGFloat.zero
+    
+    return ZStack(alignment: .topLeading) {
+        ForEach(tags){ tag in
+            TagItem(for: tag.name, color: color)
+                .padding(.all,8)
+                .alignmentGuide(.leading, computeValue: { d in
+                  if abs(width - d.width) > 300 {
+                    width = 0
+                    height -= d.height
+                  }
+                  let result = width
+                    if tag == tags.last {
+                    width = 0
+                  } else {
+                    width -= d.width
+                  }
+                  return result
+                })
+                .alignmentGuide(.top, computeValue: { _ in
+                  let result = height
+                    if tag == tags.last {
+                    height = 0
+                  }
+                  return result
+                })
+            
+        }
+    }
+  }

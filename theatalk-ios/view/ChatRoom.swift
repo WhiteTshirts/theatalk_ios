@@ -84,17 +84,30 @@ struct ChatCell: View{
         self.userVM.GetUser(userId: chat.user_id)
     }
     var chat:Chat
-    @ObservedObject var userVM = UserViewModle()
+    @ObservedObject var userVM = UserViewModel()
+    @State var UserClicked:Bool = false
+    
     var body: some View{
         ZStack{
                 HStack{
                     if(self.userVM.user.name==""){
                             ProgressView("Now Loading...")
                     }else{
-                        VStack{
-                            self.userVM.user.image.resizable().frame(width: 10, height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            Text(self.userVM.user.name)
-                        }
+                        Button(action: {
+                            print("user clicked")
+                            UserClicked = true
+                        }, label: {
+                            VStack{
+                                self.userVM.user.image.resizable().frame(width: 10, height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                Text(self.userVM.user.name)
+                            }.sheet(isPresented: $UserClicked, content: {
+                                if(UserClicked){
+                                    ProfileView(user: self.userVM.user)
+                                    
+                                }
+                            })
+                        })
+
                     }
  
                     Text(chat.text)
@@ -116,7 +129,6 @@ struct ChatArea: View,UsersRelationShip {
     @State var IsSuccess = false
     @State var text = ""
     @State var usersDisplay = false
-
     var ChatView: some View{
         ForEach(ChatsVm.chats.indices, id: \.self){ index in
             HStack{

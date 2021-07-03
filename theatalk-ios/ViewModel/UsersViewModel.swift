@@ -11,7 +11,7 @@ protocol UsersRelationShip {
     func Follow(userId:Int)
     func UnFollow(userId:Int)
 }
-final class UserViewModle:ObservableObject,ViewModelErrorHandle{
+final class UserViewModel:ObservableObject,ViewModelErrorHandle{
     func ErrorHandle(e: APIError) -> String {
         return ErrorHandling(e: e)
     }
