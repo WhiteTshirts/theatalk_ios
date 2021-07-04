@@ -12,9 +12,10 @@ import YoutubePlayer_in_WKWebView
 struct MoveToChatRoom: View{
     @ObservedObject var room:Room
     @State private var playerSize: CGSize = .zero
-    @State var action:PlayerAction = .play
+    @State var action:PlayerAction = .none
     @State var time_offset:Int = 0
     @State var toEditForm = false
+
     func CaltimeOffset(){
         if let stime = room.start_time{
             time_offset = Int(Date().timeIntervalSince(room.start_time))
@@ -41,13 +42,14 @@ struct MoveToChatRoom: View{
         VStack{
             PlayerView(action:$action, videoId: self.$room.youtube_id, time_offset: $time_offset).frame(width: playerSize.width, height: playerSize.height)
                 .onDisappear(){
-                
                 self.action = .stop
                 removeSelf()
 
             }.onAppear(){
                 CaltimeOffset()
                 addSelf()
+                self.action = .load
+
             }
             if(isAdmin()){
                 NavigationLink(
@@ -70,13 +72,19 @@ struct MoveToChatRoom: View{
                     playerSize = CGSize(
                         width: frame.width, height: frame.width/16*9
                     )
+                }.onDisappear(){
+                    
+                    self.action = .stop
+
                 }
         }
   
 
     }
 }
-
+protocol Profile{
+    func UserProfile()
+}
 struct ChatCell: View{
 
     init(chat:Chat){
@@ -94,9 +102,8 @@ struct ChatCell: View{
                             ProgressView("Now Loading...")
                     }else{
                         Button(action: {
-                            print("user clicked")
                             UserClicked = true
-                        }, label: {
+                        }){
                             VStack{
                                 self.userVM.user.image.resizable().frame(width: 10, height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                 Text(self.userVM.user.name)
@@ -106,7 +113,7 @@ struct ChatCell: View{
                                     
                                 }
                             })
-                        })
+                        }
 
                     }
  
@@ -181,7 +188,6 @@ struct ChatArea: View,UsersRelationShip {
             
 
         }.onAppear(perform: {
-
         
         })
         .onDisappear(perform: {

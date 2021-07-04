@@ -23,36 +23,41 @@ struct PlayerView: UIViewRepresentable{
     @Binding var action:PlayerAction
     typealias UIViewType = YTSwiftyPlayer
     @Binding var videoId:String
+    static let player = YTSwiftyPlayer()
+    
     
     @Binding var time_offset:Int
     func makeUIView(context: Context) -> YTSwiftyPlayer {
-        let player = YTSwiftyPlayer()
-        player.autoplay = true
-        return player
-    }
-    
-    
-    func updateUIView(_ uiView: YTSwiftyPlayer, context: Context) {
-        uiView.setPlayerParameters([
+        PlayerView.player.autoplay = true
+        PlayerView.player.setPlayerParameters([
             .playsInline(true),
             .registerStartTimeAt(time_offset),
             .videoID(videoId),
         ])
-        uiView.loadPlayer()
+        return PlayerView.player
+    }
+    
+    
+    func updateUIView(_ uiView: YTSwiftyPlayer, context: Context) {
+
         switch action {
         case .play:
-            uiView.loadPlayer()
+            PlayerView.player.playVideo()
+            break
         case .stop:
-            uiView.stopVideo()
+            PlayerView.player.stopVideo()
+            PlayerView.player.autoplay = false
+            break
         case .load:
+            PlayerView.player.loadPlayer()
             break
             
         case .none:
+            PlayerView.player.stopVideo()
             break
         }
         action = .none
-        
-
+    
     }
 }
 
