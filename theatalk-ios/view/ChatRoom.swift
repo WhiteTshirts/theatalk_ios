@@ -12,7 +12,7 @@ import YoutubePlayer_in_WKWebView
 struct MoveToChatRoom: View{
     @ObservedObject var room:Room
     @State private var playerSize: CGSize = .zero
-    @State var action:PlayerAction = .none
+    @State var action:PlayerAction = .play
     @State var time_offset:Int = 0
     @State var toEditForm = false
 
@@ -48,7 +48,6 @@ struct MoveToChatRoom: View{
             }.onAppear(){
                 CaltimeOffset()
                 addSelf()
-                self.action = .load
 
             }
             if(isAdmin()){

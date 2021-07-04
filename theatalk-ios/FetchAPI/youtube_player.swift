@@ -34,12 +34,14 @@ struct PlayerView: UIViewRepresentable{
             .registerStartTimeAt(time_offset),
             .videoID(videoId),
         ])
+        print("load makeview")
+        PlayerView.player.loadPlayer()
         return PlayerView.player
+        
     }
     
     
     func updateUIView(_ uiView: YTSwiftyPlayer, context: Context) {
-
         switch action {
         case .play:
             PlayerView.player.playVideo()
