@@ -16,9 +16,6 @@ class AvaterFetcher:Fetcher{
     }
   }
 
-
-
-
 extension AvaterFetcher{
     
     func GETAvaterImages(

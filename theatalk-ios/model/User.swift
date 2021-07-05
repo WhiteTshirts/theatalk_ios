@@ -17,17 +17,18 @@ class User:Identifiable,Codable{
     var followers :[User]!
     var isFollower = false
     var isFollwing = false
+    var avater_id: Int = -1
     var room_id:Int!
     private var image_name: String!
     var image:Image{
-        if(image_name != nil){
-            return Image(image_name!)
+        if(avater_id != -1){
+            return AvaterCache.find(id: avater_id)
         }else{
             return Image("default")
         }
     }
     enum DecodingKeys: CodingKey{
-        case name,id,password,tags,isFollower,isFollowing,room_id,rooms,followings,followers
+        case name,id,password,tags,isFollower,isFollowing,room_id,rooms,followings,followers,avater_id
     }
     enum EncodeKeys:CodingKey{
         case name,password,id
@@ -77,6 +78,7 @@ class User:Identifiable,Codable{
         isFollwing = try container.decodeIfPresent(Bool.self, forKey: .isFollowing) ?? false
         isFollower = try container.decodeIfPresent(Bool.self, forKey: .isFollower) ?? false
         room_id = try container.decodeIfPresent(Int.self, forKey: .room_id ) ?? 0
+        avater_id = try container.decodeIfPresent(Int.self, forKey: .avater_id ) ?? -1
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: EncodeRootKeys.self)

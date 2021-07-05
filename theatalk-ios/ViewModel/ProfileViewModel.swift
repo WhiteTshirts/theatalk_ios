@@ -55,7 +55,9 @@ final class ProfileViewModel: ObservableObject,ViewModelErrorHandle{
             guard let self = self else { return }
             
             if(user_json.user != nil){
+                
                 self.user = user_json.user
+                print(self.user.avater_id)
             }
         })
         .store(in: &disposables)

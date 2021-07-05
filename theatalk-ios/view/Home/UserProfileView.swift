@@ -83,12 +83,12 @@ struct UserProfileView: View,UsersRelationShip {
                 NavigationLink(
                     destination: /*@START_MENU_TOKEN@*/Text("Destination")/*@END_MENU_TOKEN@*/,
                     label: {
-                        user.image
+                        ProfileVM.user.image
                             .resizable()
                             .frame(width:100,height: 100)
                     })
 
-                Text("名前:\(user.name)")
+                Text("名前:\(ProfileVM.user.name)")
                 HStack{
                 Text("登録タグ一覧")
                 Image(systemName: "tag")

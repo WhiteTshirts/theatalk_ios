@@ -34,7 +34,6 @@ struct PlayerView: UIViewRepresentable{
             .registerStartTimeAt(time_offset),
             .videoID(videoId),
         ])
-        print("load makeview")
         PlayerView.player.loadPlayer()
         return PlayerView.player
         
@@ -58,7 +57,6 @@ struct PlayerView: UIViewRepresentable{
             PlayerView.player.stopVideo()
             break
         }
-        action = .none
     
     }
 }

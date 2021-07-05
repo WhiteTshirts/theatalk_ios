@@ -7,6 +7,9 @@
 
 import Foundation
 import SwiftUI
+import Combine
+let image_names = ["dog","cat","whale","sheep","penguin","dragon"]
+
 struct UserCache{
     private static var users:[User] = []
     private init(){}
@@ -19,10 +22,13 @@ struct UserCache{
     
 }
 struct AvaterCache{
-    private static var avaters:[Avater] = []
+    
+    static var avaters:[Avater] = []
     private init(){}
-    static func find(id:Int)->Avater?{
-        return AvaterCache.avaters.filter({$0.id == id}).first
+
+    static func find(id:Int)->Image{
+        print(image_names[id])
+        return Image(image_names[id])
     }
     static func add(avater:Avater){
         AvaterCache.avaters.append(avater)

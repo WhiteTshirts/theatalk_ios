@@ -11,12 +11,16 @@ class Avater:Identifiable,Codable{
     var imageString: String!
     var id: Int //user_id
     var image:Image{
-        
-        if(imageString != nil){
-            return Image(imageString!)
+        if (imageString != nil) {
+            if let data = Data(base64Encoded: imageString),let uiImage = UIImage(data:data){
+                return Image(uiImage: uiImage)
+            }else{
+                return Image ("default")
+            }
         }else{
             return Image("default")
         }
+
     }
     enum DecodingKeys: CodingKey{
         case id,image
