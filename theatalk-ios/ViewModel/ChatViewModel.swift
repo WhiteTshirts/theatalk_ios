@@ -41,7 +41,7 @@ final class ChatsViewModel: ObservableObject,ChatRecv,ViewModelErrorHandle{
     private var chatfetcher = ChatFetcher()
     init(){
         self.UsersVM = UsersViewModel(userId: UserProfile().user_Id)
-
+        sleep(1)//ルームに入室リクエストを送って成功したら入室するようにする
         self.load()
         self.enter()
 
@@ -62,7 +62,9 @@ final class ChatsViewModel: ObservableObject,ChatRecv,ViewModelErrorHandle{
                 }
             }, receiveValue: {[weak self] chats_json in
                 guard let self = self else { return }
+                print(chats_json)
                 if(chats_json.chats != nil){
+                    print(chats_json.chats.count)
                     self.chats = chats_json.chats
                     self.isLoading = false
                     
