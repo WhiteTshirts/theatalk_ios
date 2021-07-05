@@ -104,7 +104,7 @@ struct ChatCell: View{
                             UserClicked = true
                         }){
                             VStack{
-                                self.userVM.user.image.resizable().frame(width: 10, height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                self.userVM.user.image.resizable().frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                 Text(self.userVM.user.name)
                             }.sheet(isPresented: $UserClicked, content: {
                                 if(UserClicked){
