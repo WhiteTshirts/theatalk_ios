@@ -54,7 +54,11 @@ struct ProfileView: View, UsersRelationShip{
         }
     }
 }
-struct UserProfileView: View,UsersRelationShip {
+struct UserProfileView: View,UsersRelationShip,AvaterRegist {
+    func avaterRegist(avaterId: Int) {
+        self.ProfileVM.setProfileImage(avaterId: avaterId)
+    }
+    
     func Follow(userId: Int) {
         
         self.ProfileVM.Follow(userId: userId)
@@ -81,7 +85,7 @@ struct UserProfileView: View,UsersRelationShip {
         NavigationView{
             VStack{
                 NavigationLink(
-                    destination: /*@START_MENU_TOKEN@*/Text("Destination")/*@END_MENU_TOKEN@*/,
+                    destination: AvaterSelectView(AvaterRegist: self),
                     label: {
                         ProfileVM.user.image
                             .resizable()

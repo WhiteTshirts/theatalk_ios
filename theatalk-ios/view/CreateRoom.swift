@@ -24,7 +24,7 @@ struct CreateRoom: View,RoomFormat {
     @State var YoutubeId:String=""
     @State var roomTags:[Tag]=[]
     @ObservedObject var CrateRoomVM = CreateRoomViewModel()
-    
+
     func ConfirmRoom() {
         var youtube_id = ParseYoutubeurl(url: Youtubelink)
         if let youtube_id = ParseYoutubeurl(url: Youtubelink){

@@ -57,7 +57,17 @@ extension UserFetcher: UserFechable{
             return Fail(error: error).eraseToAnyPublisher()
         }
     }
-    
+    func SetProfile(
+        avaterId:Int
+    ) -> AnyPublisher<User_Json,APIError>{
+        do{
+            return fetchData(with: makeComponents(Path: "/images/\(avaterId)", Type: "PUT", body: nil))
+        }catch{
+            let error = APIError.network(description: "could not encode")
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+    }
+
     func POSTFollow(
         userId: Int
     ) ->AnyPublisher<User_Json,APIError>{

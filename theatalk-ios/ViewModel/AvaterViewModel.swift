@@ -1,15 +1,16 @@
 //
-//  ProfileViewModel.swift
+//  AvaterViewModel.swift
 //  theatalk-ios
 //
-//  Created by riku iwasaki on 2021/03/30.
+//  Created by riku iwasaki on 2021/07/05.
 //
+
 
 import Foundation
 import Combine
 import SwiftUI
 
-final class ProfileViewModel: ObservableObject,ViewModelErrorHandle{
+final class AvaterViewModel: ObservableObject,ViewModelErrorHandle{
     func ErrorHandle(e: APIError) -> String {
         return ErrorHandling(e: e)
     }
@@ -18,7 +19,6 @@ final class ProfileViewModel: ObservableObject,ViewModelErrorHandle{
     private var disposables = Set<AnyCancellable>()
     @Published var user:User
     private var userfetcher = UserFetcher()
-    @ObservedObject var UsersVM:UsersViewModel
     @Published var isFailed:Bool = false
     @Published var ErrorMessage = ""
     init(user:User){
